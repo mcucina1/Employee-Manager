@@ -6,6 +6,8 @@ import static org.junit.Assert.assertNotEquals;
 import org.junit.Before;
 import org.junit.Test;
 
+import junit.extensions.TestDecorator;
+
 public class QualificationTest {
 	String sampleDescription;
 	Qualification qualification;
@@ -50,6 +52,10 @@ public class QualificationTest {
 		int identicalHashcode = identicalQualification.hashCode();
 		
 		assertEquals(originalHashCode, identicalHashcode);
+
+  @Test
+	public void testToString(){
+		assertDescriptionMatchesExpected(qualification, sampleDescription);
 	}
 
 	public void assertDescriptionMatchesExpected(Qualification qualification, String expectedDescription) {
