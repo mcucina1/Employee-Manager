@@ -5,6 +5,8 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
+import junit.extensions.TestDecorator;
+
 public class QualificationTest {
 	String sampleDescription;
 	Qualification qualification;
@@ -27,6 +29,11 @@ public class QualificationTest {
 
 	@Test
 	public void testGetDescription() {
+		assertDescriptionMatchesExpected(qualification, sampleDescription);
+	}
+
+	@Test
+	public void testToString(){
 		assertDescriptionMatchesExpected(qualification, sampleDescription);
 	}
 

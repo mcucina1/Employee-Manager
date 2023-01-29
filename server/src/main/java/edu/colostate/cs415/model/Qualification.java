@@ -29,7 +29,7 @@ public class Qualification {
 
 	@Override
 	public String toString() {
-		return null;
+		return description;
 	}
 
 	public Set<Worker> getWorkers() {
