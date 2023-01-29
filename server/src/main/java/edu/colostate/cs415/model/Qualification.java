@@ -10,10 +10,11 @@ public class Qualification {
 	private Set<Worker> workers;
 
 	public String getDescription() {
-		return null;
+		return description;
 	}
 
 	public Qualification(String description) {
+		this.description = description;
 	}
 
 	@Override
