@@ -2,6 +2,8 @@ package edu.colostate.cs415.model;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -57,6 +59,15 @@ public class QualificationTest {
 	@Test
 	public void testToString(){
 		assertDescriptionMatchesExpected(qualification, sampleDescription);
+	}
+	
+	@Test
+	public void testEquals() {
+		qualification = new Qualification("This is a test.");
+		Qualification qualTwo = new Qualification("This is a test.");
+		Qualification qualThree = new Qualification("This is a Test!!!");
+		assertTrue(qualification.equals(qualTwo));
+		assertFalse(qualification.equals(qualThree));
 	}
 
 	public void assertDescriptionMatchesExpected(Qualification qualification, String expectedDescription) {
