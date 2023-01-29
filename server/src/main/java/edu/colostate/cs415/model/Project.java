@@ -39,7 +39,7 @@ public class Project {
 	}
 
 	public ProjectStatus getStatus() {
-		return null;
+		return this.status;
 	}
 
 	public void setStatus(ProjectStatus status) {
