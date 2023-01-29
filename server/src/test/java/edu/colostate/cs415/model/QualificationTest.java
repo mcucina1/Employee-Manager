@@ -57,7 +57,7 @@ public class QualificationTest {
 	}	
 	
 	@Test
-	public void testToString(){
+	public void testToString() {
 		assertDescriptionMatchesExpected(qualification, sampleDescription);
 	}
 	
