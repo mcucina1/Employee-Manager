@@ -52,8 +52,9 @@ public class QualificationTest {
 		int identicalHashcode = identicalQualification.hashCode();
 		
 		assertEquals(originalHashCode, identicalHashcode);
-
-  @Test
+	}	
+	
+	@Test
 	public void testToString(){
 		assertDescriptionMatchesExpected(qualification, sampleDescription);
 	}
