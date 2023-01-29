@@ -24,7 +24,8 @@ public class Qualification {
 
 	@Override
 	public int hashCode() {
-		return 0;
+		int hashCode = description.hashCode();
+		return hashCode;
 	}
 
 	@Override
