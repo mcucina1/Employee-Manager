@@ -71,6 +71,6 @@ public class QualificationTest {
 	}
 
 	public void assertDescriptionMatchesExpected(Qualification qualification, String expectedDescription) {
-		assertEquals(qualification.getDescription(), expectedDescription);
+		assertEquals(qualification.toString(), expectedDescription);
 	}
 }
