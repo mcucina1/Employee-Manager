@@ -1,6 +1,7 @@
 package edu.colostate.cs415.model;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -34,6 +35,27 @@ public class QualificationTest {
 		assertDescriptionMatchesExpected(qualification, sampleDescription);
 	}
 
+	@Test
+	public void testHashCodeIsDifferentForDifferentObjects() {
+		String description = "This description is different from the sample description";
+		Qualification differentQualification = new Qualification(description);
+
+		int originalHashCode = qualification.hashCode();
+		int differentHashCode = differentQualification.hashCode();
+
+		assertNotEquals(originalHashCode, differentHashCode);
+	}
+
+	@Test 
+	public void testHashCodeIsTheSameForIdenticalObjects() {
+		Qualification identicalQualification = qualification;
+
+		int originalHashCode = qualification.hashCode();
+		int identicalHashcode = identicalQualification.hashCode();
+		
+		assertEquals(originalHashCode, identicalHashcode);
+	}	
+	
 	@Test
 	public void testToString() {
 		assertDescriptionMatchesExpected(qualification, sampleDescription);
