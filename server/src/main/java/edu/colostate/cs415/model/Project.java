@@ -13,6 +13,9 @@ public class Project {
 	private Set<Qualification> qualifications;
 
 	public Project(String name, Set<Qualification> qualifications, ProjectSize size) {
+		this.name = name;
+		this.qualifications = qualifications;
+		this.size = size;
 	}
 
 	@Override
@@ -31,11 +34,11 @@ public class Project {
 	}
 
 	public String getName() {
-		return null;
+		return name;
 	}
 
 	public ProjectSize getSize() {
-		return null;
+		return size;
 	}
 
 	public ProjectStatus getStatus() {
@@ -59,7 +62,7 @@ public class Project {
 	}
 
 	public Set<Qualification> getRequiredQualifications() {
-		return null;
+		return qualifications;
 	}
 
 	public void addQualification(Qualification qualification) {
