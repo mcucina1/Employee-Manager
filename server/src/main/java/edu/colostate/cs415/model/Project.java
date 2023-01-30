@@ -38,7 +38,7 @@ public class Project {
 	}
 
 	public ProjectSize getSize() {
-		return null;
+		return size;
 	}
 
 	public ProjectStatus getStatus() {
@@ -62,7 +62,7 @@ public class Project {
 	}
 
 	public Set<Qualification> getRequiredQualifications() {
-		return null;
+		return qualifications;
 	}
 
 	public void addQualification(Qualification qualification) {
