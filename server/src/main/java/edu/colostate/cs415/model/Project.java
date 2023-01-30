@@ -49,13 +49,14 @@ public class Project {
 	}
 
 	public void addWorker(Worker worker) {
+		this.workers.add(worker);
 	}
 
 	public void removeWorker(Worker worker) {
 	}
 
 	public Set<Worker> getWorkers() {
-		return null;
+		return this.workers;
 	}
 
 	public void removeAllWorkers() {
