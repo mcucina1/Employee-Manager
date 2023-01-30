@@ -1,5 +1,6 @@
 package edu.colostate.cs415.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import edu.colostate.cs415.dto.ProjectDTO;
@@ -49,13 +50,17 @@ public class Project {
 	}
 
 	public void addWorker(Worker worker) {
+		if(workers == null) {
+			workers = new HashSet<Worker>();
+		}
+		this.workers.add(worker);
 	}
 
 	public void removeWorker(Worker worker) {
 	}
 
 	public Set<Worker> getWorkers() {
-		return null;
+		return this.workers;
 	}
 
 	public void removeAllWorkers() {

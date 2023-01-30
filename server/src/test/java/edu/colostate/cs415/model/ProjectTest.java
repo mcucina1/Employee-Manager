@@ -17,6 +17,10 @@ public class ProjectTest {
 	Qualification firstQualification;
 	Qualification secondQualification;
 
+	Worker workerOne;
+	Worker workerTwo;
+
+	Set<Worker> workers;
 	Set<Qualification> qualifications;
 
 	Project testProject;
@@ -34,7 +38,17 @@ public class ProjectTest {
 		testQualifications.add(firstQualification);
 		testQualifications.add(secondQualification);
 
+		workerOne = new Worker("Worker One", testQualifications, 96000.10);
+		workerTwo = new Worker("Worker Two", testQualifications, 0.64);
+
+		workers  = new HashSet<Worker>();
+		workers.add(workerOne);
+		workers.add(workerTwo);
+
 		testProject = new Project(testProjectName, testQualifications, ProjectSize.SMALL);
+
+		testProject.addWorker(workerOne);
+		testProject.addWorker(workerTwo);
 	}
 
 	@Test
@@ -61,5 +75,10 @@ public class ProjectTest {
 	public void testProjectQualifications() {
 		assertEquals(firstQualification, new Qualification(firstDescription));
 		assertEquals(secondQualification, new Qualification(secondDescription));
+	}
+
+	@Test
+	public void testAddWorker() {
+		assertEquals(testProject.getWorkers(), workers);
 	}
 }
