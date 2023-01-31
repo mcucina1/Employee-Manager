@@ -14,6 +14,9 @@ public class Worker {
 	private Set<Qualification> qualifications;
 
 	public Worker(String name, Set<Qualification> qualifications, double salary) {
+		this.name = name;
+		this.qualifications = qualifications;
+		this.salary = salary;
 	}
 
 	@Override
@@ -32,18 +35,18 @@ public class Worker {
 	}
 
 	public String getName() {
-		return null;
+		return this.name;
 	}
 
 	public double getSalary() {
-		return 0.0;
+		return this.salary;
 	}
 
 	public void setSalary(double salary) {
 	}
 
 	public Set<Qualification> getQualifications() {
-		return null;
+		return this.qualifications;
 	}
 
 	public void addQualification(Qualification qualification) {

@@ -9,10 +9,6 @@ public class Qualification {
 	private String description;
 	private Set<Worker> workers;
 
-	public String getDescription() {
-		return description;
-	}
-
 	public Qualification(String description) {
 		this.description = description;
 	}
@@ -34,7 +30,8 @@ public class Qualification {
 
 	@Override
 	public int hashCode() {
-		return 0;
+		int hashCode = description.hashCode();
+		return hashCode;
 	}
 
 	@Override
