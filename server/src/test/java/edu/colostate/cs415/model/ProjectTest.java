@@ -91,7 +91,7 @@ public class ProjectTest {
 
 	@Test
 	public void testGetStatus(){
-		assertEquals(testProject.getStatus(), null);
+		assertEquals(testProject.getStatus(), ProjectStatus.PLANNED);
 	}
 
 	@Test

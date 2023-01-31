@@ -17,6 +17,7 @@ public class Project {
 		this.name = name;
 		this.qualifications = qualifications;
 		this.size = size;
+		this.status = ProjectStatus.PLANNED;
 	}
 
 	@Override
@@ -43,12 +44,7 @@ public class Project {
 	}
 
 	public ProjectStatus getStatus() {
-		try{
-			return status;
-		}
-		catch(NullPointerException e){
-			return null;
-		}
+		return status;
 	}
 
 	public void setStatus(ProjectStatus status) {
