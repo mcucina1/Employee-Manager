@@ -4,6 +4,7 @@ import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.HashSet;
@@ -78,6 +79,16 @@ public class WorkerTest {
 		Worker newWorker = new Worker(sampleName, sampleQualifications, sampleSalary);
 		String newExpectedString = "Sample Name:0:2:10";
 		assertEquals(newExpectedString, newWorker.toString());		
+	}
+
+	@Test
+	public void testSetSalary() {
+		double expectedSalary = 123.0;
+		assertNotEquals(expectedSalary, worker.getSalary());
+
+		worker.setSalary(expectedSalary);
+		double marginOfError = 0.1;
+		assertEquals(expectedSalary, worker.getSalary(), marginOfError);
 	}
 
 	private Worker buildExpectedWorker() {
