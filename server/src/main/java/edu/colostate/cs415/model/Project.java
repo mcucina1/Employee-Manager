@@ -43,7 +43,12 @@ public class Project {
 	}
 
 	public ProjectStatus getStatus() {
-		return status;
+		try{
+			return status;
+		}
+		catch(NullPointerException e){
+			return null;
+		}
 	}
 
 	public void setStatus(ProjectStatus status) {

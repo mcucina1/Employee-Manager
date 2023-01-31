@@ -90,6 +90,11 @@ public class ProjectTest {
 	}
 
 	@Test
+	public void testGetStatus(){
+		assertEquals(testProject.getStatus(), null);
+	}
+
+	@Test
 	public void testSetAndGetStatus() {
 		testProject.setStatus(ProjectStatus.ACTIVE);
 		assertEquals(testProject.getStatus(),ProjectStatus.ACTIVE);
