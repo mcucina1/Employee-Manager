@@ -81,4 +81,11 @@ public class ProjectTest {
 	public void testAddWorker() {
 		assertEquals(testProject.getWorkers(), workers);
 	}
+
+	@Test
+	public void testToString() {
+		String expectedOutput = testProject.getName() + ':' + testProject.getWorkers().size() + ':' + testProject.getStatus();
+		String actualOutput = testProject.toString();
+		assertEquals(expectedOutput, actualOutput);
+	}
 }
