@@ -31,7 +31,20 @@ public class Worker {
 
 	@Override
 	public String toString() {
-		return null;
+		int numberOfProjects = 0;
+		int numberOfQualificaitons = 0;
+		int salaryTruncated = (int)salary;
+
+		if(this.projects != null) {
+			numberOfProjects = projects.size();
+		}
+
+		if(this.qualifications != null) {
+			numberOfQualificaitons = qualifications.size();
+		}
+
+		String workerString = this.name + ":" + numberOfProjects + ":" + numberOfQualificaitons + ":" + salaryTruncated;
+		return workerString;
 	}
 
 	public String getName() {
