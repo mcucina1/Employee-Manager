@@ -68,6 +68,18 @@ public class WorkerTest {
 		assertEquals(expectedQualifications, worker.getQualifications());
 	}
 
+	@Test
+	public void testToString() {
+		String expectedString = "Sample Name:0:1:10";
+		assertEquals(expectedString, worker.toString());
+
+		Qualification newQualification = new Qualification("New Qualification");
+		sampleQualifications.add(newQualification);
+		Worker newWorker = new Worker(sampleName, sampleQualifications, sampleSalary);
+		String newExpectedString = "Sample Name:0:2:10";
+		assertEquals(newExpectedString, newWorker.toString());		
+	}
+
 	private Worker buildExpectedWorker() {
 		double expectedSalary = 10.0;
 		String expectedName = "Sample Name";
