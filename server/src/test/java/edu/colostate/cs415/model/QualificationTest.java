@@ -8,6 +8,9 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import junit.extensions.TestDecorator;
 
 public class QualificationTest {
@@ -70,7 +73,60 @@ public class QualificationTest {
 		assertFalse(qualification.equals(qualThree));
 	}
 
+	@Test
+	public void testGetWorkersWithEmptyWorkers() {
+		Set<Worker> expectedWorkers = new HashSet<>();
+		assertEquals(expectedWorkers, qualification.getWorkers());
+	}
+
+	@Test
+	public void testGetWorkers() {
+		Set<Worker> expectedWorkers = createExpectedWorkers();
+
+		Set<Qualification> workerQualifications = new HashSet<>();
+		Worker firstExpectedWorker = new Worker ("Jokim Broden", workerQualifications, 100.0);
+		Worker secondExpectedWorker = new Worker ("Par Sundstrom", workerQualifications, 51.0);
+		Worker thirdExpectedWorker = new Worker ("Chris Rorland", workerQualifications, 50.0);
+
+		qualification.addWorker(firstExpectedWorker);
+		qualification.addWorker(secondExpectedWorker);
+		qualification.addWorker(thirdExpectedWorker);
+
+		assertEquals(expectedWorkers, qualification.getWorkers());
+	}
+
+	@Test
+	public void testAddWorker() {
+		Set<Worker> expectedWorkers = createExpectedWorkers();
+
+		Set<Qualification> workerQualifications = new HashSet<>();
+		Worker firstExpectedWorker = new Worker ("Jokim Broden", workerQualifications, 100.0);
+		Worker secondExpectedWorker = new Worker ("Par Sundstrom", workerQualifications, 51.0);
+		Worker thirdExpectedWorker = new Worker ("Chris Rorland", workerQualifications, 50.0);
+
+		qualification.addWorker(firstExpectedWorker);
+		qualification.addWorker(secondExpectedWorker);
+		qualification.addWorker(thirdExpectedWorker);
+
+		assertEquals(expectedWorkers, qualification.getWorkers());
+	}
+
 	public void assertDescriptionMatchesExpected(Qualification qualification, String expectedDescription) {
 		assertEquals(qualification.toString(), expectedDescription);
+	}
+
+	public Set<Worker> createExpectedWorkers() {
+		Set<Worker> expectedWorkers = new HashSet<>();
+		Set<Qualification> workerQualifications = new HashSet<>();
+		
+		Worker firstExpectedWorker = new Worker ("Jokim Broden", workerQualifications, 100.0);
+		Worker secondExpectedWorker = new Worker ("Par Sundstrom", workerQualifications, 51.0);
+		Worker thirdExpectedWorker = new Worker ("Chris Rorland", workerQualifications, 50.0);
+
+		expectedWorkers.add(firstExpectedWorker);
+		expectedWorkers.add(secondExpectedWorker);
+		expectedWorkers.add(thirdExpectedWorker);
+
+		return expectedWorkers;
 	}
 }

@@ -1,5 +1,6 @@
 package edu.colostate.cs415.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import edu.colostate.cs415.dto.QualificationDTO;
@@ -40,10 +41,21 @@ public class Qualification {
 	}
 
 	public Set<Worker> getWorkers() {
-		return null;
+		if (!(workers == null)) {
+			return workers;
+		}
+
+		workers = new HashSet<>();
+		return workers;
 	}
 
 	public void addWorker(Worker worker) {
+		if(!(workers == null)) {
+			workers.add(worker);
+		} else {
+			workers = new HashSet<>();
+			workers.add(worker);
+		}
 	}
 
 	public void removeWorker(Worker worker) {
