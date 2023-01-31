@@ -21,7 +21,17 @@ public class Worker {
 
 	@Override
 	public boolean equals(Object other) {
-		return false;
+		if (other == this) {
+			return true;
+		}
+
+		if (!(other instanceof Worker)) {
+			return false;
+		}
+
+		Worker testWorker = (Worker) other;
+
+		return name.equals(testWorker.name);
 	}
 
 	@Override
