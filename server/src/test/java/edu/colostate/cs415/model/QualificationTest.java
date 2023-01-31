@@ -129,4 +129,36 @@ public class QualificationTest {
 
 		return expectedWorkers;
 	}
+
+	@Test
+	public void testRemoveWorkers() {
+		Set<Worker> expectedWorkers = createExpectedWorkers();
+
+		Set<Qualification> workerQualifications = new HashSet<>();
+		Worker firstExpectedWorker = new Worker ("Jokim Broden", workerQualifications, 100.0);
+		Worker secondExpectedWorker = new Worker ("Par Sundstrom", workerQualifications, 51.0);
+		Worker thirdExpectedWorker = new Worker ("Chris Rorland", workerQualifications, 50.0);
+
+		qualification.addWorker(firstExpectedWorker);
+		qualification.addWorker(secondExpectedWorker);
+		qualification.addWorker(thirdExpectedWorker);
+
+		assertEquals(expectedWorkers, qualification.getWorkers());
+
+		qualification.removeWorker(firstExpectedWorker);
+		expectedWorkers.remove(firstExpectedWorker);
+
+		assertEquals(expectedWorkers, qualification.getWorkers());
+
+		qualification.removeWorker(secondExpectedWorker);
+		expectedWorkers.remove(secondExpectedWorker);
+
+		assertEquals(expectedWorkers, qualification.getWorkers());
+
+		qualification.removeWorker(secondExpectedWorker);
+		expectedWorkers.remove(secondExpectedWorker);
+
+		assertEquals(expectedWorkers, qualification.getWorkers());
+		
+	}
 }
