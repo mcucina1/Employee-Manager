@@ -59,6 +59,9 @@ public class Qualification {
 	}
 
 	public void removeWorker(Worker worker) {
+		if(!(worker == null)) {
+			workers.remove(worker);
+		}
 	}
 
 	public QualificationDTO toDTO() {
