@@ -17,6 +17,7 @@ public class Project {
 		this.name = name;
 		this.qualifications = qualifications;
 		this.size = size;
+		this.status = ProjectStatus.PLANNED;
 	}
 
 	@Override
@@ -43,10 +44,11 @@ public class Project {
 	}
 
 	public ProjectStatus getStatus() {
-		return null;
+		return status;
 	}
 
 	public void setStatus(ProjectStatus status) {
+		this.status = status;
 	}
 
 	public void addWorker(Worker worker) {

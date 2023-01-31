@@ -88,4 +88,15 @@ public class ProjectTest {
 		String actualOutput = testProject.toString();
 		assertEquals(expectedOutput, actualOutput);
 	}
+
+	@Test
+	public void testGetStatus(){
+		assertEquals(testProject.getStatus(), ProjectStatus.PLANNED);
+	}
+
+	@Test
+	public void testSetAndGetStatus() {
+		testProject.setStatus(ProjectStatus.ACTIVE);
+		assertEquals(testProject.getStatus(),ProjectStatus.ACTIVE);
+	}
 }
