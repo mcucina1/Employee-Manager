@@ -11,8 +11,6 @@ import org.junit.Test;
 import java.util.HashSet;
 import java.util.Set;
 
-import junit.extensions.TestDecorator;
-
 public class QualificationTest {
 	String sampleDescription;
 	Qualification qualification;
