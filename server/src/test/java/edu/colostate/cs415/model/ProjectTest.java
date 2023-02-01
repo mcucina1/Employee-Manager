@@ -6,6 +6,8 @@ import org.junit.Test;
 import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.HashSet;
 
@@ -57,6 +59,14 @@ public class ProjectTest {
 	}
 
 	@Test
+	public void testEquals() {
+		Project projTwo = buildExpectedProject();
+		Project projThree = new Project("Boop", qualifications, null);
+		assertTrue(testProject.equals(projTwo));
+		assertFalse(testProject.equals(projThree));
+	}
+
+	@Test
 	public void testProjectConstructor() {
 		assert(true);
 	}
@@ -84,10 +94,38 @@ public class ProjectTest {
 
 	@Test
 	public void testToString() {
-		String expectedOutput = testProject.getName() + ':' + testProject.getWorkers().size() + ':' + testProject.getStatus();
+		String expectedOutput = testProject.getName() + ':' + testProject.getWorkers().size() + ':'
+				+ testProject.getStatus();
 		String actualOutput = testProject.toString();
 		assertEquals(expectedOutput, actualOutput);
 	}
+
+	private Project buildExpectedProject() {
+		String firstTestDescription = "Qualified Engineer";
+		String secondTestDescription = "Qualified Scientist";
+		String testProjName = "Test Project";
+
+		Qualification firstTestQualification = new Qualification(firstTestDescription);
+		Qualification secondTestQualification = new Qualification(secondTestDescription);
+
+		Set<Qualification> testQualifications = new HashSet<Qualification>();
+		testQualifications.add(firstTestQualification);
+		testQualifications.add(secondTestQualification);
+
+		Worker testWorkerOne = new Worker("Worker One", testQualifications, 96000.10);
+		Worker testWorkerTwo = new Worker("Worker Two", testQualifications, 0.64);
+
+		HashSet<Worker> testWorkers = new HashSet<Worker>();
+		testWorkers.add(testWorkerOne);
+		testWorkers.add(testWorkerTwo);
+
+		Project testProj = new Project(testProjName, testQualifications, ProjectSize.SMALL);
+
+		testProj.addWorker(workerOne);
+		testProj.addWorker(workerTwo);
+
+		return testProj;
+  }
 
 	@Test
 	public void testGetStatus(){

@@ -22,7 +22,17 @@ public class Project {
 
 	@Override
 	public boolean equals(Object other) {
-		return false;
+		if (other == this) {
+			return true;
+		}
+
+		if (!(other instanceof Project)) {
+			return false;
+		}
+
+		Project testProject = (Project) other;
+
+		return name.equals(testProject.name);
 	}
 
 	@Override
