@@ -137,4 +137,14 @@ public class ProjectTest {
 		testProject.setStatus(ProjectStatus.ACTIVE);
 		assertEquals(testProject.getStatus(),ProjectStatus.ACTIVE);
 	}
+
+	@Test
+	public void testRemoveAll() {
+		String testFailureMessage = "[ProjectTest.java] testRemoveAll(): failed to remove all Workers from the Project.";
+
+		testProject.removeAllWorkers();
+		Set<Worker> workers = testProject.getWorkers();
+
+		assertTrue(testFailureMessage, workers.isEmpty());
+	}
 }
