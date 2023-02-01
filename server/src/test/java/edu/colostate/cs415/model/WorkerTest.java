@@ -3,6 +3,8 @@ package edu.colostate.cs415.model;
 import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.HashSet;
 
@@ -39,6 +41,14 @@ public class WorkerTest {
 	}
 
 	@Test
+	public void testEquals() {
+		Worker workerTwo = buildExpectedWorker();
+		Worker workerThree = new Worker("Bobby", sampleQualifications, 200000);
+		assertTrue(worker.equals(workerTwo));
+		assertFalse(worker.equals(workerThree));
+	}
+
+	@Test
 	public void testGetName() {
 		String expectedName = "Sample Name";
 		assertEquals(expectedName, worker.getName());
@@ -56,6 +66,18 @@ public class WorkerTest {
 		Qualification qualification = new Qualification("Sample Qualification");
 		expectedQualifications.add(qualification);
 		assertEquals(expectedQualifications, worker.getQualifications());
+	}
+
+	@Test
+	public void testToString() {
+		String expectedString = "Sample Name:0:1:10";
+		assertEquals(expectedString, worker.toString());
+
+		Qualification newQualification = new Qualification("New Qualification");
+		sampleQualifications.add(newQualification);
+		Worker newWorker = new Worker(sampleName, sampleQualifications, sampleSalary);
+		String newExpectedString = "Sample Name:0:2:10";
+		assertEquals(newExpectedString, newWorker.toString());		
 	}
 
 	private Worker buildExpectedWorker() {

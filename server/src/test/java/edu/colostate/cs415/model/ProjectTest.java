@@ -99,7 +99,7 @@ public class ProjectTest {
 		String actualOutput = testProject.toString();
 		assertEquals(expectedOutput, actualOutput);
 	}
-	
+
 	private Project buildExpectedProject() {
 		String firstTestDescription = "Qualified Engineer";
 		String secondTestDescription = "Qualified Scientist";
@@ -125,5 +125,16 @@ public class ProjectTest {
 		testProj.addWorker(workerTwo);
 
 		return testProj;
+  }
+
+	@Test
+	public void testGetStatus(){
+		assertEquals(testProject.getStatus(), ProjectStatus.PLANNED);
+	}
+
+	@Test
+	public void testSetAndGetStatus() {
+		testProject.setStatus(ProjectStatus.ACTIVE);
+		assertEquals(testProject.getStatus(),ProjectStatus.ACTIVE);
 	}
 }

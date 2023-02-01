@@ -21,7 +21,17 @@ public class Worker {
 
 	@Override
 	public boolean equals(Object other) {
-		return false;
+		if (other == this) {
+			return true;
+		}
+
+		if (!(other instanceof Worker)) {
+			return false;
+		}
+
+		Worker testWorker = (Worker) other;
+
+		return name.equals(testWorker.name);
 	}
 
 	@Override
@@ -31,7 +41,20 @@ public class Worker {
 
 	@Override
 	public String toString() {
-		return null;
+		int numberOfProjects = 0;
+		int numberOfQualificaitons = 0;
+		int salaryTruncated = (int)salary;
+
+		if(this.projects != null) {
+			numberOfProjects = projects.size();
+		}
+
+		if(this.qualifications != null) {
+			numberOfQualificaitons = qualifications.size();
+		}
+
+		String workerString = this.name + ":" + numberOfProjects + ":" + numberOfQualificaitons + ":" + salaryTruncated;
+		return workerString;
 	}
 
 	public String getName() {
