@@ -121,4 +121,22 @@ public class WorkerTest {
 		Worker expectedWorker = new Worker(expectedName, expectedQualifications, expectedSalary);
 		return expectedWorker;
 	}
+
+	@Test
+	public void testGetProject() {
+		assertFalse(worker == null);
+
+		String firstDescription = "Qualified Engineer";
+
+		Qualification firstQualification = new Qualification(firstDescription);
+		Set<Qualification> testQualifications = new HashSet<Qualification>();
+		testQualifications.add(firstQualification);
+
+		Project proj = new Project("Test Project", sampleQualifications, ProjectSize.SMALL);
+		Set<Project> setOfProjects = new HashSet<>();
+		setOfProjects.add(proj);
+
+		worker.addProject(proj);
+		assertEquals(worker.getProjects(), setOfProjects);
+	}
 }
