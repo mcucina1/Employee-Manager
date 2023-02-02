@@ -77,6 +77,9 @@ public class Worker {
 	}
 
 	public Set<Project> getProjects() {
+		if (!(projects == null)) {
+			return projects;
+		}
 		return null;
 	}
 
