@@ -36,7 +36,7 @@ public class Worker {
 
 	@Override
 	public int hashCode() {
-		return 0;
+		return name.hashCode();
 	}
 
 	@Override
