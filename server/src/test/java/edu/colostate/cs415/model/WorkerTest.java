@@ -91,6 +91,26 @@ public class WorkerTest {
 		assertEquals(expectedSalary, worker.getSalary(), marginOfError);
 	}
 
+	@Test
+	public void testHashCodeIsTheSameForIdenticalWorkers() {
+		int hashCode1 = worker.hashCode();
+		Worker identicalWorker = worker;
+		int hashCode2 = identicalWorker.hashCode();
+
+		assertEquals(hashCode1, hashCode2);
+	}
+
+	@Test
+	public void testHashCodeIsDifferentForDifferentWorkers() {
+		int hashCode1 = worker.hashCode();
+
+		String name = "This is not the same as the sample name.";
+		Worker differentWorker = new Worker(name, sampleQualifications, sampleSalary);
+		int hashCode2 = differentWorker.hashCode();
+
+		assertNotEquals(hashCode1, hashCode2);
+	}
+
 	private Worker buildExpectedWorker() {
 		double expectedSalary = 10.0;
 		String expectedName = "Sample Name";
