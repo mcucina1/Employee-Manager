@@ -18,7 +18,7 @@ public class Worker {
 		this.name = name;
 		this.qualifications = qualifications;
 		this.salary = salary;
-		this.projects = new HashSet<>();
+		this.projects = new HashSet<Project>();
 	}
 
 	@Override
