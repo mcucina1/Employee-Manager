@@ -73,6 +73,7 @@ public class Project {
 	}
 
 	public void removeWorker(Worker worker) {
+		this.workers.remove(worker);
 	}
 
 	public Set<Worker> getWorkers() {
