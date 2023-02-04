@@ -137,4 +137,19 @@ public class ProjectTest {
 		testProject.setStatus(ProjectStatus.ACTIVE);
 		assertEquals(testProject.getStatus(),ProjectStatus.ACTIVE);
 	}
+
+	@Test 
+	public void testSetSize() {
+		ProjectSize smallSize = ProjectSize.SMALL;
+		ProjectSize mediumSize = ProjectSize.MEDIUM;
+		ProjectSize bigSize = ProjectSize.BIG;
+
+		assertEquals(smallSize, testProject.getSize());
+
+		testProject.setSize(mediumSize);
+		assertEquals(mediumSize, testProject.getSize());
+
+		testProject.setSize(bigSize);
+		assertEquals(bigSize, testProject.getSize());
+	}
 }

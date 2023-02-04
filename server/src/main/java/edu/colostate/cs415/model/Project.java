@@ -61,6 +61,10 @@ public class Project {
 		this.status = status;
 	}
 
+	public void setSize(ProjectSize size) {
+		this.size = size;
+	}
+
 	public void addWorker(Worker worker) {
 		if(workers == null) {
 			workers = new HashSet<Worker>();
