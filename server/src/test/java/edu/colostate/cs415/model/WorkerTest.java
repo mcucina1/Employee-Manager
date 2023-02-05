@@ -70,6 +70,14 @@ public class WorkerTest {
 	}
 
 	@Test
+	public void testAddQualification() {
+		Worker testWorker = buildExpectedWorker();
+		testWorker.addQualification(new Qualification("That Guy"));
+		worker.addQualification(new Qualification("That Guy"));
+		assertEquals(testWorker, worker);
+	}
+
+	@Test
 	public void testToString() {
 		String expectedString = "Sample Name:0:1:10";
 		assertEquals(expectedString, worker.toString());
