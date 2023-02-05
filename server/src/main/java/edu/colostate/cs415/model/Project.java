@@ -66,7 +66,7 @@ public class Project {
 	}
 
 	public void addWorker(Worker worker) {
-		if(workers == null) {
+		if (workers == null) {
 			workers = new HashSet<Worker>();
 		}
 		this.workers.add(worker);
@@ -87,6 +87,10 @@ public class Project {
 	}
 
 	public void addQualification(Qualification qualification) {
+		if (qualifications == null) {
+			qualifications = new HashSet<Qualification>();
+		}
+		this.qualifications.add(qualification);
 	}
 
 	public Set<Qualification> getMissingQualifications() {
