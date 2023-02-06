@@ -11,6 +11,8 @@ import org.junit.Test;
 import java.util.HashSet;
 import java.util.Set;
 
+import edu.colostate.cs415.dto.QualificationDTO;
+
 public class QualificationTest {
 	String sampleDescription;
 	Qualification qualification;
@@ -98,15 +100,35 @@ public class QualificationTest {
 		Set<Worker> expectedWorkers = createExpectedWorkers();
 
 		Set<Qualification> workerQualifications = new HashSet<>();
-		Worker firstExpectedWorker = new Worker ("Jokim Broden", workerQualifications, 100.0);
-		Worker secondExpectedWorker = new Worker ("Par Sundstrom", workerQualifications, 51.0);
-		Worker thirdExpectedWorker = new Worker ("Chris Rorland", workerQualifications, 50.0);
+		Worker firstExpectedWorker = new Worker("Jokim Broden", workerQualifications, 100.0);
+		Worker secondExpectedWorker = new Worker("Par Sundstrom", workerQualifications, 51.0);
+		Worker thirdExpectedWorker = new Worker("Chris Rorland", workerQualifications, 50.0);
 
 		qualification.addWorker(firstExpectedWorker);
 		qualification.addWorker(secondExpectedWorker);
 		qualification.addWorker(thirdExpectedWorker);
 
 		assertEquals(expectedWorkers, qualification.getWorkers());
+	}
+	
+	@Test
+	public void testToDTO() {
+		Set<Qualification> workerQualifications = new HashSet<>();
+		Worker firstExpectedWorker = new Worker("Jokim Broden", workerQualifications, 100.0);
+		Worker secondExpectedWorker = new Worker("Par Sundstrom", workerQualifications, 51.0);
+		Worker thirdExpectedWorker = new Worker("Chris Rorland", workerQualifications, 50.0);
+
+		qualification.addWorker(firstExpectedWorker);
+		qualification.addWorker(secondExpectedWorker);
+		qualification.addWorker(thirdExpectedWorker);
+
+		QualificationDTO expectedDTO = qualification.toDTO();
+
+		String[] names = { "Jokim Broden", "Par Sundstrom", "Chris Rorland" };
+		
+		QualificationDTO actualDTO = new QualificationDTO(sampleDescription, names);
+
+		assertEquals(expectedDTO, actualDTO);
 	}
 
 	public void assertDescriptionMatchesExpected(Qualification qualification, String expectedDescription) {

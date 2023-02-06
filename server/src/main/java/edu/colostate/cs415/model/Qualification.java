@@ -65,6 +65,15 @@ public class Qualification {
 	}
 
 	public QualificationDTO toDTO() {
-		return null;
+		// This work is under the assumption that the DTO just wants the names of the workers in the String array.
+		String[] workerNames = new String[workers.size()];
+		int index = 0;
+		for (Worker w : workers) {
+			workerNames[index] = w.getName();
+			index++;
+		}
+		QualificationDTO qualDTO = new QualificationDTO(description, workerNames);
+
+		return qualDTO;
 	}
 }
