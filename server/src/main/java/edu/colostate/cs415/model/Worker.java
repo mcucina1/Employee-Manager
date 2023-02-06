@@ -76,6 +76,10 @@ public class Worker {
 	}
 
 	public void addQualification(Qualification qualification) {
+		if (qualifications == null) {
+			qualifications = new HashSet<Qualification>();
+		}
+		this.qualifications.add(qualification);
 	}
 
 	public Set<Project> getProjects() {
