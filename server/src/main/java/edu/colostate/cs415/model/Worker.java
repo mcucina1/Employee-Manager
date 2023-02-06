@@ -45,13 +45,13 @@ public class Worker {
 	public String toString() {
 		int numberOfProjects = 0;
 		int numberOfQualificaitons = 0;
-		int salaryTruncated = (int)salary;
+		int salaryTruncated = (int) salary;
 
-		if(this.projects != null) {
+		if (this.projects != null) {
 			numberOfProjects = projects.size();
 		}
 
-		if(this.qualifications != null) {
+		if (this.qualifications != null) {
 			numberOfQualificaitons = qualifications.size();
 		}
 
@@ -97,7 +97,28 @@ public class Worker {
 	}
 
 	public int getWorkload() {
-		return 0;
+		int bigProjects = 0;
+		int mediumProjects = 0;
+		int smallProjects = 0;
+
+		if (projects.size() == 0) {
+			return 0;
+		}
+
+		for (Project p : projects) {
+
+			if (p.getStatus() == ProjectStatus.FINISHED) {
+				continue;
+			} else if (p.getSize().getValue() == 3) {
+				bigProjects += 1;
+			} else if (p.getSize().getValue() == 2) {
+				mediumProjects += 1;
+			} else if (p.getSize().getValue() == 1) {
+				smallProjects += 1;
+			}
+		}
+
+		return (3 * bigProjects + 2 * mediumProjects + smallProjects);
 	}
 
 	public boolean willOverload(Project project) {
