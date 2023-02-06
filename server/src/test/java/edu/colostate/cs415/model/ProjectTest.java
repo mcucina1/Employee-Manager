@@ -160,4 +160,13 @@ public class ProjectTest {
 		testProject.setSize(bigSize);
 		assertEquals(bigSize, testProject.getSize());
 	}
+
+	@Test
+	public void testRemoveWorker() {
+		assertEquals(workers, testProject.getWorkers());
+		testProject.removeWorker(workerOne);
+		workers.remove(workerOne);
+		assertEquals(workers, testProject.getWorkers());
+
+	}
 }
