@@ -93,6 +93,14 @@ public class ProjectTest {
 	}
 
 	@Test
+	public void testAddQualification() {
+		Project testProj = buildExpectedProject();
+		testProject.addQualification(new Qualification("That Guy"));
+		testProj.addQualification(new Qualification("That Guy"));
+		assertEquals(testProj, testProject);
+	}
+
+	@Test
 	public void testToString() {
 		String expectedOutput = testProject.getName() + ':' + testProject.getWorkers().size() + ':'
 				+ testProject.getStatus();
@@ -146,5 +154,27 @@ public class ProjectTest {
 		Set<Worker> workers = testProject.getWorkers();
 
 		assertTrue(testFailureMessage, workers.isEmpty());
+}
+	@Test 
+	public void testSetSize() {
+		ProjectSize smallSize = ProjectSize.SMALL;
+		ProjectSize mediumSize = ProjectSize.MEDIUM;
+		ProjectSize bigSize = ProjectSize.BIG;
+
+		assertEquals(smallSize, testProject.getSize());
+
+		testProject.setSize(mediumSize);
+		assertEquals(mediumSize, testProject.getSize());
+
+		testProject.setSize(bigSize);
+		assertEquals(bigSize, testProject.getSize());
+	}
+
+	@Test
+	public void testRemoveWorker() {
+		assertEquals(workers, testProject.getWorkers());
+		testProject.removeWorker(workerOne);
+		workers.remove(workerOne);
+		assertEquals(workers, testProject.getWorkers());
 	}
 }

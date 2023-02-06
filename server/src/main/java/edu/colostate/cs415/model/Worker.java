@@ -1,5 +1,6 @@
 package edu.colostate.cs415.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import edu.colostate.cs415.dto.WorkerDTO;
@@ -17,6 +18,7 @@ public class Worker {
 		this.name = name;
 		this.qualifications = qualifications;
 		this.salary = salary;
+		this.projects = new HashSet<Project>();
 	}
 
 	@Override
@@ -36,7 +38,7 @@ public class Worker {
 
 	@Override
 	public int hashCode() {
-		return 0;
+		return name.hashCode();
 	}
 
 	@Override
@@ -74,13 +76,21 @@ public class Worker {
 	}
 
 	public void addQualification(Qualification qualification) {
+		if (qualifications == null) {
+			qualifications = new HashSet<Qualification>();
+		}
+		this.qualifications.add(qualification);
 	}
 
 	public Set<Project> getProjects() {
+		if (!(projects == null)) {
+			return projects;
+		}
 		return null;
 	}
 
 	public void addProject(Project project) {
+		projects.add(project);
 	}
 
 	public void removeProject(Project project) {

@@ -70,6 +70,14 @@ public class WorkerTest {
 	}
 
 	@Test
+	public void testAddQualification() {
+		Worker testWorker = buildExpectedWorker();
+		testWorker.addQualification(new Qualification("That Guy"));
+		worker.addQualification(new Qualification("That Guy"));
+		assertEquals(testWorker, worker);
+	}
+
+	@Test
 	public void testToString() {
 		String expectedString = "Sample Name:0:1:10";
 		assertEquals(expectedString, worker.toString());
@@ -91,6 +99,26 @@ public class WorkerTest {
 		assertEquals(expectedSalary, worker.getSalary(), marginOfError);
 	}
 
+	@Test
+	public void testHashCodeIsTheSameForIdenticalWorkers() {
+		int hashCode1 = worker.hashCode();
+		Worker identicalWorker = worker;
+		int hashCode2 = identicalWorker.hashCode();
+
+		assertEquals(hashCode1, hashCode2);
+	}
+
+	@Test
+	public void testHashCodeIsDifferentForDifferentWorkers() {
+		int hashCode1 = worker.hashCode();
+
+		String name = "This is not the same as the sample name.";
+		Worker differentWorker = new Worker(name, sampleQualifications, sampleSalary);
+		int hashCode2 = differentWorker.hashCode();
+
+		assertNotEquals(hashCode1, hashCode2);
+	}
+
 	private Worker buildExpectedWorker() {
 		double expectedSalary = 10.0;
 		String expectedName = "Sample Name";
@@ -100,5 +128,23 @@ public class WorkerTest {
 
 		Worker expectedWorker = new Worker(expectedName, expectedQualifications, expectedSalary);
 		return expectedWorker;
+	}
+
+	@Test
+	public void testGetProject() {
+		assertFalse(worker == null);
+
+		String firstDescription = "Qualified Engineer";
+
+		Qualification firstQualification = new Qualification(firstDescription);
+		Set<Qualification> testQualifications = new HashSet<Qualification>();
+		testQualifications.add(firstQualification);
+
+		Project proj = new Project("Test Project", sampleQualifications, ProjectSize.SMALL);
+		Set<Project> setOfProjects = new HashSet<>();
+		setOfProjects.add(proj);
+
+		worker.addProject(proj);
+		assertEquals(worker.getProjects(), setOfProjects);
 	}
 }
