@@ -27,7 +27,7 @@ public class WorkerTest {
 		sampleQualifications.add(sampleQualification);
 		worker = new Worker(sampleName, sampleQualifications, sampleSalary);
 	}
-	
+
 	@Test
 	public void test() {
 		assert (true);
@@ -86,7 +86,7 @@ public class WorkerTest {
 		sampleQualifications.add(newQualification);
 		Worker newWorker = new Worker(sampleName, sampleQualifications, sampleSalary);
 		String newExpectedString = "Sample Name:0:2:10";
-		assertEquals(newExpectedString, newWorker.toString());		
+		assertEquals(newExpectedString, newWorker.toString());
 	}
 
 	@Test
@@ -146,5 +146,14 @@ public class WorkerTest {
 
 		worker.addProject(proj);
 		assertEquals(worker.getProjects(), setOfProjects);
+	}
+
+	@Test
+	public void testGetWorkload() {
+		Worker expectedWorker = buildExpectedWorker();
+		int expected = expectedWorker.getWorkload();
+		int actual = worker.getWorkload();
+
+		assertEquals(expected, actual);
 	}
 }
