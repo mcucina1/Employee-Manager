@@ -93,6 +93,14 @@ public class ProjectTest {
 	}
 
 	@Test
+	public void testAddQualification() {
+		Project testProj = buildExpectedProject();
+		testProject.addQualification(new Qualification("That Guy"));
+		testProj.addQualification(new Qualification("That Guy"));
+		assertEquals(testProj, testProject);
+	}
+
+	@Test
 	public void testToString() {
 		String expectedOutput = testProject.getName() + ':' + testProject.getWorkers().size() + ':'
 				+ testProject.getStatus();
