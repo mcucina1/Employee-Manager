@@ -11,6 +11,7 @@ import java.util.HashSet;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class WorkerTest {
 	double sampleSalary;
@@ -155,5 +156,26 @@ public class WorkerTest {
 		int actual = worker.getWorkload();
 
 		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testRemoveProject() {
+		Worker expectedWorker = buildExpectedWorker();
+		Qualification firstQualification = new Qualification("Description");
+		Set<Qualification> testQualifications = new HashSet<Qualification>();
+		testQualifications.add(firstQualification);
+
+		Project testProject = new Project("Test Project", testQualifications, ProjectSize.SMALL);
+
+		expectedWorker.addProject(testProject);
+		Set<Project> expectedProject = new HashSet<>();
+		expectedProject.add(testProject);
+
+		assertEquals(expectedProject, expectedWorker.getProjects());
+		
+		expectedProject.remove(testProject);
+		expectedWorker.removeProject(testProject);
+		assertEquals(expectedProject, expectedWorker.getProjects());
+
 	}
 }
