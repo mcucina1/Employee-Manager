@@ -96,7 +96,20 @@ public class Project {
 	}
 
 	public Set<Qualification> getMissingQualifications() {
-		return null;
+		Set<Qualification> workersQuals = new HashSet<Qualification>();
+		Set<Qualification> missingQuals = new HashSet<Qualification>();
+
+		for (Worker qual: this.getWorkers()){
+			workersQuals.addAll(qual.getQualifications());
+		}
+
+		for (Qualification element: this.getRequiredQualifications()){
+			if (workersQuals.add(element)){
+				missingQuals.add(element);
+			}
+		}
+
+		return missingQuals;
 	}
 
 	public boolean isHelpful(Worker worker) {
