@@ -159,6 +159,29 @@ public class WorkerTest {
 	}
 
 	@Test
+	public void testIsAvailable(){
+		Worker availableWorker = buildExpectedWorker();
+		Project projectOne = new Project("projectOne", sampleQualifications, ProjectSize.BIG);
+		Project ProjectTwo = new Project("projectTwo", sampleQualifications, ProjectSize.BIG);
+		Project ProjectThree = new Project("projectThree", sampleQualifications, ProjectSize.BIG);
+		Project ProjectFour = new Project("projectFour", sampleQualifications, ProjectSize.BIG);
+		Project ProjectFive = new Project("projectFive", sampleQualifications, ProjectSize.SMALL);
+
+		availableWorker.addProject(projectOne);
+		assertTrue(availableWorker.isAvailable());
+		availableWorker.addProject(ProjectTwo);
+		availableWorker.addProject(ProjectThree);
+		availableWorker.addProject(ProjectFour);
+		assertFalse(availableWorker.isAvailable());
+		availableWorker.addProject(ProjectFive);
+		assertFalse(availableWorker.isAvailable());
+
+		availableWorker.removeProject(projectOne);
+		assertTrue(availableWorker.isAvailable());
+
+  }
+  
+  @Test
 	public void testRemoveProject() {
 		Worker expectedWorker = buildExpectedWorker();
 		Qualification firstQualification = new Qualification("Description");
