@@ -123,6 +123,19 @@ public class Worker {
 	}
 
 	public boolean willOverload(Project project) {
+		if (this.projects.contains(project)) {
+			return false;
+		}
+
+		int currentWorkload = this.getWorkload();
+		if (currentWorkload > 12) {
+			return true;
+		}
+
+		if (currentWorkload + project.getSize().getValue() > 12) {
+			return true;
+		}
+
 		return false;
 	}
 
