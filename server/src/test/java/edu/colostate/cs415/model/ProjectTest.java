@@ -7,6 +7,7 @@ import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.HashSet;
@@ -176,5 +177,41 @@ public class ProjectTest {
 		testProject.removeWorker(workerOne);
 		workers.remove(workerOne);
 		assertEquals(workers, testProject.getWorkers());
+	}
+
+	@Test
+	public void testHashcodeWithIdenticalProjects() {
+		int projectHashcode = testProject.hashCode();
+
+		Project identicalProject = testProject;
+		int identicalHashcode = identicalProject.hashCode();
+
+		assertEquals(projectHashcode, identicalHashcode);
+	}
+
+	@Test
+	public void testHashCodeWithDifferentProjects() {
+		int projectHashcode = testProject.hashCode();
+
+		String differentProjectName = "Different project Name";
+		Project differentProject = new Project(differentProjectName, qualifications, ProjectSize.SMALL);
+		int differentHashcode = differentProject.hashCode();
+
+		assertNotEquals(projectHashcode, differentHashcode);
+	}
+
+	@Test
+	public void testHashCodeWithProjectsWithTheSameName() {
+		int projectHashcode = testProject.hashCode();
+
+		String qualificationDescription = "This Qualification is not in testProject";
+		Qualification differentQualification = new Qualification(qualificationDescription);
+		Set<Qualification> differentQualifications = new HashSet<Qualification>();
+		differentQualifications.add(differentQualification);
+
+		Project sameNameProject = new Project(testProjectName, differentQualifications, ProjectSize.BIG);
+		int sameNameProjectHashcode = sameNameProject.hashCode();
+
+		assertEquals(projectHashcode, sameNameProjectHashcode);
 	}
 }
