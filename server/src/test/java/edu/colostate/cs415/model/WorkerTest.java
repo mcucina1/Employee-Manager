@@ -175,7 +175,10 @@ public class WorkerTest {
 		assertFalse(availableWorker.isAvailable());
 		availableWorker.addProject(ProjectFive);
 		assertFalse(availableWorker.isAvailable());
-    
+
+		availableWorker.removeProject(projectOne);
+		assertTrue(availableWorker.isAvailable());
+
   }
   
   @Test
