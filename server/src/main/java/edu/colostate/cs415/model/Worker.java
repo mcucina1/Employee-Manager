@@ -126,6 +126,9 @@ public class Worker {
 	}
 
 	public boolean isAvailable() {
+		if(this.getWorkload() < 12){
+			return true;
+		}
 		return false;
 	}
 
