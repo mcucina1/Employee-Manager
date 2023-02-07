@@ -104,6 +104,33 @@ public class Project {
 	}
 
 	public ProjectDTO toDTO() {
-		return null;
+		Set<Qualification> tempMissingQuals = getMissingQualifications();
+		String[] missingQualifications = new String[tempMissingQuals.size()];
+		String[] workerNames = new String[workers.size()];
+		String[] projectQualifications = new String[qualifications.size()];
+		int index = 0;
+
+		for (Worker w : workers) {
+			workerNames[index] = w.getName();
+			index++;
+		}
+
+		index = 0;
+
+		for (Qualification q : qualifications) {
+			projectQualifications[index] = q.toString();
+			index++;
+		}
+
+		index = 0;
+
+		for (Qualification q : tempMissingQuals) {
+			missingQualifications[index] = q.toString();
+			index++;
+		}
+
+		ProjectDTO retDTO = new ProjectDTO(this.name, this.size, this.status, workerNames, projectQualifications,
+				missingQualifications);
+		return retDTO;
 	}
 }
