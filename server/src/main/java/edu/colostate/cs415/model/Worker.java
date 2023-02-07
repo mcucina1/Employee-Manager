@@ -140,13 +140,32 @@ public class Worker {
 	}
 
 	public boolean isAvailable() {
-		if(this.getWorkload() < 12){
+		if (this.getWorkload() < 12) {
 			return true;
 		}
 		return false;
 	}
 
 	public WorkerDTO toDTO() {
-		return null;
+		String[] workerQualifications = new String[this.qualifications.size()];
+		String[] workersProjects = new String[this.projects.size()];
+		int index = 0;
+
+		for (Qualification q : this.qualifications) {
+			workerQualifications[index] = q.toString();
+			index++;
+		}
+
+		index = 0;
+
+		for (Project p : this.projects) {
+			workersProjects[index] = p.getName();
+			index++;
+		}
+
+		WorkerDTO retDTO = new WorkerDTO(this.name, this.salary, this.getWorkload(), workersProjects,
+				workerQualifications);
+
+		return retDTO;
 	}
 }
