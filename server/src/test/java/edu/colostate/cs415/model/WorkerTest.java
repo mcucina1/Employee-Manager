@@ -12,6 +12,8 @@ import java.util.HashSet;
 import org.junit.Before;
 import org.junit.Test;
 
+import edu.colostate.cs415.dto.WorkerDTO;
+
 public class WorkerTest {
 	double sampleSalary;
 	String sampleName;
@@ -217,5 +219,14 @@ public class WorkerTest {
 		expectedWorker.removeProject(testProject);
 		assertEquals(expectedProject, expectedWorker.getProjects());
 
+	}
+
+	@Test
+	public void testToDTO() {
+		Worker expected = buildExpectedWorker();
+		WorkerDTO expectedDTO = expected.toDTO();
+		WorkerDTO actualDTO = worker.toDTO();
+
+		assertEquals(expectedDTO, actualDTO);
 	}
 }
