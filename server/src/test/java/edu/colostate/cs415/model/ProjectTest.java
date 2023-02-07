@@ -3,6 +3,8 @@ package edu.colostate.cs415.model;
 import org.junit.Before;
 import org.junit.Test;
 
+import edu.colostate.cs415.dto.ProjectDTO;
+
 import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
@@ -44,7 +46,7 @@ public class ProjectTest {
 		workerOne = new Worker("Worker One", testQualifications, 96000.10);
 		workerTwo = new Worker("Worker Two", testQualifications, 0.64);
 
-		workers  = new HashSet<Worker>();
+		workers = new HashSet<Worker>();
 		workers.add(workerOne);
 		workers.add(workerTwo);
 
@@ -69,7 +71,7 @@ public class ProjectTest {
 
 	@Test
 	public void testProjectConstructor() {
-		assert(true);
+		assert (true);
 	}
 
 	@Test
@@ -99,6 +101,15 @@ public class ProjectTest {
 		testProject.addQualification(new Qualification("That Guy"));
 		testProj.addQualification(new Qualification("That Guy"));
 		assertEquals(testProj, testProject);
+	}
+
+	@Test
+	public void testToDTO() {
+		Project expected = buildExpectedProject();
+		ProjectDTO expectedDTO = expected.toDTO();
+		ProjectDTO actualDTO = testProject.toDTO();
+
+		assertEquals(expectedDTO, actualDTO);
 	}
 
 	@Test
@@ -134,17 +145,17 @@ public class ProjectTest {
 		testProj.addWorker(workerTwo);
 
 		return testProj;
-  }
+	}
 
 	@Test
-	public void testGetStatus(){
+	public void testGetStatus() {
 		assertEquals(testProject.getStatus(), ProjectStatus.PLANNED);
 	}
 
 	@Test
 	public void testSetAndGetStatus() {
 		testProject.setStatus(ProjectStatus.ACTIVE);
-		assertEquals(testProject.getStatus(),ProjectStatus.ACTIVE);
+		assertEquals(testProject.getStatus(), ProjectStatus.ACTIVE);
 	}
 
 	@Test
@@ -155,8 +166,9 @@ public class ProjectTest {
 		Set<Worker> workers = testProject.getWorkers();
 
 		assertTrue(testFailureMessage, workers.isEmpty());
-}
-	@Test 
+	}
+
+	@Test
 	public void testSetSize() {
 		ProjectSize smallSize = ProjectSize.SMALL;
 		ProjectSize mediumSize = ProjectSize.MEDIUM;
