@@ -214,4 +214,49 @@ public class ProjectTest {
 
 		assertEquals(projectHashcode, sameNameProjectHashcode);
 	}
+
+	@Test
+	public void testMissingQualificationsReturnsEmpty() {
+		Project testProj = buildExpectedProject();
+		Set<Qualification> testQuals = new HashSet<Qualification>();
+		assertEquals(testQuals,testProj.getMissingQualifications());
+	}
+
+	@Test
+	public void testMissingQualificationsIsEqual() {
+		Project testProj = buildExpectedProject();
+		Set<Qualification> missingQualifications = new HashSet<Qualification>();
+		String missingQual1 = "Missing Qualification #1";
+		String missingQual2 = "Missing Qualification #2";
+		Qualification firstMissingQualification = new Qualification(missingQual1);
+		Qualification secondMissingQualification = new Qualification(missingQual2);
+		missingQualifications.add(firstMissingQualification);
+		missingQualifications.add(secondMissingQualification);
+		testProj.addQualification(firstMissingQualification);
+		testProj.addQualification(secondMissingQualification);
+
+		assertEquals(missingQualifications,testProj.getMissingQualifications());
+	}
+
+	@Test
+	public void testRequiredQualificationsReturnsEmpty() {
+		Set<Qualification> testQuals = new HashSet<Qualification>();
+		Project testProject = new Project("Testing Project", testQuals, ProjectSize.SMALL);
+		assertEquals(testQuals,testProject.getRequiredQualifications());
+	}
+
+	@Test
+	public void testGetRequiredQualificationsIsEqual() {
+		Project testProj = buildExpectedProject();
+		Set<Qualification> testQualifications = new HashSet<Qualification>();
+		String testQual1 = "Qualified Engineer";
+		String testQual2 = "Qualified Scientist";
+		Qualification firstTestQualification = new Qualification(testQual1);
+		Qualification secondTestQualification = new Qualification(testQual2);
+		testQualifications.add(firstTestQualification);
+		testQualifications.add(secondTestQualification);
+		
+		assertEquals(testQualifications, testProj.getRequiredQualifications());
+	}
+
 }
