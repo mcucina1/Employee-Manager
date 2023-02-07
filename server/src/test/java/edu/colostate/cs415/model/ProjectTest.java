@@ -271,4 +271,28 @@ public class ProjectTest {
 		assertEquals(testQualifications, testProj.getRequiredQualifications());
 	}
 
+	@Test
+	public void testIsHelpful() {
+		// Project is initalized with Engineer and Scientist Qualifcations
+		Project testProj = buildExpectedProject();
+		Set<Qualification> testQualifications = new HashSet<Qualification>();
+
+		String descriptionEngineer = "Qualified Engineer";
+		String descriptionIT = "IT professional";
+
+		Qualification engineerQualification = new Qualification(descriptionEngineer);
+		Qualification itQualification = new Qualification(descriptionIT);
+		testQualifications.add(itQualification);
+
+		// Create worker with qualification not in project (IT professional)
+		Worker testWorker = new Worker("Test Worker", testQualifications, 38.0);
+
+		// Assert that this worker is not currently useful
+		assertFalse(testProj.isHelpful(testWorker));
+		// Add engineer qualification to make them useful
+		testWorker.addQualification(engineerQualification);
+		// Assert that the worker is now useful
+		assertTrue(testProj.isHelpful(testWorker));
+	}
+
 }
