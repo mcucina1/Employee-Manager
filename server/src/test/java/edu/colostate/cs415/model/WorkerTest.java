@@ -11,7 +11,6 @@ import java.util.HashSet;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 
 public class WorkerTest {
 	double sampleSalary;
@@ -159,7 +158,25 @@ public class WorkerTest {
 	}
 
 	@Test
-	public void testIsAvailable(){
+	public void testWillOverload() {
+		Worker availableWorker = buildExpectedWorker();
+		Project ProjectOne = new Project("projectOne", sampleQualifications, ProjectSize.BIG);
+		Project ProjectTwo = new Project("projectTwo", sampleQualifications, ProjectSize.BIG);
+		Project ProjectThree = new Project("projectThree", sampleQualifications, ProjectSize.BIG);
+		Project ProjectFour = new Project("projectFour", sampleQualifications, ProjectSize.BIG);
+		Project ProjectFive = new Project("projectFive", sampleQualifications, ProjectSize.SMALL);
+
+		availableWorker.addProject(ProjectOne);
+		availableWorker.addProject(ProjectTwo);
+		availableWorker.addProject(ProjectThree);
+		availableWorker.addProject(ProjectFour);
+
+		assertFalse(availableWorker.willOverload(ProjectOne));
+		assertTrue(availableWorker.willOverload(ProjectFive));
+	}
+
+	@Test
+	public void testIsAvailable() {
 		Worker availableWorker = buildExpectedWorker();
 		Project projectOne = new Project("projectOne", sampleQualifications, ProjectSize.BIG);
 		Project ProjectTwo = new Project("projectTwo", sampleQualifications, ProjectSize.BIG);
@@ -179,9 +196,9 @@ public class WorkerTest {
 		availableWorker.removeProject(projectOne);
 		assertTrue(availableWorker.isAvailable());
 
-  }
-  
-  @Test
+	}
+
+	@Test
 	public void testRemoveProject() {
 		Worker expectedWorker = buildExpectedWorker();
 		Qualification firstQualification = new Qualification("Description");
@@ -195,7 +212,7 @@ public class WorkerTest {
 		expectedProject.add(testProject);
 
 		assertEquals(expectedProject, expectedWorker.getProjects());
-		
+
 		expectedProject.remove(testProject);
 		expectedWorker.removeProject(testProject);
 		assertEquals(expectedProject, expectedWorker.getProjects());
