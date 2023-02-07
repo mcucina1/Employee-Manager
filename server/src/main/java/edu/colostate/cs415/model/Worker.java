@@ -94,6 +94,7 @@ public class Worker {
 	}
 
 	public void removeProject(Project project) {
+		this.projects.remove(project);
 	}
 
 	public int getWorkload() {
