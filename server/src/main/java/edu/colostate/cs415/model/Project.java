@@ -1,5 +1,6 @@
 package edu.colostate.cs415.model;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -113,7 +114,7 @@ public class Project {
 	}
 
 	public boolean isHelpful(Worker worker) {
-		return false;
+		return !(Collections.disjoint(worker.getQualifications(), qualifications));
 	}
 
 	public ProjectDTO toDTO() {
