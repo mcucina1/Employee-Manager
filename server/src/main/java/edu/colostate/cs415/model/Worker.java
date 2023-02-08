@@ -79,7 +79,10 @@ public class Worker {
 		if (qualifications == null) {
 			qualifications = new HashSet<Qualification>();
 		}
-		this.qualifications.add(qualification);
+
+		if (!(qualifications.contains(qualification))) {
+			this.qualifications.add(qualification);
+		}
 	}
 
 	public Set<Project> getProjects() {
