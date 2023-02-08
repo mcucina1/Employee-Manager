@@ -93,19 +93,22 @@ public class Project {
 		if (qualifications == null) {
 			qualifications = new HashSet<Qualification>();
 		}
-		this.qualifications.add(qualification);
+
+		if (!(qualifications.contains(qualification))) {
+			this.qualifications.add(qualification);
+		}
 	}
 
 	public Set<Qualification> getMissingQualifications() {
 		Set<Qualification> workersQuals = new HashSet<Qualification>();
 		Set<Qualification> missingQuals = new HashSet<Qualification>();
 
-		for (Worker qual: this.getWorkers()){
+		for (Worker qual : this.getWorkers()) {
 			workersQuals.addAll(qual.getQualifications());
 		}
 
-		for (Qualification element: this.getRequiredQualifications()){
-			if (workersQuals.add(element)){
+		for (Qualification element : this.getRequiredQualifications()) {
+			if (workersQuals.add(element)) {
 				missingQuals.add(element);
 			}
 		}
