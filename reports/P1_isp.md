@@ -75,6 +75,8 @@
 |  | Null-ness |  Not null | Valid string |   |
 |  | Emptiness | Empty String | "" |   |
 |  | Emptiness |  String | "John" |   |
+| Qualification Set | Null-ness | Null | Set of qualifications w/ valid contents |   |
+|   | Null-ness |  Not null | Qualification set without contents |   |
 | Qualification Set | Emptiness | Set has contents | Set of Qualifications |   |
 |   | Emptiness |  Set is empty | Qualification set without contents |   |
 | Salary | Negatve | Negative value | -1 |   |
