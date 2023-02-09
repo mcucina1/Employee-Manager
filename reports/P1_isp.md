@@ -71,8 +71,14 @@
 #### Constructor Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
+| Name | Null-ness |  Null | Null string |   |
+| Name | Null-ness |  Not null | Valid string |   |
+|  | Emptiness | Empty String | "" |   |
+|  | Emptiness |  String | Non-empty string |   |
+| Qualification Set | Emptiness | Set has contents | Set of Qualifications |   |
+|   | Emptiness |  Set is empty | Qualification set without contents |   |
+| Salary | Negatve | Negative value | Negative number |   |
+
 
 #### equals Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
