@@ -218,19 +218,19 @@
 #### setStatus Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
+| status  | null  | null  | null  |   |
+|   |  not null | ProjectStatus  | ProjectStatus.ACTIVE  |   |
 
 #### addWorker Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
+| worker  |   |   |   |   |
 |   |   |   |   |   |
 
 #### removeWorker Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
+| worker  |   |   |   |   |
 |   |   |   |   |   |
 
 #### getWorkers Method
