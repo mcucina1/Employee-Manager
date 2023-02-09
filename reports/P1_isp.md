@@ -38,9 +38,10 @@
 #### addWorker Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| Worker | Null-ness | Null or not null | null / not null |   |
-|   | type |   |   |   |
-| Set of Workers | exists | creates set or not  | call addWorker on empty set / call on existing set  |   |
+| Worker | Null-ness | Null| Null |   |
+|  | Null-ness | Not null | Object of worker type |   |
+| Set of Workers | exists | Set already exists  | addWroker() call on existing set |   |
+|  | exists | Set does not exist  | addWorkers() call without existing set |   |
 |   |  |   |   |   |
 #### removeWorker Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
