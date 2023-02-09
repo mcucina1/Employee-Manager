@@ -269,8 +269,8 @@
 #### getRequiredQualifications Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| * |   |   |   |   |
-|   |   |   |   |   |
+| Qualifications | Nullity  | Null      | Null  |   |
+|                |          | Not null  | initialized qualificaitons      |   |
 
 #### addQualification Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
@@ -283,8 +283,14 @@
 #### getMissingQualifications Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| * |   |   |   |   |
-|   |   |   |   |   |
+| Workers      |Nullity  |Null     |Null                |   |
+|              |         |Not Null |Initialized Workers |   |
+|              |Emptiness|Empty    |Empty set           |   |
+|              |         |Not Empty|not empty set       |   |
+|Qualifications|Nullity  |Null     |Null                |   |
+|              |         |Not Null |Initialized quals   |   |
+|              |Emptiness|Empty    |Empty set           |   |
+|              |         |Not Empty|not empty set       |   |
 
 #### isHelpful Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
