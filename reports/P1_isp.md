@@ -115,14 +115,14 @@
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
 | Salary Element | Null | Null | null |   |
-| Salary Element | Null | Not null | 30000.0 |   |
+|  | Null | Not null | 30000.0 |   |
 |   |   |   |   |   |
 
 #### setSalary Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
 | Type Conversions | valid |  Int | 30000  |   |
-| Type Conversions | invalid | String | "30000" |   |
+|  | invalid | String | "30000" |   |
 
 #### getQualifications Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
