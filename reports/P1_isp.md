@@ -4,14 +4,20 @@
 #### Constructor Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
+| Description  | null strings  | null  |  null |   |
+|   |   | not null  | not null  |   |
+|   |  emptiness | empty string  | ""  |   |
+|   |   | white-space only string  | " "  |   |
+|   |   | full string  | "Engineer"  |   |
 
 #### equals Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
+| o  | null  | null  | null  |   |
+|   |  | not null  | not null  |   |
+|   | Object  |  Qualification | Qualification Object  |   |
+|   |   |  non-Qualification | String Object  |   |
+|   |   |  this.Qualification | current Object  |   |
 #### hashCode Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
