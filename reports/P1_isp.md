@@ -13,26 +13,29 @@
 #### equals Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| o  | null  | null  | null  |   |
+| object  | null  | null  | null  |   |
 |   |  | not null  | not null  |   |
-|   | Object  |  Qualification | Qualification Object  |   |
+|   | Object Type  |  Qualification | Qualification Object  |   |
 |   |   |  non-Qualification | String Object  |   |
 |   |   |  this.Qualification | current Object  |   |
 #### hashCode Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
+| Hashcode | Initialized | Non-Null | Description string |   |
+|  | Initialized | Null | null value |   |
 #### toString Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
+| Description | Initialized | Non-Null | Description value |   |
+|  | Initialized | Null | null value |   |
 |   |   |   |   |   |
 
 #### getWorkers Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
+| Set of Workers |  Emptiness | Empty | Worker set without members |   |
+|  |  Emptiness | Null |  Worker set assigned null |   |
+|  |  Emptiness | Not empty |  Returns set w/ workers |   |
 |   |   |   |   |   |
 
 #### addWorker Method
@@ -46,20 +49,36 @@
 #### removeWorker Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
+| Worker | null-ness | Null  | Null |   |
+|  | null-ness | Not null  | Worker object to remove existing in set |   |
+|  | Exists | Valid in set  | Worker object to remove existing in set |   |
+|  | Exists | Not in set  | Worker object to not in set |   |
+| Set of Workers | exists | Set already exists  | addWroker() call on existing set |   |
+|  | exists | Set does not exist  | addWorkers() call without existing set |   |
+|  |   |   |   |   |
 
 #### toDTO Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
+|  qualDTO Object | Null-ness | Null | Null qualDTO |   |
+|  | Null-ness | Not null | Valid qualDTO object |  |
+| Description | Initialized | Null |   |   |
+| Description | Initialized | Not null |  |   |
+| Workers | Initialized | Null |   |   |
+| Workers | Initialized | Not null |   |   |
+| Workers | Initialized | Not empty set |   |   |
 ## Worker Class
 #### Constructor Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
+| Name | Null-ness |  Null | Null string |   |
+| Name | Null-ness |  Not null | Valid string |   |
+|  | Emptiness | Empty String | "" |   |
+|  | Emptiness |  String | Non-empty string |   |
+| Qualification Set | Emptiness | Set has contents | Set of Qualifications |   |
+|   | Emptiness |  Set is empty | Qualification set without contents |   |
+| Salary | Negatve | Negative value | Negative number |   |
+
 
 #### equals Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
