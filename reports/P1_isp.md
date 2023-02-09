@@ -63,10 +63,10 @@
 |  qualDTO Object | Null-ness | Null | Null qualDTO |   |
 |  | Null-ness | Not null | Valid qualDTO object |  |
 | Description | Initialized | Null |  |   |
-| Description | Initialized | Not null |  |   |
+|  | Initialized | Not null |  |   |
 | Workers | Initialized | Null |   |   |
-| Workers | Initialized | Not null |   |   |
-| Workers | Initialized | Not empty set |   |   |
+|  | Initialized | Not null |   |   |
+|  | Initialized | Not empty set |   |   |
 ## Worker Class
 #### Constructor Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
