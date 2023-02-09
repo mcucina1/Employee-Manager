@@ -261,35 +261,47 @@
 #### removeAllWorkers Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
+|  workers |  nullity   |  null     |  null |   |
+|          |            | not null  |  an initialized workers set |   |
+|          | emptiness  | empty     | an empty workers set   |   |
+|          |            | not empty | a workers set with at least 1 worker  |   |
 
 #### getRequiredQualifications Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
+| * |   |   |   |   |
 |   |   |   |   |   |
 
 #### addQualification Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
+|  qualification | nullity | null    | null                         |   |
+|                |         | not null| an initialized qualificaiton |   |
+|                |presence in qualifications|not in qualifications|a qualification that isn't in qualifications|   |
+|                |                          |already qualifications|a qualification that is in qualificaiton|   |
 
 #### getMissingQualifications Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
+| * |   |   |   |   |
 |   |   |   |   |   |
 
 #### isHelpful Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
+| Worker  | nullity  | null      | null                   |   |
+|         |          | not null  | an initialized worker  |   |
 
 #### toDTO Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
+|  projectDTO Object | Nullity | Null     | Null projectDTO |   |
+|                    |           | Not null | Valid projectDTO object |  |
+| Qualificaitons | Nullity     | Null     | Null  |   |
+|                |             | Not null | initialized qualifictaions |   |
+|                |Emptiness    |empty    |empty set   |   |
+|                |             |not empty|not empty set   |   |
+| Workers | Nullity     | Null     | Null             |   |
+|         |             | Not null |initalized workers|   |
+|         |  Emptiness  |  empty   |empty set         |   |
+|         |             |not empty |not empty set     |   |
