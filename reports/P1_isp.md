@@ -176,14 +176,27 @@
 #### Constructor Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
-
+|  name |  null | null  |   |   |
+|   |   | not null  |   |   |
+|   |  emptiness | empty string  | ""  |   |
+|   |   | white-space only string  | " "  |   |
+|   |   | full string  | "Project 1"  |   |
+|  qualifications | null  | null  |   |   |
+|   |   | not null  |   |   |
+|   | emptiness  | empty set  |   |   |
+|   |   | filled set  |   |   |
+|  size | null  | null  |  null |   |
+|   |   | not null  |  Valid ProjectSize |   |
+|  status | null  | null  |  null |   |
+|   |   | not null  | must be status.PLANNED  |   |
 #### equals Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
+| o  | null  | null  | null  |   |
+|   |  | not null  | not null  |   |
+|   | Object  |  Project | Project Object  |   |
+|   |   |  non-Project | String Object  |   |
+|   |   |  this.Project | current Object  |   |
 
 #### hashCode Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
@@ -224,19 +237,19 @@
 #### setStatus Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
+| status  | null  | null  | null  |   |
+|   |  not null | ProjectStatus  | ProjectStatus.ACTIVE  |   |
 
 #### addWorker Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
+| worker  |   |   |   |   |
 |   |   |   |   |   |
 
 #### removeWorker Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
+| worker  |   |   |   |   |
 |   |   |   |   |   |
 
 #### getWorkers Method
