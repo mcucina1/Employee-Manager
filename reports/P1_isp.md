@@ -279,6 +279,8 @@
 |                |         | not null| an initialized qualificaiton |   |
 |                |presence in qualifications|not in qualifications|a qualification that isn't in qualifications|   |
 |                |                          |already qualifications|a qualification that is in qualificaiton|   |
+| qualifications | nullity  | null   | null  |   |
+|                |          |not null|an initialized qualifications set|   |
 
 #### getMissingQualifications Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
