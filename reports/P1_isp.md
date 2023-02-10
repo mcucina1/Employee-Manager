@@ -119,38 +119,62 @@
 #### getQualifications Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
+| qualifications  | nullity  | null  |  null  |   |
+|   |   |  not null | non-empty Set of qualifications |   |
+|   | emptiness  |  empty set | empty Set of qualifications  |   |
+|   | emptiness  |  Set with qualifications | Set with qualifications  |   |
 
 #### addQualification Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
+| qualification  | nullity  | null  |  null  |   |
+|   |   |  not null | instantiated qualification |   |
+| qualifications  | nullity  | null  |  null  |   |
+|   |   |  not null | non-empty Set of qualifications |   |
+|   | emptiness  |  empty set | empty Set of qualifications  |   |
+|   | emptiness  |  Set with qualifications | Set with qualifications  |   |
 
 #### getProjects Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
+| Set of Projects |  Emptiness | Empty | Project set without members |   |
+|  |  Emptiness | Null |  Project set assigned null |   |
+|  |  Emptiness | Not empty |  Returns set w/ projects |   |
 |   |   |   |   |   |
 
 #### addProject Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
+| Project | Null-ness | Null| Null |   |
+|  | Null-ness | Not null | Object of project type |   |
+| Set of Workers | exists | Set already exists  | addProject() call on existing set |   |
+|  | exists | Set does not exist  | addProject() call without existing set |   |
 
 #### removeProject Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
+| Project | null-ness | Null  | Null |   |
+|  | null-ness | Not null  | Project object to remove existing in set |   |
+|  | Exists | Valid in set  | Project object to remove existing in set |   |
+|  | Exists | Not in set  | Project object to not in set |   |
+| Set of Projects | exists | Set already exists  | addProject() call on existing set |   |
+|  | exists | Set does not exist  | addProject() call without existing set |   |
 
 #### getWorkload Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
+|  workload | null-ness  | null  | null  |   |
+|   |   | not null  |   |   |
+|   | ProjectSize  | ALL BIG  | ALL BIG  |   |
+|   |   | ALL MEDIUM  | ALL MEDIUM   |   |
+|   |   | ALL SMALL  | ALL SMALL  |   |
+|   |   | MIXED Project Sizes | BIG, MEDIUM, SMALL  |   |
+|   |   | MIXED Project Sizes | BIG, BIG, SMALL  |   |
+|   |   | MIXED Project Sizes | BIG, BIG, MEDIUM  |   |
+|   |   | MIXED Project Sizes | BIG, MEDIUM, MEDIUM  |   |
+|   |   | MIXED Project Sizes | SMALL, MEDIUM, MEDIUM  |   |
+|   |   | MIXED Project Sizes | SMALL, SMALL, BIG  |   |
+|   |   | MIXED Project Sizes | SMALL, SMALL, MEDIUM  |   |
 
 #### willOverload Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
