@@ -123,8 +123,8 @@
 #### setSalary Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| Type Conversions | valid |  Int | 30000  |   |
-|  | invalid | String | "30000" |   |
+| Type Conversions | Validity |  Valid | 30000  |   |
+|  |  | Invalid | "30000" |   |
 
 #### getQualifications Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
