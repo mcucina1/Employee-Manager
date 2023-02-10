@@ -1,7 +1,8 @@
 # Input Space Partitioning
 
 ## Qualification Class
-#### Constructor Method
+#### Constructor Method 
+(We acknowledge that null and empty characteristics exist, but are chosing not to address it because of limited information in the specifications.)
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
 | Description  | null strings  | null  |  null |   |
@@ -15,9 +16,9 @@
 |---|---|---|---|---|
 | object  | null  | null  | null  |   |
 |   |  | not null  | not null  |   |
-|   | Object Type  |  Qualification | Qualification Object  |   |
-|   |   |  non-Qualification | String Object  |   |
-|   |   |  this.Qualification | current Object  |   |
+|   | Object Type  |  Qualification | Qualification Object  | testEquals() |
+|   |   |  non-Qualification | String Object  | testEqualsNonQual() |
+|   |   |  this.Qualification | current Object  | testEqualsSameObj() |
 #### hashCode Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
@@ -33,9 +34,9 @@
 #### getWorkers Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| Set of Workers |  Emptiness | Empty | Worker set without members |   |
+| Set of Workers |  Emptiness | Empty | Worker set without members | testGetWorkersWithEmptyWorkers() |
 |  |  Emptiness | Null |  Worker set assigned null |   |
-|  |  Emptiness | Not empty |  Returns set w/ workers |   |
+|  |  Emptiness | Not empty |  Returns set w/ workers | testGetWorkers() |
 |   |   |   |   |   |
 
 #### addWorker Method
@@ -43,8 +44,8 @@
 |---|---|---|---|---|
 | Worker | Null-ness | Null| Null |   |
 |  | Null-ness | Not null | Object of worker type |   |
-| Set of Workers | exists | Set already exists  | addWroker() call on existing set |   |
-|  | exists | Set does not exist  | addWorkers() call without existing set |   |
+| Set of Workers | exists | Set already exists  | addWroker() call on existing set | testAddWorker() |
+|  | exists | Set does not exist  | addWorkers() call without existing set | Impossible state |
 |   |  |   |   |   |
 #### removeWorker Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
