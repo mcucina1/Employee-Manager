@@ -288,12 +288,13 @@
 | Workers      |Nullity  |Null     |Null                |   |
 |              |         |Not Null |Initialized Workers |   |
 |              |Emptiness|Empty    |Empty set           |   |
-|              |         |Not Empty|not empty set       |   |
+|              |         |1 worker |set with 1 worker |   |
+|              |         |>1 worker|set with 3 workers|   |
 |Qualifications|Nullity  |Null     |Null                |   |
 |              |         |Not Null |Initialized quals   |   |
 |              |Emptiness|Empty    |Empty set           |   |
-|              |         |Not Empty|not empty set       |   |
-
+|              |         |1 qual   |set with 1 qual|   |
+|              |         |>1 qual  |set with 3 quals   |   |
 #### isHelpful Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
@@ -307,9 +308,11 @@
 |                    |           | Not null | Valid projectDTO object |  |
 | Qualificaitons | Nullity     | Null     | Null  |   |
 |                |             | Not null | initialized qualifictaions |   |
-|                |Emptiness    |empty    |empty set   |   |
-|                |             |not empty|not empty set   |   |
+|              |Emptiness|Empty    |Empty set           |   |
+|              |         |1 qual   |set with 1 qual|   |
+|              |         |>1 qual  |set with 3 quals   |   |
 | Workers | Nullity     | Null     | Null             |   |
 |         |             | Not null |initalized workers|   |
 |         |  Emptiness  |  empty   |empty set         |   |
-|         |             |not empty |not empty set     |   |
+|         |             |1 worker  |set with 1 worker |   |
+|         |             |>1 worker |set with 3 workers|   |
