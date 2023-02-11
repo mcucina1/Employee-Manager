@@ -17,7 +17,7 @@
 |   |  | not null  | Qualification("Engineer")  | testEquals()  |
 |   | Object Type  |  Qualification | Qualification(Engineer))  | testEquals()  |
 |   |   |  non-Qualification | String nonQual = "Engineer"  |testEqualsNonQual() |
-|   |   |  this.Qualification | current Object  | testEqualsWithTheSameObjects  |
+|   |   |  this.Qualification | current Object  | testEqualsWithTheSameObjects()  |
 
 #### hashCode Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
