@@ -74,10 +74,23 @@ public class QualificationTest {
 	}
 
 	@Test
+	public void testEqualsNonQual(){
+		String nonQual = "Engineer";
+		Qualification testQual = new Qualification("Engineer");
+		assertFalse(testQual.equals(nonQual));
+	}
+	@Test
+	public void testEqualsSameObj(){
+		Qualification testQual = new Qualification("Engineer");
+		assertTrue(testQual.equals(testQual));
+	}
+
+	@Test
 	public void testGetWorkersWithEmptyWorkers() {
 		Set<Worker> expectedWorkers = new HashSet<>();
 		assertEquals(expectedWorkers, qualification.getWorkers());
 	}
+
 
 	@Test
 	public void testGetWorkers() {

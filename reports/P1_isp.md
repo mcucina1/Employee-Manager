@@ -1,7 +1,7 @@
 # Input Space Partitioning
 
 ## Qualification Class
-#### Constructor Method
+#### Constructor Method 
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
 | Description  | null strings  | null  |  null |   |
@@ -14,10 +14,12 @@
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
 | object  | null  | null  | null  |   |
+
 |   |  | not null  | Qualification("Engineer")  |   |
 |   | Object Type  |  Qualification | Qualification(Engineer))  |   |
 |   |   |  non-Qualification | String nonQual = "Engineer"  |   |
 |   |   |  this.Qualification | current Object  |   |
+
 #### hashCode Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
@@ -33,19 +35,18 @@
 #### getWorkers Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| Set of Workers |  Emptiness | Empty | Worker set without members |   |
-|  |   | Null |  Worker set assigned null |   |
-|  |   | Not empty |  Returns set w/ workers |   |
-|   |   |   |   |   |
+| Set of Workers |  Emptiness | Empty | Worker set without members | testGetWorkersWithEmptyWorkers() |
+|  |  Emptiness | Null |  Worker set assigned null |   |
+|  |  Emptiness | Not empty |  Returns set w/ workers | testGetWorkers() |
 
 #### addWorker Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
 | Worker | Null-ness | Null| Null |   |
-|  |  | Not null | Object of worker type |   |
-| Set of Workers | exists | Set already exists  | addWroker() call on existing set |   |
-|  |  | Set does not exist  | addWorkers() call without existing set |   |
-|   |  |   |   |   |
+|  | Null-ness | Not null | Object of worker type |   |
+| Set of Workers | exists | Set already exists  | addWroker() call on existing set | testAddWorker() call on existing set|
+|  | exists | Set does not exist  | addWorkers() call without existing set | Impossible state |
+
 #### removeWorker Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
@@ -229,20 +230,21 @@
 #### getSize Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
+| ProjectSize  | Valid  |  Return size  | size  |   |
 |   |   |   |   |   |
-|   |   |   |   |   |
+
 
 #### setSize Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
+| ProjectSize  | Valid  | Set Size  | SMALL  |   |
 |   |   |   |   |   |
-|   |   |   |   |   |
+
 
 #### getStatus Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
+|  ProjectStatus | Valid  | Return Status  |  status|   |
 
 #### setStatus Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
@@ -253,19 +255,29 @@
 #### addWorker Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| worker  |   |   |   |   |
-|   |   |   |   |   |
+| worker  | null  | null  | no value  |   |
+|   |   |  not null | valid worker  |   |
+|  Set of workers | null  |  null | no initilized worker set  |   |
+|   |   |  not null | initialized worker set  |   |
+|   | adds worker  |  add worker | worker  |   |
 
 #### removeWorker Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| worker  |   |   |   |   |
-|   |   |   |   |   |
+| Worker | null-ness | Null  | Null |   |
+|  | null-ness | Not null  | Worker object to remove existing in set |   |
+|  | Exists | Valid in set  | Worker object to remove existing in set |   |
+|  | Exists | Not in set  | Worker object to not in set |   |
+| Set of Workers | exists | Set already exists  | addWorker() call on existing set |   |
+|  | exists | Set does not exist  | addWorkers() call without existing set |   |
+|  |   |   |   |   |
 
 #### getWorkers Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
+| Set of Workers |  Emptiness | Empty | Worker set without members |   |
+|  |  Emptiness | Null |  Worker set assigned null |   |
+|  |  Emptiness | Not empty |  Returns set w/ workers |   |
 |   |   |   |   |   |
 
 #### removeAllWorkers Method
