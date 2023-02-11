@@ -22,8 +22,9 @@
 #### hashCode Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| Hashcode | Initialized | Non-Null | Qualification.description hashcode |   |
-|  |  | Null | null value |   |
+| Hashcode | Initialized | Non-Null | Qualification.description identical hashcode |  testHashCodeIsDifferentForDifferentObjects() |
+| Hashcode | Initialized | Non-Null | Qualification.description different hashcodes|  testHashCodeIsTheSameForIdenticalObjects() |
+|  |  | Null | null value |  Description is prevented from being null. See testQualificationNonNull() |
 #### toString Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
