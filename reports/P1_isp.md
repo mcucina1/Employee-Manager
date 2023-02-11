@@ -164,10 +164,10 @@
 #### removeProject Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| Project | null-ness | Null  | Null |   |
-|  | null-ness | Not null  | Project object to remove existing in set |   |
-|  | Exists | Valid in set  | Project object to remove existing in set |   |
-|  | Exists | Not in set  | Project object to not in set |   |
+| Project | null-ness | Null  | Null |  testRemoveProjectNullProject() |
+|  | null-ness | Not null  | Project object to remove existing in set |  testRemoveProject() |
+|  | Exists | Valid in set  | Project object to remove existing in set | testRemoveProject()  |
+|  | Exists | Not in set  | Project object to not in set | testRemoveProjectElementNotInSet()  |
 | Set of Projects | exists | Set already exists  | addProject() call on existing set |   |
 |  | exists | Set does not exist  | addProject() call without existing set |   |
 
