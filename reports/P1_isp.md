@@ -4,11 +4,11 @@
 #### Constructor Method 
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| Description  | null strings  | null  |  null |   |
-|   |   | not null  | "Engineer"  |   |
-|   |  emptiness | empty string  | ""  |   |
-|   |   | white-space only string  | " "  |   |
-|   |   | full string  | "Engineer"  |   |
+| Description  | null strings  | null  |  null | testQualificationNonNull() |
+|   |   | not null  | not null  | testQualificationConstructor() |
+|   |  emptiness | empty string  | ""  | testQualificationEmptyString() |
+|   |   | white-space only string  | "         "  | testQualificationWhiteSpaceString() |
+|   |   | full string  | "Engineer"  | testQualificationConstructor() |
 
 #### equals Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
