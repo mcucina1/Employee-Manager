@@ -14,7 +14,6 @@
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
 | object  | null  | null  | null  |   |
-
 |   |  | not null  | Qualification("Engineer")  |   |
 |   | Object Type  |  Qualification | Qualification(Engineer))  |   |
 |   |   |  non-Qualification | String nonQual = "Engineer"  |   |
