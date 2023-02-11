@@ -288,6 +288,20 @@ public class WorkerTest {
 		assertEquals(expectedProjectSet, worker.getProjects());
 	}
 
+	@Test
+	public void testRemoveProjectFromEmptySet() {
+		Worker worker = buildExpectedWorker();
+		// No Project set Initialized
+		Project projectNotInSet = new Project("ProjectNotInSet", worker.getQualifications(), ProjectSize.BIG);
+
+		worker.removeProject(projectNotInSet);
+		worker.removeProject(projectNotInSet);
+		worker.removeProject(projectNotInSet);
+		worker.removeProject(projectNotInSet);
+		worker.removeProject(projectNotInSet);
+		assertTrue(worker.getProjects().size() == 0);
+	}
+
 
 	@Test
 	public void testToDTO() {
