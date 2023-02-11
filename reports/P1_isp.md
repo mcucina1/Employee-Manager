@@ -4,7 +4,7 @@
 #### Constructor Method 
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| Description  | null strings  | null  |  null | testQualificationNonNull() |
+| Description  | null strings  | null  |  null | testQualificationNull() |
 |   |   | not null  | not null  | testQualificationConstructor() |
 |   |  emptiness | empty string  | ""  | testQualificationEmptyString() |
 |   |   | white-space only string  | "         "  | testQualificationWhiteSpaceString() |
@@ -22,8 +22,9 @@
 #### hashCode Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| Hashcode | Initialized | Non-Null | Qualification.description hashcode |   |
-|  |  | Null | null value |   |
+| Hashcode | Initialized | Non-Null | Qualification.description identical hashcode |  testHashCodeIsDifferentForDifferentObjects() |
+| Hashcode | Initialized | Non-Null | Qualification.description different hashcodes|  testHashCodeIsTheSameForIdenticalObjects() |
+|  |  | Null | null value |  Description is prevented from being null. See testQualificationNull() |
 #### toString Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
