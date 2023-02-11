@@ -140,6 +140,10 @@ public class WorkerTest {
 		Worker newWorker = new Worker(sampleName, sampleQualifications, sampleSalary);
 		String newExpectedString = "Sample Name:0:2:10";
 		assertEquals(newExpectedString, newWorker.toString());
+
+		String format = ".*:\\d+:\\d+:\\d+.*";
+		boolean correctFormat = newWorker.toString().matches(format);
+		assertTrue(correctFormat);
 	}
 
 	@Test

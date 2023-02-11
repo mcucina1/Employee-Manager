@@ -101,10 +101,10 @@
 #### toString Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| Worker Object | Initialized | Non-Null | Worker w/ Name "John", Set of Qualifications, and Salary 30000.0 |   |
-|   |  | Null | null value |   |
-|   | Formatted | Correct | "John:2:10:30000" |   |
-|   |  | Incorrect | Not following schema |   |
+| Worker Object | Initialized | Non-Null | "Sample Name:0:2:10" | testToString() |
+|   |  | Null | null value | testConstructor() |
+|   | Formatted | Correct | "John:2:10:30000" | testToString() |
+|   |  | Incorrect | Not following schema | testToString() |
 
 
 #### getName Method
