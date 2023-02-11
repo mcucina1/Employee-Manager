@@ -15,6 +15,18 @@ public class Worker {
 	private Set<Qualification> qualifications;
 
 	public Worker(String name, Set<Qualification> qualifications, double salary) {
+		if(name == null || name == "" || name.trim().isEmpty()){
+			throw new IllegalArgumentException("Name must not be empty or null.");
+		}
+
+		if(qualifications == null){
+			throw new IllegalArgumentException("Qualifications must not be null.");
+		}
+
+		if(salary < 0){
+			throw new IllegalArgumentException("Salary must not be negative.");
+		}
+		
 		this.name = name;
 		this.qualifications = qualifications;
 		this.salary = salary;

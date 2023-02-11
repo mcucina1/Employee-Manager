@@ -43,6 +43,41 @@ public class WorkerTest {
 		assertEquals(expected.getQualifications(), worker.getQualifications());
 	}
 
+	@Test(expected = IllegalArgumentException.class)
+	public void testNameNonNull(){
+		String nullString = null;
+		Worker nullName = new Worker(nullString,sampleQualifications,90000.00);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testNameIsEmpty(){
+		String emptyString = "";
+		Worker emptyName = new Worker(emptyString,sampleQualifications,90000.00);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testWorkerNullQualificationSet(){
+		String emptyString = null;
+		Qualification emptyQual = new Qualification(emptyString);
+		Set<Qualification> testQualification = new HashSet<Qualification>();
+		testQualification.add(emptyQual);
+		Worker nullQualifications = new Worker("John",testQualification,90000.00);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testNegativeSalary(){
+		double negativeSalary = -90000.00;
+		Worker negativeSalWorker = new Worker("John", sampleQualifications, negativeSalary);
+	}
+
+	@Test
+	public void testEmptyQualificationsConstructor() {
+		Set<Qualification> emptyQualificaiton = new HashSet<Qualification>();
+		Worker testWorker = new Worker("Bob", emptyQualificaiton, 90000.00);
+		assertEquals(emptyQualificaiton, testWorker.getQualifications());
+
+	}
+
 	@Test
 	public void testEquals() {
 		Worker workerTwo = buildExpectedWorker();
