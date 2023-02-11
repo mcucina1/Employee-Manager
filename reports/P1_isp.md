@@ -71,15 +71,15 @@
 #### Constructor Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| Name | Null-ness |  Null | Null string |   |
-|  |  |  Not null | Valid string |   |
-|  | Emptiness | Empty String | "" |   |
-|  |  |  String | "John" |   |
-| Qualification Set | Null-ness | Null | Set of qualifications w/ valid contents |   |
-|   |  |  Not null | Qualification set without contents |   |
-| Qualification Set | Emptiness | Set has contents | Set of Qualifications |   |
-|   |  |  Set is empty | Qualification set without contents |   |
-| Salary | Negatve | Negative value | -1 |   |
+| Name | Null-ness |  Null | Null string | testNameNonNull()  |
+|  |  |  Not null | Valid string |  testConstructor() |
+|  | Emptiness | Empty String | "" |  testNameIsEmpty() |
+|  |  |  String | "John" | testConstructor()  |
+| Qualification Set | Null-ness | Null | Qualification set without contents | testWorkerNullQualificationSet()  |
+|   |  |  Not null | Set of qualifications w/ valid contents |  testConstructor() |
+| Qualification Set | Emptiness | Set has contents | Set of Qualifications |  testConstructor() |
+|   |  |  Set is empty | Qualification set without contents | testEmptyQualificationsConstructor()  |
+| Salary | Negatve | Negative value | -1 | testNegativeSalary()  |
 
 
 #### equals Method
