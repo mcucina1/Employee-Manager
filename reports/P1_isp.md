@@ -129,8 +129,8 @@
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
 | Salary Element | Non-negative | > 0 | 123  | testSetSalary() |
-| Salary Element | Non-negative | == 0 | 0 | testSetSalaryZero() |
-| Salary Element | Non-negative | < 0 | -1  | testSetSalaryNegative() |
+|  |  | == 0 | 0 | testSetSalaryZero() |
+|  |  | < 0 | -1  | testSetSalaryNegative() |
 | Type Conversions | Validity |  Valid non-double | 30000  | testSetSalaryNonDouble() |
 |  |  | Invalid | "30000" | Impossible state |
 
