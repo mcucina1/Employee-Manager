@@ -81,6 +81,8 @@
 | Qualification Set | Emptiness | Set has contents | Set of Qualifications |  testConstructor() |
 |   |  |  Set is empty | Qualification set without contents | testEmptyQualificationsConstructor()  |
 | Salary | Negatve | Negative value | -1 | testNegativeSalary()  |
+|  | Zero | Zero value | 0 | testZeroSalary()  |
+|  | Positive | Positive value | 1 | testConstructor()  |
 
 
 #### equals Method
@@ -110,30 +112,35 @@
 #### getName Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| Name Element | Null |  Null  | null |   |
-|  |  |  Not null  |  "John" |   |
+| Name Element | Null |  Null  | null | testNameNull() |
+|  |  |  Not null  |  "Sample Name" | testGetName() |
 |   |   |   |   |   |
 
 #### getSalary Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| Salary Element | Null | Null | null |   |
-|  |  | Not null | 30000.0 |   |
-|   |   |   |   |   |
+| Salary Element | Null | Null | null | impossible state |
+|  |  | Not null | 30000.0 | testGetSalary() |
+|   | Zero | > 0 | 10.0 | testGetSalary() |
+|   |  | == 0 | 0 | testGetSalaryZero() |
+|   |  | < 0 | -1 | testNegativeSalary() |
 
 #### setSalary Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| Type Conversions | Validity |  Valid | 30000  |   |
-|  |  | Invalid | "30000" |   |
+| Salary Element | Non-negative | > 0 | 123  | testSetSalary() |
+|  |  | == 0 | 0 | testSetSalaryZero() |
+|  |  | < 0 | -1  | testSetSalaryNegative() |
+| Type Conversions | Validity |  Valid non-double | 30000  | testSetSalaryNonDouble() |
+|  |  | Invalid | "30000" | Impossible state |
 
 #### getQualifications Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| qualifications  | nullity  | null  |  null  |   |
-|   |   |  not null | non-empty Set of qualifications |   |
-|   | emptiness  |  empty set | empty Set of qualifications  |   |
-|   | emptiness  |  Set with qualifications | Set with qualifications  |   |
+| qualifications  | nullity  | null  |  null  | testWorkerNullQualificationSet() |
+|   |   |  not null | non-empty Set of qualifications | testGetQualifications() |
+|   | emptiness  |  empty set | empty Set of qualifications  | testGetEmptyQualifications() |
+|   |   |  Set with qualifications | Set with qualifications  | testGetQualifications() |
 
 #### addQualification Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |

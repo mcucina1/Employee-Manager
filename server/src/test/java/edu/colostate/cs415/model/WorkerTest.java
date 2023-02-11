@@ -44,7 +44,7 @@ public class WorkerTest {
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void testNameNonNull(){
+	public void testNameNull(){
 		String nullString = null;
 		Worker nullName = new Worker(nullString,sampleQualifications,90000.00);
 	}
@@ -71,10 +71,17 @@ public class WorkerTest {
 	}
 
 	@Test
+	public void testZeroSalary(){
+		double zeroSalary = 0.0;
+		Worker zeroSalWorker = new Worker("John", sampleQualifications, zeroSalary);
+		assertTrue(zeroSalWorker.getSalary() == 0);
+	}
+
+	@Test
 	public void testEmptyQualificationsConstructor() {
-		Set<Qualification> emptyQualificaiton = new HashSet<Qualification>();
-		Worker testWorker = new Worker("Bob", emptyQualificaiton, 90000.00);
-		assertEquals(emptyQualificaiton, testWorker.getQualifications());
+		Set<Qualification> emptyQualification = new HashSet<Qualification>();
+		Worker testWorker = new Worker("Bob", emptyQualification, 90000.00);
+		assertEquals(emptyQualification, testWorker.getQualifications());
 
 	}
 
@@ -115,11 +122,26 @@ public class WorkerTest {
 	}
 
 	@Test
+	public void testGetSalaryZero() {
+		double expectedSalary = 0.0;
+		Worker zeroSalWorker = new Worker("John", sampleQualifications, expectedSalary);
+		assertEquals(expectedSalary, zeroSalWorker.getSalary(), 0.1);
+	}
+
+
+	@Test
 	public void testGetQualifications() {
 		Set<Qualification> expectedQualifications = new HashSet<Qualification>();
 		Qualification qualification = new Qualification("Sample Qualification");
 		expectedQualifications.add(qualification);
 		assertEquals(expectedQualifications, worker.getQualifications());
+	}
+
+	@Test
+	public void testGetEmptyQualifications() {
+		Set<Qualification> emptyQualifications = new HashSet<Qualification>();
+		Worker unqualifiedWorker = new Worker("Jerry", emptyQualifications, 30000);
+		assertEquals(emptyQualifications, unqualifiedWorker.getQualifications());
 	}
 
 	@Test
@@ -180,6 +202,23 @@ public class WorkerTest {
 		worker.setSalary(expectedSalary);
 		double marginOfError = 0.1;
 		assertEquals(expectedSalary, worker.getSalary(), marginOfError);
+	}
+
+	@Test
+	public void testSetSalaryZero(){
+		worker.setSalary(0.0);
+		assertTrue(worker.getSalary() == 0.0);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testSetSalaryNegative(){
+		worker.setSalary(-1);
+	}
+
+	@Test
+	public void testSetSalaryNonDouble(){
+		worker.setSalary(30000);
+		assertTrue(worker.getSalary() == 30000);
 	}
 
 	@Test
