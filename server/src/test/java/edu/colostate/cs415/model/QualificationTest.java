@@ -110,6 +110,16 @@ public class QualificationTest {
 	}
 
 	@Test
+	public void testEqualsWithNull() {
+		assertFalse(qualification.equals(null));
+	}
+
+	@Test
+	public void testEqualsWithTheSameObjects() {
+		assertTrue(qualification.equals(qualification));
+	}
+
+	@Test
 	public void testGetWorkersWithEmptyWorkers() {
 		Set<Worker> expectedWorkers = new HashSet<>();
 		assertEquals(expectedWorkers, qualification.getWorkers());

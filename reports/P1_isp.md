@@ -13,11 +13,11 @@
 #### equals Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| object  | null  | null  | null  |   |
-|   |  | not null  | Qualification("Engineer")  |   |
-|   | Object Type  |  Qualification | Qualification(Engineer))  |   |
-|   |   |  non-Qualification | String nonQual = "Engineer"  |   |
-|   |   |  this.Qualification | current Object  |   |
+| object  | null  | null  | null  | testEqualsWithNull() |
+|   |  | not null  | Qualification("Engineer")  | testEquals()  |
+|   | Object Type  |  Qualification | Qualification(Engineer))  | testEquals()  |
+|   |   |  non-Qualification | String nonQual = "Engineer"  |testEqualsNonQual() |
+|   |   |  this.Qualification | current Object  | testEqualsWithTheSameObjects  |
 
 #### hashCode Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
