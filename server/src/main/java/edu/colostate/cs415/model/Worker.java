@@ -80,6 +80,9 @@ public class Worker {
 	}
 
 	public void setSalary(double salary) {
+		if(salary < 0){
+			throw new IllegalArgumentException("Salary must not be negative.");
+		}
 		this.salary = salary;
 	}
 

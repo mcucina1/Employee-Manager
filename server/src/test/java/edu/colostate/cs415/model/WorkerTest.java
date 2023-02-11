@@ -205,6 +205,23 @@ public class WorkerTest {
 	}
 
 	@Test
+	public void testSetSalaryZero(){
+		worker.setSalary(0.0);
+		assertTrue(worker.getSalary() == 0.0);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testSetSalaryNegative(){
+		worker.setSalary(-1);
+	}
+
+	@Test
+	public void testSetSalaryNonDouble(){
+		worker.setSalary(30000);
+		assertTrue(worker.getSalary() == 30000);
+	}
+
+	@Test
 	public void testHashCodeIsTheSameForIdenticalWorkers() {
 		int hashCode1 = worker.hashCode();
 		Worker identicalWorker = worker;

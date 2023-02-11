@@ -128,8 +128,11 @@
 #### setSalary Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| Type Conversions | Validity |  Valid | 30000  |   |
-|  |  | Invalid | "30000" |   |
+| Salary Element | Non-negative | > 0 | 123  | testSetSalary() |
+| Salary Element | Non-negative | == 0 | 0 | testSetSalaryZero() |
+| Salary Element | Non-negative | < 0 | -1  | testSetSalaryNegative() |
+| Type Conversions | Validity |  Valid non-double | 30000  | testSetSalaryNonDouble() |
+|  |  | Invalid | "30000" | Impossible state |
 
 #### getQualifications Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
