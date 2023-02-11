@@ -81,6 +81,8 @@
 | Qualification Set | Emptiness | Set has contents | Set of Qualifications |  testConstructor() |
 |   |  |  Set is empty | Qualification set without contents | testEmptyQualificationsConstructor()  |
 | Salary | Negatve | Negative value | -1 | testNegativeSalary()  |
+|  | Zero | Zero value | 0 | testZeroSalary()  |
+|  | Positive | Positive value | 1 | testConstructor()  |
 
 
 #### equals Method
@@ -110,16 +112,18 @@
 #### getName Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| Name Element | Null |  Null  | null |   |
-|  |  |  Not null  |  "John" |   |
+| Name Element | Null |  Null  | null | testNameNull() |
+|  |  |  Not null  |  "Sample Name" | testGetName() |
 |   |   |   |   |   |
 
 #### getSalary Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| Salary Element | Null | Null | null |   |
-|  |  | Not null | 30000.0 |   |
-|   |   |   |   |   |
+| Salary Element | Null | Null | null | impossible state |
+|  |  | Not null | 30000.0 | testGetSalary() |
+|   | Zero | > 0 | 10.0 | testGetSalary() |
+|   |  | == 0 | 0 | testGetSalaryZero() |
+|   |  | < 0 | -1 | testNegativeSalary() |
 
 #### setSalary Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
@@ -130,10 +134,10 @@
 #### getQualifications Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| qualifications  | nullity  | null  |  null  |   |
-|   |   |  not null | non-empty Set of qualifications |   |
-|   | emptiness  |  empty set | empty Set of qualifications  |   |
-|   | emptiness  |  Set with qualifications | Set with qualifications  |   |
+| qualifications  | nullity  | null  |  null  | testWorkerNullQualificationSet() |
+|   |   |  not null | non-empty Set of qualifications | testGetQualifications() |
+|   | emptiness  |  empty set | empty Set of qualifications  | testGetEmptyQualifications() |
+|   | emptiness  |  Set with qualifications | Set with qualifications  | testGetQualifications() |
 
 #### addQualification Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
