@@ -87,6 +87,22 @@ public class WorkerTest {
 	}
 
 	@Test
+	public void testEqualsWithNull() {
+		assertFalse(worker.equals(null));
+	}
+
+	@Test
+	public void testEqualsWithNonWorker() {
+		String nonWorker = "John";
+		assertFalse(worker.equals(nonWorker));
+	}
+
+	@Test
+	public void testEqualsWithTheSameObject() {
+		assertTrue(worker.equals(worker));
+	}
+
+	@Test
 	public void testGetName() {
 		String expectedName = "Sample Name";
 		assertEquals(expectedName, worker.getName());
