@@ -4,7 +4,7 @@
 #### Constructor Method 
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| Description  | null strings  | null  |  null | testQualificationNonNull() |
+| Description  | null strings  | null  |  null | testQualificationNull() |
 |   |   | not null  | not null  | testQualificationConstructor() |
 |   |  emptiness | empty string  | ""  | testQualificationEmptyString() |
 |   |   | white-space only string  | "         "  | testQualificationWhiteSpaceString() |
