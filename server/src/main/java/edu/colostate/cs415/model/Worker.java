@@ -98,10 +98,7 @@ public class Worker {
 	}
 
 	public Set<Project> getProjects() {
-		if (!(projects == null)) {
-			return projects;
-		}
-		return null;
+		return projects;
 	}
 
 	public void addProject(Project project) {

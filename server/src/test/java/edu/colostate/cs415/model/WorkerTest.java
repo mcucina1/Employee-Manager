@@ -303,6 +303,53 @@ public class WorkerTest {
 	}
 
 	@Test
+	public void testRemoveProjectElementNotInSet() {
+		Worker worker = buildExpectedWorker();
+		Project projectInSet = new Project("ProjectInSet", worker.getQualifications(), ProjectSize.BIG);
+		worker.addProject(projectInSet);
+		Set<Project> expectedProjectSet= worker.getProjects();
+		Project projectNotInSet = new Project("ProjectNotInSet", worker.getQualifications(), ProjectSize.BIG);
+
+		worker.removeProject(projectNotInSet);
+		worker.removeProject(projectNotInSet);
+		worker.removeProject(projectNotInSet);
+		worker.removeProject(projectNotInSet);
+		worker.removeProject(projectNotInSet);
+		assertEquals(expectedProjectSet, worker.getProjects());
+	}
+
+	@Test
+	public void testRemoveProjectNullProject() {
+		Worker worker = buildExpectedWorker();
+		Project projectInSet = new Project("ProjectInSet", worker.getQualifications(), ProjectSize.BIG);
+		worker.addProject(projectInSet);
+		Set<Project> expectedProjectSet= worker.getProjects();
+		Project nullProject = null;
+
+		worker.removeProject(nullProject);
+		worker.removeProject(nullProject);
+		worker.removeProject(nullProject);
+		worker.removeProject(nullProject);
+		worker.removeProject(nullProject);
+		assertEquals(expectedProjectSet, worker.getProjects());
+	}
+
+	@Test
+	public void testRemoveProjectFromEmptySet() {
+		Worker worker = buildExpectedWorker();
+		// No Project set Initialized
+		Project projectNotInSet = new Project("ProjectNotInSet", worker.getQualifications(), ProjectSize.BIG);
+
+		worker.removeProject(projectNotInSet);
+		worker.removeProject(projectNotInSet);
+		worker.removeProject(projectNotInSet);
+		worker.removeProject(projectNotInSet);
+		worker.removeProject(projectNotInSet);
+		assertTrue(worker.getProjects().size() == 0);
+	}
+
+
+	@Test
 	public void testToDTO() {
 		Worker expected = buildExpectedWorker();
 		WorkerDTO expectedDTO = expected.toDTO();
