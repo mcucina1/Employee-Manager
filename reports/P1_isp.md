@@ -2,11 +2,10 @@
 
 ## Qualification Class
 #### Constructor Method 
-(We acknowledge that null and empty characteristics exist, but are chosing not to address it because of limited information in the specifications.)
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
 | Description  | null strings  | null  |  null |   |
-|   |   | not null  | not null  |   |
+|   |   | not null  | "Engineer"  |   |
 |   |  emptiness | empty string  | ""  |   |
 |   |   | white-space only string  | " "  |   |
 |   |   | full string  | "Engineer"  |   |
@@ -15,20 +14,21 @@
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
 | object  | null  | null  | null  |   |
-|   |  | not null  | not null  |   |
-|   | Object Type  |  Qualification | Qualification Object  | testEquals() |
-|   |   |  non-Qualification | String Object  | testEqualsNonQual() |
-|   |   |  this.Qualification | current Object  | testEqualsSameObj() |
+|   |  | not null  | Qualification("Engineer")  |   |
+|   | Object Type  |  Qualification | Qualification(Engineer))  |   |
+|   |   |  non-Qualification | String nonQual = "Engineer"  |   |
+|   |   |  this.Qualification | current Object  |   |
+
 #### hashCode Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| Hashcode | Initialized | Non-Null | Description string |   |
-|  | Initialized | Null | null value |   |
+| Hashcode | Initialized | Non-Null | Qualification.description hashcode |   |
+|  |  | Null | null value |   |
 #### toString Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| Description | Initialized | Non-Null | Description value |   |
-|  | Initialized | Null | null value |   |
+| Description | Initialized | Non-Null | Qualification w/ description "Engineer" |   |
+|  |  | Null | null value |   |
 |   |   |   |   |   |
 
 #### getWorkers Method
@@ -37,85 +37,94 @@
 | Set of Workers |  Emptiness | Empty | Worker set without members | testGetWorkersWithEmptyWorkers() |
 |  |  Emptiness | Null |  Worker set assigned null |   |
 |  |  Emptiness | Not empty |  Returns set w/ workers | testGetWorkers() |
-|   |   |   |   |   |
 
 #### addWorker Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
 | Worker | Null-ness | Null| Null |   |
 |  | Null-ness | Not null | Object of worker type |   |
-| Set of Workers | exists | Set already exists  | addWroker() call on existing set | testAddWorker() |
+| Set of Workers | exists | Set already exists  | addWroker() call on existing set | testAddWorker() call on existing set|
 |  | exists | Set does not exist  | addWorkers() call without existing set | Impossible state |
-|   |  |   |   |   |
+
 #### removeWorker Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
 | Worker | null-ness | Null  | Null |   |
-|  | null-ness | Not null  | Worker object to remove existing in set |   |
+|  |  | Not null  | Worker object to remove in existing set |   |
 |  | Exists | Valid in set  | Worker object to remove existing in set |   |
-|  | Exists | Not in set  | Worker object to not in set |   |
+|  |  | Not in set  | Worker object to not in set |   |
 | Set of Workers | exists | Set already exists  | addWroker() call on existing set |   |
-|  | exists | Set does not exist  | addWorkers() call without existing set |   |
+|  |  | Set does not exist  | addWorkers() call without existing set |   |
 |  |   |   |   |   |
 
 #### toDTO Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
 |  qualDTO Object | Null-ness | Null | Null qualDTO |   |
-|  | Null-ness | Not null | Valid qualDTO object |  |
-| Description | Initialized | Null |   |   |
-| Description | Initialized | Not null |  |   |
+|  |  | Not null | Valid qualDTO object |  |
+| Description | Initialized | Null |  |   |
+|  |  | Not null |  |   |
 | Workers | Initialized | Null |   |   |
-| Workers | Initialized | Not null |   |   |
-| Workers | Initialized | Not empty set |   |   |
+|  |  | Not null |   |   |
+|  |  | Not empty set |   |   |
 ## Worker Class
 #### Constructor Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
 | Name | Null-ness |  Null | Null string |   |
-| Name | Null-ness |  Not null | Valid string |   |
+|  |  |  Not null | Valid string |   |
 |  | Emptiness | Empty String | "" |   |
-|  | Emptiness |  String | Non-empty string |   |
+|  |  |  String | "John" |   |
+| Qualification Set | Null-ness | Null | Set of qualifications w/ valid contents |   |
+|   |  |  Not null | Qualification set without contents |   |
 | Qualification Set | Emptiness | Set has contents | Set of Qualifications |   |
-|   | Emptiness |  Set is empty | Qualification set without contents |   |
-| Salary | Negatve | Negative value | Negative number |   |
+|   |  |  Set is empty | Qualification set without contents |   |
+| Salary | Negatve | Negative value | -1 |   |
 
 
 #### equals Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
+| object  | null  | null  | null  |   |
+|   |  | not null  | Worker("John", testQualifications, 30000.0)  |   |
+|   | Object Type  |  Worker | Worker("John", testQualifications, 30000.0))  |   |
+|   |   |  Non-Worker | String nonWorker = "John"  |   |
+|   |   |  Equals self | This.Worker  |   |
 
 #### hashCode Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
+| Hashcode | Initialized | Non-Null | Worker.name hashcode |   |
+|  |  | Null | null value |   
 
 #### toString Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
+| Worker Object | Initialized | Non-Null | Worker w/ Name "John", Set of Qualifications, and Salary 30000.0 |   |
+|   |  | Null | null value |   |
+|   | Formatted | Correct | "John:2:10:30000" |   |
+|   |  | Incorrect | Not following schema |   |
+
 
 #### getName Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
+| Name Element | Null |  Null  | null |   |
+|  |  |  Not null  |  "John" |   |
 |   |   |   |   |   |
 
 #### getSalary Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
+| Salary Element | Null | Null | null |   |
+|  |  | Not null | 30000.0 |   |
 |   |   |   |   |   |
 
 #### setSalary Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
+| Type Conversions | Validity |  Valid | 30000  |   |
+|  |  | Invalid | "30000" |   |
 
 #### getQualifications Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
