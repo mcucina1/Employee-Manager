@@ -1,2 +1,6 @@
 # P1 Reflection
-This file should contain a reflection on what went well and did not go well, and what would be done differently next time. 
+Overall we feel that this first sprint went very well. We started work early and kept a fairly steady pace throughout the sprint which prevented us from needing to rush things towards the end. One of our strongpoints is definitely our communication, both in-person and through Teams. As a group we are all responsive to each other's questions and requests, and met several times throughout the course of the sprint to collaborate rather than working only asynchronously. Taken as a whole this first sprint was mostly things that went well.
+
+There wasn’t anything that didn’t go well, although we did have some small difficulty piecing together the ISP table. We believe this has more to do with the newness of the concept than the actual implementation of the table itself. After meeting up and working through it we put together a table that we believe not only follows what is expected of us for the assignment, but also follows the underlying concepts behind input space partitioning.
+
+For the next sprint we will continue to start early and contribute often, but will also be planning on piecing together our ISP table at the start rather than halfway through the sprint. It was a very useful tool for identifying areas of testing that we had overlooked and having it set up right out of the gate will streamline many of our processes moving forward.
