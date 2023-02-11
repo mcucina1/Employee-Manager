@@ -188,7 +188,7 @@ public class QualificationTest {
 	}
 
 	@Test
-	public void testRemoveWorkers() {
+	public void testRemoveWorker() {
 		Set<Worker> expectedWorkers = createExpectedWorkers();
 
 		Set<Qualification> workerQualifications = new HashSet<>();
@@ -217,5 +217,49 @@ public class QualificationTest {
 
 		assertEquals(expectedWorkers, qualification.getWorkers());
 		
+	}
+
+	@Test
+	public void testRemoveWorkerWhenGivenNull() {
+		Worker nullWorker = null;
+		Set<Qualification> workerQualifications = new HashSet<>();
+		Worker worker = new Worker ("Jokim Broden", workerQualifications, 100.0);		
+		qualification.addWorker(worker);
+
+		Set<Worker> expectededWorkers = new HashSet<>();
+		expectededWorkers.add(worker);
+
+		qualification.removeWorker(nullWorker);
+		assertEquals(expectededWorkers, qualification.getWorkers());
+	}
+
+	@Test 
+	public void testRemoveWorkerWhenWorkerIsntPresent() {
+		Set<Worker> expectedWorkers = createExpectedWorkers();
+
+		Set<Qualification> workerQualifications = new HashSet<>();
+		Worker firstWorker = new Worker ("Jokim Broden", workerQualifications, 100.0);
+		Worker secondWorker = new Worker ("Par Sundstrom", workerQualifications, 51.0);
+		Worker thirdWorker = new Worker ("Chris Rorland", workerQualifications, 50.0);
+
+		qualification.addWorker(firstWorker);
+		qualification.addWorker(secondWorker);
+		qualification.addWorker(thirdWorker);
+
+		Worker workerThatIsntPresent = new Worker("Not in the Set", workerQualifications, 0.0);
+
+		qualification.removeWorker(workerThatIsntPresent);
+
+		assertEquals(expectedWorkers, qualification.getWorkers());
+	} 
+
+	@Test
+	public void testRemoveWorkerWhenTheSetIsNull() {
+		Set<Qualification> workerQualifications = new HashSet<>();
+		Worker workerToRemove = new Worker ("Jokim Broden", workerQualifications, 100.0);
+
+		qualification.removeWorker(workerToRemove);
+
+		assertNotEquals(null, qualification.getWorkers());
 	}
 }

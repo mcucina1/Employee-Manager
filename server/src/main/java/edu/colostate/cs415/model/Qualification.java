@@ -62,6 +62,10 @@ public class Qualification {
 	}
 
 	public void removeWorker(Worker worker) {
+		if(workers == null) {
+			workers = new HashSet<>();
+		}
+		
 		if(!(worker == null)) {
 			workers.remove(worker);
 		}

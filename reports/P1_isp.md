@@ -49,12 +49,12 @@
 #### removeWorker Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| Worker | null-ness | Null  | Null |   |
-|  |  | Not null  | Worker object to remove in existing set |   |
-|  | Exists | Valid in set  | Worker object to remove existing in set |   |
-|  |  | Not in set  | Worker object to not in set |   |
-| Set of Workers | exists | Set already exists  | addWroker() call on existing set |   |
-|  |  | Set does not exist  | addWorkers() call without existing set |   |
+| Worker | null-ness | Null  | Null | testRemoveWorkerWhenGivenNull()  |
+|  |  | Not null  | Worker object to remove in existing set | testRemoveWorker() |
+|  | Exists | Valid in set  | Worker object to remove existing in set | testRemoveWorker()  |
+|  |  | Not in set  | Worker object to not in set | testRemoveWorkerWhenWorkerIsntPresent()|
+| Set of Workers | exists | Set already exists  | addWorker() call on existing set | testRemoveWorker() |
+|  |  | Set does not exist  | addWorkers() call without existing set |testRemoveWorkerWhenTheSetIsNull()|
 |  |   |   |   |   |
 
 #### toDTO Method
