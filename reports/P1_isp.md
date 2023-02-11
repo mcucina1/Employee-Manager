@@ -86,11 +86,11 @@
 #### equals Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| object  | null  | null  | null  |   |
-|   |  | not null  | Worker("John", testQualifications, 30000.0)  |   |
-|   | Object Type  |  Worker | Worker("John", testQualifications, 30000.0))  |   |
-|   |   |  Non-Worker | String nonWorker = "John"  |   |
-|   |   |  Equals self | This.Worker  |   |
+| object  | null  | null  | null  | testEqualsWithNull()  |
+|   |  | not null  | Worker("John", testQualifications, 30000.0)  | testEquals()  |
+|   | Object Type  |  Worker | Worker("John", testQualifications, 30000.0))  |  testEquals() |
+|   |   |  Non-Worker | String nonWorker = "John"  | testEqualsWithNonWorker()  |
+|   |   |  Equals self | This.Worker  | testEqualsWithTheSameObject()  |
 
 #### hashCode Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
