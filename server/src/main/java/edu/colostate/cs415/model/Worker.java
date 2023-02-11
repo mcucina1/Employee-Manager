@@ -102,6 +102,13 @@ public class Worker {
 	}
 
 	public void addProject(Project project) {
+		if (project == null) {
+			throw new IllegalArgumentException("Cannot add a null project.");
+		}
+		if (projects == null) {
+			projects = new HashSet<>();
+		}
+
 		projects.add(project);
 	}
 
