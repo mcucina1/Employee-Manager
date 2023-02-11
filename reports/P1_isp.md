@@ -35,7 +35,7 @@
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
 | Set of Workers |  Emptiness | Empty | Worker set without members | testGetWorkersWithEmptyWorkers() |
-|  |  Emptiness | Null |  Worker set assigned null |   |
+|  |  Emptiness | Null |  Worker set assigned null | testGetWorkersWithUnititalizedSet()  |
 |  |  Emptiness | Not empty |  Returns set w/ workers | testGetWorkers() |
 
 #### addWorker Method

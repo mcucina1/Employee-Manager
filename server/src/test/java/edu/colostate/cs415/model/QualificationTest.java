@@ -125,6 +125,11 @@ public class QualificationTest {
 		assertEquals(expectedWorkers, qualification.getWorkers());
 	}
 
+	@Test
+	public void testGetWorkersWithUnititalizedSet() {
+		Set<Worker> expectedEmptySet = new HashSet<>();
+		assertEquals(expectedEmptySet, qualification.getWorkers());
+	}
 
 	@Test
 	public void testGetWorkers() {
