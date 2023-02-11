@@ -11,6 +11,9 @@ public class Qualification {
 	private Set<Worker> workers;
 
 	public Qualification(String description) {
+		if(description == null || description == "" || description.trim().isEmpty()){
+			throw new IllegalArgumentException("Description must not be null.");
+		}
 		this.description = description;
 	}
 

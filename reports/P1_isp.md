@@ -5,11 +5,11 @@
 (We acknowledge that null and empty characteristics exist, but are chosing not to address it because of limited information in the specifications.)
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| Description  | null strings  | null  |  null |   |
-|   |   | not null  | not null  |   |
-|   |  emptiness | empty string  | ""  |   |
-|   |   | white-space only string  | " "  |   |
-|   |   | full string  | "Engineer"  |   |
+| Description  | null strings  | null  |  null | testQualificationNonNull() |
+|   |   | not null  | not null  | testQualificationConstructor() |
+|   |  emptiness | empty string  | ""  | testQualificationEmptyString() |
+|   |   | white-space only string  | "         "  | testQualificationWhiteSpaceString() |
+|   |   | full string  | "Engineer"  | testQualificationConstructor() |
 
 #### equals Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |

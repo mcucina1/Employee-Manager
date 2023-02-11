@@ -33,6 +33,30 @@ public class QualificationTest {
 		assertDescriptionMatchesExpected(qualification, sampleDescription);
 	}
 
+	@Test(expected = IllegalArgumentException.class)
+	public void testQualificationNonNull(){
+		String nullString = null;
+		Qualification nullQual = new Qualification(nullString);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testQualificationEmptyString(){
+		String emptyString = "";
+		Qualification emptyQual = new Qualification(emptyString);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testQualificationWhiteSpaceString(){
+		String whiteSpaceString = "          ";
+		Qualification emptyQual = new Qualification(whiteSpaceString);
+	}
+
+	@Test
+	public void testQualificationPaddedString(){
+		String whiteSpaceString = "    Dave     ";
+		Qualification emptyQual = new Qualification(whiteSpaceString);
+	}
+
 	@Test
 	public void testGetDescription() {
 		assertDescriptionMatchesExpected(qualification, sampleDescription);
