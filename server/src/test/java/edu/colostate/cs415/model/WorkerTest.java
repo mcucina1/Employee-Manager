@@ -131,6 +131,32 @@ public class WorkerTest {
 	}
 
 	@Test
+	public void testAddQualToAnEmptySet() {
+		Set<Qualification> testQualSet = new HashSet<>();
+		Worker notQualifiedWorker = new Worker(sampleName, testQualSet, sampleSalary);
+
+		Qualification newQualification = new Qualification("Sample Qualification");
+		notQualifiedWorker.addQualification(newQualification);
+
+		assertEquals(worker.getQualifications(), notQualifiedWorker.getQualifications());
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddQualAddingNull() {
+		worker.addQualification(null);
+	}
+
+	@Test
+	public void testAddQualAddingPrexistingQual() {
+		Set<Qualification> expectedQualificaitons = worker.getQualifications();
+		
+		Qualification prexistingQualification = new Qualification("Sample Qualification");
+		worker.addQualification(prexistingQualification);
+
+		assertEquals(expectedQualificaitons, worker.getQualifications());
+	}
+
+	@Test
 	public void testToString() {
 		String expectedString = "Sample Name:0:1:10";
 		assertEquals(expectedString, worker.toString());

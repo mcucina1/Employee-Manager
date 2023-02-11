@@ -88,8 +88,8 @@ public class Worker {
 	}
 
 	public void addQualification(Qualification qualification) {
-		if (qualifications == null) {
-			qualifications = new HashSet<Qualification>();
+		if (qualification == null) {
+			throw new IllegalArgumentException("Cannot add a null qualification.");
 		}
 
 		if (!(qualifications.contains(qualification))) {

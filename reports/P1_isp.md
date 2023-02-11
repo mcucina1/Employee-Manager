@@ -138,12 +138,12 @@
 #### addQualification Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| qualification  | nullity  | null  |  null  |   |
-|   |   |  not null | instantiated qualification |   |
-| qualifications  | nullity  | null  |  null  |   |
-|   |   |  not null | non-empty Set of qualifications |   |
-|   | emptiness  |  empty set | empty Set of qualifications  |   |
-|   | emptiness  |  Set with qualifications | Set with qualifications  |   |
+| qualification  | nullity  | null  |  null  | testAddQualAddingNull()  |
+|   |   |  not null | instantiated qualification | testAddQualification()  |
+| qualifications  | nullity  | null  |  null  | Qualifications cannot be null. See testWorkerNullQualificationSet()  |
+|   |   |  not null | non-empty Set of qualifications | testAddQualification()  |
+|   | emptiness  |  empty set | empty Set of qualifications  | testAddQualToAnEmptySet() |
+|   | emptiness  |  Set with qualifications | Set with qualifications  |  testAddQualification() |
 
 #### getProjects Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
