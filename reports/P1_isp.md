@@ -140,7 +140,7 @@
 | qualifications  | nullity  | null  |  null  | testWorkerNullQualificationSet() |
 |   |   |  not null | non-empty Set of qualifications | testGetQualifications() |
 |   | emptiness  |  empty set | empty Set of qualifications  | testGetEmptyQualifications() |
-|   | emptiness  |  Set with qualifications | Set with qualifications  | testGetQualifications() |
+|   |   |  Set with qualifications | Set with qualifications  | testGetQualifications() |
 
 #### addQualification Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
