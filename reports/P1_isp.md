@@ -156,10 +156,10 @@
 #### addProject Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| Project | Null-ness | Null| Null |   |
-|  | Null-ness | Not null | Object of project type |   |
-| Set of Workers | exists | Set already exists  | addProject() call on existing set |   |
-|  | exists | Set does not exist  | addProject() call without existing set |   |
+| Project | Null-ness | Null| Null | testAddNullProject()  |
+|  | Null-ness | Not null | Object of project type | testAddProject()  |
+| Set of Workers | exists | Set already exists  | addProject() call on existing set | testAddProject()  |
+|  | exists | Set does not exist  | addProject() call without existing set |  testAddToUninitializedProjects() |
 
 #### removeProject Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |

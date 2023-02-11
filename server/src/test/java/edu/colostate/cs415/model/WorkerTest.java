@@ -357,4 +357,49 @@ public class WorkerTest {
 
 		assertEquals(expectedDTO, actualDTO);
 	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddNullProject() {
+		worker.addProject(null);
+	}
+
+	@Test
+	public void testAddProject() {
+		Set<Project> expected = buildExpectedProjects();
+		
+		Project projectOne = new Project("Project One", sampleQualifications, ProjectSize.SMALL);
+		Project projectTwo = new Project("Project Two", sampleQualifications, ProjectSize.MEDIUM);
+		Project projectThree = new Project("Project Three", sampleQualifications, ProjectSize.BIG);
+
+		worker.addProject(projectOne);
+		worker.addProject(projectTwo);
+		worker.addProject(projectThree);
+
+		assertEquals(expected, worker.getProjects());
+	}
+
+	@Test
+	public void testAddToUninitializedProjects() {
+		Set<Project> expected = new HashSet<>();
+		Project projectOne = new Project("Project One", sampleQualifications, ProjectSize.SMALL);
+		expected.add(projectOne);
+
+		worker.addProject(projectOne);
+
+		assertEquals(expected, worker.getProjects());
+	}
+
+	private Set<Project> buildExpectedProjects() {
+		Set<Project> expected = new HashSet<>();
+
+		Project projectOne = new Project("Project One", sampleQualifications, ProjectSize.SMALL);
+		Project projectTwo = new Project("Project Two", sampleQualifications, ProjectSize.MEDIUM);
+		Project projectThree = new Project("Project Three", sampleQualifications, ProjectSize.BIG);
+
+		expected.add(projectOne);
+		expected.add(projectTwo);
+		expected.add(projectThree);
+
+		return expected;
+	}
 }
