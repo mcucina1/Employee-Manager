@@ -34,7 +34,7 @@ public class QualificationTest {
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void testQualificationNonNull(){
+	public void testQualificationNull(){
 		String nullString = null;
 		Qualification nullQual = new Qualification(nullString);
 	}
