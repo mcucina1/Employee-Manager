@@ -28,8 +28,8 @@
 #### toString Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| Description | Initialized | Non-Null | Qualification w/ description "Engineer" |   |
-|  |  | Null | null value |   |
+| Description | Initialized | Non-Null | Qualification w/ description "Engineer" |  testToString() |
+|  |  | Null | null value | testQualificationNull() |
 |   |   |   |   |   |
 
 #### getWorkers Method
