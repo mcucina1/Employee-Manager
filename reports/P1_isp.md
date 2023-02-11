@@ -273,35 +273,58 @@
 #### removeAllWorkers Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
+|  workers |  nullity   |  null     |  null |   |
+|          |            | not null  |  an initialized workers set |   |
+|          | emptiness  | empty     | an empty workers set   |   |
+|          |            | not empty | a workers set with at least 1 worker  |   |
 
 #### getRequiredQualifications Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
+| Qualifications | Nullity  | Null      | Null  |   |
+|                |          | Not null  | initialized qualificaitons      |   |
 
 #### addQualification Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
+|  qualification | nullity | null    | null                         |   |
+|                |         | not null| an initialized qualificaiton |   |
+|                |presence in qualifications|not in qualifications|a qualification that isn't in qualifications|   |
+|                |                          |already qualifications|a qualification that is in qualificaiton|   |
+| qualifications | nullity  | null   | null  |   |
+|                |          |not null|an initialized qualifications set|   |
 
 #### getMissingQualifications Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
-
+| Workers      |Nullity  |Null     |Null                |   |
+|              |         |Not Null |Initialized Workers |   |
+|              |Emptiness|Empty    |Empty set           |   |
+|              |         |1 worker |set with 1 worker |   |
+|              |         |>1 worker|set with 3 workers|   |
+|Qualifications|Nullity  |Null     |Null                |   |
+|              |         |Not Null |Initialized quals   |   |
+|              |Emptiness|Empty    |Empty set           |   |
+|              |         |1 qual   |set with 1 qual|   |
+|              |         |>1 qual  |set with 3 quals   |   |
 #### isHelpful Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
+| Worker  | nullity  | null      | null                   |   |
+|         |          | not null  | an initialized worker  |   |
 
 #### toDTO Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
+|  projectDTO Object | Nullity | Null     | Null projectDTO |   |
+|                    |           | Not null | Valid projectDTO object |  |
+| Qualificaitons | Nullity     | Null     | Null  |   |
+|                |             | Not null | initialized qualifictaions |   |
+|              |Emptiness|Empty    |Empty set           |   |
+|              |         |1 qual   |set with 1 qual|   |
+|              |         |>1 qual  |set with 3 quals   |   |
+| Workers | Nullity     | Null     | Null             |   |
+|         |             | Not null |initalized workers|   |
+|         |  Emptiness  |  empty   |empty set         |   |
+|         |             |1 worker  |set with 1 worker |   |
+|         |             |>1 worker |set with 3 workers|   |
