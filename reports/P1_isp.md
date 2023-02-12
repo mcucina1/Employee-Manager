@@ -289,8 +289,8 @@
 |---|---|---|---|---|
 | worker  | null  | null  | no value  |  testAddWorkerNullValue() |
 |   |   |  not null | valid worker  |  testAddWorker() |
-|  Set of workers | null  |  null | no initilized worker set  |   |
-|   |   |  not null | initialized worker set  |   |
+|  Set of workers | null  |  null | no initilized worker set  |  Cannot be null, see testSetOfWorkersNull() |
+|   |   |  not null | initialized worker set  |  testAddWorker() |
 |   | adds worker  |  add worker | worker  | testAddWorker()  |
 
 #### removeWorker Method
