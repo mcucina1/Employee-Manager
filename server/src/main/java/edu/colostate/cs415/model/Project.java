@@ -19,6 +19,7 @@ public class Project {
 		this.qualifications = qualifications;
 		this.size = size;
 		this.status = ProjectStatus.PLANNED;
+		this.workers = new HashSet<>();
 	}
 
 	@Override

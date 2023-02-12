@@ -315,10 +315,10 @@
 #### removeAllWorkers Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|  workers |  nullity   |  null     |  null |   |
-|          |            | not null  |  an initialized workers set |   |
-|          | emptiness  | empty     | an empty workers set   |   |
-|          |            | not empty | a workers set with at least 1 worker  |   |
+|  workers |  nullity   |  null     |  null | testRemoveAllNullWorkers()  |
+|          |            | not null  |  an initialized workers set |  testRemoveAll() |
+|          | emptiness  | empty     | an empty workers set   | testRemoveAllWorkersFromEmptyWorkers()  |
+|          |            | not empty | a workers set with at least 1 worker  |  testRemoveAll() |
 
 #### getRequiredQualifications Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
