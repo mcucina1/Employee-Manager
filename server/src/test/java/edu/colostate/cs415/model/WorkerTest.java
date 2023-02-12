@@ -283,7 +283,7 @@ public class WorkerTest {
  		Qualification nonEmptyWorkerQual = new Qualification("Some Projects");
  		Set<Qualification> qualSet = new HashSet<Qualification>();
  		Worker workerNonEmptyProj = new Worker("John", qualSet, 30000.0);
- 		Project sampleProject = new Project("Test Project", qualSet, null);
+ 		Project sampleProject = new Project("Test Project", qualSet, ProjectSize.SMALL);
  		workerNonEmptyProj.addProject(sampleProject);
  		assertFalse(workerNonEmptyProj.getProjects().isEmpty());
  	}
