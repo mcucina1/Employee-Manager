@@ -6,6 +6,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.HashSet;
 
@@ -413,6 +414,18 @@ public class WorkerTest {
 		WorkerDTO actualDTO = worker.toDTO();
 
 		assertEquals(expectedDTO, actualDTO);
+	}
+
+	@Test
+	public void testNullToDTO(){
+		WorkerDTO nullDTO = null;
+		assertEquals(null, nullDTO);
+	}
+
+	@Test (expected = IllegalArgumentException.class)
+	public void testNullQualToDTO(){
+		Worker nullQuals = new Worker("Null Qual Worker", null,1.0);
+		WorkerDTO nullQualDTO = nullQuals.toDTO();
 	}
 
 	@Test(expected = IllegalArgumentException.class)
