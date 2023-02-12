@@ -97,8 +97,9 @@
 #### hashCode Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| Hashcode | Initialized | Non-Null | Worker.name hashcode |   |
-|  |  | Null | null value |   
+| Hashcode | Initialized | Non-Null | Worker identical hashcode |  testHashCodeIsTheSameForIdenticalWorkers()|
+| Hashcode | Initialized | Non-Null | Worker different hashcodes|  testHashCodeIsDifferentForDifferentWorkers()|
+|  |  | Null | null value |  name is prevented from being null. See testNameNull() |  
 
 #### toString Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
