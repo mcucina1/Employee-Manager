@@ -271,6 +271,24 @@ public class WorkerTest {
 	}
 
 	@Test
+ 	public void testGetProjectEmpty(){
+ 		Qualification emptyWorkerQual = new Qualification("No Projects");
+ 		Set<Qualification> qualSet = new HashSet<Qualification>();
+ 		Worker workerEmptyProj = new Worker("John", qualSet, 30000.0);
+ 		assertTrue(workerEmptyProj.getProjects().isEmpty());
+ 	}
+
+ 	@Test
+ 	public void testGetProjectNotEmpty(){
+ 		Qualification nonEmptyWorkerQual = new Qualification("Some Projects");
+ 		Set<Qualification> qualSet = new HashSet<Qualification>();
+ 		Worker workerNonEmptyProj = new Worker("John", qualSet, 30000.0);
+ 		Project sampleProject = new Project("Test Project", qualSet, null);
+ 		workerNonEmptyProj.addProject(sampleProject);
+ 		assertFalse(workerNonEmptyProj.getProjects().isEmpty());
+ 	}
+
+	@Test
 	public void testGetWorkload() {
 		Worker expectedWorker = buildExpectedWorker();
 		int expected = expectedWorker.getWorkload();
