@@ -224,14 +224,14 @@
 |   |  emptiness | empty string  | ""  |  testProjectConstructorEmptyName() |
 |   |   | white-space only string  | " "  | testProjectConstructorWhiteSpaceName()  |
 |   |   | full string  | "Test Project"  | setUp()  |
-|  qualifications | null  | null  |   |   |
-|   |   | not null  |   |   |
-|   | emptiness  | empty set  |   |   |
-|   |   | filled set  |   |   |
-|  size | null  | null  |  null |   |
-|   |   | not null  |  Valid ProjectSize |   |
-|  status | null  | null  |  null |   |
-|   |   | not null  | must be status.PLANNED  |   |
+|  qualifications | null  | null  | null  | testProjectConstructorQualNull()  |
+|   |   | not null  | Project(testProjectName, testQualifications, ProjectSize.SMALL);  |  setUp() |
+|   | emptiness  | empty set  |  Empty HashSet |  testProjectConstructorQualEmpty() |
+|   |   | filled set  | non empty HashSet  | setUp()  |
+|  size | null  | null  |  null | testProjectConstructorSizeNull()  |
+|   |   | not null  |  Valid ProjectSize | setUp()  |
+|  status | null  | null  |  null | not allowed by constructor, inistatiated to ProjectStatus.PLANNED, see testGetStatus()  |
+|   |   | not null  | must be status.PLANNED  |  not allowed by constructor, inistatiated to ProjectStatus.PLANNED, see testGetStatus() |
 #### equals Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
