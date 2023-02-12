@@ -199,10 +199,10 @@
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
 | Project | Null-ness | Null| Null | testAddNullProject()  |
-|  | Null-ness | Not null | Object of project type | testAddProject()  |
-|  |  Already Assigned Project | Assigned Project | Project Object already in current project set |   |
-|  |  Project that Will overload | Overloading Project  | A Project that will overload the Worker  |   |
-|  |  Project that will NOT overload | Non-Overloading Project  | A Project that will NOT overload the Worker  |   |
+|  | Null-ness | Not null | Object of project type | testWillOverload() |
+|  |  Already Assigned Project | Assigned Project | Project Object already in current project set | testWillOverload() |
+|  |  Project that Will overload | Overloading Project  | A Project that will overload the Worker  | testWillOverload() |
+|  |  Project that will NOT overload | Non-Overloading Project  | A Project that will NOT overload the Worker  | testWillOverload() |
 
 #### isAvailable Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
