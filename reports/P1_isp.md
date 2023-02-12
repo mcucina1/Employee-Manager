@@ -308,8 +308,8 @@
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
 | Set of Workers |  Emptiness | Empty | Worker set without members |   |
-|  |  Emptiness | Null |  Worker set assigned null |   |
-|  |  Emptiness | Not empty |  Returns set w/ workers |   |
+|  |  Emptiness | Null |  Worker set assigned null |  workers cannot be null. |
+|  |  Emptiness | Not empty |  Returns set w/ workers | testGetWorkers()  |
 |   |   |   |   |   |
 
 #### removeAllWorkers Method

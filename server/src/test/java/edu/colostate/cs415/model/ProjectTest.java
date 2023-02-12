@@ -385,4 +385,23 @@ public class ProjectTest {
 		assertTrue(testProj.isHelpful(testWorker));
 	}
 
+	@Test
+	public void testGetWorkers() {
+		Set<Worker> expectedWorkers = new HashSet<>();
+		Worker workerOne = new Worker("Worker One", qualifications, 96000.10);
+		Worker workerTwo = new Worker("Worker Two", qualifications, 0.64);
+		expectedWorkers.add(workerOne);
+		expectedWorkers.add(workerTwo);
+
+		assertEquals(expectedWorkers, testProject.getWorkers());
+	}
+
+	@Test
+	public void testGetEmptyWorkers() {
+		Project project = new Project(testProjectName, qualifications, ProjectSize.BIG);
+		Set<Worker> emptySet = new HashSet<>();
+
+		assertEquals(emptySet, project.getWorkers());
+	}
+
 }
