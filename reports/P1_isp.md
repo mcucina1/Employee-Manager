@@ -288,10 +288,10 @@
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
 | worker  | null  | null  | no value  |   |
-|   |   |  not null | valid worker  |   |
+|   |   |  not null | valid worker  |  testAddWorker() |
 |  Set of workers | null  |  null | no initilized worker set  |   |
 |   |   |  not null | initialized worker set  |   |
-|   | adds worker  |  add worker | worker  |   |
+|   | adds worker  |  add worker | worker  | testAddWorker()  |
 
 #### removeWorker Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
