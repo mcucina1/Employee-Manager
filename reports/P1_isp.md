@@ -198,8 +198,11 @@
 #### willOverload Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
+| Project | Null-ness | Null| Null | testAddNullProject()  |
+|  | Null-ness | Not null | Object of project type | testAddProject()  |
+|  |  Already Assigned Project | Assigned Project | Project Object already in current project set |   |
+|  |  Project that Will overload | Overloading Project  | A Project that will overload the Worker  |   |
+|  |  Project that will NOT overload | Non-Overloading Project  | A Project that will NOT overload the Worker  |   |
 
 #### isAvailable Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
@@ -210,12 +213,12 @@
 #### toDTO Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|  WorkerDTO Object | Null-ness | Null | Null WorkerDTO |   |
+|  WorkerDTO Object | Null-ness | Null | Null WorkerDTO | testNullDTO  |
 |  |  | Not null | Valid WorkerDTO object | testToDTO |
-| Qualifications | Initialized | Null |   |   |
+| Qualifications | Initialized | Null |   | testNullQualToDTO |
 |  |  | Not null |   | testToDTO  |
 |  |  | Not empty set |   | testToDTO  |
-| Projects | Initialized | Null |   |   |
+| Projects | Initialized | Null |   | Impossible State |
 |  |  | Not null |   | testToDTO  |
 |  |  | Not empty set |   | testToDTO  |
 
