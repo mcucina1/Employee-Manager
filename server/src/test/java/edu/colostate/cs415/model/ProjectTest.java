@@ -167,6 +167,11 @@ public class ProjectTest {
 		assertEquals(testProject.getStatus(), ProjectStatus.PLANNED);
 	}
 
+	@Test(expected = IllegalArgumentException.class)
+	public void testSetStatusNull() {
+		testProject.setStatus(null);
+	}
+
 	@Test
 	public void testSetAndGetStatus() {
 		testProject.setStatus(ProjectStatus.ACTIVE);

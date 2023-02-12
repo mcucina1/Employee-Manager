@@ -60,6 +60,10 @@ public class Project {
 	}
 
 	public void setStatus(ProjectStatus status) {
+		if (status == null)  {
+			throw new IllegalArgumentException("Status cannot be set to null.");
+		}
+
 		this.status = status;
 	}
 
