@@ -282,6 +282,22 @@ public class ProjectTest {
 	}
 
 	@Test
+	public void testRemoveWorkerNullValue() {
+		assertEquals(workers, testProject.getWorkers());
+		testProject.removeWorker(null);
+		workers.remove(null);
+		assertEquals(workers, testProject.getWorkers());
+	}
+
+	@Test 
+	public void testRemoveWorkerNotInSet() {
+		assertEquals(workers, testProject.getWorkers());
+		Worker workerNotInSet = new Worker("Human Alarm Clock", qualifications, 100000);
+		testProject.removeWorker(workerNotInSet);
+		assertEquals(workers, testProject.getWorkers());
+	}
+
+	@Test
 	public void testHashcodeWithIdenticalProjects() {
 		int projectHashcode = testProject.hashCode();
 

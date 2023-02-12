@@ -297,13 +297,12 @@
 #### removeWorker Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| Worker | null-ness | Null  | Null |   |
-|  | null-ness | Not null  | Worker object to remove existing in set |   |
-|  | Exists | Valid in set  | Worker object to remove existing in set |   |
-|  | Exists | Not in set  | Worker object to not in set |   |
-| Set of Workers | exists | Set already exists  | addWorker() call on existing set |   |
-|  | exists | Set does not exist  | addWorkers() call without existing set |   |
-|  |   |   |   |   |
+| Worker | null-ness | Null  | Null |  testRemoveWorkerNullValue() |
+|  | null-ness | Not null  | Worker object to remove existing in set | testRemoveWorker()  |
+|  | Exists | Valid in set  | Worker object to remove existing in set | testRemoveWorker()  |
+|  | Exists | Not in set  | Worker object to not in set | testRemoveWorkerNotInSet()  |
+| Set of Workers | exists | Set already exists  | removeWorker() call on existing set |  testRemoveWorkers() |
+|  | exists | Set does not exist  | removeWorker() call without existing set | not allowed by Constructor (set initliazed on construction)  |
 
 #### getWorkers Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
