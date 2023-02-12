@@ -61,13 +61,13 @@
 #### toDTO Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|  qualDTO Object | Null-ness | Null | Null qualDTO |   |
-|  |  | Not null | Valid qualDTO object |  |
-| Description | Initialized | Null |  |   |
-|  |  | Not null |  |   |
-| Workers | Initialized | Null |   |   |
-|  |  | Not null |   |   |
-|  |  | Not empty set |   |   |
+|  qualDTO Object | Null-ness  | Null          | Null qualDTO         |  returned dto cannot be null. |
+|                 |            | Not null      | Valid qualDTO object |  testToDTO() |
+| Description     | Initialized| Null          | null                 |  Cannot be null. |
+|                 |            | Not null      | a non-null string    |  testToDTO()  |
+| Workers         | Initialized| Null          | null                 |  Cannot be null. |
+|                 |            | Not null      | a worker set         |  testToDTO()   |
+|                 |            | Not empty set | a set with no workers|  testToDTOEmptyWorkers() |
 ## Worker Class
 #### Constructor Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |

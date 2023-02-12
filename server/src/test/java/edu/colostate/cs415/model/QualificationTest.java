@@ -183,6 +183,17 @@ public class QualificationTest {
 		assertEquals(expectedDTO, actualDTO);
 	}
 
+	@Test
+	public void testToDTOEmptyWorkers(){
+		Qualification emptyWorkersQualification = new Qualification(sampleDescription);
+
+		QualificationDTO emptyWorkerDTO = emptyWorkersQualification.toDTO();
+
+		int DTOWorkersLength = emptyWorkerDTO.getWorkers().length;
+
+		assertEquals(0, DTOWorkersLength);
+	}
+
 	public void assertDescriptionMatchesExpected(Qualification qualification, String expectedDescription) {
 		assertEquals(qualification.toString(), expectedDescription);
 	}
