@@ -210,8 +210,14 @@
 #### toDTO Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
+|  WorkerDTO Object | Null-ness | Null | Null WorkerDTO |   |
+|  |  | Not null | Valid WorkerDTO object | testToDTO |
+| Qualifications | Initialized | Null |   |   |
+|  |  | Not null |   | testToDTO  |
+|  |  | Not empty set |   | testToDTO  |
+| Projects | Initialized | Null |   |   |
+|  |  | Not null |   | testToDTO  |
+|  |  | Not empty set |   | testToDTO  |
 
 
 ## Project Class
