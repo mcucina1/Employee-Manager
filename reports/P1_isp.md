@@ -281,8 +281,8 @@
 #### setStatus Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| status  | null  | null  | null  |   |
-|   |  not null | ProjectStatus  | ProjectStatus.ACTIVE  |   |
+| status  | null  | null  | null  | testSetStatusNull()  |
+|   |  not null | ProjectStatus  | ProjectStatus.ACTIVE  |  testSetAndGetStatus() |
 
 #### addWorker Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
