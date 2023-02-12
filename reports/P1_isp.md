@@ -263,15 +263,15 @@
 #### getSize Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| ProjectSize  | Valid  |  Return size  | size  |   |
-|   |   |   |   |   |
+| ProjectSize  | Nullity  |  not null  | SMALL  |  testGetSize() |
+|              |          |            |  null  | size cannot be null  |
 
 
 #### setSize Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| ProjectSize  | Valid  | Set Size  | SMALL  |   |
-|   |   |   |   |   |
+| ProjectSize  | Nullity  | not null  | SMALL  | testSetSize()  |
+|              |          | null      |  null  | testSetSizeNull()  |
 
 
 #### getStatus Method
