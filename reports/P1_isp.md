@@ -219,11 +219,11 @@
 #### Constructor Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|  name |  null | null  |   |   |
-|   |   | not null  |   |   |
-|   |  emptiness | empty string  | ""  |   |
-|   |   | white-space only string  | " "  |   |
-|   |   | full string  | "Project 1"  |   |
+|  name |  null | null  | null | testProjectConstructorNullName() |
+|   |   | not null  | Project(testProjectName, testQualifications, ProjectSize.SMALL);  | setUp()  |
+|   |  emptiness | empty string  | ""  |  testProjectConstructorEmptyName() |
+|   |   | white-space only string  | " "  | testProjectConstructorWhiteSpaceName()  |
+|   |   | full string  | "Test Project"  | setUp()  |
 |  qualifications | null  | null  |   |   |
 |   |   | not null  |   |   |
 |   | emptiness  | empty set  |   |   |

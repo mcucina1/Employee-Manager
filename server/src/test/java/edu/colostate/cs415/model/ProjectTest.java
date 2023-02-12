@@ -56,6 +56,24 @@ public class ProjectTest {
 		testProject.addWorker(workerTwo);
 	}
 
+	@Test(expected = IllegalArgumentException.class)
+	public void testProjectConstructorEmptyName() {
+		String projectName = "";
+		Project Project = new Project(projectName, qualifications, ProjectSize.SMALL);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testProjectConstructorWhiteSpaceName() {
+		String projectName = " ";
+		Project Project = new Project(projectName, qualifications, ProjectSize.SMALL);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testProjectConstructorNullName() {
+		String projectName = null;
+		Project Project = new Project(projectName, qualifications, ProjectSize.SMALL);
+	}
+
 	@Test
 	public void test() {
 		assert (true);
