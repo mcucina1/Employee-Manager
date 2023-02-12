@@ -287,7 +287,7 @@
 #### addWorker Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| worker  | null  | null  | no value  |   |
+| worker  | null  | null  | no value  |  testAddWorkerNullValue() |
 |   |   |  not null | valid worker  |  testAddWorker() |
 |  Set of workers | null  |  null | no initilized worker set  |   |
 |   |   |  not null | initialized worker set  |   |
