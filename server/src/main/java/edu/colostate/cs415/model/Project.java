@@ -15,6 +15,9 @@ public class Project {
 	private Set<Qualification> qualifications;
 
 	public Project(String name, Set<Qualification> qualifications, ProjectSize size) {
+		if(name == null || name == "" || name.trim().isEmpty() || qualifications == null || size == null){
+			throw new IllegalArgumentException("No constructor fields may be null.");
+		}
 		this.name = name;
 		this.qualifications = qualifications;
 		this.size = size;

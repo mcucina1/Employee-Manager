@@ -42,6 +42,7 @@ public class ProjectTest {
 		Set<Qualification> testQualifications = new HashSet<Qualification>();
 		testQualifications.add(firstQualification);
 		testQualifications.add(secondQualification);
+		qualifications = testQualifications;
 
 		workerOne = new Worker("Worker One", testQualifications, 96000.10);
 		workerTwo = new Worker("Worker Two", testQualifications, 0.64);
@@ -56,6 +57,40 @@ public class ProjectTest {
 		testProject.addWorker(workerTwo);
 	}
 
+	@Test(expected = IllegalArgumentException.class)
+	public void testProjectConstructorEmptyName() {
+		String projectName = "";
+		Project Project = new Project(projectName, qualifications, ProjectSize.SMALL);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testProjectConstructorWhiteSpaceName() {
+		String projectName = " ";
+		Project Project = new Project(projectName, qualifications, ProjectSize.SMALL);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testProjectConstructorNullName() {
+		String projectName = null;
+		Project Project = new Project(projectName, qualifications, ProjectSize.SMALL);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testProjectConstructorQualNull() {
+		Set<Qualification> testQuals = null;
+		Project Project = new Project(testProjectName, testQuals, ProjectSize.SMALL);
+	}
+
+	public void testProjectConstructorQualEmpty() {
+		Set<Qualification> testQuals = new HashSet<>();
+		Project Project = new Project(testProjectName, testQuals, ProjectSize.SMALL);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testProjectConstructorSizeNull() {
+		Project Project = new Project(testProjectName, qualifications, null);
+	}
+
 	@Test
 	public void test() {
 		assert (true);
@@ -64,7 +99,7 @@ public class ProjectTest {
 	@Test
 	public void testEquals() {
 		Project projTwo = buildExpectedProject();
-		Project projThree = new Project("Boop", qualifications, null);
+		Project projThree = new Project("Boop", qualifications, ProjectSize.SMALL);
 		assertTrue(testProject.equals(projTwo));
 		assertFalse(testProject.equals(projThree));
 	}
