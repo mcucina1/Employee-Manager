@@ -82,6 +82,10 @@ public class Project {
 	}
 
 	public void removeAllWorkers() {
+		if (workers == null) {
+			workers = new HashSet<>();
+		}
+
 		this.workers.clear();
 	}
 

@@ -169,6 +169,28 @@ public class ProjectTest {
 	}
 
 	@Test
+	public void testRemoveAllNullWorkers() {
+		Project nullWorkersProject = new Project(testProjectName, qualifications, ProjectSize.SMALL);
+		nullWorkersProject.removeAllWorkers();
+
+		Set<Worker> expectedWorkers = new HashSet<>();
+
+		assertEquals(expectedWorkers, nullWorkersProject.getWorkers());
+	}
+
+	@Test
+	public void testRemoveAllWorkersFromEmptyWorkers() {
+		testProject.removeAllWorkers();
+		Set<Worker> expectedWorkers = new HashSet<>();
+		
+		assertEquals(expectedWorkers, testProject.getWorkers());
+
+		testProject.removeAllWorkers();
+		
+		assertEquals(expectedWorkers, testProject.getWorkers());
+	}
+
+	@Test
 	public void testSetSize() {
 		ProjectSize smallSize = ProjectSize.SMALL;
 		ProjectSize mediumSize = ProjectSize.MEDIUM;
