@@ -118,6 +118,12 @@ public class ProjectTest {
 	}
 
 	@Test
+	public void testSetOfWorkersNull() {
+		Project project = new Project("Project", qualifications, ProjectSize.SMALL);
+		assertTrue(project.getWorkers() != null);
+	}
+
+	@Test
 	public void testAddQualification() {
 		Project testProj = buildExpectedProject();
 		testProject.addQualification(new Qualification("That Guy"));
