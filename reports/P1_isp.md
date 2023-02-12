@@ -235,11 +235,11 @@
 #### equals Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| o  | null  | null  | null  |   |
-|   |  | not null  | not null  |   |
-|   | Object  |  Project | Project Object  |   |
-|   |   |  non-Project | String Object  |   |
-|   |   |  this.Project | current Object  |   |
+| o  | null  | null  | null  | testEqualsNull()  |
+|   |  | not null  | not null  | testEquals()  |
+|   | Object  |  Project | Project Object  | testEquals()  |
+|   |   |  non-Project | String Object  |  testEqualsNull() |
+|   |   |  this.Project | current Object  |  testEqualsSelf() |
 
 #### hashCode Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |

@@ -70,6 +70,21 @@ public class ProjectTest {
 	}
 
 	@Test
+	public void testEqualsNull() {
+		assertNotEquals(testProject, "Test Project");
+	}
+
+	@Test
+	public void testEqualsString() {
+		assertNotEquals(testProject, secondDescription);
+	}
+
+	@Test
+	public void testEqualsSelf() {
+		assertEquals(testProject, testProject);
+	}
+
+	@Test
 	public void testProjectConstructor() {
 		assert (true);
 	}
