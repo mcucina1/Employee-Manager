@@ -146,6 +146,19 @@ public class ProjectTest {
 	}
 
 	@Test
+	public void testAddWorkerNullValue() {
+		testProject.addWorker(null);
+		workers.add(null);
+		assertEquals(testProject.getWorkers(), workers);
+	}
+
+	@Test
+	public void testSetOfWorkersNull() {
+		Project project = new Project("Project", qualifications, ProjectSize.SMALL);
+		assertTrue(project.getWorkers() != null);
+	}
+
+	@Test
 	public void testAddQualification() {
 		Project testProj = buildExpectedProject();
 		testProject.addQualification(new Qualification("That Guy"));
