@@ -314,6 +314,10 @@ public class WorkerTest {
 
 		assertFalse(availableWorker.willOverload(ProjectOne));
 		assertTrue(availableWorker.willOverload(ProjectFive));
+
+		availableWorker.removeProject(ProjectFour);
+
+		assertFalse(availableWorker.willOverload(ProjectFour));
 	}
 
 	@Test
