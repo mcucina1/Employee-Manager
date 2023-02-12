@@ -282,6 +282,14 @@ public class ProjectTest {
 	}
 
 	@Test
+	public void testRemoveWorkerNullValue() {
+		assertEquals(workers, testProject.getWorkers());
+		testProject.removeWorker(null);
+		workers.remove(null);
+		assertEquals(workers, testProject.getWorkers());
+	}
+
+	@Test
 	public void testHashcodeWithIdenticalProjects() {
 		int projectHashcode = testProject.hashCode();
 
