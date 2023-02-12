@@ -19,6 +19,7 @@ public class Project {
 		this.qualifications = qualifications;
 		this.size = size;
 		this.status = ProjectStatus.PLANNED;
+		this.workers = new HashSet<>();
 	}
 
 	@Override
@@ -82,10 +83,6 @@ public class Project {
 	}
 
 	public void removeAllWorkers() {
-		if (workers == null) {
-			workers = new HashSet<>();
-		}
-
 		this.workers.clear();
 	}
 
