@@ -185,18 +185,12 @@
 |---|---|---|---|---|
 |  workload | null-ness  | null  | null  | not allowed, projects is initialized  |
 |   |   | not null  | Set of Projects  | testGetWorkload()  |
-|   | ProjectSize  | ALL BIG  | ALL BIG  |   |
-|   |   | ALL MEDIUM  | ALL MEDIUM   |   |
-|   |   | ALL SMALL  | ALL SMALL  |   |
-|   |   | MIXED Project Sizes | BIG, MEDIUM, SMALL  |   |
-|   |   | MIXED Project Sizes | BIG, BIG, SMALL  |   |
-|   |   | MIXED Project Sizes | BIG, BIG, MEDIUM  |   |
-|   |   | MIXED Project Sizes | BIG, MEDIUM, MEDIUM  |   |
-|   |   | MIXED Project Sizes | SMALL, MEDIUM, MEDIUM  |   |
-|   |   | MIXED Project Sizes | SMALL, SMALL, BIG  |   |
-|   |   | MIXED Project Sizes | SMALL, SMALL, MEDIUM  |   |
-| ProjectStatus  | FINISHED  | FINISHED | FINISHED  |   |
-| ProjectStatus  | NOT FINISHED  | NOT FINISHED | NOT FINISHED  |   |
+|   | ProjectSize  | ALL BIG  | ALL BIG  |  testGetWorkloadBig() |
+|   |   | ALL SMALL  | ALL SMALL  | testGetWorkloadSmall()  |
+|   |   | MIXED Project Sizes | BIG, MEDIUM, SMALL  |  testGetWorkload() |
+|   |   | empty | empty set  |  testGetWorkloadEmpty() |
+| ProjectStatus  | FINISHED  | FINISHED | FINISHED  | testGetWorkloadFinished()  |
+| ProjectStatus  | NOT FINISHED  | NOT FINISHED | NOT FINISHED  | testGetWorkload()  |
 #### willOverload Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
