@@ -6,6 +6,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.HashSet;
 
@@ -313,6 +314,10 @@ public class WorkerTest {
 
 		assertFalse(availableWorker.willOverload(ProjectOne));
 		assertTrue(availableWorker.willOverload(ProjectFive));
+
+		availableWorker.removeProject(ProjectFour);
+
+		assertFalse(availableWorker.willOverload(ProjectFour));
 	}
 
 	@Test
@@ -324,11 +329,15 @@ public class WorkerTest {
 		Project ProjectFour = new Project("projectFour", sampleQualifications, ProjectSize.BIG);
 		Project ProjectFive = new Project("projectFive", sampleQualifications, ProjectSize.SMALL);
 
+		// Empty Set
+		assertTrue(availableWorker.isAvailable());
 		availableWorker.addProject(projectOne);
+		// Workload > 0 & < 12
 		assertTrue(availableWorker.isAvailable());
 		availableWorker.addProject(ProjectTwo);
 		availableWorker.addProject(ProjectThree);
 		availableWorker.addProject(ProjectFour);
+		// Workload >= 12
 		assertFalse(availableWorker.isAvailable());
 		availableWorker.addProject(ProjectFive);
 		assertFalse(availableWorker.isAvailable());
@@ -413,6 +422,18 @@ public class WorkerTest {
 		WorkerDTO actualDTO = worker.toDTO();
 
 		assertEquals(expectedDTO, actualDTO);
+	}
+
+	@Test
+	public void testNullToDTO(){
+		WorkerDTO nullDTO = null;
+		assertEquals(null, nullDTO);
+	}
+
+	@Test (expected = IllegalArgumentException.class)
+	public void testNullQualToDTO(){
+		Worker nullQuals = new Worker("Null Qual Worker", null,1.0);
+		WorkerDTO nullQualDTO = nullQuals.toDTO();
 	}
 
 	@Test(expected = IllegalArgumentException.class)

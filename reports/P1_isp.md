@@ -199,20 +199,32 @@
 #### willOverload Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
+| Project | Null-ness | Null| Null | testAddNullProject()  |
+|  | Null-ness | Not null | Object of project type | testWillOverload() |
+|  |  Already Assigned Project | Assigned Project | Project Object already in current project set | testWillOverload() |
+|  |  Project that Will overload | Overloading Project  | A Project that will overload the Worker  | testWillOverload() |
+|  |  Project that will NOT overload | Non-Overloading Project  | A Project that will NOT overload the Worker  | testWillOverload() |
 
 #### isAvailable Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
+| Workload | null-ness | null |  | Impossible State |
+|   |   | not null | Any Workload  | testIsAvailable() |
+|   | Total Workload | No Workload | Empty Project Set | testIsAvailable() |
+|   |   | Workload > 0 & < 12  | Project Set with Workload of value 1-11 | testIsAvailable() |
+|   |   | Workload > 12  | Project Set with Workload >= 12 | testIsAvailable() |
 
 #### toDTO Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
+|  WorkerDTO Object | Null-ness | Null | Null WorkerDTO | testNullDTO() |
+|  |  | Not null | Valid WorkerDTO object | testToDTO() |
+| Qualifications | Initialized | Null |   | testNullQualToDTO() |
+|  |  | Not null |   | testToDTO  |
+|  |  | Not empty set |   | testToDTO() |
+| Projects | Initialized | Null |   | Impossible State |
+|  |  | Not null |   | testToDTO() |
+|  |  | Not empty set |   | testToDTO() |
 
 
 ## Project Class
