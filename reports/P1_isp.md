@@ -42,8 +42,8 @@
 #### addWorker Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| Worker | Null-ness | Null| Null |   |
-|  | Null-ness | Not null | Object of worker type |   |
+| Worker | Null-ness | Null| Null | testAddNullWorker()  |
+|  | Null-ness | Not null | Object of worker type | testAddWorker()  |
 | Set of Workers | exists | Set already exists  | addWroker() call on existing set | testAddWorker() call on existing set|
 |  | exists | Set does not exist  | addWorkers() call without existing set | Impossible state |
 

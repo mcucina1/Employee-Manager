@@ -162,6 +162,11 @@ public class QualificationTest {
 
 		assertEquals(expectedWorkers, qualification.getWorkers());
 	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddNullWorker() {
+		qualification.addWorker(null);
+	}
 	
 	@Test
 	public void testToDTO() {
