@@ -267,7 +267,7 @@
 |       |           | not null       | string             | testToString() |
 |       | Emptiness | empty          | empty string       | Name cannot be empty  |
 |       |           | not empty      | not empty string   | testToString()  |
-|Workers| Emptiness | empty set      | empty set          |   |
+|Workers| Emptiness | empty set      | empty set          | testToStringEmptyWorkers() |
 |       |           | not empty set  | set with 1+ workers| testToString()  |
 |       | Nullity   | null           | null               | workers cannot be null  |
 |       |           | not null       | not null           | testToString()  |
