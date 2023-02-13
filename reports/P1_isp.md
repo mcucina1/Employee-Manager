@@ -257,8 +257,10 @@
 #### hashCode Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
+| Hashcode | Sameness    | The hashcode is the same for objects with the same name    | Project with the same name   | testHashcodeWithIdenticalProjects()  |
+|          |             | The hashcode is different for objects with different names | Project with a different name| testHashCodeWithDifferentProjects()  |
+
+
 
 #### toString Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
