@@ -248,8 +248,9 @@ public class WorkerTest {
 		Qualification expectedQualification = new Qualification("Sample Qualification");
 		Set<Qualification> expectedQualifications = new HashSet<Qualification>();
 		expectedQualifications.add(expectedQualification);
-
+		Set<Project> projs = buildExpectedProjects();
 		Worker expectedWorker = new Worker(expectedName, expectedQualifications, expectedSalary);
+
 		return expectedWorker;
 	}
 
@@ -296,6 +297,53 @@ public class WorkerTest {
 		int actual = worker.getWorkload();
 
 		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testGetWorkloadStatusFinished() {
+		double expectedSalary = 10.0;
+		String expectedName = "Sample Name";
+		Qualification expectedQualification = new Qualification("Sample Qualification");
+		Set<Qualification> expectedQualifications = new HashSet<Qualification>();
+		expectedQualifications.add(expectedQualification);
+		Set<Project> projs = buildExpectedProjects();
+		Worker expectedWorker = new Worker(expectedName, expectedQualifications, expectedSalary);
+		for(Project p : projs) {
+			expectedWorker.addProject(p);
+		}
+		assertEquals(6, expectedWorker.getWorkload());
+	}
+
+	@Test
+	public void testGetWorkloadEmpty() {
+		Worker w = new Worker("Empty", sampleQualifications, 9.9);
+		assertEquals(w.getWorkload(), 0);
+	}
+
+	@Test
+	public void testGetWorkloadSmall() {
+		Worker w = new Worker("Empty", sampleQualifications, 9.9);
+		Project one = new Project("one", sampleQualifications, ProjectSize.SMALL);
+		Project two = new Project("two", sampleQualifications, ProjectSize.SMALL);
+		Project three = new Project("three", sampleQualifications, ProjectSize.BIG);
+		w.addProject(one);
+		w.addProject(two);
+		w.addProject(three);
+
+		assertEquals(5, w.getWorkload());
+	}
+
+	@Test
+	public void testGetWorkloadBig() {
+		Worker w = new Worker("Empty", sampleQualifications, 9.9);
+		Project one = new Project("one", sampleQualifications, ProjectSize.BIG);
+		Project two = new Project("two", sampleQualifications, ProjectSize.BIG);
+		Project three = new Project("three", sampleQualifications, ProjectSize.BIG);
+		w.addProject(one);
+		w.addProject(two);
+		w.addProject(three);
+
+		assertEquals(9, w.getWorkload());
 	}
 
 	@Test
@@ -448,10 +496,12 @@ public class WorkerTest {
 		Project projectOne = new Project("Project One", sampleQualifications, ProjectSize.SMALL);
 		Project projectTwo = new Project("Project Two", sampleQualifications, ProjectSize.MEDIUM);
 		Project projectThree = new Project("Project Three", sampleQualifications, ProjectSize.BIG);
+		Project projectFour = new Project("Project Four", sampleQualifications, ProjectSize.MEDIUM);
 
 		worker.addProject(projectOne);
 		worker.addProject(projectTwo);
 		worker.addProject(projectThree);
+		worker.addProject(projectFour);
 
 		assertEquals(expected, worker.getProjects());
 	}
@@ -473,10 +523,13 @@ public class WorkerTest {
 		Project projectOne = new Project("Project One", sampleQualifications, ProjectSize.SMALL);
 		Project projectTwo = new Project("Project Two", sampleQualifications, ProjectSize.MEDIUM);
 		Project projectThree = new Project("Project Three", sampleQualifications, ProjectSize.BIG);
+		Project projectFour = new Project("Project Four", sampleQualifications, ProjectSize.MEDIUM);
+		projectFour.setStatus(ProjectStatus.FINISHED);
 
 		expected.add(projectOne);
 		expected.add(projectTwo);
 		expected.add(projectThree);
+		expected.add(projectFour);
 
 		return expected;
 	}
