@@ -176,6 +176,26 @@ public class ProjectTest {
 	}
 
 	@Test
+	public void testDTOEmptyWorkers() {
+		Project emptyWorkersProject = new Project(testProjectName, qualifications, ProjectSize.BIG);
+		ProjectDTO emptyWorkersDTO = emptyWorkersProject.toDTO();
+		int DTOworkersLength = emptyWorkersDTO.getWorkers().length;
+
+		assertEquals(0, DTOworkersLength);
+	}
+
+	@Test
+	public void testDTOEmptyQualifications() {
+		Set<Qualification> emptyQualSet = new HashSet<>();
+		Project emptyQualProject = new Project(testProjectName, emptyQualSet, ProjectSize.MEDIUM);
+
+		ProjectDTO emptyQualDTO = emptyQualProject.toDTO();
+		int DTOQualLength = emptyQualDTO.getQualifications().length;
+
+		assertEquals(0, DTOQualLength);
+	}
+
+	@Test
 	public void testToString() {
 		String expectedOutput = testProject.getName() + ':' + testProject.getWorkers().size() + ':'
 				+ testProject.getStatus();
