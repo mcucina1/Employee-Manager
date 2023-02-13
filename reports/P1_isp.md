@@ -380,7 +380,7 @@
 #### toDTO Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| projectDTO Object  | Nullity     | Null     | Null projectDTO            | returned objecte cannot be null|
+| projectDTO Object  | Nullity     | Null     | Null projectDTO            | returned object cannot be null|
 |                    |             | Not null | Valid projectDTO object    | testToDTO() |
 | Qualificaitons     | Nullity     | Null     | Null                       | Qualifications cannot be null |
 |                    |             | Not null | initialized qualifictaions | testToDTO() |
