@@ -15,6 +15,8 @@ public class Qualification {
 			throw new IllegalArgumentException("Description must not be null.");
 		}
 		this.description = description;
+
+		workers = new HashSet<>();
 	}
 
 	@Override
@@ -44,28 +46,14 @@ public class Qualification {
 	}
 
 	public Set<Worker> getWorkers() {
-		if (!(workers == null)) {
-			return workers;
-		}
-
-		workers = new HashSet<>();
 		return workers;
 	}
 
 	public void addWorker(Worker worker) {
-		if(!(workers == null)) {
-			workers.add(worker);
-		} else {
-			workers = new HashSet<>();
-			workers.add(worker);
-		}
+		workers.add(worker);
 	}
 
-	public void removeWorker(Worker worker) {
-		if(workers == null) {
-			workers = new HashSet<>();
-		}
-		
+	public void removeWorker(Worker worker) {		
 		if(!(worker == null)) {
 			workers.remove(worker);
 		}
