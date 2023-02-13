@@ -50,6 +50,10 @@ public class Qualification {
 	}
 
 	public void addWorker(Worker worker) {
+		if (worker == null) {
+			throw new IllegalArgumentException("Cannot add a null worker.");
+		}
+		
 		workers.add(worker);
 	}
 
