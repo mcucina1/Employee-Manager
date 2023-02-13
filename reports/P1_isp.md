@@ -380,15 +380,13 @@
 #### toDTO Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|  projectDTO Object | Nullity | Null     | Null projectDTO |   |
-|                    |           | Not null | Valid projectDTO object |  |
-| Qualificaitons | Nullity     | Null     | Null  |   |
-|                |             | Not null | initialized qualifictaions |   |
-|              |Emptiness|Empty    |Empty set           |   |
-|              |         |1 qual   |set with 1 qual|   |
-|              |         |>1 qual  |set with 3 quals   |   |
-| Workers | Nullity     | Null     | Null             |   |
-|         |             | Not null |initalized workers|   |
-|         |  Emptiness  |  empty   |empty set         |   |
-|         |             |1 worker  |set with 1 worker |   |
-|         |             |>1 worker |set with 3 workers|   |
+| projectDTO Object  | Nullity     | Null     | Null projectDTO            | returned object cannot be null|
+|                    |             | Not null | Valid projectDTO object    | testToDTO() |
+| Qualificaitons     | Nullity     | Null     | Null                       | Qualifications cannot be null |
+|                    |             | Not null | initialized qualifictaions | testToDTO() |
+|                    | Emptiness   | Empty    |Empty set                   | testDTOEmptyQualifications() |
+|                    |             | =>1 qual  |set with more than 1 quals  | testToDTO()  |
+| Workers            | Nullity     | Null     | Null                       | Workers cannot be null          |
+|                    |             | Not null |initalized workers          | testToDTO()  |
+|                    |  Emptiness  |  empty   |empty set                   | testDTOEmptyWorkers()  |
+|                    |             | =>1 worker|set with more than 1 quals  | testToDTO()  |
