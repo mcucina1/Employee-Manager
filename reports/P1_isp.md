@@ -265,8 +265,16 @@
 #### toString Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
+| Name  | Nullity   | null           | null               | Name cannot be null   |
+|       |           | not null       | string             | testToString() |
+|       | Emptiness | empty          | empty string       | Name cannot be empty  |
+|       |           | not empty      | not empty string   | testToString()  |
+|Workers| Emptiness | empty set      | empty set          | testToStringEmptyWorkers() |
+|       |           | not empty set  | set with 1+ workers| testToString()  |
+|       | Nullity   | null           | null               | workers cannot be null  |
+|       |           | not null       | not null           | testToString()  |
+| Status| Nullity   | null           | null               | status cannot be null  |
+|       |           | not null       | not null           | testToString() |
 
 #### getName Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |

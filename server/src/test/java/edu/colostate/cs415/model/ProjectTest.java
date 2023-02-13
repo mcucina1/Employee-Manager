@@ -183,6 +183,19 @@ public class ProjectTest {
 		assertEquals(expectedOutput, actualOutput);
 	}
 
+	@Test
+	public void testToStringEmptyWorkers() {
+		Set<Worker> emptyWorkers = new HashSet<>();
+
+		String expectedOutput = testProject.getName() + ':' + emptyWorkers.size() + ':'
+		+ testProject.getStatus();
+		
+		Project emptyWorkersProject = new Project(testProjectName, qualifications, testProject.getSize());
+		String actualOutput = emptyWorkersProject.toString();
+
+		assertEquals(expectedOutput, actualOutput);
+	}
+
 	private Project buildExpectedProject() {
 		String firstTestDescription = "Qualified Engineer";
 		String secondTestDescription = "Qualified Scientist";
