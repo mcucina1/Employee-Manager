@@ -132,11 +132,14 @@ public class Worker {
 
 			if (p.getStatus() == ProjectStatus.FINISHED) {
 				continue;
-			} else if (p.getSize().getValue() == 3) {
+			} 
+			if (p.getSize().getValue() == 3) {
 				bigProjects += 1;
-			} else if (p.getSize().getValue() == 2) {
+			} 
+			if (p.getSize().getValue() == 2) {
 				mediumProjects += 1;
-			} else if (p.getSize().getValue() == 1) {
+			} 
+			if (p.getSize().getValue() == 1) {
 				smallProjects += 1;
 			}
 		}
