@@ -279,10 +279,10 @@
 #### getName Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| Name Element | Null | Null | null | impossible state |
-|  |  | Not null | " " |  |
-|   | Empty | "" |  |
-|   |  | Non-Empty | "Test Name" |  |
+| Name Element | Null | Null | null | testNullGetName() |
+|  |  | Not null | "Test Project" | testGetName() |
+|  | Empty | "" | testEmptyGetName() |
+|  |  | Non-Empty | "Test Project" | testGetName() |
 
 #### getSize Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
@@ -306,7 +306,7 @@
 #### setStatus Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| status  | null  | null  | null  | testSetStatusNull()  |
+| status | null  | null  | null  | testSetStatusNull()  |
 |   |  not null | ProjectStatus  | ProjectStatus.ACTIVE  |  testSetAndGetStatus() |
 
 #### addWorker Method

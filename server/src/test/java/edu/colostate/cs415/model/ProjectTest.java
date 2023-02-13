@@ -130,6 +130,19 @@ public class ProjectTest {
 		assertEquals(testProject.getName(), "Test Project");
 	}
 
+	@Test(expected = IllegalArgumentException.class)
+	public void testNullGetName() {
+		Project nullProject = new Project(null, qualifications, ProjectSize.SMALL);
+		String temp = nullProject.getName();
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testEmptyGetName() {
+		Project emptyNameProject = new Project("", qualifications, ProjectSize.SMALL);
+		String temp = emptyNameProject.getName();
+		assertEquals(temp, "");
+	}
+
 	@Test
 	public void testGetSize() {
 		assertEquals(testProject.getSize(), ProjectSize.SMALL);
