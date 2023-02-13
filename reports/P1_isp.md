@@ -345,8 +345,8 @@
 #### getRequiredQualifications Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| Qualifications | Nullity  | Null      | Null  |   |
-|                |          | Not null  | initialized qualificaitons      |   |
+| Qualifications | Nullity  | Null      | Null  | Not allowed to be Null, see constructor and setUp()  |
+|                |          | Not null  | initialized qualifications      | testRequiredQualificationsReturnsEmpty(), testGetRequiredQualificationsIsEqual()  |
 
 #### addQualification Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
