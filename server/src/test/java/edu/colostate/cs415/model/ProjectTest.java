@@ -11,6 +11,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertNull;
 
 import java.util.HashSet;
 
@@ -129,6 +130,19 @@ public class ProjectTest {
 		assertEquals(testProject.getName(), "Test Project");
 	}
 
+	@Test(expected = IllegalArgumentException.class)
+	public void testNullGetName() {
+		Project nullProject = new Project(null, qualifications, ProjectSize.SMALL);
+		String temp = nullProject.getName();
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testEmptyGetName() {
+		Project emptyNameProject = new Project("", qualifications, ProjectSize.SMALL);
+		String temp = emptyNameProject.getName();
+		assertEquals(temp, "");
+	}
+
 	@Test
 	public void testGetSize() {
 		assertEquals(testProject.getSize(), ProjectSize.SMALL);
@@ -208,8 +222,8 @@ public class ProjectTest {
 		Set<Worker> emptyWorkers = new HashSet<>();
 
 		String expectedOutput = testProject.getName() + ':' + emptyWorkers.size() + ':'
-		+ testProject.getStatus();
-		
+				+ testProject.getStatus();
+
 		Project emptyWorkersProject = new Project(testProjectName, qualifications, testProject.getSize());
 		String actualOutput = emptyWorkersProject.toString();
 
@@ -283,11 +297,11 @@ public class ProjectTest {
 	public void testRemoveAllWorkersFromEmptyWorkers() {
 		testProject.removeAllWorkers();
 		Set<Worker> expectedWorkers = new HashSet<>();
-		
+
 		assertEquals(expectedWorkers, testProject.getWorkers());
 
 		testProject.removeAllWorkers();
-		
+
 		assertEquals(expectedWorkers, testProject.getWorkers());
 	}
 
@@ -306,7 +320,7 @@ public class ProjectTest {
 		assertEquals(bigSize, testProject.getSize());
 	}
 
-	@Test (expected = IllegalArgumentException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void testSetSizeNull() {
 		testProject.setSize(null);
 	}
@@ -327,7 +341,7 @@ public class ProjectTest {
 		assertEquals(workers, testProject.getWorkers());
 	}
 
-	@Test 
+	@Test
 	public void testRemoveWorkerNotInSet() {
 		assertEquals(workers, testProject.getWorkers());
 		Worker workerNotInSet = new Worker("Human Alarm Clock", qualifications, 100000);
@@ -375,7 +389,7 @@ public class ProjectTest {
 	public void testMissingQualificationsReturnsEmpty() {
 		Project testProj = buildExpectedProject();
 		Set<Qualification> testQuals = new HashSet<Qualification>();
-		assertEquals(testQuals,testProj.getMissingQualifications());
+		assertEquals(testQuals, testProj.getMissingQualifications());
 	}
 
 	@Test
@@ -391,14 +405,14 @@ public class ProjectTest {
 		testProj.addQualification(firstMissingQualification);
 		testProj.addQualification(secondMissingQualification);
 
-		assertEquals(missingQualifications,testProj.getMissingQualifications());
+		assertEquals(missingQualifications, testProj.getMissingQualifications());
 	}
 
 	@Test
 	public void testRequiredQualificationsReturnsEmpty() {
 		Set<Qualification> testQuals = new HashSet<Qualification>();
 		Project testProject = new Project("Testing Project", testQuals, ProjectSize.SMALL);
-		assertEquals(testQuals,testProject.getRequiredQualifications());
+		assertEquals(testQuals, testProject.getRequiredQualifications());
 	}
 
 	@Test
@@ -411,7 +425,7 @@ public class ProjectTest {
 		Qualification secondTestQualification = new Qualification(testQual2);
 		testQualifications.add(firstTestQualification);
 		testQualifications.add(secondTestQualification);
-		
+
 		assertEquals(testQualifications, testProj.getRequiredQualifications());
 	}
 
@@ -437,6 +451,13 @@ public class ProjectTest {
 		testWorker.addQualification(engineerQualification);
 		// Assert that the worker is now useful
 		assertTrue(testProj.isHelpful(testWorker));
+	}
+
+	@Test(expected = java.lang.NullPointerException.class)
+	public void testNullIsHelpful() {
+		Project testProj = buildExpectedProject();
+		// Will Throw Error
+		Boolean temp = testProj.isHelpful(null);
 	}
 
 	@Test
