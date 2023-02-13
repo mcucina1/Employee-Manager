@@ -279,8 +279,10 @@
 #### getName Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
+| Name Element | Null | Null | null | impossible state |
+|  |  | Not null | " " |  |
+|   | Empty | "" |  |
+|   |  | Non-Empty | "Test Name" |  |
 
 #### getSize Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
@@ -374,8 +376,9 @@
 #### isHelpful Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| Worker  | nullity  | null      | null                   |   |
-|         |          | not null  | an initialized worker  |   |
+| Worker  | nullity  | null      | null                   | testNullIsHelpful() |
+|         |          | not null  | an initialized worker  | testIsHelpful() |
+|  |  |  |  |  |
 
 #### toDTO Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
