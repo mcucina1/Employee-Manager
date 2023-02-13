@@ -273,6 +273,11 @@ public class ProjectTest {
 		assertEquals(bigSize, testProject.getSize());
 	}
 
+	@Test (expected = IllegalArgumentException.class)
+	public void testSetSizeNull() {
+		testProject.setSize(null);
+	}
+
 	@Test
 	public void testRemoveWorker() {
 		assertEquals(workers, testProject.getWorkers());

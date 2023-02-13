@@ -71,13 +71,14 @@ public class Project {
 	}
 
 	public void setSize(ProjectSize size) {
+		if (size == null) {
+			throw new IllegalArgumentException("Size cannot be set to null.");
+		}
+
 		this.size = size;
 	}
 
 	public void addWorker(Worker worker) {
-		if (workers == null) {
-			workers = new HashSet<Worker>();
-		}
 		this.workers.add(worker);
 	}
 
@@ -98,10 +99,6 @@ public class Project {
 	}
 
 	public void addQualification(Qualification qualification) {
-		if (qualifications == null) {
-			qualifications = new HashSet<Qualification>();
-		}
-
 		if (!(qualifications.contains(qualification))) {
 			this.qualifications.add(qualification);
 		}
