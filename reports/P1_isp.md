@@ -378,7 +378,6 @@
 |---|---|---|---|---|
 | Worker  | nullity  | null      | null                   | testNullIsHelpful() |
 |         |          | not null  | an initialized worker  | testIsHelpful() |
-|  |  |  |  |  |
 
 #### toDTO Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
