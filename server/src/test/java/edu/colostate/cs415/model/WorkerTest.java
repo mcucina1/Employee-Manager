@@ -329,11 +329,15 @@ public class WorkerTest {
 		Project ProjectFour = new Project("projectFour", sampleQualifications, ProjectSize.BIG);
 		Project ProjectFive = new Project("projectFive", sampleQualifications, ProjectSize.SMALL);
 
+		// Empty Set
+		assertTrue(availableWorker.isAvailable());
 		availableWorker.addProject(projectOne);
+		// Workload > 0 & < 12
 		assertTrue(availableWorker.isAvailable());
 		availableWorker.addProject(ProjectTwo);
 		availableWorker.addProject(ProjectThree);
 		availableWorker.addProject(ProjectFour);
+		// Workload >= 12
 		assertFalse(availableWorker.isAvailable());
 		availableWorker.addProject(ProjectFive);
 		assertFalse(availableWorker.isAvailable());
