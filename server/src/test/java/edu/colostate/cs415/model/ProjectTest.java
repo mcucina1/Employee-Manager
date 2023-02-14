@@ -181,6 +181,20 @@ public class ProjectTest {
 	}
 
 	@Test
+	public void testAddQualificationSize() {
+		Set<Qualification> quals = new HashSet<>();
+		Project testAddQualsProject = new Project("testProjectName", quals, ProjectSize.SMALL);
+
+		Qualification qualOne = new Qualification("That Guy");
+		Qualification qualTwo = new Qualification("That Guy");
+
+		testAddQualsProject.addQualification(qualOne);
+		testAddQualsProject.addQualification(qualTwo);
+		
+		assertEquals(1, testAddQualsProject.getRequiredQualifications().size());
+	}
+
+	@Test
 	public void testToDTO() {
 		Project expected = buildExpectedProject();
 		ProjectDTO expectedDTO = expected.toDTO();
