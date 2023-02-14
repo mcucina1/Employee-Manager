@@ -59,13 +59,8 @@ public class Worker {
 		int numberOfQualificaitons = 0;
 		int salaryTruncated = (int) salary;
 
-		if (this.projects != null) {
-			numberOfProjects = projects.size();
-		}
-
-		if (this.qualifications != null) {
-			numberOfQualificaitons = qualifications.size();
-		}
+		numberOfProjects = projects.size();
+		numberOfQualificaitons = qualifications.size();
 
 		String workerString = this.name + ":" + numberOfProjects + ":" + numberOfQualificaitons + ":" + salaryTruncated;
 		return workerString;
