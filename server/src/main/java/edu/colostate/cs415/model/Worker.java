@@ -35,6 +35,10 @@ public class Worker {
 
 	@Override
 	public boolean equals(Object other) {
+		if (other == null) {
+			throw new IllegalArgumentException("[Worker.java] equals(): Cannot compare to null.");
+		}
+
 		if (other == this) {
 			return true;
 		}
