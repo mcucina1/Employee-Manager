@@ -296,7 +296,7 @@
 #### getStatus Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|  ProjectStatus | Valid  | Return Status  |  status|   |
+|  ProjectStatus | Valid  | Return Status  |  status|  testGetStatus() |
 
 #### setStatus Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
