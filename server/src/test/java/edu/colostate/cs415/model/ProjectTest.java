@@ -105,9 +105,9 @@ public class ProjectTest {
 		assertFalse(testProject.equals(projThree));
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void testEqualsNull() {
-		assertNotEquals(testProject, "Test Project");
+		testProject.equals(null);
 	}
 
 	@Test
@@ -453,7 +453,7 @@ public class ProjectTest {
 		assertTrue(testProj.isHelpful(testWorker));
 	}
 
-	@Test(expected = java.lang.NullPointerException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void testNullIsHelpful() {
 		Project testProj = buildExpectedProject();
 		// Will Throw Error
