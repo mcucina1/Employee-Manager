@@ -434,7 +434,48 @@ public class ProjectTest {
 		assertEquals(projWithOneWorker.getMissingQualifications().size(), 0);
 	}
 
+	@Test
+	public void testMissingQualEmptyQual(){
+		Set<Worker> unqualifiedWorkers = new HashSet<>();
+		Worker workerOne = new Worker("Worker1", qualifications, 40000);
+		Worker workerTwo = new Worker("Worker2", qualifications, 40000);
+		Worker workerThree = new Worker("Worker3", qualifications, 40000);
+		Set<Qualification> noQualSet = new HashSet<>();
+		Project projWithEmptyQuals = new Project("No Qualifications", noQualSet, ProjectSize.SMALL);
+		assertEquals(projWithEmptyQuals.getRequiredQualifications().size(), 0);
+	}
 
+	@Test
+	public void testMissingQualOneQual(){
+		Set<Worker> unqualifiedWorkers = new HashSet<>();
+		Worker workerOne = new Worker("Worker1", qualifications, 40000);
+		Worker workerTwo = new Worker("Worker2", qualifications, 40000);
+		Worker workerThree = new Worker("Worker3", qualifications, 40000);
+		Set<Qualification> oneQualSet = new HashSet<>();
+		Qualification singleQual = new Qualification("This is a single qualification");
+		oneQualSet.add(singleQual);
+		Project projWithEmptyQuals = new Project("No Qualifications", oneQualSet, ProjectSize.SMALL);
+		assertEquals(projWithEmptyQuals.getRequiredQualifications().size(), 1);
+
+	}
+
+	@Test
+	public void testMissingQualManyQual(){
+		Set<Worker> unqualifiedWorkers = new HashSet<>();
+		Worker workerOne = new Worker("Worker1", qualifications, 40000);
+		Worker workerTwo = new Worker("Worker2", qualifications, 40000);
+		Worker workerThree = new Worker("Worker3", qualifications, 40000);
+		Set<Qualification> manyQualSet = new HashSet<>();
+		Qualification manyQual1 = new Qualification("This is a qualification");
+		Qualification manyQual2 = new Qualification("This is a another qualification");
+		Qualification manyQual3 = new Qualification("This is yet another qualification");
+		manyQualSet.add(manyQual1);
+		manyQualSet.add(manyQual2);
+		manyQualSet.add(manyQual3);
+		Project projWithEmptyQuals = new Project("No Qualifications", manyQualSet, ProjectSize.SMALL);
+		assertEquals(projWithEmptyQuals.getRequiredQualifications().size(), 3);
+
+	}
 
 	@Test
 	public void testMissingQualificationsIsEqual() {

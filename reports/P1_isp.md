@@ -365,9 +365,9 @@
 |              |         |>1 worker|set with 3 workers| testMissingQualManyWorker() |
 |Qualifications|Nullity  |Null     |Null                | testProjectConstructorQualNull() |
 |              |         |Not Null |Initialized quals   | Impossible state |
-|              |Emptiness|Empty    |Empty set           |   |
-|              |         |1 qual   |set with 1 qual|   |
-|              |         |>1 qual  |set with 3 quals   |   |
+|              |Emptiness|Empty    |Empty set           | testMissingQualEmptyQual() |
+|              |         |1 qual   |set with 1 qual | testMissingQualOneQual() |
+|              |         |>1 qual  |set with 3 quals   | testMissingQualManyQual() |
 #### isHelpful Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
