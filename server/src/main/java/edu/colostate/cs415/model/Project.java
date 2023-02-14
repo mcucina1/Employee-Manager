@@ -103,9 +103,7 @@ public class Project {
 	}
 
 	public void addQualification(Qualification qualification) {
-		if (!(qualifications.contains(qualification))) {
-			this.qualifications.add(qualification);
-		}
+		this.qualifications.add(qualification);
 	}
 
 	public Set<Qualification> getMissingQualifications() {

@@ -57,6 +57,12 @@ public class WorkerTest {
 	}
 
 	@Test(expected = IllegalArgumentException.class)
+	public void testNameIsWhiteSpace(){
+		String emptyString = "       ";
+		Worker emptyName = new Worker(emptyString,sampleQualifications,90000.00);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
 	public void testWorkerNullQualificationSet(){
 		String emptyString = null;
 		Qualification emptyQual = new Qualification(emptyString);
@@ -369,6 +375,24 @@ public class WorkerTest {
 	}
 
 	@Test
+	public void testOverloadedAleady() {
+		Worker availableWorker = buildExpectedWorker();
+		Project ProjectOne = new Project("projectOne", sampleQualifications, ProjectSize.BIG);
+		Project ProjectTwo = new Project("projectTwo", sampleQualifications, ProjectSize.BIG);
+		Project ProjectThree = new Project("projectThree", sampleQualifications, ProjectSize.BIG);
+		Project ProjectFour = new Project("projectFour", sampleQualifications, ProjectSize.BIG);
+		Project ProjectFive = new Project("projectFive", sampleQualifications, ProjectSize.BIG);
+		Project ProjectSix = new Project("projectSix", sampleQualifications, ProjectSize.SMALL);
+		availableWorker.addProject(ProjectOne);
+		availableWorker.addProject(ProjectTwo);
+		availableWorker.addProject(ProjectThree);
+		availableWorker.addProject(ProjectFour);
+		availableWorker.addProject(ProjectFive);
+
+		assertTrue(availableWorker.willOverload(ProjectSix));
+	}
+
+	@Test
 	public void testIsAvailable() {
 		Worker availableWorker = buildExpectedWorker();
 		Project projectOne = new Project("projectOne", sampleQualifications, ProjectSize.BIG);
@@ -476,6 +500,19 @@ public class WorkerTest {
 	public void testNullToDTO(){
 		WorkerDTO nullDTO = null;
 		assertEquals(null, nullDTO);
+	}
+
+	@Test
+	public void testDTOWithProjects() {
+		Worker expected = buildExpectedWorker();
+
+		expected.addProject(new Project("Project One", sampleQualifications, ProjectSize.SMALL));
+		worker.addProject(new Project("Project One", sampleQualifications, ProjectSize.SMALL));
+		
+		WorkerDTO expectedDTO = expected.toDTO();
+		WorkerDTO actualDTO = worker.toDTO();
+
+		assertEquals(expectedDTO, actualDTO);
 	}
 
 	@Test (expected = IllegalArgumentException.class)
