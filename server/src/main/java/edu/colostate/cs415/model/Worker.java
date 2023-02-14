@@ -35,6 +35,10 @@ public class Worker {
 
 	@Override
 	public boolean equals(Object other) {
+		if (other == null) {
+			throw new IllegalArgumentException("[Worker.java] equals(): Cannot compare to null.");
+		}
+
 		if (other == this) {
 			return true;
 		}
@@ -102,9 +106,6 @@ public class Worker {
 	public void addProject(Project project) {
 		if (project == null) {
 			throw new IllegalArgumentException("Cannot add a null project.");
-		}
-		if (projects == null) {
-			projects = new HashSet<>();
 		}
 
 		projects.add(project);

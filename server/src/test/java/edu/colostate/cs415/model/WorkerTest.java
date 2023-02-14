@@ -100,9 +100,9 @@ public class WorkerTest {
 		assertFalse(worker.equals(workerThree));
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void testEqualsWithNull() {
-		assertFalse(worker.equals(null));
+		worker.equals(null);
 	}
 
 	@Test

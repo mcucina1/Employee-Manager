@@ -27,6 +27,10 @@ public class Project {
 
 	@Override
 	public boolean equals(Object other) {
+		if (other == null) {
+			throw new IllegalArgumentException("[Project.java] equals(): Cannot compare to null.");
+		}
+
 		if (other == this) {
 			return true;
 		}
@@ -120,6 +124,10 @@ public class Project {
 	}
 
 	public boolean isHelpful(Worker worker) {
+		if (worker == null) { 
+			throw new IllegalArgumentException("[Project.java] isHelpful(): Argument cannot be null");
+		}
+
 		return !(Collections.disjoint(worker.getQualifications(), qualifications));
 	}
 
