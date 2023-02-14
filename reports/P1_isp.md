@@ -276,7 +276,7 @@
 |---|---|---|---|---|
 | Name Element | Null | Null | null | testNullGetName() |
 |  |  | Not null | "Test Project" | testGetName() |
-|  | Empty | "" | testEmptyGetName() |
+|  | Empty | empty | " " | testEmptyGetName() |
 |  |  | Non-Empty | "Test Project" | testGetName() |
 
 #### getSize Method
