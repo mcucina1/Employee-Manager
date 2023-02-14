@@ -348,12 +348,12 @@
 #### addQualification Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|  qualification | nullity | null    | null                         |   |
-|                |         | not null| an initialized qualificaiton |   |
-|                |presence in qualifications|not in qualifications|a qualification that isn't in qualifications|   |
-|                |                          |already qualifications|a qualification that is in qualificaiton|   |
-| qualifications | nullity  | null   | null  |   |
-|                |          |not null|an initialized qualifications set|   |
+|  qualification | nullity | null    | null                         | Caller is responsible for what is passed according to P1 |
+|                |         | not null| an initialized qualificaiton |  testAddQualifcation |
+|                |presence in qualifications|not in qualifications|a qualification that isn't in qualifications|  testAddDifferentQualifications() |
+|                |                          |already qualifications|a qualification that is in qualificaiton|  testAddQualifcation() |
+| qualifications | nullity  | null   | null  | not allowed by constructor  |
+|                |          |not null|an initialized qualifications set|  testAddQualificationSize()|
 
 #### getMissingQualifications Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |

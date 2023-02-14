@@ -181,6 +181,20 @@ public class ProjectTest {
 	}
 
 	@Test
+	public void testAddDifferentQualifications() {
+		Set<Qualification> quals = new HashSet<>();
+		Project testAddQualsProject = new Project("testProjectName", quals, ProjectSize.SMALL);
+
+		Qualification qualOne = new Qualification("That Guy");
+		Qualification qualTwo = new Qualification("That");
+
+		testAddQualsProject.addQualification(qualOne);
+		testAddQualsProject.addQualification(qualTwo);
+		
+		assertEquals(2, testAddQualsProject.getRequiredQualifications().size());
+	}
+
+	@Test
 	public void testAddQualificationSize() {
 		Set<Qualification> quals = new HashSet<>();
 		Project testAddQualsProject = new Project("testProjectName", quals, ProjectSize.SMALL);
