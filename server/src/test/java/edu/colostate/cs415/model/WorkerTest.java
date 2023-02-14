@@ -57,6 +57,12 @@ public class WorkerTest {
 	}
 
 	@Test(expected = IllegalArgumentException.class)
+	public void testNameIsWhiteSpace(){
+		String emptyString = "       ";
+		Worker emptyName = new Worker(emptyString,sampleQualifications,90000.00);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
 	public void testWorkerNullQualificationSet(){
 		String emptyString = null;
 		Qualification emptyQual = new Qualification(emptyString);
