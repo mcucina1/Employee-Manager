@@ -109,9 +109,9 @@ public class QualificationTest {
 		assertTrue(testQual.equals(testQual));
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void testEqualsWithNull() {
-		assertFalse(qualification.equals(null));
+		qualification.equals(null);
 	}
 
 	@Test
