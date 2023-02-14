@@ -420,6 +420,91 @@ public class ProjectTest {
 		assertEquals(testQuals, testProj.getMissingQualifications());
 	}
 
+	// @Test
+	// public void testMissingQualNullWorker(){
+	// 	//Covered by Ctor
+	// }
+
+	@Test
+	public void testMissingQualNonNullWorker(){
+		Project missingQualNonNullWorkers = buildExpectedProject();
+		Qualification missingQual = new Qualification("This one is missing!");
+		missingQualNonNullWorkers.addQualification(missingQual);
+		assertEquals(1, missingQualNonNullWorkers.getMissingQualifications().size());
+	}
+
+	@Test
+	public void testMissingQualEmptyWorker(){
+		Set<Worker> emptyWorkerSet = new HashSet<>();
+		Project projWithEmptyWorkers = new Project("Empty workers", qualifications, ProjectSize.BIG);
+		assertEquals(projWithEmptyWorkers.getMissingQualifications().size(), 2);
+	}
+
+	@Test
+	public void testMissingQualOneWorker(){
+		Set<Worker> oneWorkerSet = new HashSet<>();
+		Worker soloWorker = new Worker("Solo Man", qualifications, 40000);
+		Project projWithOneWorker = new Project("One worker", qualifications, ProjectSize.BIG);
+		projWithOneWorker.addWorker(soloWorker);
+		assertEquals(projWithOneWorker.getMissingQualifications().size(), 0);
+	}
+
+	@Test
+	public void testMissingQualManyWorker(){
+		Set<Worker> manyWorkerSet = new HashSet<>();
+		Worker workerOne = new Worker("Worker1", qualifications, 40000);
+		Worker workerTwo = new Worker("Worker2", qualifications, 40000);
+		Worker workerThree = new Worker("Worker3", qualifications, 40000);
+		Project projWithOneWorker = new Project("Many workers", qualifications, ProjectSize.BIG);
+		projWithOneWorker.addWorker(workerOne);
+		projWithOneWorker.addWorker(workerTwo);
+		projWithOneWorker.addWorker(workerThree);
+		assertEquals(projWithOneWorker.getMissingQualifications().size(), 0);
+	}
+
+	@Test
+	public void testMissingQualEmptyQual(){
+		Set<Worker> unqualifiedWorkers = new HashSet<>();
+		Worker workerOne = new Worker("Worker1", qualifications, 40000);
+		Worker workerTwo = new Worker("Worker2", qualifications, 40000);
+		Worker workerThree = new Worker("Worker3", qualifications, 40000);
+		Set<Qualification> noQualSet = new HashSet<>();
+		Project projWithEmptyQuals = new Project("No Qualifications", noQualSet, ProjectSize.SMALL);
+		assertEquals(projWithEmptyQuals.getRequiredQualifications().size(), 0);
+	}
+
+	@Test
+	public void testMissingQualOneQual(){
+		Set<Worker> unqualifiedWorkers = new HashSet<>();
+		Worker workerOne = new Worker("Worker1", qualifications, 40000);
+		Worker workerTwo = new Worker("Worker2", qualifications, 40000);
+		Worker workerThree = new Worker("Worker3", qualifications, 40000);
+		Set<Qualification> oneQualSet = new HashSet<>();
+		Qualification singleQual = new Qualification("This is a single qualification");
+		oneQualSet.add(singleQual);
+		Project projWithEmptyQuals = new Project("No Qualifications", oneQualSet, ProjectSize.SMALL);
+		assertEquals(projWithEmptyQuals.getRequiredQualifications().size(), 1);
+
+	}
+
+	@Test
+	public void testMissingQualManyQual(){
+		Set<Worker> unqualifiedWorkers = new HashSet<>();
+		Worker workerOne = new Worker("Worker1", qualifications, 40000);
+		Worker workerTwo = new Worker("Worker2", qualifications, 40000);
+		Worker workerThree = new Worker("Worker3", qualifications, 40000);
+		Set<Qualification> manyQualSet = new HashSet<>();
+		Qualification manyQual1 = new Qualification("This is a qualification");
+		Qualification manyQual2 = new Qualification("This is a another qualification");
+		Qualification manyQual3 = new Qualification("This is yet another qualification");
+		manyQualSet.add(manyQual1);
+		manyQualSet.add(manyQual2);
+		manyQualSet.add(manyQual3);
+		Project projWithEmptyQuals = new Project("No Qualifications", manyQualSet, ProjectSize.SMALL);
+		assertEquals(projWithEmptyQuals.getRequiredQualifications().size(), 3);
+
+	}
+
 	@Test
 	public void testMissingQualificationsIsEqual() {
 		Project testProj = buildExpectedProject();

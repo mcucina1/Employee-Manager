@@ -358,16 +358,16 @@
 #### getMissingQualifications Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| Workers      |Nullity  |Null     |Null                |   |
-|              |         |Not Null |Initialized Workers |   |
-|              |Emptiness|Empty    |Empty set           |   |
-|              |         |1 worker |set with 1 worker |   |
-|              |         |>1 worker|set with 3 workers|   |
-|Qualifications|Nullity  |Null     |Null                |   |
-|              |         |Not Null |Initialized quals   |   |
-|              |Emptiness|Empty    |Empty set           |   |
-|              |         |1 qual   |set with 1 qual|   |
-|              |         |>1 qual  |set with 3 quals   |   |
+| Workers      |Nullity  |Null     |Null                | setUp() |
+|              |         |Not Null |Initialized Workers | testMissingQualNonNullWorker() |
+|              |Emptiness|Empty    |Empty set           | testMissingQualEmptyWorker() |
+|              |         |1 worker |set with 1 worker | testMissingQualOneWorker() |
+|              |         |>1 worker|set with 3 workers| testMissingQualManyWorker() |
+|Qualifications|Nullity  |Null     |Null                | testProjectConstructorQualNull() |
+|              |         |Not Null |Initialized quals   | Impossible state |
+|              |Emptiness|Empty    |Empty set           | testMissingQualEmptyQual() |
+|              |         |1 qual   |set with 1 qual | testMissingQualOneQual() |
+|              |         |>1 qual  |set with 3 quals   | testMissingQualManyQual() |
 #### isHelpful Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
