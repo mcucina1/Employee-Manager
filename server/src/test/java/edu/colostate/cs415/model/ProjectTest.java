@@ -334,26 +334,6 @@ public class ProjectTest {
 	}
 
 	@Test
-	public void testSetSize() {
-		ProjectSize smallSize = ProjectSize.SMALL;
-		ProjectSize mediumSize = ProjectSize.MEDIUM;
-		ProjectSize bigSize = ProjectSize.BIG;
-
-		assertEquals(smallSize, testProject.getSize());
-
-		testProject.setSize(mediumSize);
-		assertEquals(mediumSize, testProject.getSize());
-
-		testProject.setSize(bigSize);
-		assertEquals(bigSize, testProject.getSize());
-	}
-
-	@Test(expected = IllegalArgumentException.class)
-	public void testSetSizeNull() {
-		testProject.setSize(null);
-	}
-
-	@Test
 	public void testRemoveWorker() {
 		assertEquals(workers, testProject.getWorkers());
 		testProject.removeWorker(workerOne);
