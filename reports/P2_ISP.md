@@ -13,8 +13,8 @@
 #### Equals Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| object  | null  | null  | null  |  |
-|   |  | not null  | Company("Test Company")  |  |
-|   | Object Type  |  Company | Company("This Will Fail)" |  |
-|   |   |  Non-Worker | String nonCompany = "Company"  |  |
-|   |   |  Equals self | This.Company  |  |
+| object  | null  | null  | null  | testNullEquals() |
+|   |  | not null  | Company("Test Company")  | testEquals() |
+|   | Object Type  |  Company | Company("Test Company") | testEquals() |
+|   |   |  Non-Worker | String nonCompany = "Company"  | testEquals() |
+|   |   |  Equals self | This.Company  | testEquals() |
