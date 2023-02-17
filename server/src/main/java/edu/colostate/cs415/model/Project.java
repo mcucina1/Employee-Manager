@@ -74,14 +74,6 @@ public class Project {
 		this.status = status;
 	}
 
-	public void setSize(ProjectSize size) {
-		if (size == null) {
-			throw new IllegalArgumentException("Size cannot be set to null.");
-		}
-
-		this.size = size;
-	}
-
 	public void addWorker(Worker worker) {
 		this.workers.add(worker);
 	}
