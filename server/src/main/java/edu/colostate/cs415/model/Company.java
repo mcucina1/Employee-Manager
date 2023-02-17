@@ -26,7 +26,21 @@ public class Company {
 
 	@Override
 	public boolean equals(Object other) {
-		return false;
+		if (other == null) {
+			throw new IllegalArgumentException("[Comapny.java] equals(): Cannot compare to null.");
+		}
+
+		if (other == this) {
+			return true;
+		}
+
+		if (!(other instanceof Company)) {
+			return false;
+		}
+
+		Company testCompany = (Company) other;
+
+		return name.equals(testCompany.name);
 	}
 
 	@Override
