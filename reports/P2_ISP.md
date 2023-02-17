@@ -8,4 +8,4 @@
 |   |   | not null  | not null  | testConstructorIsValid() |
 |   |  emptiness | empty string  | ""  | testCompanyConstructorEmptyName() |
 |   |   | white-space only string  | "         "  | testCompanyConstructorWhiteSpaceName() |
-|   |   | full string  | "Engineer"  | testConstructorIsValid() |
+|   |   | full string  | "Test Company"  | testConstructorIsValid() |
