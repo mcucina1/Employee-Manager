@@ -1,5 +1,6 @@
 package edu.colostate.cs415.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Company {
@@ -12,6 +13,15 @@ public class Company {
 	private Set<Qualification> qualifications;
 
 	public Company(String name) {
+		if(name == null || name == "" || name.trim().isEmpty()){
+			throw new IllegalArgumentException("Name must not be null or empty.");
+		}
+		this.name = name;
+		this.employees = new HashSet<Worker>();
+		this.available = new HashSet<Worker>();
+		this.assigned = new HashSet<Worker>();
+		this.projects = new HashSet<Project>();
+		this.qualifications = new HashSet<Qualification>();
 	}
 
 	@Override
