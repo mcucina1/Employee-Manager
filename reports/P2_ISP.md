@@ -18,3 +18,11 @@
 |   | Object Type  |  Company | Company("Test Company") | testEquals() |
 |   |   |  Non-Worker | String nonCompany = "Company"  | testEquals() |
 |   |   |  Equals self | This.Company  | testEquals() |
+
+#### getName Method
+| Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
+|---|---|---|---|---|
+| Name Element | Null | Null | null | testNullGetName() |
+|  |  | Not null | "Company" | testGetName() |
+|  | Empty | empty | " " | testEmptyGetName() |
+|  |  | Non-Empty | "Company" | testGetName() |
