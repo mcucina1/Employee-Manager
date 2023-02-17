@@ -24,5 +24,6 @@
 |---|---|---|---|---|
 | Name Element | Null | Null | null | testNullGetName() |
 |  |  | Not null | "Company" | testGetName() |
-|  | Empty | empty | " " | testEmptyGetName() |
+|  | Empty | empty | "" | testEmptyGetName() |
+|  | Empty | empty | "    " | testWhiteSpaceGetName() |
 |  |  | Non-Empty | "Company" | testGetName() |
