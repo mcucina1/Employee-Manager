@@ -24,6 +24,6 @@
 |---|---|---|---|---|
 | Qual String | null | null | null | testNullCreateQualification() |
 |  |  | not null | "Qual One" | testCreateQualification() |
-|  | Initalized | full string | "Qual One" | testCreateQualification() |
+|  | Initalized | full string | "Qual One" | testCreateQualification() (BASE CASE)|
 |  |  | empty | "" | testEmptyStringCreateQualification() |
 |  |  | white-space only string  | " " | testWhiteSpaceStringCreateQualification() |
