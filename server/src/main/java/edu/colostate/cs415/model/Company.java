@@ -13,7 +13,7 @@ public class Company {
 	private Set<Qualification> qualifications;
 
 	public Company(String name) {
-		if(name == null || name == "" || name.trim().isEmpty()){
+		if (name == null || name == "" || name.trim().isEmpty()) {
 			throw new IllegalArgumentException("Name must not be null or empty.");
 		}
 		this.name = name;
@@ -90,7 +90,14 @@ public class Company {
 	}
 
 	public Qualification createQualification(String description) {
-		return null;
+		if (description == null || description == "" || description.trim().isEmpty()) {
+			throw new IllegalArgumentException(
+					"{Company.java} Description when creating a Qualification must not be null or empty.");
+		}
+
+		Qualification newQualification = new Qualification(description);
+		this.qualifications.add(newQualification);
+		return newQualification;
 	}
 
 	public Project createProject(String name, Set<Qualification> qualifications, ProjectSize size) {
