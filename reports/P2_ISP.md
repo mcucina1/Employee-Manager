@@ -18,3 +18,12 @@
 |   | Object Type  |  Company | Company("Test Company") | testEquals() |
 |   |   |  Non-Worker | String nonCompany = "Company"  | testEquals() |
 |   |   |  Equals self | This.Company  | testEquals() |
+
+#### CreateQualification Method
+| Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
+|---|---|---|---|---|
+| Qual String | null | null | null |  |
+|  |  | not null | "Qual One" |  |
+|  | Initalized | full string | "Qual One" |  |
+|  |  | empty | "" |  |
+|  |  | white-space only string  | " " |  |
