@@ -60,7 +60,25 @@ public class CompanyTest {
 	}
 
 	@Test
-	public void test() {
-		assert (true);
+	public void testHashcodeDifferentforDifferentNames() {
+		testCompany = new Company("Test Company");
+		Company testCompanyWithDifferentName = new Company("Not The Test Company");
+
+		int hashcodeOne = testCompany.hashCode();
+		int hashcodeTwo = testCompanyWithDifferentName.hashCode();
+
+		assertFalse(hashcodeOne == hashcodeTwo);
+
 	}
+
+	@Test
+	public void testHashcodeSameForIdenticalNames() {
+		testCompany = new Company("Test Company");
+		Company testCompanyTwo = new Company("Test Company");
+
+		int hashcodeOne = testCompany.hashCode();
+		int hashcodeTwo = testCompanyTwo.hashCode();
+
+		assertEquals(hashcodeOne, hashcodeTwo);
+	}	
 }
