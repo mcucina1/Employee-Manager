@@ -22,8 +22,8 @@
 #### CreateQualification Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| Qual String | null | null | null |  |
-|  |  | not null | "Qual One" |  |
-|  | Initalized | full string | "Qual One" |  |
-|  |  | empty | "" |  |
-|  |  | white-space only string  | " " |  |
+| Qual String | null | null | null | testNullCreateQualification() |
+|  |  | not null | "Qual One" | testCreateQualification() |
+|  | Initalized | full string | "Qual One" | testCreateQualification() |
+|  |  | empty | "" | testEmptyStringCreateQualification() |
+|  |  | white-space only string  | " " | testWhiteSpaceStringCreateQualification() |
