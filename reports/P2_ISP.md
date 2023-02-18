@@ -27,3 +27,9 @@
 |  | Initalized | full string | "Qual One" | testCreateQualification() (BASE CASE)|
 |  |  | empty | "" | testEmptyStringCreateQualification() |
 |  |  | white-space only string  | " " | testWhiteSpaceStringCreateQualification() |
+
+#### Hashcode Method
+| Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
+|-----------|-----------------|---------|--------|-----------------|
+| Hashcode  | Sameness | hashcode is the same for objects with the same name                  | Project with the same name    ||
+|           |          | hash code is different for objects with different names (base choice)| Project with a different name ||
