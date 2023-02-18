@@ -96,7 +96,11 @@ public class Company {
 		}
 
 		Qualification newQualification = new Qualification(description);
-		this.qualifications.add(newQualification);
+
+		if (!(this.qualifications.contains(newQualification))) {
+			this.qualifications.add(newQualification);
+		}
+
 		return newQualification;
 	}
 
