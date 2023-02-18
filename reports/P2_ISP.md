@@ -57,3 +57,15 @@
 | Set of Projects |  Emptiness | Empty | Worker with empty Project set | testGetProjectEmpty() NOT IMPLEMENTED |
  |  |  Emptiness | Null |  Project set assigned null | Initialized in constructor |
  |  |  Emptiness | Not empty |  Returns set w/ projects | testGetProjectNotEmpty() (base choice) |
+ 
+#### CreateWorker Method
+| Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
+|---|---|---|---|---|
+| Name | null  | null  | null  |  |
+|   |  | not null  | "Test Name" |  |
+| Qualifications | null | null | null |  |
+|  |  | not null | {"Qual One"} |  |
+|  | isEmpty | empty | {} |  |
+|  |  | non-empty | {Qual One} |  |
+| Salary | null | null | null |  |
+|  |  | not null | 10.0 |  |
