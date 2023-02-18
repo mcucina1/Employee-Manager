@@ -19,6 +19,15 @@
 |   |   |  Non-Worker | String nonCompany = "Company"  | testEquals() |
 |   |   |  Equals self | This.Company  | testEquals() |
 
+#### CreateQualification Method
+| Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
+|---|---|---|---|---|
+| Qual String | null | null | null | testNullCreateQualification() |
+|  |  | not null | "Qual One" | testCreateQualification() |
+|  | Initalized | full string | "Qual One" | testCreateQualification() (BASE CASE)|
+|  |  | empty | "" | testEmptyStringCreateQualification() |
+|  |  | white-space only string  | " " | testWhiteSpaceStringCreateQualification() |
+
 #### Hashcode Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |-----------|-----------------|---------|--------|-----------------|
