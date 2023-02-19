@@ -80,19 +80,19 @@ public class CompanyTest {
   @Test(expected = IllegalArgumentException.class)
 	public void testNullCreateQualification() {
 		Company testCompany = new Company("Test Company");
-		Company testCompany.createQualification(null);
+		testCompany.createQualification(null);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testEmptyStringCreateQualification() {
 		Company testCompany = new Company("Test Company");
-		Company testCompany.createQualification("");
+		testCompany.createQualification("");
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testWhiteSpaceStringCreateQualification() {
 		Company testCompany = new Company("Test Company");
-		Company testCompany.createQualification(" ");
+		testCompany.createQualification(" ");
 	}
 
 	@Test
