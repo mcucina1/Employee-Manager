@@ -23,7 +23,7 @@
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
 | Name Element | Null | Null | null | testNullGetName() |
-|  |  | Not null | "Company" | testGetName() |
+|  |  | Not null | "Company" | testGetName() (base choice) |
 |  | Empty | empty | "" | testEmptyGetName() |
 |  | Empty | empty | "    " | testWhiteSpaceGetName() |
 |  |  | Non-Empty | "Company" | testGetName() |
