@@ -79,25 +79,25 @@ public class CompanyTest {
 
   @Test(expected = IllegalArgumentException.class)
 	public void testNullCreateQualification() {
-		testCompany = new Company("Test Company");
-		testCompany.createQualification(null);
+		Company testCompany = new Company("Test Company");
+		Company testCompany.createQualification(null);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testEmptyStringCreateQualification() {
-		testCompany = new Company("Test Company");
-		testCompany.createQualification("");
+		Company testCompany = new Company("Test Company");
+		Company testCompany.createQualification("");
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testWhiteSpaceStringCreateQualification() {
-		testCompany = new Company("Test Company");
-		testCompany.createQualification(" ");
+		Company testCompany = new Company("Test Company");
+		Company testCompany.createQualification(" ");
 	}
 
 	@Test
 	public void testCreateQualification() {
-		testCompany = new Company("Test Company");
+		Company testCompany = new Company("Test Company");
 		Company testTwoCompany = new Company("Test Two Company");
 		Qualification qualOne = testCompany.createQualification("Qual One");
 		Qualification qualTwo = testTwoCompany.createQualification("Qual One");
@@ -108,7 +108,7 @@ public class CompanyTest {
 
 	@Test
 	public void testHashcodeDifferentforDifferentNames() {
-		testCompany = new Company("Test Company");
+		Company testCompany = new Company("Test Company");
 		Company testCompanyWithDifferentName = new Company("Not The Test Company");
 
 		int hashcodeOne = testCompany.hashCode();
@@ -120,7 +120,7 @@ public class CompanyTest {
 
 	@Test
 	public void testHashcodeSameForIdenticalNames() {
-		testCompany = new Company("Test Company");
+		Company testCompany = new Company("Test Company");
 		Company testCompanyTwo = new Company("Test Company");
 
 		int hashcodeOne = testCompany.hashCode();
