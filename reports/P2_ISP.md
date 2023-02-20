@@ -47,6 +47,6 @@
 #### getProjects Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| Set of Projects |  Emptiness | Empty | Worker with empty Project set | testGetProjectEmpty() |
- |  |  Emptiness | Null |  Project set assigned null | Impossible state, initialized in constructor |
+| Set of Projects |  Emptiness | Empty | Worker with empty Project set | testGetProjectEmpty() NOT IMPLEMENTED |
+ |  |  Emptiness | Null |  Project set assigned null | Initialized in constructor |
  |  |  Emptiness | Not empty |  Returns set w/ projects | testGetProjectNotEmpty() (base choice) |
