@@ -44,3 +44,9 @@
 | Hashcode  | Sameness | hashcode is the same for objects with the same name                  | Project with the same name    ||
 |           |          | hash code is different for objects with different names (base choice)| Project with a different name ||
 
+#### getProjects Method
+| Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
+|---|---|---|---|---|
+| Set of Projects |  Emptiness | Empty | Worker with empty Project set | testGetProjectEmpty() NOT IMPLEMENTED |
+ |  |  Emptiness | Null |  Project set assigned null | Initialized in constructor |
+ |  |  Emptiness | Not empty |  Returns set w/ projects | testGetProjectNotEmpty() (base choice) |

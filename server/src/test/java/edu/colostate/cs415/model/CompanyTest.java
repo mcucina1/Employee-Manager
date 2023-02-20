@@ -128,4 +128,18 @@ public class CompanyTest {
 
 		assertEquals(hashcodeOne, hashcodeTwo);
 	}	
+
+	@Test
+	public void testGetProjectEmpty() {
+		Company company = new Company("Company");
+		assertTrue(company.getProjects() != null);
+		assertTrue(company.getProjects().isEmpty());
+	}
+
+	
+	// @Test
+	// public void testGetProjectNotEmpty() {
+	// 	Company company new Company("Company");
+
+	// }
 }
