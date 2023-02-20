@@ -78,7 +78,7 @@ public class Company {
 	}
 
 	public Set<Project> getProjects() {
-		return null;
+		return projects;
 	}
 
 	public Set<Qualification> getQualifications() {
