@@ -47,7 +47,7 @@
 #### Hashcode Base Choice
 | Test | Block   | Oracle |
 |------|---------|--------|
-|testHashcodeDifferentforDifferentNames() (Base Test)| hashcode is the different | returns a hashcode |
+|testHashcodeDifferentforDifferentNames() (Base Test)| hashcode is different     | returns a hashcode |
 |testHashcodeSameForIdenticalNames()                 | hashcode is the same      | returns a hashcode |
 
 
