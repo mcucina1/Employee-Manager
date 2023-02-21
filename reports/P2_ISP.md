@@ -41,8 +41,15 @@
 #### Hashcode Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |-----------|-----------------|---------|--------|-----------------|
-| Hashcode  | Sameness | hashcode is the same for objects with the same name                  | Project with the same name    ||
-|           |          | hash code is different for objects with different names (base choice)| Project with a different name ||
+| Hashcode  | Sameness | hashcode is the same for objects with the same name                  | Project with the same name    | testHashcodeDifferentforDifferentNames()|
+|           |          | hash code is different for objects with different names (base choice)| Project with a different name |testHashcodeDifferentforDifferentNames()|
+
+#### Hashcode Base Choice
+| Test | Block   | Oracle |
+|------|---------|--------|
+|testHashcodeDifferentforDifferentNames() (Base Test)| hashcode is different     | returns a hashcode |
+|testHashcodeSameForIdenticalNames()                 | hashcode is the same      | returns a hashcode |
+
 
 #### getProjects Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
