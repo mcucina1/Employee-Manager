@@ -183,6 +183,29 @@ public class CompanyTest {
 		assertTrue(company.getProjects().isEmpty());
 	}
 
+	@Test
+	public void testGetQualEmpty(){
+		Company emptyQualCompany = new Company("Empty Qualification Company");
+		assertTrue(emptyQualCompany.getQualifications().isEmpty());
+	}
+
+	@Test
+	public void testGetQualSingle(){
+		Company singleQualCompany = new Company("Single Qualification Company");
+		singleQualCompany.createQualification("This is a single qualification");
+		assertFalse(singleQualCompany.getQualifications().isEmpty());
+		assertTrue(singleQualCompany.getQualifications().size() == 1);
+	}
+
+	@Test
+	public void testGetQualMany(){
+		Company multiQualCompany = new Company("Multiple Qualification Company");
+		multiQualCompany.createQualification("This is one qualification");
+		multiQualCompany.createQualification("This is a second qualification");
+		assertFalse(multiQualCompany.getQualifications().isEmpty());
+		assertTrue(multiQualCompany.getQualifications().size() == 2);
+	}
+
 	// @Test
 	// public void testGetProjectNotEmpty() {
 	// Company company new Company("Company");
