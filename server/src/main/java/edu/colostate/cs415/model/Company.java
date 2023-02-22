@@ -58,7 +58,7 @@ public class Company {
 	}
 
 	public Set<Worker> getEmployedWorkers() {
-		return null;
+		return this.employees;
 	}
 
 	public Set<Worker> getAvailableWorkers() {

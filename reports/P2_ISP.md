@@ -77,3 +77,19 @@
 |  |  | Not In Company Set | {Qual Two} | testNonCompanyQualCreateWorker() |
 | Salary | null | null | null | Impossible State |
 |  |  | not null | 10.0 | testCreateWorker() |
+
+#### getEmployedWorkers Method
+| Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
+|---|---|---|---|---|
+| employees | nullity  | null                    | impossible state |
+|           |          | not null   (base choice)| testGetEmployedWorkersBase() |
+|           | emptiness| empty                   | testGetEmployedWorkersEmpty()|
+|           |          | 1 worker                | testGetEmployedWorkersOneWorker()|
+|           |          | 1+ workers (base choice)| testGetEmployedWorkersBase() |
+
+#### getEmployedWorkers Base Choice
+| Test | Block   | Oracle |
+|------|---------|--------|
+|testGetEmployedWorkersBase()  (Base Test)  | not null, 1+ workers | return set of size 1+|
+|testGetEmployedWorkersOneWorker()          | not null, 1 workers  | return set of size 1 |
+|testGetEmployedWorkersEmpty()              | not null, empty      | return set of size 0 |
