@@ -86,7 +86,37 @@ public class Company {
 	}
 
 	public Worker createWorker(String name, Set<Qualification> qualifications, double salary) {
-		return null;
+		if (name == null || name == "" || name.trim().isEmpty()) {
+			throw new IllegalArgumentException(
+					"{Company.java} Name when creating a Worker must not be null or empty.");
+		}
+
+		if (qualifications.isEmpty()) {
+			return null;
+		}
+
+		Set<Qualification> workerQuals = new HashSet<Qualification>();
+
+		for (Qualification q : qualifications) {
+			if (this.qualifications.contains(q)) {
+				workerQuals.add(q);
+			}
+		}
+
+		if (workerQuals.isEmpty()) {
+			return null;
+		}
+
+		Worker newWorker = new Worker(name, workerQuals, salary);
+
+		this.employees.add(newWorker);
+		this.available.add(newWorker);
+
+		for (Qualification q : workerQuals) {
+			q.addWorker(newWorker);
+		}
+
+		return newWorker;
 	}
 
 	public Qualification createQualification(String description) {
