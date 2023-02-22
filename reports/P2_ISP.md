@@ -62,7 +62,7 @@
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
 | Name | null  | null  | null  | testNullNameCreateWorker() |
-|   |  | not null  | "Test Worker" | testCreateWorker() |
+|   |  | not null  | "Test Worker" | testCreateWorker() (Base Choice)|
 | Qualifications | null | null | null | testNullQualsCreateWorker() |
 |  |  | not null | {"Qual One"} | testCreateWorker() |
 |  | isEmpty | empty | {} | testEmptyQualsCreateWorker() |
