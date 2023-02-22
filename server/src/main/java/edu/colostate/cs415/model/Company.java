@@ -91,6 +91,10 @@ public class Company {
 					"{Company.java} Name when creating a Worker must not be null or empty.");
 		}
 
+		if (qualifications == null) {
+			return null;
+		}
+
 		if (qualifications.isEmpty()) {
 			return null;
 		}
