@@ -3,6 +3,7 @@ package edu.colostate.cs415.model;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -206,6 +207,7 @@ public class CompanyTest {
 		assertTrue(multiQualCompany.getQualifications().size() == 2);
 	}
 
+
 	private Set<Worker> buildExpectedWorkerSetThreeWorkers() {
 		Set<Worker> expectedSet = new HashSet<>();
 
@@ -271,6 +273,45 @@ public class CompanyTest {
 
 		assertEquals(expectedSet, actualSet);
 	}
+
+	@Test
+    public void testPlannedAndSuspendedStart() {
+        Company testCompany = new Company ("Test Company");
+        Set<Qualification> testQualifications = new HashSet<Qualification>();
+        Qualification qualOne = testCompany.createQualification("Qual One");
+        Qualification qualTwo = testCompany.createQualification("Qual Two");
+        Qualification otherQualOne = new Qualification("Qual One");
+        Qualification otherQualTwo = new Qualification("Qual Two");
+        testQualifications.add(otherQualOne);
+        testQualifications.add(otherQualTwo);
+        Project testProject = new Project ("Test", testQualifications, ProjectSize.SMALL);
+        testCompany.start(testProject);
+        assertEquals(testProject.getStatus(), ProjectStatus.ACTIVE);
+
+        testProject.setStatus(ProjectStatus.SUSPENDED);
+        testCompany.start(testProject);
+        assertEquals(testProject.getStatus(), ProjectStatus.ACTIVE);
+
+        testProject.setStatus(ProjectStatus.FINISHED);
+        testCompany.start(testProject);
+        assertEquals(testProject.getStatus(), ProjectStatus.FINISHED);
+    }
+
+    @Test
+    public void testMissingQualsStart() {
+        Company testCompany = new Company ("Test Company");
+        Set<Qualification> testQualifications = new HashSet<Qualification>();
+        Qualification qualOne = testCompany.createQualification("Qual One");
+        Qualification otherQualOne = new Qualification("Qual One");
+        Qualification otherQualTwo = new Qualification("Qual Two");
+        testQualifications.add(otherQualOne);
+        testQualifications.add(otherQualTwo);
+        Project testProject = new Project ("Test", testQualifications, ProjectSize.SMALL);
+        testCompany.start(testProject);
+
+        assertNotEquals(testProject.getStatus(), ProjectStatus.ACTIVE);
+    }
+
 
 	// @Test
 	// public void testGetProjectNotEmpty() {

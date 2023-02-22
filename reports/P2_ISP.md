@@ -78,6 +78,7 @@
 | Salary | null | null | null | Impossible State |
 |  |  | not null | 10.0 | testCreateWorker() |
 
+
 #### getEmployedWorkers Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
@@ -93,3 +94,11 @@
 |testGetEmployedWorkersBase()  (Base Test)  | not null, 1+ workers | return set of size 1+|
 |testGetEmployedWorkersOneWorker()          | not null, 1 workers  | return set of size 1 |
 |testGetEmployedWorkersEmpty()              | not null, empty      | return set of size 0 |
+
+ #### Start Method
+| Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
+|---|---|---|---|---|
+| Project  | Starting Project  | Make ProjectStatus = Active  | ProjectStatus.ACTIVE  | testPlannedAndSuspendedStart()  (Base Choice) |
+|   |   | DON"T make ProjectStatus = Active | ProjectStatus.PLANNED  |  testPlannedAndSuspendedStart()  |
+| Company's Set of Qualifications  | Required Qualifications  | Has Required Qualifications  | Company Qualifications is a subset of Project Qualifications  | testMissingQualsStart() (Base Choice) |
+|   |   |   | Company Qualifications is NOT a subset of Project Qualifications  | testMissingQualsStart()  |
