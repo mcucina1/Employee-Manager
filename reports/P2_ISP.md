@@ -61,11 +61,12 @@
 #### CreateWorker Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| Name | null  | null  | null  |  |
-|   |  | not null  | "Test Name" |  |
-| Qualifications | null | null | null |  |
-|  |  | not null | {"Qual One"} |  |
-|  | isEmpty | empty | {} |  |
-|  |  | non-empty | {Qual One} |  |
-| Salary | null | null | null |  |
-|  |  | not null | 10.0 |  |
+| Name | null  | null  | null  | testNullNameCreateWorker() |
+|   |  | not null  | "Test Worker" | testCreateWorker() |
+| Qualifications | null | null | null | testNullQualsCreateWorker() |
+|  |  | not null | {"Qual One"} | testCreateWorker() |
+|  | isEmpty | empty | {} | testEmptyQualsCreateWorker() |
+|  |  | non-empty | {Qual One} | testCreateWorker() |
+|  |  | Not In Company Set | {Qual Two} | testNonCompanyQualCreateWorker() |
+| Salary | null | null | null | Impossible State |
+|  |  | not null | 10.0 | testCreateWorker() |
