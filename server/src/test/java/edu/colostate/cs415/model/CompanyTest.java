@@ -4,7 +4,12 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+
+import java.util.HashSet;
+import java.util.Set;
 
 import org.junit.Before;
 
@@ -75,9 +80,9 @@ public class CompanyTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void testWhiteSpaceGetName() {
 		Company company = new Company("    ");
-  }
+	}
 
-  @Test(expected = IllegalArgumentException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void testNullCreateQualification() {
 		Company testCompany = new Company("Test Company");
 		testCompany.createQualification(null);
@@ -106,6 +111,48 @@ public class CompanyTest {
 		assertEquals(qualOne, qualTwo);
 	}
 
+	@Test(expected = IllegalArgumentException.class)
+	public void testNullNameCreateWorker() {
+		Company testCompany = new Company("Test Company");
+		Set<Qualification> quals = new HashSet<Qualification>();
+		testCompany.createWorker(null, quals, 10.0);
+	}
+
+	@Test
+	public void testNullQualsCreateWorker() {
+		Company testCompany = new Company("Test Company");
+		Set<Qualification> quals = null;
+		Worker w = testCompany.createWorker("Test Worker", quals, 10.0);
+		assertNull(w);
+	}
+
+	public void testEmptyQualsCreateWorker() {
+		Company testCompany = new Company("Test Company");
+		Set<Qualification> quals = new HashSet<Qualification>();
+		Worker w = testCompany.createWorker("Test Worker", quals, 10.0);
+		assertNull(w);
+	}
+
+	public void testNonCompanyQualCreateWorker() {
+		Company testCompany = new Company("Test Company");
+		Set<Qualification> quals = new HashSet<Qualification>();
+
+		testCompany.createQualification("Qual One");
+		quals.add(new Qualification("Qual Two"));
+		Worker w = testCompany.createWorker("Test Worker", quals, 10.0);
+		assertNull(w);
+	}
+
+	public void testCreateWorker() {
+		Company testCompany = new Company("Test Company");
+		Set<Qualification> quals = new HashSet<Qualification>();
+
+		testCompany.createQualification("Qual One");
+		quals.add(new Qualification("Qual One"));
+		Worker w = testCompany.createWorker("Test Worker", quals, 10.0);
+		assertNotNull(w);
+	}
+
 	@Test
 	public void testHashcodeDifferentforDifferentNames() {
 		Company testCompany = new Company("Test Company");
@@ -127,7 +174,7 @@ public class CompanyTest {
 		int hashcodeTwo = testCompanyTwo.hashCode();
 
 		assertEquals(hashcodeOne, hashcodeTwo);
-	}	
+	}
 
 	@Test
 	public void testGetProjectEmpty() {
@@ -159,10 +206,9 @@ public class CompanyTest {
 		assertTrue(multiQualCompany.getQualifications().size() == 2);
 	}
 
-	
 	// @Test
 	// public void testGetProjectNotEmpty() {
-	// 	Company company new Company("Company");
+	// Company company new Company("Company");
 
 	// }
 }
