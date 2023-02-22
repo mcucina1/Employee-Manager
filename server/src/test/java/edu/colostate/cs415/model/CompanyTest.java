@@ -207,6 +207,73 @@ public class CompanyTest {
 		assertTrue(multiQualCompany.getQualifications().size() == 2);
 	}
 
+
+	private Set<Worker> buildExpectedWorkerSetThreeWorkers() {
+		Set<Worker> expectedSet = new HashSet<>();
+
+		Set<Qualification> qualifications = new HashSet<>();
+		Qualification qualification = new Qualification("Dummy Qualification");
+		qualifications.add(qualification);
+
+		Worker workerOne = new Worker("Worker One", qualifications, 0.0);
+		Worker workerTwo = new Worker("Worker Two", qualifications, 0.0);
+		Worker workerThree = new Worker("Worker Three", qualifications, 0.0);
+
+		expectedSet.add(workerOne);
+		expectedSet.add(workerTwo);
+		expectedSet.add(workerThree);
+
+		return expectedSet;
+	}
+	
+	@Test
+	public void testGetEmployedWorkersBase() {
+		Company multiWorkerCompany = new Company("More than 1 employee incorporated");
+		Qualification qualification = new Qualification("Dummy Qualification");
+		Set<Qualification> qualifications = new HashSet<>();
+		qualifications.add(qualification);
+
+		multiWorkerCompany.createQualification("Dummy Qualification");
+		multiWorkerCompany.createWorker("Worker One", qualifications, 0.0);
+		multiWorkerCompany.createWorker("Worker Two", qualifications, 0.0);
+		multiWorkerCompany.createWorker("Worker Three", qualifications, 0.0);
+
+		Set<Worker> expectedSet = buildExpectedWorkerSetThreeWorkers();
+		Set<Worker> actualSet = multiWorkerCompany.getEmployedWorkers();
+
+		assertEquals(expectedSet, actualSet);
+	}
+
+	@Test 
+	public void testGetEmployedWorkersOneWorker() {
+		Company oneWorkerCompany = new Company("It's just me incorporated");
+		String qualificationDescription = "Dummy Qualificaiton";
+		Qualification qualification = new Qualification(qualificationDescription);
+		Set<Qualification> qualifications = new HashSet<>();
+		qualifications.add(qualification);
+
+		Worker loneWorker = new Worker("only Worker", qualifications, 0.0);
+		Set<Worker> expectedWorker = new HashSet<>();
+		expectedWorker.add(loneWorker);
+
+		oneWorkerCompany.createQualification(qualificationDescription);
+		oneWorkerCompany.createWorker("only Worker", qualifications, 0.0);
+
+		Set<Worker> actualSet = oneWorkerCompany.getEmployedWorkers();
+
+		assertEquals(expectedWorker, actualSet);
+	}
+
+	@Test
+	public void testGetEmployedWorkersEmpty() {
+		Company noWorkerCompany = new Company("Definately not a front incoporated");
+
+		Set<Worker> expectedSet = new HashSet<>();
+		Set<Worker> actualSet = noWorkerCompany.getEmployedWorkers();
+
+		assertEquals(expectedSet, actualSet);
+	}
+
 	@Test
     public void testPlannedAndSuspendedStart() {
         Company testCompany = new Company ("Test Company");
@@ -244,6 +311,7 @@ public class CompanyTest {
 
         assertNotEquals(testProject.getStatus(), ProjectStatus.ACTIVE);
     }
+
 
 	// @Test
 	// public void testGetProjectNotEmpty() {
