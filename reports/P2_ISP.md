@@ -77,3 +77,11 @@
 |  |  | Not In Company Set | {Qual Two} | testNonCompanyQualCreateWorker() |
 | Salary | null | null | null | Impossible State |
 |  |  | not null | 10.0 | testCreateWorker() |
+
+ #### Start Method
+| Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
+|---|---|---|---|---|
+| Project  | Starting Project  | Make ProjectStatus = Active  | ProjectStatus.ACTIVE  | testPlannedAndSuspendedStart()  (Base Choice) |
+|   |   | DON"T make ProjectStatus = Active | ProjectStatus.PLANNED  |  testPlannedAndSuspendedStart()  |
+| Company's Set of Qualifications  | Required Qualifications  | Has Required Qualifications  | Company Qualifications is a subset of Project Qualifications  | testMissingQualsStart() (Base Choice) |
+|   |   |   | Company Qualifications is NOT a subset of Project Qualifications  | testMissingQualsStart()  |
