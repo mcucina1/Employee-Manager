@@ -143,7 +143,12 @@ public class Company {
 	}
 
 	public void start(Project project) {
-	}
+        if (getQualifications().containsAll(project.getRequiredQualifications())
+        && (project.getStatus() == ProjectStatus.PLANNED || project.getStatus() == ProjectStatus.SUSPENDED))
+            project.setStatus(ProjectStatus.ACTIVE);
+        else
+            return;
+    }
 
 	public void finish(Project project) {
 	}
