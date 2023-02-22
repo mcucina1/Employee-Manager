@@ -33,7 +33,7 @@
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
 |   | Empty | Empty | Empty qualification set | testGetQualEmpty() |
-|   |   | Single qualification | Qualification set w/ one element | testGetQualSingle() |
+|   |   | Single qualification | Qualification set w/ one element | testGetQualSingle() (Base choice) |
 |   |   | Many qualifications | Qualification set w/ two elements | testGetQualMany() |
 
 #### CreateQualification Method
