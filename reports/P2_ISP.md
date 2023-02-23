@@ -102,3 +102,49 @@
 |   |   | DON"T make ProjectStatus = Active | ProjectStatus.PLANNED  |  testPlannedAndSuspendedStart()  |
 | Company's Set of Qualifications  | Required Qualifications  | Has Required Qualifications  | Company Qualifications is a subset of Project Qualifications  | testMissingQualsStart() (Base Choice) |
 |   |   |   | Company Qualifications is NOT a subset of Project Qualifications  | testMissingQualsStart()  |
+
+#### getUnassignedWorkers Method
+| Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
+|---|---|---|---|---|
+| workers | nullity | not null | not null | testGetUnassignedWorkers() (BASE CHOICE) |
+| workers | nullity | null | null | Not Allowed By Constructor |
+| workers | emptiness | empty | empty | testGetUnassignedWorkersEmpty() |
+| workers | emptiness | not empty | one worker | testGetUnassignedWorkers() (base choice)|
+| workers | emptiness | not empty | many workers | testGetUnassignedWorkersMany() |
+
+#### getAssignedWorkers Method
+| Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
+|---|---|---|---|---|
+| assigned | nullity | not null | not null | testGetAssignedWorkers() (BASE CHOICE) |
+| assigned | nullity | null | null | Not Allowed By Constructor |
+| assigned | emptiness | empty | empty | testGetAssignedWorkersEmpty() |
+| assigned | emptiness | not empty | one worker | testGetAssignedWorkers() (base choice)|
+| assigned | emptiness | not empty | many workers | testGetAssignedWorkersMany() |
+
+#### assign Method
+| Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
+|---|---|---|---|---|
+| worker | nullity | not null | not null | assignBaseWorker() (base choice) |
+| worker | nullity | null | null | assignNullWorker() |
+| worker | Workload | Workload less than 12 | 3 | assignBaseWorker() (base choice)|
+| worker | Workload | Workload 12 | 12 | assignTestWorkerAvailibilty() |
+| worker | Workload | Will Overload | 16 (attempted) | assignWillOverloadWorker() |
+| worker | Helpfulness | Qualification not in Project | "Bad Qual" | assignWorkerNotHelpful() |
+| worker | Helpfulness | Qualification in Project | "Good Qual" | assignBaseWorker() (base choice)|
+| project | nullity | not null | not null | assignBaseWorker() (base choice)|
+| project | nullity | null | null | assignNullProject() |
+| project | Worker In Project | Worker Already in Project | worker in project | assignWorkerAlreadyInProject() |
+| project | Worker In Project | Worker not in Project | worker not in project | assignBaseWorker() (base choice)|
+| project | ProjectStatus | Not allowed ProjectStatus | ProjectStatus.ACTIVE | assignProjectStatusActive() |
+| project | ProjectStatus | Not allowed ProjectStatus | ProjectStatus.FINISHED | assignProjectStatusFinished() |
+| project | ProjectStatus | Allowed ProjectStatus | ProjectStatus.PLANNED |  assignProjectStatusPlanned() (base choice)|
+| Project| Helpfulness | Qualification not in Project | "Bad Qual" | assignWorkerNotHelpful() |
+| Project | Helpfulness | Qualification in Project | "Good Qual" | assignBaseWorker() (base choice)|
+| assigned | nullity | not null | not null | assignBaseWorker() (base choice)|
+| assigned | nullity | null | null | Not allowed by constructor. |
+| assigned | Worker in Pool | Worker In Pool | Worker already in assigned | assignWorkerAlreadyInAssigned() |
+| assigned | Worker in Pool | Worker not In Pool | Worker not assinged | assignBaseWorker() (base choice)|
+| available | nullity | not null | not null | assignBaseWorker() (base choice)|
+| available | nullity | null | null | Not allowed by constructor. |
+| available | still available | not null | not null | assignBaseWorker() (base choice)|
+| available | still available | not null | not null | assignTestWorkerAvailibilty() |
