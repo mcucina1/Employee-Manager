@@ -9,6 +9,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import java.lang.reflect.Array;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -152,6 +153,60 @@ public class CompanyTest {
 		quals.add(new Qualification("Qual One"));
 		Worker w = testCompany.createWorker("Test Worker", quals, 10.0);
 		assertNotNull(w);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testCreateProjNameNull(){
+		Company createProjCompanyNull = new Company("Used for testing createProject");
+		String nullName = null;
+		Set<Qualification> testQuals = new HashSet<Qualification>();
+		ProjectSize size = ProjectSize.SMALL;
+
+		createProjCompanyNull.createProject(nullName, testQuals, size);
+	}
+
+	@Test
+	public void testCreatProjValid(){
+		Company createProjCompanyValid = new Company("Use to test non-null proj name");
+		String projName = "Sample Project";
+		Set<Qualification> testQuals = new HashSet<Qualification>();
+		ProjectSize size = ProjectSize.SMALL;
+		createProjCompanyValid.createProject(projName, testQuals, size);
+		String expectedOutput = "[Sample Project:0:PLANNED]";
+		String givenOutput = createProjCompanyValid.getProjects().toString();
+		assertEquals(givenOutput, expectedOutput);
+	}
+	@Test(expected = IllegalArgumentException.class)
+	public void testCreatProjNameEmpty(){
+		Company createProjCompanyEmptyName = new Company("");
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testCreateProjNullQual(){
+		Company createProjCompanyNullQual = new Company("This company has a null qual set.");
+		String projName = "Null Qualification Project";
+		Set<Qualification> nullSet = null;
+		ProjectSize size = ProjectSize.SMALL;
+		createProjCompanyNullQual.createProject(projName, nullSet, size);
+	}
+
+	@Test
+	public void testCreateProjValidQual(){
+		Company createProjCompanyValidQual = new Company("This company has a valid qual set.");
+		String projName = "Sample Project";
+		Set<Qualification> validSet = new HashSet<Qualification>();
+		ProjectSize size = ProjectSize.SMALL;
+		createProjCompanyValidQual.createProject(projName, validSet, size);
+		assertEquals(validSet.size(), createProjCompanyValidQual.getQualifications().size());
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testCreateProjNullSize(){
+		Company createProjCompanyNullSize = new Company("This company has a null project size");
+		String projName = "Sample Project";
+		Set<Qualification> testQuals = new HashSet<Qualification>();
+		ProjectSize nullSize = null;
+		createProjCompanyNullSize.createProject(projName, testQuals, nullSize);
 	}
 
 	@Test

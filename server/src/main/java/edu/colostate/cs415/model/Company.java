@@ -139,7 +139,14 @@ public class Company {
 	}
 
 	public Project createProject(String name, Set<Qualification> qualifications, ProjectSize size) {
-		return null;
+		if(name == null || name == "" || name.trim().isEmpty() || qualifications == null || size == null){
+			throw new IllegalArgumentException("{Company.java} No constructor fields may be null.");
+		}
+
+		Project newProject = new Project(name, qualifications, size);
+		projects.add(newProject);
+
+		return newProject;
 	}
 
 	public void start(Project project) {

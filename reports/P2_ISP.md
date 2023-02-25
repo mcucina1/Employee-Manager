@@ -45,6 +45,21 @@
 |  |  | empty | "" | testEmptyStringCreateQualification() |
 |  |  | white-space only string  | " " | testWhiteSpaceStringCreateQualification() |
 
+#### CreateProject Method
+| Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
+|---|---|---|---|---|
+| Project Name | Nullness | null | null | testCreateProjNameNull() |
+|  |  | not null | "Sample Project" | testCreatProjValid() |
+|   | Initialized | Full String | "Sample Project" |testCreatProjValid() (Base Choice)|
+|   |  | Empty String | "" |testCreatProjNameEmpty()|
+| Qualifications | Nullness | null | null | testCreateProjNullQual() |
+|  |  | Not Null | Set of existing qualifications |testCreateProjValidQual() (Base Choice) |
+| Size | Nullness | null | null | testCreateProjNullSize() |
+|   |   |  Not null | "ProjectSize.SMALL"  | testCreatProjValid() |
+|   | Valid enum |  Invalid | Other type  | Impossible state |
+|   |  |  Valid | "ProjectSize.SMALL"  | testCreatProjValid()  (Base Choice) |
+
+
 #### Hashcode Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |-----------|-----------------|---------|--------|-----------------|
