@@ -59,6 +59,18 @@
 |   | Valid enum |  Invalid | Other type  | Impossible state |
 |   |  |  Valid | "ProjectSize.SMALL"  | testCreatProjValid()  (Base Choice) |
 
+#### CreateProject Base Choice
+| Test | Oracle |
+|------|--------|
+|testCreatProjValid()(base test) - Full String Name / Non-Null Qualifications / Valid enum| Pass |
+|testCreateProjNameNull() - Name string is null / Non-Null Qualifications / Valid enum| Fail |
+|testCreatProjNameEmpty() - Empty name string / Non-Null Qualifications / Valid enum| Fail |
+|testCreateProjValidQual() - Full String Name / Existing set of Qualifications / Vaid enum | Pass|
+|testCreateProjNullQual() - Full String Name / Null set of Qualifications / Valid enum| Fail |
+|testCreateProjNullSize() - Full String Name / Non-Null Qualifications / Null size enum| Fail |
+|Impossible state - Full String Name / Non-Null Qualifications / Other enum type| Impossible state |
+
+
 
 #### Hashcode Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
