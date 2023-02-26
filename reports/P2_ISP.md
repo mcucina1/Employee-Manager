@@ -76,9 +76,17 @@
 #### getProjects Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| Set of Projects |  Emptiness | Empty | Worker with empty Project set | testGetProjectEmpty() NOT IMPLEMENTED |
- |  |  Emptiness | Null |  Project set assigned null | Initialized in constructor |
- |  |  Emptiness | Not empty |  Returns set w/ projects | testGetProjectNotEmpty() (base choice) |
+| Set of Projects |  Emptiness | Null |  Project set assigned null | Initialized in constructor |
+|  |  Emptiness | Not Null | Returns empty set  | testGetProjectEmpty()|
+|  |  Emptiness | No Projects | Returns empty set  | testGetProjectEmpty()|
+|  |  Emptiness | One Project |  Returns set w/ project | testGetProjectNotEmpty() (base choice) |
+|  |  Emptiness | Two Projects |  Returns set w/ projects | testGetProjectTwoProjects() |
+
+ #### getProjects Base Choice
+| Test | Block   | Oracle |
+|------|---------|--------|
+| testGetProjectEmpty() |  No Projects |  Returns Empty Set |
+| testGetProjectNotEmpty() |  One Project |  Returns Set w/ a project |
  
 #### CreateWorker Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |

@@ -237,6 +237,41 @@ public class CompanyTest {
 	}
 
 	@Test
+	public void testGetProjectNotEmpty() {
+	Company company = new Company("Company");
+	Qualification qual = new Qualification("Engineer");
+	Set<Qualification> quals = new HashSet<>();
+	quals.add(qual);
+	Project project = company.createProject("Project", quals, ProjectSize.SMALL);
+
+	Project expectedProject = new Project("Project", quals, ProjectSize.SMALL);
+	Set<Project> expectedProjects = new HashSet<>();
+	expectedProjects.add(expectedProject);
+
+	assertTrue(company.getProjects() != null);
+	assertEquals(expectedProjects, company.getProjects());
+	}
+
+	@Test
+	public void testGetProjectTwoProjects() {
+	Company company = new Company("Company");
+	Qualification qual = new Qualification("Engineer");
+	Set<Qualification> quals = new HashSet<>();
+	quals.add(qual);
+	Project project = company.createProject("Project", quals, ProjectSize.SMALL);
+	Project projectTwo = company.createProject("Project Two", quals, ProjectSize.SMALL);
+
+	Project expectedProject = new Project("Project", quals, ProjectSize.SMALL);
+	Project expectedProjectTwo = new Project("Project Two", quals, ProjectSize.SMALL);
+	Set<Project> expectedProjects = new HashSet<>();
+	expectedProjects.add(expectedProject);
+	expectedProjects.add(expectedProjectTwo);
+
+	assertTrue(company.getProjects() != null);
+	assertEquals(expectedProjects, company.getProjects());
+	}
+
+	@Test
 	public void testGetQualEmpty(){
 		Company emptyQualCompany = new Company("Empty Qualification Company");
 		assertTrue(emptyQualCompany.getQualifications().isEmpty());
@@ -455,9 +490,4 @@ public class CompanyTest {
 		
 	}
 
-	// @Test
-	// public void testGetProjectNotEmpty() {
-	// Company company new Company("Company");
-
-	// }
 }
