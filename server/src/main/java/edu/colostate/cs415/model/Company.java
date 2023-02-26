@@ -50,7 +50,17 @@ public class Company {
 
 	@Override
 	public String toString() {
-		return null;
+		String outputString = this.name; 
+
+		outputString = outputString.concat(":");
+		String workerCount = String.valueOf(available.size());
+		outputString = outputString.concat(workerCount);
+
+		outputString = outputString.concat(":");
+		String projectCount = String.valueOf(projects.size());
+		outputString = outputString.concat(projectCount);
+
+		return outputString;
 	}
 
 	public String getName() {
@@ -62,7 +72,7 @@ public class Company {
 	}
 
 	public Set<Worker> getAvailableWorkers() {
-		return null;
+		return this.available;
 	}
 
 	public Set<Worker> getUnavailableWorkers() {

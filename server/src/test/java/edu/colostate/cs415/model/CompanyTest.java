@@ -9,11 +9,8 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-import java.lang.reflect.Array;
 import java.util.HashSet;
 import java.util.Set;
-
-import org.junit.Before;
 
 public class CompanyTest {
 
@@ -367,6 +364,96 @@ public class CompanyTest {
         assertNotEquals(testProject.getStatus(), ProjectStatus.ACTIVE);
     }
 
+	@Test
+	public void testGetAvailibleWokersBase() {
+		Company testCompany = new Company("Test Company");
+		
+		Qualification testQualification = testCompany.createQualification("Test Qualificaiton");
+		Set<Qualification> testQualSet = new HashSet<>();
+		testQualSet.add(testQualification);
+
+		Worker WorkerOne = testCompany.createWorker("Worker One", testQualSet, 0);
+		Worker WorkerTwo = testCompany.createWorker("Worker Two", testQualSet, 0);
+		Worker WorkerThree = testCompany.createWorker("Worker Three", testQualSet, 0);
+
+		Set<Worker> expectedWorkerSet = new HashSet<>();
+		expectedWorkerSet.add(WorkerOne);
+		expectedWorkerSet.add(WorkerTwo);
+		expectedWorkerSet.add(WorkerThree);
+
+		Set<Worker> actualSet = new HashSet<>();
+		actualSet = testCompany.getAvailableWorkers();
+
+		assertEquals(expectedWorkerSet, actualSet);
+	} 
+
+	@Test
+	public void testGetAvilibleWorkersEmpty() {
+		Company testCompany = new Company("Test Company");
+
+		Set<Worker> actualSet = testCompany.getAvailableWorkers();
+
+		assertTrue(actualSet.isEmpty());
+
+	}
+	
+	@Test
+	public void testToStringBase() {
+		Company testCompany = new Company("Test Company");
+
+		Qualification testQualification = testCompany.createQualification("test qualification");
+		Set<Qualification> testQualSet = new HashSet<>();
+		testQualSet.add(testQualification);
+
+		testCompany.createWorker("Worker One", testQualSet, 0);
+		testCompany.createWorker("Worker Two", testQualSet, 0);
+		testCompany.createWorker("Worker Three", testQualSet, 0);
+
+		testCompany.createProject("Test Project", testQualSet, ProjectSize.SMALL);
+
+		String expectedString = "Test Company:3:1";
+
+		String actualString = testCompany.toString();
+
+		assertEquals(expectedString, actualString);
+	}
+
+	@Test
+ 	public void testToStringEmptyWorkers() {
+		Company testCompany = new Company("Test Company");
+
+		Qualification testQualification = testCompany.createQualification("test qualification");
+		Set<Qualification> testQualSet = new HashSet<>();
+		testQualSet.add(testQualification);
+
+		testCompany.createProject("Test Project", testQualSet, ProjectSize.SMALL);
+
+		String expectedString = "Test Company:0:1";
+
+		String actualString = testCompany.toString();
+
+		assertEquals(expectedString, actualString);
+	}
+	
+	@Test
+	public void testToStringEmptyProjects() {
+		Company testCompany = new Company("Test Company");
+
+		Qualification testQualification = testCompany.createQualification("test qualification");
+		Set<Qualification> testQualSet = new HashSet<>();
+		testQualSet.add(testQualification);
+
+		testCompany.createWorker("Worker One", testQualSet, 0);
+		testCompany.createWorker("Worker Two", testQualSet, 0);
+		testCompany.createWorker("Worker Three", testQualSet, 0);
+
+		String expectedString = "Test Company:3:0";
+
+		String actualString = testCompany.toString();
+
+		assertEquals(expectedString, actualString);
+		
+	}
 
 	// @Test
 	// public void testGetProjectNotEmpty() {
