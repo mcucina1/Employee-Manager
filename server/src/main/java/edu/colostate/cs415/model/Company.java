@@ -174,34 +174,30 @@ public class Company {
 		if(worker == null || project == null) {
 			throw new IllegalArgumentException("Worker and Project Arguments may not be null");
 		}
-		// 1.) Only workers from the pool of available workers can be assigned as long
-		// as they are not already assigned to the same project.
+
 		if(!available.contains(worker) || project.getWorkers().contains(worker)) {
 			throw new IllegalArgumentException("Worker must be available and not already assigned to Project");
 		}
-		// 2.) The project must not be in the ACTIVE or FINISHED state.
+		
 		if((project.getStatus() == ProjectStatus.ACTIVE) || (project.getStatus() == ProjectStatus.FINISHED)) {
 			throw new IllegalArgumentException("Project Status must not be ACTIVE or FINISHED");
 		}
-		// 3.) The worker should not get overloaded by adding to this project.
+
 		if(worker.willOverload(project)) {
 			throw new IllegalArgumentException("Assigning worker to Project will Overload Worker");
 		}
-		// 4.) The worker can be added only if the worker is helpful to the project
-		// (i.e., meets at least one missing qualifications).
+
 		if(!project.isHelpful(worker)) {
 			throw new IllegalArgumentException("Worker does not meet project qualifications");
 		}
-		// 5.) If 1-4 are satisfied the assigned worker is added to the pool of assigned
-		// workers UNLESS they were already present in that pool,
+		
 		if(!(assigned.contains(worker))){
 			assigned.add(worker);
 		}
-		// and (2) the worker is also added to the project.
+		
 		project.addWorker(worker);
 		worker.addProject(project);
-		// Check if the worker should
-		// be moved out of the available pool.
+	
 		if(!worker.isAvailable()) {
 			available.remove(worker);
 		}
