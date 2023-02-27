@@ -455,9 +455,96 @@ public class CompanyTest {
 		
 	}
 
-	// @Test
-	// public void testGetProjectNotEmpty() {
-	// Company company new Company("Company");
+	@Test
+	public void assignBaseWorker() {
+		Company company = new Company("Company");
 
-	// }
+		Qualification qual = company.createQualification("Qual");
+		Set<Qualification> quals = new HashSet<>();
+		quals.add(qual);
+
+		Worker worker = company.createWorker("Worker", quals, 100.0);
+		Project project = company.createProject("Project", quals, ProjectSize.SMALL);
+
+		Worker expectedWorker = new Worker("Worker", quals, 100.0);
+		Project expectedProject = new Project("Project", quals, ProjectSize.SMALL);
+		expectedProject.addWorker(expectedWorker);
+
+		company.assign(worker, project);
+		assertEquals(expectedProject.getWorkers(), company.getAssignedWorkers());
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void assignNullWorker() {
+		Company company = new Company("Company");
+
+		Qualification qual = company.createQualification("Qual");
+		Set<Qualification> quals = new HashSet<>();
+		quals.add(qual);
+		Project project = company.createProject("Project", quals, ProjectSize.SMALL);
+
+		Worker expectedWorker = new Worker("Worker", quals, 100.0);
+		Project expectedProject = new Project("Project", quals, ProjectSize.SMALL);
+		expectedProject.addWorker(expectedWorker);
+
+		company.assign(null, project);
+	}
+
+	@Test
+	public void assignTestWorkerAvailibility() {
+		
+		assert(true);
+	}
+
+	@Test
+	public void assignWillOverloadWorker() {
+		assert(true);
+	}
+
+	@Test
+	public void assignWorkerNotHelpful() {
+		assert(true);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void assignNullProject() {
+		Company company = new Company("Company");
+
+		Qualification qual = company.createQualification("Qual");
+		Set<Qualification> quals = new HashSet<>();
+		quals.add(qual);
+		Project project = company.createProject("Project", quals, ProjectSize.SMALL);
+
+		Worker expectedWorker = new Worker("Worker", quals, 100.0);
+		Project expectedProject = new Project("Project", quals, ProjectSize.SMALL);
+		expectedProject.addWorker(expectedWorker);
+
+		company.assign(null, project);
+	}
+
+	@Test
+	public void assignWorkerAlreadyInProject() {
+		assert(true);
+	}
+
+	@Test
+	public void assignProjectStatusActive() {
+		assert(true);
+	}
+
+	@Test
+	public void assignProjectStatusFinished() {
+		assert(true);
+	}
+
+	@Test
+	public void assignProjectStatusPlanned() {
+		assert(true);
+	}
+
+	@Test
+	public void assignWorkerAlreadyInAssigned() {
+		assert(true);
+	}
+
 }
