@@ -472,6 +472,7 @@ public class CompanyTest {
 
 		company.assign(worker, project);
 		assertEquals(expectedProject.getWorkers(), company.getAssignedWorkers());
+		assertTrue(worker.getWorkload() == 1);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -492,13 +493,48 @@ public class CompanyTest {
 
 	@Test
 	public void assignTestWorkerAvailibility() {
-		
-		assert(true);
+		Company company = new Company("Company");
+
+		Qualification qual = company.createQualification("Qual");
+		Set<Qualification> quals = new HashSet<>();
+		quals.add(qual);
+
+		Worker worker = company.createWorker("Worker", quals, 100.0);
+		Project projectOne = company.createProject("Project One", quals, ProjectSize.BIG);
+		Project projectTwo = company.createProject("Project Two", quals, ProjectSize.BIG);
+		Project projectThree = company.createProject("Project Three", quals, ProjectSize.BIG);
+		Project projectFour = company.createProject("Project Four", quals, ProjectSize.BIG);
+
+		company.assign(worker, projectOne);
+		company.assign(worker, projectTwo);
+		company.assign(worker, projectThree);
+		company.assign(worker, projectFour);
+
+		assertTrue(worker.getWorkload() == 12);
+		assertFalse(worker.isAvailable());
 	}
 
 	@Test
 	public void assignWillOverloadWorker() {
-		assert(true);
+		Company company = new Company("Company");
+
+		Qualification qual = company.createQualification("Qual");
+		Set<Qualification> quals = new HashSet<>();
+		quals.add(qual);
+
+		Worker worker = company.createWorker("Worker", quals, 100.0);
+		Project projectOne = company.createProject("Project One", quals, ProjectSize.BIG);
+		Project projectTwo = company.createProject("Project Two", quals, ProjectSize.BIG);
+		Project projectThree = company.createProject("Project Three", quals, ProjectSize.BIG);
+		Project projectFour = company.createProject("Project Four", quals, ProjectSize.BIG);
+		Project projectAttempted = company.createProject("Project Attempted", quals, ProjectSize.BIG);
+
+		company.assign(worker, projectOne);
+		company.assign(worker, projectTwo);
+		company.assign(worker, projectThree);
+		company.assign(worker, projectFour);
+
+		assertTrue(worker.willOverload(projectAttempted));
 	}
 
 	@Test
