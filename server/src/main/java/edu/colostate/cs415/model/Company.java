@@ -80,7 +80,7 @@ public class Company {
 	}
 
 	public Set<Worker> getAssignedWorkers() {
-		return null;
+		return assigned;
 	}
 
 	public Set<Worker> getUnassignedWorkers() {
