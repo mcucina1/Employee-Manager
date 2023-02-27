@@ -514,7 +514,7 @@ public class CompanyTest {
 		assertFalse(worker.isAvailable());
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void assignWillOverloadWorker() {
 		Company company = new Company("Company");
 
@@ -526,15 +526,18 @@ public class CompanyTest {
 		Project projectOne = company.createProject("Project One", quals, ProjectSize.BIG);
 		Project projectTwo = company.createProject("Project Two", quals, ProjectSize.BIG);
 		Project projectThree = company.createProject("Project Three", quals, ProjectSize.BIG);
-		Project projectFour = company.createProject("Project Four", quals, ProjectSize.BIG);
+		Project projectFour = company.createProject("Project Four", quals, ProjectSize.MEDIUM);
 		Project projectAttempted = company.createProject("Project Attempted", quals, ProjectSize.BIG);
 
 		company.assign(worker, projectOne);
 		company.assign(worker, projectTwo);
 		company.assign(worker, projectThree);
 		company.assign(worker, projectFour);
+		assertTrue(worker.isAvailable());
 
 		assertTrue(worker.willOverload(projectAttempted));
+		
+		company.assign(worker, projectAttempted);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
