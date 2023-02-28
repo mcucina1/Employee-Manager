@@ -719,4 +719,26 @@ public class CompanyTest {
 		assertEquals(expectedProject.getWorkers(), company.getAssignedWorkers());
 		assertTrue(worker.getWorkload() == 1);
 	} 
+	
+	@Test
+	public void testGetAssignedWorkers() {
+		Company company = new Company("Company");
+
+		Qualification qual = company.createQualification("qual");
+		Set<Qualification> quals = new HashSet<>();
+		quals.add(qual);
+
+		Worker worker = company.createWorker("Worker", quals, 10.0);
+		Project project = company.createProject("Project", quals, ProjectSize.BIG);
+		
+		assertTrue(company.getAssignedWorkers().isEmpty());
+
+		company.assign(worker, project);
+
+		Worker expectedWorker = new Worker("Worker", quals, 10.0);
+		Project expectedProject = new Project("Project", quals, ProjectSize.BIG);
+		
+		expectedProject.addWorker(expectedWorker);
+		assertEquals(expectedProject.getWorkers(), company.getAssignedWorkers());
+	}
 }
