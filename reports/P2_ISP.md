@@ -182,7 +182,7 @@
 | available | nullity | not null | not null | assignBaseWorker() (base choice)|
 | available | nullity | null | null | Not allowed by constructor. |
 | available | still available | not null | not null | assignBaseWorker() (base choice)|
-| available | still available | not null | not null | assignTestWorkerAvailibilty() |
+| available | not in available | not null | not null | assignWorkerNotInAvailable() |
 
 
 #### getAvailibleWorkers

@@ -490,4 +490,233 @@ public class CompanyTest {
 		
 	}
 
+	@Test
+	public void assignBaseWorker() {
+		Company company = new Company("Company");
+
+		Qualification qual = company.createQualification("Qual");
+		Set<Qualification> quals = new HashSet<>();
+		quals.add(qual);
+
+		Worker worker = company.createWorker("Worker", quals, 100.0);
+		Project project = company.createProject("Project", quals, ProjectSize.SMALL);
+
+		Worker expectedWorker = new Worker("Worker", quals, 100.0);
+		Project expectedProject = new Project("Project", quals, ProjectSize.SMALL);
+		expectedProject.addWorker(expectedWorker);
+
+		company.assign(worker, project);
+		assertEquals(expectedProject.getWorkers(), company.getAssignedWorkers());
+		assertTrue(worker.getWorkload() == 1);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void assignNullWorker() {
+		Company company = new Company("Company");
+
+		Qualification qual = company.createQualification("Qual");
+		Set<Qualification> quals = new HashSet<>();
+		quals.add(qual);
+		Project project = company.createProject("Project", quals, ProjectSize.SMALL);
+
+		company.assign(null, project);
+	}
+
+	@Test
+	public void assignTestWorkerAvailibility() {
+		Company company = new Company("Company");
+
+		Qualification qual = company.createQualification("Qual");
+		Set<Qualification> quals = new HashSet<>();
+		quals.add(qual);
+
+		Worker worker = company.createWorker("Worker", quals, 100.0);
+		Project projectOne = company.createProject("Project One", quals, ProjectSize.BIG);
+		Project projectTwo = company.createProject("Project Two", quals, ProjectSize.BIG);
+		Project projectThree = company.createProject("Project Three", quals, ProjectSize.BIG);
+		Project projectFour = company.createProject("Project Four", quals, ProjectSize.BIG);
+
+		company.assign(worker, projectOne);
+		company.assign(worker, projectTwo);
+		company.assign(worker, projectThree);
+		company.assign(worker, projectFour);
+
+		assertTrue(worker.getWorkload() == 12);
+		assertFalse(worker.isAvailable());
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void assignWillOverloadWorker() {
+		Company company = new Company("Company");
+
+		Qualification qual = company.createQualification("Qual");
+		Set<Qualification> quals = new HashSet<>();
+		quals.add(qual);
+
+		Worker worker = company.createWorker("Worker", quals, 100.0);
+		Project projectOne = company.createProject("Project One", quals, ProjectSize.BIG);
+		Project projectTwo = company.createProject("Project Two", quals, ProjectSize.BIG);
+		Project projectThree = company.createProject("Project Three", quals, ProjectSize.BIG);
+		Project projectFour = company.createProject("Project Four", quals, ProjectSize.MEDIUM);
+		Project projectAttempted = company.createProject("Project Attempted", quals, ProjectSize.BIG);
+
+		company.assign(worker, projectOne);
+		company.assign(worker, projectTwo);
+		company.assign(worker, projectThree);
+		company.assign(worker, projectFour);
+		assertTrue(worker.isAvailable());
+
+		assertTrue(worker.willOverload(projectAttempted));
+		
+		company.assign(worker, projectAttempted);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void assignWorkerNotHelpful() {
+		Company company = new Company("Company");
+
+		Qualification qual = company.createQualification("Qual");
+		Set<Qualification> quals = new HashSet<>();
+		quals.add(qual);
+
+		Qualification badQual = company.createQualification("Bad Qual");
+		Set<Qualification> badQuals = new HashSet<>();
+		badQuals.add(badQual);
+
+		Worker worker = company.createWorker("Worker", badQuals, 100.0);
+		Project project = company.createProject("Project One", quals, ProjectSize.BIG);
+	
+		company.assign(worker, project);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void assignNullProject() {
+		Company company = new Company("Company");
+
+		Qualification qual = company.createQualification("Qual");
+		Set<Qualification> quals = new HashSet<>();
+		quals.add(qual);
+
+		Worker worker = company.createWorker("Worker", quals, 100.0);
+		
+		company.assign(worker, null);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void assignWorkerAlreadyInProject() {
+		Company company = new Company("Company");
+
+		Qualification qual = company.createQualification("Qual");
+		Set<Qualification> quals = new HashSet<>();
+		quals.add(qual);
+
+		Worker worker = company.createWorker("Worker", quals, 100.0);
+		Project project = company.createProject("Project", quals, ProjectSize.SMALL);
+
+		Worker expectedWorker = new Worker("Worker", quals, 100.0);
+		Project expectedProject = new Project("Project", quals, ProjectSize.SMALL);
+		expectedProject.addWorker(expectedWorker);
+
+		company.assign(worker, project);
+		company.assign(worker, project);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void assignProjectStatusActive() {
+		Company company = new Company("Company");
+
+		Qualification qual = company.createQualification("Qual");
+		Set<Qualification> quals = new HashSet<>();
+		quals.add(qual);
+
+		Worker worker = company.createWorker("Worker", quals, 100.0);
+		Project project = company.createProject("Project", quals, ProjectSize.SMALL);
+		project.setStatus(ProjectStatus.ACTIVE);
+
+		Worker expectedWorker = new Worker("Worker", quals, 100.0);
+		Project expectedProject = new Project("Project", quals, ProjectSize.SMALL);
+		expectedProject.addWorker(expectedWorker);
+
+		company.assign(worker, project);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void assignProjectStatusFinished() {
+		Company company = new Company("Company");
+
+		Qualification qual = company.createQualification("Qual");
+		Set<Qualification> quals = new HashSet<>();
+		quals.add(qual);
+
+		Worker worker = company.createWorker("Worker", quals, 100.0);
+		Project project = company.createProject("Project", quals, ProjectSize.SMALL);
+		project.setStatus(ProjectStatus.FINISHED);
+
+		Worker expectedWorker = new Worker("Worker", quals, 100.0);
+		Project expectedProject = new Project("Project", quals, ProjectSize.SMALL);
+		expectedProject.addWorker(expectedWorker);
+
+		company.assign(worker, project);
+	}
+
+	@Test
+	public void assignProjectStatusPlanned() {
+		Company company = new Company("Company");
+
+		Qualification qual = company.createQualification("Qual");
+		Set<Qualification> quals = new HashSet<>();
+		quals.add(qual);
+
+		Worker worker = company.createWorker("Worker", quals, 100.0);
+		Project project = company.createProject("Project", quals, ProjectSize.SMALL);
+		project.setStatus(ProjectStatus.PLANNED);
+
+
+		Worker expectedWorker = new Worker("Worker", quals, 100.0);
+		Project expectedProject = new Project("Project", quals, ProjectSize.SMALL);
+		expectedProject.addWorker(expectedWorker);
+
+		company.assign(worker, project);
+		assertEquals(expectedProject.getWorkers(), company.getAssignedWorkers());
+		assertTrue(worker.getWorkload() == 1);
+	}
+
+	@Test
+	public void assignWorkerAlreadyInAssigned() {
+		Company company = new Company("Company");
+
+		Qualification qual = company.createQualification("Qual");
+		Set<Qualification> quals = new HashSet<>();
+		quals.add(qual);
+
+		Worker worker = company.createWorker("Worker", quals, 100.0);
+		Project project = company.createProject("Project", quals, ProjectSize.SMALL);
+
+		Worker expectedWorker = new Worker("Worker", quals, 100.0);
+		Project expectedProject = new Project("Project", quals, ProjectSize.SMALL);
+		expectedProject.addWorker(expectedWorker);
+
+		company.assign(worker, project);
+		assertEquals(expectedProject.getWorkers(), company.getAssignedWorkers());
+		assertTrue(worker.getWorkload() == 1);
+	}
+	@Test(expected = IllegalArgumentException.class)
+	public void assignWorkerNotInAvailable() {
+		Company company = new Company("Company");
+
+		Qualification qual = company.createQualification("Qual");
+		Set<Qualification> quals = new HashSet<>();
+		quals.add(qual);
+
+		Worker worker = new Worker("Worker", quals, 100.0);
+		Project project = company.createProject("Project", quals, ProjectSize.SMALL);
+
+		Worker expectedWorker = new Worker("Worker", quals, 100.0);
+		Project expectedProject = new Project("Project", quals, ProjectSize.SMALL);
+		expectedProject.addWorker(expectedWorker);
+
+		company.assign(worker, project);
+		assertEquals(expectedProject.getWorkers(), company.getAssignedWorkers());
+		assertTrue(worker.getWorkload() == 1);
+	} 
 }
