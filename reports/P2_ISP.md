@@ -59,6 +59,18 @@
 |   | Valid enum |  Invalid | Other type  | Impossible state |
 |   |  |  Valid | "ProjectSize.SMALL"  | testCreatProjValid()  (Base Choice) |
 
+#### CreateProject Base Choice
+| Test | Oracle |
+|------|--------|
+|testCreatProjValid()(base test) - Full String Name / Non-Null Qualifications / Valid enum| Pass |
+|testCreateProjNameNull() - Name string is null / Non-Null Qualifications / Valid enum| Fail |
+|testCreatProjNameEmpty() - Empty name string / Non-Null Qualifications / Valid enum| Fail |
+|testCreateProjValidQual() - Full String Name / Existing set of Qualifications / Vaid enum | Pass|
+|testCreateProjNullQual() - Full String Name / Null set of Qualifications / Valid enum| Fail |
+|testCreateProjNullSize() - Full String Name / Non-Null Qualifications / Null size enum| Fail |
+|Impossible state - Full String Name / Non-Null Qualifications / Other enum type| Impossible state |
+
+
 
 #### Hashcode Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
@@ -76,9 +88,17 @@
 #### getProjects Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| Set of Projects |  Emptiness | Empty | Worker with empty Project set | testGetProjectEmpty() NOT IMPLEMENTED |
- |  |  Emptiness | Null |  Project set assigned null | Initialized in constructor |
- |  |  Emptiness | Not empty |  Returns set w/ projects | testGetProjectNotEmpty() (base choice) |
+| Set of Projects |  Emptiness | Null |  Project set assigned null | Initialized in constructor |
+|  |  Emptiness | Not Null | Returns empty set  | testGetProjectEmpty()|
+|  |  Emptiness | No Projects | Returns empty set  | testGetProjectEmpty()|
+|  |  Emptiness | One Project |  Returns set w/ project | testGetProjectNotEmpty() (base choice) |
+|  |  Emptiness | Two Projects |  Returns set w/ projects | testGetProjectTwoProjects() |
+
+ #### getProjects Base Choice
+| Test | Block   | Oracle |
+|------|---------|--------|
+| testGetProjectEmpty() |  No Projects |  Returns Empty Set |
+| testGetProjectNotEmpty() |  One Project |  Returns Set w/ a project |
  
 #### CreateWorker Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
