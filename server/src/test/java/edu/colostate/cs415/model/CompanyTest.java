@@ -519,10 +519,6 @@ public class CompanyTest {
 		quals.add(qual);
 		Project project = company.createProject("Project", quals, ProjectSize.SMALL);
 
-		Worker expectedWorker = new Worker("Worker", quals, 100.0);
-		Project expectedProject = new Project("Project", quals, ProjectSize.SMALL);
-		expectedProject.addWorker(expectedWorker);
-
 		company.assign(null, project);
 	}
 
@@ -602,12 +598,7 @@ public class CompanyTest {
 		quals.add(qual);
 
 		Worker worker = company.createWorker("Worker", quals, 100.0);
-		Project project = company.createProject("Project", quals, ProjectSize.SMALL);
-
-		Worker expectedWorker = new Worker("Worker", quals, 100.0);
-		Project expectedProject = new Project("Project", quals, ProjectSize.SMALL);
-		expectedProject.addWorker(expectedWorker);
-
+		
 		company.assign(worker, null);
 	}
 
@@ -666,8 +657,6 @@ public class CompanyTest {
 		expectedProject.addWorker(expectedWorker);
 
 		company.assign(worker, project);
-
-		assert(true);
 	}
 
 	@Test
