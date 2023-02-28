@@ -1,16 +1,16 @@
 package edu.colostate.cs415.model;
 
-import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import org.junit.Test;
 
 public class CompanyTest {
 
@@ -739,6 +739,49 @@ public class CompanyTest {
 		Project expectedProject = new Project("Project", quals, ProjectSize.BIG);
 		
 		expectedProject.addWorker(expectedWorker);
+		assertEquals(expectedProject.getWorkers(), company.getAssignedWorkers());
+	}
+	
+	@Test
+	public void testGetAssignedWorkersEmpty() {
+		Company company = new Company("Company");
+
+		Qualification qual = company.createQualification("qual");
+		Set<Qualification> quals = new HashSet<>();
+		quals.add(qual);
+
+		Worker worker = company.createWorker("Worker", quals, 10.0);
+		Project project = company.createProject("Project", quals, ProjectSize.BIG);
+		
+		assertTrue(company.getAssignedWorkers().isEmpty());
+	
+	}
+	
+	@Test
+	public void testGetAssignedWorkersMany() {
+		Company company = new Company("Company");
+
+		Qualification qual = company.createQualification("qual");
+		Set<Qualification> quals = new HashSet<>();
+		quals.add(qual);
+
+		Worker worker = company.createWorker("Worker", quals, 10.0);
+		Worker workerTwo = company.createWorker("Worker Two", quals, 10.0);
+		Project project = company.createProject("Project", quals, ProjectSize.BIG);
+
+		assertTrue(company.getAssignedWorkers().isEmpty());
+
+		company.assign(worker, project);
+		company.assign(workerTwo, project);
+
+		Worker expectedWorker = new Worker("Worker", quals, 10.0);
+
+		Worker expectedWorkerTwo = new Worker("Worker Two", quals, 10.0);
+		Project expectedProject = new Project("Project", quals, ProjectSize.BIG);
+		
+		expectedProject.addWorker(expectedWorker);
+		expectedProject.addWorker(expectedWorkerTwo);
+
 		assertEquals(expectedProject.getWorkers(), company.getAssignedWorkers());
 	}
 }
