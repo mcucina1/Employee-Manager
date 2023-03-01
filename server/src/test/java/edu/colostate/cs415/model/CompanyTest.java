@@ -844,4 +844,74 @@ public class CompanyTest {
         unAvailableWorkers.add(worker3);
         assertEquals(unAvailableWorkers, testCompany.getUnavailableWorkers());
     }
+
+	@Test
+	public void testGetUnassignedWorkersMany() {
+		Company company = new Company("Company");
+
+		Qualification qual = company.createQualification("Qual");
+		Set<Qualification> quals = new HashSet<>();
+		quals.add(qual);
+
+		Worker workerOne = company.createWorker("Worker One", quals, 100.0);
+		Worker workerTwo = company.createWorker("Worker Two", quals, 100.0);
+		Worker workerThree = company.createWorker("Worker Three", quals, 100.0);
+		Worker workerFour = company.createWorker("Worker Four", quals, 100.0);
+
+		Set<Worker> expectedUnassignedWorkers = new HashSet<>();
+		expectedUnassignedWorkers.add(workerOne);
+		expectedUnassignedWorkers.add(workerTwo);
+
+		Project project = company.createProject("Project", quals, ProjectSize.BIG);
+		
+		company.assign(workerThree, project);
+		company.assign(workerFour, project);
+
+		assertEquals(expectedUnassignedWorkers, company.getUnassignedWorkers());
+	}
+
+	@Test
+	public void testGetUnassignedWorkersEmpty() {
+		Company company = new Company("Company");
+
+		Qualification qual = company.createQualification("Qual");
+		Set<Qualification> quals = new HashSet<>();
+		quals.add(qual);
+
+		Worker workerOne = company.createWorker("Worker One", quals, 100.0);
+		Worker workerTwo = company.createWorker("Worker Two", quals, 100.0);
+		Worker workerThree = company.createWorker("Worker Three", quals, 100.0);
+		Worker workerFour = company.createWorker("Worker Four", quals, 100.0);
+
+		Set<Worker> expectedUnassignedWorkers = new HashSet<>();
+		Project project = company.createProject("Project", quals, ProjectSize.BIG);
+		
+		company.assign(workerOne, project);
+		company.assign(workerTwo, project);
+		company.assign(workerThree, project);
+		company.assign(workerFour, project);
+
+		assertEquals(expectedUnassignedWorkers, company.getUnassignedWorkers());
+	}
+
+	@Test
+	public void testGetUnassignedWorkers() {
+		Company company = new Company("Company");
+
+		Qualification qual = company.createQualification("Qual");
+		Set<Qualification> quals = new HashSet<>();
+		quals.add(qual);
+
+		Worker workerOne = company.createWorker("Worker One", quals, 100.0);
+		Worker workerTwo = company.createWorker("Worker Two", quals, 100.0);
+
+		Set<Worker> expectedUnassignedWorkers = new HashSet<>();
+		expectedUnassignedWorkers.add(workerTwo);
+		Project project = company.createProject("Project", quals, ProjectSize.BIG);
+		
+		company.assign(workerOne, project);
+
+		assertEquals(expectedUnassignedWorkers, company.getUnassignedWorkers());
+	}
+
 }
