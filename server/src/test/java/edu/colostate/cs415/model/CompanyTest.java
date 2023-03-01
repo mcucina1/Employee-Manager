@@ -784,4 +784,64 @@ public class CompanyTest {
 
 		assertEquals(expectedProject.getWorkers(), company.getAssignedWorkers());
 	}
+
+	@Test
+    public void testUnavailableWorkers() {
+
+        // Create company and add qualifications/projects
+        Company testCompany = new Company("Test Company");
+        Qualification qual1 = testCompany.createQualification("Qual1");
+        Qualification qual2 = testCompany.createQualification("Qual2");
+        Qualification qual3 = testCompany.createQualification("Qual3");
+        Qualification qual4 = testCompany.createQualification("Qual4");
+        Qualification qual5 = testCompany.createQualification("Qual5");
+        Set<Qualification> quals = new HashSet<>();
+        quals.add(qual1);
+        quals.add(qual2);
+        quals.add(qual3);
+        quals.add(qual4);
+        quals.add(qual5);
+        Project project1 = testCompany.createProject("Project1", quals, ProjectSize.BIG);
+        Project project2 = testCompany.createProject("Project2", quals, ProjectSize.BIG);
+        Project project3 = testCompany.createProject("Project3", quals, ProjectSize.BIG);
+        Project project4 = testCompany.createProject("Project4", quals, ProjectSize.BIG);
+
+        // Create and assign workers
+        Set<Qualification> worker1Quals = new HashSet<>();
+        Set<Qualification> worker2Quals = new HashSet<>();
+        Set<Qualification> worker3Quals = new HashSet<>();
+        worker1Quals.add(qual1);
+        worker2Quals.add(qual2);
+        worker3Quals.add(qual3);
+        Worker worker1 = testCompany.createWorker("Worker1", worker1Quals, 100.0);
+        Worker worker2 = testCompany.createWorker("Worker2", worker2Quals, 100.0);
+        Worker worker3 = testCompany.createWorker("Worker3", worker3Quals, 100.0);
+
+        testCompany.assign(worker1, project1);
+        testCompany.assign(worker1, project2);
+        testCompany.assign(worker1, project3);
+
+        testCompany.assign(worker2, project1);
+        testCompany.assign(worker2, project2);
+        testCompany.assign(worker2, project3);
+
+        testCompany.assign(worker3, project1);
+        testCompany.assign(worker3, project2);
+        testCompany.assign(worker3, project3);
+
+        // Test empty set
+        Set<Worker> unAvailableWorkers = new HashSet<Worker>();
+        assertEquals(unAvailableWorkers, testCompany.getUnavailableWorkers());
+
+        // Test method returns unavailable worker set
+        testCompany.assign(worker1, project4);
+        testCompany.assign(worker2, project4);
+        unAvailableWorkers.add(worker1);
+        unAvailableWorkers.add(worker2);
+        assertEquals(unAvailableWorkers, testCompany.getUnavailableWorkers());
+
+        testCompany.assign(worker3, project4);
+        unAvailableWorkers.add(worker3);
+        assertEquals(unAvailableWorkers, testCompany.getUnavailableWorkers());
+    }
 }

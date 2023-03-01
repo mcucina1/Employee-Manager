@@ -224,3 +224,10 @@
 |testToStringEmptyWorkers()| empty workers set, non empty name, set with 1+ projects  |returned string: "Company Name:0:1+"|
 |                          | Set with 1+ workers, non-empty name, empty project set   |returned string: "Company Name:1+:0"|
 *impossible states and nullity characteristics are excluded from the base choice table
+
+#### getUnavailableWorkers
+| Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
+|---|---|---|---|---|
+|  Employees | availability  | All employees are available  |  No workers are at workload capacity | testUnavailableWorkers()  |
+|   |   | Some employees are available | Some workers are at workload capacity  |  testUnavailableWorkers() (base choice) |
+|   |   | No employees are available  | All workers are at workload capacity  | testUnavailableWorkers()  |

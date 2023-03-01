@@ -76,8 +76,16 @@ public class Company {
 	}
 
 	public Set<Worker> getUnavailableWorkers() {
-		return null;
-	}
+        Set<Worker> workerSet = new HashSet<Worker>();
+        
+        for (Worker w : this.employees){
+            if (!(w.isAvailable())){
+                workerSet.add(w);
+            }
+        }
+        
+        return workerSet;
+    }
 
 	public Set<Worker> getAssignedWorkers() {
 		return assigned;
