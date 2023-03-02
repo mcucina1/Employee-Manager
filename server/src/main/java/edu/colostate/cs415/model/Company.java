@@ -92,7 +92,10 @@ public class Company {
 	}
 
 	public Set<Worker> getUnassignedWorkers() {
-		return null;
+		Set<Worker> unassigned = new HashSet<>(employees);
+		unassigned.removeAll(assigned);
+
+		return unassigned;
 	}
 
 	public Set<Project> getProjects() {
