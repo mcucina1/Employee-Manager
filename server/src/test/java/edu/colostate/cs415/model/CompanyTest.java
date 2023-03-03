@@ -147,6 +147,27 @@ public class CompanyTest {
 		assertNull(w);
 	}
 
+	@Test(expected = IllegalArgumentException.class)
+	public void testCreateWorkerEmptyName() {
+		Company testCompany = new Company("Test Company");
+		Set<Qualification> quals = new HashSet<Qualification>();
+
+		testCompany.createQualification("Qual One");
+		quals.add(new Qualification("Qual Two"));
+		Worker w = testCompany.createWorker("", quals, 10.0);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testCreateWorkerBlankName() {
+		Company testCompany = new Company("Test Company");
+		Set<Qualification> quals = new HashSet<Qualification>();
+
+		testCompany.createQualification("Qual One");
+		quals.add(new Qualification("Qual Two"));
+		Worker w = testCompany.createWorker("  ", quals, 10.0);
+	}
+
+
 	@Test
 	public void testCreateWorker() {
 		Company testCompany = new Company("Test Company");
