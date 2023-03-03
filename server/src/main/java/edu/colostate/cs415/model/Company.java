@@ -152,6 +152,8 @@ public class Company {
 
 		Qualification newQualification = new Qualification(description);
 
+		this.qualifications.add(newQualification);
+
 		return newQualification;
 	}
 
