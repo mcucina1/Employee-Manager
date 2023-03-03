@@ -158,8 +158,6 @@ public class CompanyTest {
 		assertNotNull(w);
 	}
 	
-
-	
 	@Test(expected = IllegalArgumentException.class)
 	public void testCreateProjNameNull(){
 		Company createProjCompanyNull = new Company("Used for testing createProject");
@@ -181,9 +179,25 @@ public class CompanyTest {
 		String givenOutput = createProjCompanyValid.getProjects().toString();
 		assertEquals(givenOutput, expectedOutput);
 	}
+
 	@Test(expected = IllegalArgumentException.class)
 	public void testCreatProjNameEmpty(){
-		Company createProjCompanyEmptyName = new Company("");
+		Company createProjCompanyEmptyName = new Company("Company");
+		Qualification qual = createProjCompanyEmptyName.createQualification("Dancer");
+		Set<Qualification> quals = new HashSet<>();
+		quals.add(qual);
+
+		createProjCompanyEmptyName.createProject("", quals, ProjectSize.BIG);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testCreateProjNameEmptyString() {
+		Company createProjCompanyEmptyName = new Company("Company");
+		Qualification qual = createProjCompanyEmptyName.createQualification("Dancer");
+		Set<Qualification> quals = new HashSet<>();
+		quals.add(qual);
+
+		createProjCompanyEmptyName.createProject("  ", quals, ProjectSize.BIG);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
