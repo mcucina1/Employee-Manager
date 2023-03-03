@@ -44,9 +44,9 @@ public class CompanyTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void testNullEquals() {
 		Company testCompany = new Company("Test Company");
-		Company testCompanyTwo = new Company(null);
+		Company testCompanyTwo = null; 
 
-		assertTrue(testCompany.equals(testCompanyTwo));
+		testCompany.equals(testCompanyTwo);
 	}
 
 	@Test
