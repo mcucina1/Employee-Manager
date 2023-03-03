@@ -52,6 +52,7 @@
 |  |  | not null | "Sample Project" | testCreatProjValid() |
 |   | Initialized | Full String | "Sample Project" |testCreatProjValid() (Base Choice)|
 |   |  | Empty String | "" |testCreatProjNameEmpty()|
+|   |  | Empty String | "  " |testCreatProjNameEmptyString()|
 | Qualifications | Nullness | null | null | testCreateProjNullQual() |
 |  |  | Not Null | Set of existing qualifications |testCreateProjValidQual() (Base Choice) |
 | Size | Nullness | null | null | testCreateProjNullSize() |
@@ -105,6 +106,8 @@
 |---|---|---|---|---|
 | Name | null  | null  | null  | testNullNameCreateWorker() |
 |   |  | not null  | "Test Worker" | testCreateWorker() (Base Choice)|
+| | | not null| "" | testCreateWorkerEmptyName()  |
+| | | not null|"  " | testCreateWorkerBlankName() |
 | Qualifications | null | null | null | testNullQualsCreateWorker() |
 |  |  | not null | {"Qual One"} | testCreateWorker() |
 |  | isEmpty | empty | {} | testEmptyQualsCreateWorker() |
