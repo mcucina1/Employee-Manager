@@ -105,9 +105,12 @@ public class CompanyTest {
 		Company testTwoCompany = new Company("Test Two Company");
 		Qualification qualOne = testCompany.createQualification("Qual One");
 		Qualification qualTwo = testTwoCompany.createQualification("Qual One");
+		
+		Set<Qualification> quals = new HashSet<>();
+		quals.add(qualOne);
 
-		// NEED TO INSERT TESTS WITH GetQualifications Once Implemented.
 		assertEquals(qualOne, qualTwo);
+		assertEquals(quals, testCompany.getQualifications());
 	}
 
 	@Test(expected = IllegalArgumentException.class)
