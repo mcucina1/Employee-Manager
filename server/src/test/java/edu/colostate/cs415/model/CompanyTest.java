@@ -125,6 +125,7 @@ public class CompanyTest {
 		assertNull(w);
 	}
 
+	@Test
 	public void testEmptyQualsCreateWorker() {
 		Company testCompany = new Company("Test Company");
 		Set<Qualification> quals = new HashSet<Qualification>();
@@ -132,6 +133,7 @@ public class CompanyTest {
 		assertNull(w);
 	}
 
+	@Test
 	public void testNonCompanyQualCreateWorker() {
 		Company testCompany = new Company("Test Company");
 		Set<Qualification> quals = new HashSet<Qualification>();
@@ -142,6 +144,7 @@ public class CompanyTest {
 		assertNull(w);
 	}
 
+	@Test
 	public void testCreateWorker() {
 		Company testCompany = new Company("Test Company");
 		Set<Qualification> quals = new HashSet<Qualification>();
@@ -151,6 +154,8 @@ public class CompanyTest {
 		Worker w = testCompany.createWorker("Test Worker", quals, 10.0);
 		assertNotNull(w);
 	}
+	
+
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testCreateProjNameNull(){
