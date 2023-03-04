@@ -175,6 +175,17 @@
 | Salary | null | null | null | Impossible State |
 |  |  | not null | 10.0 | testCreateWorker() |
 
+#### CreateWorker Base Choice
+| Test | Oracle |
+|------|--------|
+|testCreateWorker()(Base Test) - Valid Name / Valid Qualifications / Valid Salary | Pass |
+|testNullNameCreateWorker() - Null Name / Valid Qualifications / Valid Salary | Fail |
+|testCreateWorkerEmptyName() - Empty String Name / Valid Qualifications / Valid Salary | Fail |
+|testCreateWorkerBlankName() - Whitespace Char for Name / Valid Qualifications / Valid Salary | Fail |
+|testNullQualsCreateWorker() - Valid Name / Null Qualifications / Valid Salary | Pass |
+|testEmptyQualsCreateWorker() - Valid Name / Empty Qualification set / Valid Salary | Pass |
+|Impossible State - Valid Name / Valid Qualifications / Null Salary | Pass | 
+
 
 #### getEmployedWorkers Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
