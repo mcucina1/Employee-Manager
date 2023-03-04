@@ -30,7 +30,9 @@
 #### Equals Base Choice
 | Test | Oracle |
 |------|--------|
-|testEquals()(Base Choice) - Non-null Object / Valid type | Pass |
+|testEquals()(Base Test) - Non-null Object / Valid type | Pass |
+|testEquals() - Non-null Object / Null type | Pass |
+|testEquals() - Null Object / Valid type | Pass |
 |testNullEquals() - Null Object / Null type | Fail |
 
 #### toString Method
@@ -56,6 +58,7 @@
 |testToStringEmptyWorkers() - empty workers set / non empty name / set with 1+ projects | Pass |
 |testToStringEmptyProjects() - Set with 1+ workers / non-empty name / empty project set   | Pass |
 *impossible states and nullity characteristics are excluded from the base choice table
+
 
 #### getName Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
