@@ -266,6 +266,13 @@
 |   |   | Some employees are available | Some workers are at workload capacity  |  testUnavailableWorkers() (base choice) |
 |   |   | No employees are available  | All workers are at workload capacity  | testUnavailableWorkers()  |
 
+#### getUnavailableWorkers Base Choice
+ | Test | Oracle |
+ |------|--------|
+ | testUnavailableWorkers()(Base Test) - Available Workers / Existing Workers at Capacity | Pass |
+ | testUnavailableWorkers() - All workers available / No workers at capacity| Pass |
+ | testUnavailableWorkers() - No workers available / All workers at capacity | Pass |
+
 #### unassign Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
