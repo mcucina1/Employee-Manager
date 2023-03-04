@@ -127,11 +127,11 @@
 |           |          | 1+ workers (base choice)| testGetEmployedWorkersBase() |
 
 #### getEmployedWorkers Base Choice
-| Test | Block   | Oracle |
-|------|---------|--------|
-|testGetEmployedWorkersBase()  (Base Test)  | not null, 1+ workers | return set of size 1+|
-|testGetEmployedWorkersOneWorker()          | not null, 1 workers  | return set of size 1 |
-|testGetEmployedWorkersEmpty()              | not null, empty      | return set of size 0 |
+| Test | Oracle |
+|------|--------|
+|testGetEmployedWorkersBase()(Base Test) - Non-null Employee set / >1 workers| Pass |
+|testGetEmployedWorkersOneWorker() - Non-null Employee set / Single worker| Pass |
+|testGetEmployedWorkersEmpty() - Non-null Employee set / empty workers | Pass |
 
  #### Start Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
