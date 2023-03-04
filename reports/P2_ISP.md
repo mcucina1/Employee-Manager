@@ -19,6 +19,11 @@
 |   |   |  Non-Worker | String nonCompany = "Company"  | testEquals() |
 |   |   |  Equals self | This.Company  | testEquals() |
 
+#### Equals Base Choice
+| Test | Oracle |
+|------|--------|
+|testEquals()(Base Choice) - Non-null Object / Valid type | Pass |
+|testNullEquals() - Null Object / Null type | Fail |
 
 #### getName Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
