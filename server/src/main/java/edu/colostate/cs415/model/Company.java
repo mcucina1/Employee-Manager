@@ -245,7 +245,7 @@ public class Company {
 		}
 
 		// If we are missing Qualifications after removing worker, set status suspended.
-		if (!(project.getMissingQualifications().isEmpty())) {
+		if (project.getStatus() == ProjectStatus.ACTIVE && !(project.getMissingQualifications().isEmpty())) {
 			project.setStatus(ProjectStatus.SUSPENDED);
 		}
 	}
