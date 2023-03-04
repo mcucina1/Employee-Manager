@@ -22,8 +22,11 @@
 #### Equals Base Choice
 | Test | Oracle |
 |------|--------|
-|testEquals()(Base Choice) - Non-null Object / Valid type | Pass |
+|testEquals()(Base Test) - Non-null Object / Valid type | Pass |
+|testEquals() - Non-null Object / Null type | Pass |
+|testEquals() - Null Object / Valid type | Pass |
 |testNullEquals() - Null Object / Null type | Fail |
+
 
 #### getName Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
