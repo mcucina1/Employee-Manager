@@ -84,6 +84,14 @@
 |   |   | Single qualification | Qualification set w/ one element | testGetQualSingle() (Base choice) |
 |   |   | Many qualifications | Qualification set w/ two elements | testGetQualMany() |
 
+#### getQualifications Base Choice
+| Test | Oracle |
+|------|--------|
+|testGetQualSingle()(Base Test) - Single Qualification in Set | Pass |
+|testGetQualEmpty() - No Qualification in Set | Pass |
+|testGetQualMany() - Multiple Qualifications in Set | Pass |
+
+
 #### CreateQualification Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
