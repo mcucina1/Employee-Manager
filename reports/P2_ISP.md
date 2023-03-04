@@ -10,6 +10,14 @@
 |   |   | white-space only string  | "         "  | testCompanyConstructorWhiteSpaceName() |
 |   |   | full string  | "Test Company"  | testConstructorIsValid() |
 
+#### Constructor Base Choice
+| Test | Oracle |
+|------|--------|
+|testConstructorIsValid()(Base Test) - Non-null Name / Full String Name| Pass |
+|testCompanyConstructorNullName() - Null Name / Null Name | Fail |
+|testCompanyConstructorEmptyName() - Non-null Name / Empty String Name | Fail |
+|testCompanyConstructorWhiteSpaceName() - Non-null Name / Whitespace Char Name | Fail |
+
 #### Equals Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
