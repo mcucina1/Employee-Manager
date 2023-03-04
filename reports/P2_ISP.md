@@ -287,9 +287,9 @@
 | worker | nullity | not null | not null | testUnassignBaseWorker() (BASE CHOICE)|
 |  |  | null | null | testUnassignNullWorker() |
 |  | Workload | Workload less than 12 | 6 | testUnassignBaseWorker() (BASE CHOICE)|
-|  |  | Workload 12 | 12 | testUnssignNonAvailableWorker() |
+|  |  | Workload 12 | 12 | testUnasignNonAvailableWorker() |
 |  | isAvailable | is in available set upon project removal | Worker is in available set | testUnassignBaseWorker() (BASE CHOICE)|
-|  |  | is not in available set upon project removal | Worker is NOT in available set | testUnssignNonAvailableWorker() |
+|  |  | is not in available set upon project removal | Worker is NOT in available set | testUnasignNonAvailableWorker() |
 |  | isAssigned | Worker is assigned to project | Worker is part of project | testUnassignBaseWorker() (BASE CHOICE)|
 |  |  | Worker is NOT assigned to project | Worker is NOT part of project | testUnassignWorkerNotAssigned() |
 |  | hasProject | Project is in project set | project is in project set | testUnassignBaseWorker() (BASE CHOICE)|
@@ -304,9 +304,16 @@
 #### unassign worker Base Choice
 | Test | Oracle |
 |------|--------|
-|  |  |
+|testUnassignBaseWorkers()(Base Test) - Non-null Worker / Valid Workload / Available after unassign / Member of Project / Valid Project | Pass |
+|testUnassignNullWorker() - Null Worker / Valid Workload / Available after unassign / Member of Project / Valid Project | Fail |
+|testUnassignNonAvailableWorker() - Invalid Workload / Available after unassign / Member of Project / Valid Project | Pass |
+|testUnassignWorkerNotAssigned() - Valid Workload / Available before unassign / Not member of Project / Valid Project | Fail |
+|testUnassignProjectNotInWorkerSet() - Valid Workload / Available after unassign / Member of Project / Invalid Project | Fail |
 
 #### unassign project Base Choice
 | Test | Oracle |
 |------|--------|
-|  |  |
+|testUnassignBaseWorkers()(Base Test) - Non-null Worker / Valid Workload / Available after unassign / Member of Project / Valid Project | Pass |
+|testUnassignNullProject() - Non-null Worker / Valid Workload / Available after unassign / Member of Project / Null Project | Fail |
+|testUnassignWorkerNotAssigned() - Non-null Worker / Valid Workload / Available after unassign / Not member of Project / Valid Project | Fail |
+|testUnassignMissingQuals() - Non-null Worker / Valid Workload / Available after unassign / Member of Project / Project missing Qualifications | Pass | 
