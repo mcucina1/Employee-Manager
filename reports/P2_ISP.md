@@ -189,6 +189,14 @@
 | Company's Set of Qualifications  | Required Qualifications  | Has Required Qualifications  | Company Qualifications is a subset of Project Qualifications  | testMissingQualsStart() (Base Choice) |
 |   |   |   | Company Qualifications is NOT a subset of Project Qualifications  | testMissingQualsStart()  |
 
+#### Start Base Choice
+| Test | Oracle |
+|------|--------|
+|testPlannedAndSuspendedStart()(Base Test) - Project Status is ACTIVE / Has Required Qualifications | Pass |
+|testPlannedAndSuspendedStart() - Project Status is PLANNED / Has Required Qualifications | Pass |
+|testMissingQualsStart() - Project Status is ACTIVE / Has Required Qualifications | Pass |
+|testMissingQualsStart() - Project Status is ACTIVE / Does not have required qualifications | Fail |
+
 #### getUnassignedWorkers Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
