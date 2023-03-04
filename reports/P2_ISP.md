@@ -10,6 +10,14 @@
 |   |   | white-space only string  | "         "  | testCompanyConstructorWhiteSpaceName() |
 |   |   | full string  | "Test Company"  | testConstructorIsValid() |
 
+#### Constructor Base Choice
+| Test | Oracle |
+|------|--------|
+|testConstructorIsValid()(Base Test) - Non-null Name / Full String Name| Pass |
+|testCompanyConstructorNullName() - Null Name / Null Name | Fail |
+|testCompanyConstructorEmptyName() - Non-null Name / Empty String Name | Fail |
+|testCompanyConstructorWhiteSpaceName() - Non-null Name / Whitespace Char Name | Fail |
+
 #### Equals Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
@@ -27,6 +35,30 @@
 |testEquals() - Null Object / Valid type | Pass |
 |testNullEquals() - Null Object / Null type | Fail |
 
+#### toString Method
+| Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
+|---|---|---|---|---|
+|Availible| nullity | null     | impossible state           | impossible state |
+|         |         | not null | an initalized set          | testToStringBase()|
+|         |emptiness| empty    | an empty set               | testToStringEmptyWorkers()|
+|         |         | not empty| a set with 1+ workers(base)| testToStringBase()|
+|Name     | nullity | null     | impossible state           | impossible state |
+|         |         | not null | an initalized string       | testToStringBase()|
+|         |emptiness| empty    | impossible state           | impossible state |
+|         |         | not empty| a non empty string   (base)| testToStringBase()|
+|Projects | nullity | null     | impossible state           | impossible state |
+|         |         | not null | an initialized set         | testToStringBase()|
+|         |emptiness| empty    | and empty set              |testToStringEmptyProjects()|
+|         |         | not empty| a set with 1+ projects(base)| testToStringBase()|
+
+#### toString Base Choice
+| Test | Oracle |
+|------|--------|
+|testToStringBase()(Base Test) - set with 1+ workers / non empty name / set with 1+ projects |Pass|
+|testToStringEmptyWorkers() - empty workers set / non empty name / set with 1+ projects | Pass |
+|testToStringEmptyProjects() - Set with 1+ workers / non-empty name / empty project set   | Pass |
+*impossible states and nullity characteristics are excluded from the base choice table
+
 
 #### getName Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
@@ -36,6 +68,14 @@
 |  | Empty | empty | "" | testEmptyGetName() |
 |  | Empty | empty | "    " | testWhiteSpaceGetName() |
 |  |  | Non-Empty | "Company" | testGetName() |
+
+#### getName Base Choice
+ | Test | Oracle |
+ |------|--------|
+ |testGetName()(Base Test) - Non-null Name / Non-empty Name | Pass |
+ |testNullGetName() - Null Name / Null Name | Fail |
+ |testEmptyGetName() - Non-null Name / Empty String Name | Fail |
+ |testWhiteSpaceGetName() - Non-null Name / White Space Char Name | Fail |
 
 #### getQualifications Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
@@ -135,11 +175,11 @@
 |           |          | 1+ workers (base choice)| testGetEmployedWorkersBase() |
 
 #### getEmployedWorkers Base Choice
-| Test | Block   | Oracle |
-|------|---------|--------|
-|testGetEmployedWorkersBase()  (Base Test)  | not null, 1+ workers | return set of size 1+|
-|testGetEmployedWorkersOneWorker()          | not null, 1 workers  | return set of size 1 |
-|testGetEmployedWorkersEmpty()              | not null, empty      | return set of size 0 |
+| Test | Oracle |
+|------|--------|
+|testGetEmployedWorkersBase()(Base Test) - Non-null Employee set / >1 workers| Pass |
+|testGetEmployedWorkersOneWorker() - Non-null Employee set / Single worker| Pass |
+|testGetEmployedWorkersEmpty() - Non-null Employee set / empty workers | Pass |
 
  #### Start Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
@@ -211,34 +251,29 @@
 | testGetAvilibleWorkersEmpty()      | empty, initialized set    | returns a empty set of workers|
 *impossible states and nullity characteristics are excluded from the base choice table
 
-
-#### toString Method
-| Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
-|---|---|---|---|---|
-|Availible| nullity | null     | impossible state           | impossible state |
-|         |         | not null | an initalized set          | testToStringBase()|
-|         |emptiness| empty    | an empty set               | testToStringEmptyWorkers()|
-|         |         | not empty| a set with 1+ workers(base)| testToStringBase()|
-|Name     | nullity | null     | impossible state           | impossible state |
-|         |         | not null | an initalized string       | testToStringBase()|
-|         |emptiness| empty    | impossible state           | impossible state |
-|         |         | not empty| a non empty string   (base)| testToStringBase()|
-|Projects | nullity | null     | impossible state           | impossible state |
-|         |         | not null | an initialized set         | testToStringBase()|
-|         |emptiness| empty    | and empty set              ||
-|         |         | not empty| a set with 1+ projects(base)| testToStringBase()|
-
-#### toString Base Choice
-| Test | Block   | Oracle |
-|------|---------|--------|
-|testToStringBase() (base) | set with 1+ workers, non empty name, set with 1+ projects|returned string: "Company Name:1+:1+"|
-|testToStringEmptyWorkers()| empty workers set, non empty name, set with 1+ projects  |returned string: "Company Name:0:1+"|
-|                          | Set with 1+ workers, non-empty name, empty project set   |returned string: "Company Name:1+:0"|
-*impossible states and nullity characteristics are excluded from the base choice table
-
 #### getUnavailableWorkers
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
 |  Employees | availability  | All employees are available  |  No workers are at workload capacity | testUnavailableWorkers()  |
 |   |   | Some employees are available | Some workers are at workload capacity  |  testUnavailableWorkers() (base choice) |
 |   |   | No employees are available  | All workers are at workload capacity  | testUnavailableWorkers()  |
+
+#### unassign Method
+| Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
+|---|---|---|---|---|
+| worker | nullity | not null | not null | unassignBaseWorker() (BASE CHOICE)|
+| worker | nullity | null | null | testUnassignNullWorker() |
+| worker | Workload | Workload less than 12 | 6 | unassignBaseWorker() (BASE CHOICE)|
+| worker | Workload | Workload 12 | 12 | testUnssignNonAvailableWorker() |
+| worker | isAvailable | is in available set upon project removal | Worker is in available set | unassignBaseWorker() (BASE CHOICE)|
+| worker | isAvailable | is not in available set upon project removal | Worker is NOT in available set | testUnssignNonAvailableWorker() |
+| worker | isAssigned | Worker is assigned to project | Worker is part of project | unassignBaseWorker() (BASE CHOICE)|
+| worker | isAssigned | Worker is NOT assigned to project | Worker is NOT part of project | testUnassignWorkerNotAssigned() |
+| worker | hasProject | Project is in project set | project is in project set | unassignBaseWorker() (BASE CHOICE)|
+| worker | hasProject | Project is NOT in project set | project is NOT in project set | testUnassignProjectNotInWorkerSet() |
+| project | nullity | not null | not null | unassignBaseWorker() (BASE CHOICE)|
+| project | nullity | null | null | testUnassignNullProject() |
+| project | Worker assigned | Worker is Assigned to project | worker assigned to project | unassignBaseWorker() (BASE CHOICE)|
+| project | Worker assigned | Worker is NOT Assigned to project | worker NOT assigned to project | testUnassignWorkerNotAssigned() |
+| project | Qualifications | Missing Qualifcations | remove worker resulting in missing qualifications | testUnassignMissingQuals() |
+| project | Qualifications | Proper Qualifcations | remove worker resulting in NO missing qualifications | unassignBaseWorker() (BASE CHOICE)|
