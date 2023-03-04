@@ -29,6 +29,14 @@
 |  | Empty | empty | "    " | testWhiteSpaceGetName() |
 |  |  | Non-Empty | "Company" | testGetName() |
 
+#### getName Base Choice
+ | Test | Oracle |
+ |------|--------|
+ |testGetName()(Base Test) - Non-null Name / Non-empty Name | Pass |
+ |testNullGetName() - Null Name / Null Name | Fail |
+ |testEmptyGetName() - Non-null Name / Empty String Name | Fail |
+ |testWhiteSpaceGetName() - Non-null Name / White Space Char Name | Fail |
+
 #### getQualifications Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
