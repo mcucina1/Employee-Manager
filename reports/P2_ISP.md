@@ -167,7 +167,7 @@
 #### CreateWorker Base Choice
 | Test | Oracle |
 |------|--------|
-|testCreateWorker()(Base Choice) - Valid Name / Valid Qualifications / Valid Salary | Pass |
+|testCreateWorker()(Base Test) - Valid Name / Valid Qualifications / Valid Salary | Pass |
 |testNullNameCreateWorker() - Null Name / Valid Qualifications / Valid Salary | Fail |
 |testCreateWorkerEmptyName() - Empty String Name / Valid Qualifications / Valid Salary | Fail |
 |testCreateWorkerBlankName() - Whitespace Char for Name / Valid Qualifications / Valid Salary | Fail |
