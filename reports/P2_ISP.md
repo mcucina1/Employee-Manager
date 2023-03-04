@@ -227,29 +227,34 @@
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
 | worker | nullity | not null | not null | assignBaseWorker() (base choice) |
-| worker | nullity | null | null | assignNullWorker() |
-| worker | Workload | Workload less than 12 | 3 | assignBaseWorker() (base choice)|
-| worker | Workload | Workload 12 | 12 | assignTestWorkerAvailibilty() |
-| worker | Workload | Will Overload | 16 (attempted) | assignWillOverloadWorker() |
-| worker | Helpfulness | Qualification not in Project | "Bad Qual" | assignWorkerNotHelpful() |
-| worker | Helpfulness | Qualification in Project | "Good Qual" | assignBaseWorker() (base choice)|
+|  |  | null | null | assignNullWorker() |
+|  | Workload | Workload less than 12 | 3 | assignBaseWorker() (base choice)|
+|  |  | Workload 12 | 12 | assignTestWorkerAvailibilty() |
+|  |  | Will Overload | 16 (attempted) | assignWillOverloadWorker() |
+|  | Helpfulness | Qualification not in Project | "Bad Qual" | assignWorkerNotHelpful() |
+|  |  | Qualification in Project | "Good Qual" | assignBaseWorker() (base choice)|
 | project | nullity | not null | not null | assignBaseWorker() (base choice)|
-| project | nullity | null | null | assignNullProject() |
-| project | Worker In Project | Worker Already in Project | worker in project | assignWorkerAlreadyInProject() |
-| project | Worker In Project | Worker not in Project | worker not in project | assignBaseWorker() (base choice)|
-| project | ProjectStatus | Not allowed ProjectStatus | ProjectStatus.ACTIVE | assignProjectStatusActive() |
-| project | ProjectStatus | Not allowed ProjectStatus | ProjectStatus.FINISHED | assignProjectStatusFinished() |
-| project | ProjectStatus | Allowed ProjectStatus | ProjectStatus.PLANNED |  assignProjectStatusPlanned() (base choice)|
-| Project| Helpfulness | Qualification not in Project | "Bad Qual" | assignWorkerNotHelpful() |
-| Project | Helpfulness | Qualification in Project | "Good Qual" | assignBaseWorker() (base choice)|
+|  |  | null | null | assignNullProject() |
+|  | Worker In Project | Worker Already in Project | worker in project | assignWorkerAlreadyInProject() |
+|  |  | Worker not in Project | worker not in project | assignBaseWorker() (base choice)|
+|  | ProjectStatus | Not allowed ProjectStatus | ProjectStatus.ACTIVE | assignProjectStatusActive() |
+|  |  | Not allowed ProjectStatus | ProjectStatus.FINISHED | assignProjectStatusFinished() |
+|  |  | Allowed ProjectStatus | ProjectStatus.PLANNED |  assignProjectStatusPlanned() (base choice)|
+| | Helpfulness | Qualification not in Project | "Bad Qual" | assignWorkerNotHelpful() |
+|  |  | Qualification in Project | "Good Qual" | assignBaseWorker() (base choice)|
 | assigned | nullity | not null | not null | assignBaseWorker() (base choice)|
-| assigned | nullity | null | null | Not allowed by constructor. |
-| assigned | Worker in Pool | Worker In Pool | Worker already in assigned | assignWorkerAlreadyInAssigned() |
-| assigned | Worker in Pool | Worker not In Pool | Worker not assinged | assignBaseWorker() (base choice)|
+|  |  | null | null | Not allowed by constructor. |
+|  | Worker in Pool | Worker In Pool | Worker already in assigned | assignWorkerAlreadyInAssigned() |
+|  |  | Worker not In Pool | Worker not assinged | assignBaseWorker() (base choice)|
 | available | nullity | not null | not null | assignBaseWorker() (base choice)|
-| available | nullity | null | null | Not allowed by constructor. |
-| available | still available | not null | not null | assignBaseWorker() (base choice)|
-| available | not in available | not null | not null | assignWorkerNotInAvailable() |
+|  |  | null | null | Not allowed by constructor. |
+|  | still available | not null | not null | assignBaseWorker() (base choice)|
+|  | not in available | not null | not null | assignWorkerNotInAvailable() |
+
+#### Assign Base Choice
+| Test | Oracle |
+|------|--------|
+
 
 
 #### getAvailableWorkers
