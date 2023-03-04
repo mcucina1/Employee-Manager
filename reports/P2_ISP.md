@@ -193,10 +193,18 @@
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
 | workers | nullity | not null | not null | testGetUnassignedWorkers() (BASE CHOICE) |
-| workers | nullity | null | null | Not Allowed By Constructor |
-| workers | emptiness | empty | empty | testGetUnassignedWorkersEmpty() |
-| workers | emptiness | not empty | one worker | testGetUnassignedWorkers() (base choice)|
-| workers | emptiness | not empty | many workers | testGetUnassignedWorkersMany() |
+|  |  | null | null | Not Allowed By Constructor |
+|  | emptiness | empty | empty | testGetUnassignedWorkersEmpty() |
+|  |  | not empty | one worker | testGetUnassignedWorkers() (base choice)|
+|  |  | not empty | many workers | testGetUnassignedWorkersMany() |
+
+#### getUnassignedWorkers Base Choice
+| Test | Oracle |
+|------|--------|
+| testGetUnassignedWorkers()(Base Test) - Non-null Worker Set / Non-empty Worker Set| Pass |
+| Impossible State - Null Worker Set / Non-empty Worker Set | Not Allowed By Constructor |
+| testGetUnassignedWorkersEmpty() - Non-null Worker Set / Empty Worker Set | Pass |
+| testGetUnassignedWorkersMany() - Non-null Worker Set / More than one worker in set | Pass |
 
 #### getAssignedWorkers Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
