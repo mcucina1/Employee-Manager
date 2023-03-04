@@ -97,9 +97,17 @@
 |---|---|---|---|---|
 | Qual String | null | null | null | testNullCreateQualification() |
 |  |  | not null | "Qual One" | testCreateQualification() |
-|  | Initalized | full string | "Qual One" | testCreateQualification() (BASE CASE)|
+|  | Initalized | full string | "Qual One" | testCreateQualification() (BASE CHOICE)|
 |  |  | empty | "" | testEmptyStringCreateQualification() |
 |  |  | white-space only string  | " " | testWhiteSpaceStringCreateQualification() |
+
+#### CreateQualification Base Choice
+ | Test | Oracle |
+ |------|--------|
+ |testCreateQualification()(Base Choice) - Non-null Qualification Description / Full String Description | Pass |
+ |testNullCreateQualification() - Null Description / Null Description | Fail |
+ |testEmptyStringCreateQualification() - Non-null Qualification Description / Empty String Description | Fail |
+ |testWhiteSpaceStringCreateQualification() - Non-null Qualification Description / Whitespace String Description | Fail |
 
 #### CreateProject Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
