@@ -44,9 +44,9 @@ public class CompanyTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void testNullEquals() {
 		Company testCompany = new Company("Test Company");
-		Company testCompanyTwo = new Company(null);
+		Company testCompanyTwo = null; 
 
-		assertTrue(testCompany.equals(testCompanyTwo));
+		testCompany.equals(testCompanyTwo);
 	}
 
 	@Test
@@ -105,9 +105,12 @@ public class CompanyTest {
 		Company testTwoCompany = new Company("Test Two Company");
 		Qualification qualOne = testCompany.createQualification("Qual One");
 		Qualification qualTwo = testTwoCompany.createQualification("Qual One");
+		
+		Set<Qualification> quals = new HashSet<>();
+		quals.add(qualOne);
 
-		// NEED TO INSERT TESTS WITH GetQualifications Once Implemented.
 		assertEquals(qualOne, qualTwo);
+		assertEquals(quals, testCompany.getQualifications());
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -125,6 +128,7 @@ public class CompanyTest {
 		assertNull(w);
 	}
 
+	@Test
 	public void testEmptyQualsCreateWorker() {
 		Company testCompany = new Company("Test Company");
 		Set<Qualification> quals = new HashSet<Qualification>();
@@ -132,6 +136,7 @@ public class CompanyTest {
 		assertNull(w);
 	}
 
+	@Test
 	public void testNonCompanyQualCreateWorker() {
 		Company testCompany = new Company("Test Company");
 		Set<Qualification> quals = new HashSet<Qualification>();
@@ -142,6 +147,28 @@ public class CompanyTest {
 		assertNull(w);
 	}
 
+	@Test(expected = IllegalArgumentException.class)
+	public void testCreateWorkerEmptyName() {
+		Company testCompany = new Company("Test Company");
+		Set<Qualification> quals = new HashSet<Qualification>();
+
+		testCompany.createQualification("Qual One");
+		quals.add(new Qualification("Qual Two"));
+		Worker w = testCompany.createWorker("", quals, 10.0);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testCreateWorkerBlankName() {
+		Company testCompany = new Company("Test Company");
+		Set<Qualification> quals = new HashSet<Qualification>();
+
+		testCompany.createQualification("Qual One");
+		quals.add(new Qualification("Qual Two"));
+		Worker w = testCompany.createWorker("  ", quals, 10.0);
+	}
+
+
+	@Test
 	public void testCreateWorker() {
 		Company testCompany = new Company("Test Company");
 		Set<Qualification> quals = new HashSet<Qualification>();
@@ -173,9 +200,25 @@ public class CompanyTest {
 		String givenOutput = createProjCompanyValid.getProjects().toString();
 		assertEquals(givenOutput, expectedOutput);
 	}
+
 	@Test(expected = IllegalArgumentException.class)
 	public void testCreatProjNameEmpty(){
-		Company createProjCompanyEmptyName = new Company("");
+		Company createProjCompanyEmptyName = new Company("Company");
+		Qualification qual = createProjCompanyEmptyName.createQualification("Dancer");
+		Set<Qualification> quals = new HashSet<>();
+		quals.add(qual);
+
+		createProjCompanyEmptyName.createProject("", quals, ProjectSize.BIG);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testCreateProjNameEmptyString() {
+		Company createProjCompanyEmptyName = new Company("Company");
+		Qualification qual = createProjCompanyEmptyName.createQualification("Dancer");
+		Set<Qualification> quals = new HashSet<>();
+		quals.add(qual);
+
+		createProjCompanyEmptyName.createProject("  ", quals, ProjectSize.BIG);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
