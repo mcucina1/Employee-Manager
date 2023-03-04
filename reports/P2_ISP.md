@@ -222,15 +222,15 @@
 |         |         | not empty| a non empty string   (base)| testToStringBase()|
 |Projects | nullity | null     | impossible state           | impossible state |
 |         |         | not null | an initialized set         | testToStringBase()|
-|         |emptiness| empty    | and empty set              ||
+|         |emptiness| empty    | and empty set              |testToStringEmptyProjects()|
 |         |         | not empty| a set with 1+ projects(base)| testToStringBase()|
 
 #### toString Base Choice
-| Test | Block   | Oracle |
-|------|---------|--------|
-|testToStringBase() (base) | set with 1+ workers, non empty name, set with 1+ projects|returned string: "Company Name:1+:1+"|
-|testToStringEmptyWorkers()| empty workers set, non empty name, set with 1+ projects  |returned string: "Company Name:0:1+"|
-|                          | Set with 1+ workers, non-empty name, empty project set   |returned string: "Company Name:1+:0"|
+| Test | Oracle |
+|------|--------|
+|testToStringBase()(Base Test) - set with 1+ workers / non empty name / set with 1+ projects |Pass|
+|testToStringEmptyWorkers() - empty workers set / non empty name / set with 1+ projects | Pass |
+|testToStringEmptyProjects() - Set with 1+ workers / non-empty name / empty project set   | Pass |
 *impossible states and nullity characteristics are excluded from the base choice table
 
 #### getUnavailableWorkers
