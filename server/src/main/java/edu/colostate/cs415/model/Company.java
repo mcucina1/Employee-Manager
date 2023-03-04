@@ -213,6 +213,41 @@ public class Company {
 	}
 
 	public void unassign(Worker worker, Project project) {
+		Boolean isAvailable = true;
+
+		if (worker == null || project == null) {
+			throw new IllegalArgumentException("Worker and Project Arguments may not be null");
+		}
+
+		// Checking to see if the worker is actually assigned to this project
+		if (!(project.getWorkers().contains(worker)) && !(worker.getProjects().contains(project))) {
+			throw new IllegalArgumentException(
+					"{Comapny.java} Cannot unassign a worker from a project they are not assigned to");
+		}
+
+		// If worker is not in companies avaiable pool, set false.
+		if (this.available.contains(worker)) {
+			isAvailable = false;
+		}
+
+		// If worker was assigned to the project, we remove them.
+		worker.removeProject(project);
+		project.removeWorker(worker);
+
+		// If they are not in the comapnies avaiable pool, add them.
+		if (isAvailable == false) {
+			this.assigned.add(worker);
+		}
+
+		// If worker is no longer assigned to any projects, remove from assigned set.
+		if (worker.getProjects().isEmpty()) {
+			this.assigned.remove(worker);
+		}
+
+		// If we are missing Qualifications after removing worker, set status suspended.
+		if (!(project.getMissingQualifications().isEmpty())) {
+			project.setStatus(ProjectStatus.SUSPENDED);
+		}
 	}
 
 	public void unassignAll(Worker worker) {
