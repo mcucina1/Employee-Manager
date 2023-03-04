@@ -226,7 +226,7 @@ public class Company {
 		}
 
 		// If worker is not in companies avaiable pool, set false.
-		if (this.available.contains(worker)) {
+		if (!(this.available.contains(worker))) {
 			isAvailable = false;
 		}
 
@@ -236,7 +236,7 @@ public class Company {
 
 		// If they are not in the comapnies avaiable pool, add them.
 		if (isAvailable == false) {
-			this.assigned.add(worker);
+			this.available.add(worker);
 		}
 
 		// If worker is no longer assigned to any projects, remove from assigned set.
