@@ -236,19 +236,19 @@
 | available | not in available | not null | not null | assignWorkerNotInAvailable() |
 
 
-#### getAvailibleWorkers
+#### getAvailableWorkers
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
 |Availible| nullity |null     | impossible state          | impossible state |
-|         |         |not null | an initialized set  (base)| testGetAvailibleWokersBase()|
-|         |emptiness|empty    | empty set                 |testGetAvilibleWorkersEmpty()|
-|         |         |not empty| set with 1+ workers (base)| testGetAvailibleWokersBase()|
+|         |         |not null | an initialized set  (base)| testGetAvailableWokersBase()|
+|         |emptiness|empty    | empty set                 |testGetAvailableWorkersEmpty()|
+|         |         |not empty| set with 1+ workers (base)| testGetAvailableWokersBase()|
 
-#### getAvailibleWorkers Base Choice
-| Test | Block   | Oracle |
-|------|---------|--------|
-| testGetAvailibleWokersBase() (base)| not empty, initialized set| returns a non-empty set of workers|
-| testGetAvilibleWorkersEmpty()      | empty, initialized set    | returns a empty set of workers|
+#### getAvailableWorkers Base Choice
+| Test | Oracle |
+|------|--------|
+| testGetAvailableWokersBase()(base) - Non-empty Worker set / initialized set | Pass |
+| testGetAvailableWorkersEmpty() - Empty Worker set / initialized set | Pass |
 *impossible states and nullity characteristics are excluded from the base choice table
 
 #### getUnavailableWorkers
