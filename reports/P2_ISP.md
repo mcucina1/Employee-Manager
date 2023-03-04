@@ -254,19 +254,35 @@
 #### Assign Worker Base Choice
 | Test | Oracle |
 |------|--------|
-|  |  |
+|testAssignBaseWorker()(Base Test) - Non-null Worker / Valid Workload / Valid Qualification  | Pass |
+|testAssignNullWorker() - Null Worker / Valid Workload / Valid Qualification | Fail |
+|testAssignTestWorkerAvailability() - Non-null Worker / Full Workload / Valid Qualification | Pass |
+|testAssignWillOverloadWorker() - Non-null Worker / Over Full Workload / Valid Qualification | Fail |
+|testAssignWorkerNotHelpful() - Non-null Worker / Valid Workload / Invalid Qualification | Fail |
 
 #### Assign Project Base Choice
 | Test | Oracle |
 |------|--------|
+|testAssignBaseWorker()(Base Test) - Non-null Project / Worker not in project / Status is PLANNED / Valid Qualification | Pass |
+|testAssignNullProject() - Null Project / Worker not in project / Status is PLANNED / Valid Qualification | Fail |
+|testAssignWorkerAlreadyInProject() - Non-null Project / Worker already in project / Status is PLANNED / Valid Qualification | Fail |
+|testAssignProjectStatusActive() - Non-null Project / Worker not in project / Status is ACTIVE / Valid Qualification | Fail |
+|testAssignProjectStatusFinished() - Non-null Project / Worker not in project / Status is FINISHED / Valid Qualification | Fail |
+|testAssignWorkerNotHelpful() - Non-null Project / Worker not in project / Status is PLANNED / Invalid Qualification | Fail |
 
 #### Assign assigned Base Choice
 | Test | Oracle |
 |------|--------|
+|testAssignBaseWorker()(Base Test) - Non-null Project / Worker not in project / Status is PLANNED / Valid Qualification | Pass |
+|Not allowed by constructor - Non-null Project / Null worker in project / Status is PLANNED / Valid Qualification | Impossible State |
+|testAssignWorkerAlreadyInAssigned() - Non-null Project / Worker in assigned / Status is PLANNED / Valid Qualification | Pass |
 
 #### Assign Available Base Choice
 | Test | Oracle |
 |------|--------|
+|testAssignBaseWorker()(Base Test) - Non-null Project / Non-null Worker / Status is PLANNED / Valid Qualification | Pass |
+|Not allowed by constructor - Non-null Project / Null Worker / Status is PLANNED / Valid Qualification | Impossible State |
+|testAssignWorkerNotInAvailable() - Non-null Project / Worker not available / Valid Qualification | Fail |
 
 
 
