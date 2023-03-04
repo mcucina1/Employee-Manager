@@ -235,22 +235,22 @@
 |   |   | Some employees are available | Some workers are at workload capacity  |  testUnavailableWorkers() (base choice) |
 |   |   | No employees are available  | All workers are at workload capacity  | testUnavailableWorkers()  |
 
-#### assign Method
+#### unassign Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| worker | nullity | not null | not null |  |
-| worker | nullity | null | null |  |
-| worker | Workload | Workload less than 12 | 3 |  |
-| worker | Workload | Workload 12 | 12 |  |
-| worker | isAvailable | is in available set upon project removal | Worker is in available set |  |
-| worker | isAvailable | is not in available set upon project removal | Worker is NOT in available set |  |
-| worker | isAssigned | Worker is assigned to project | Worker is part of project |  |
-| worker | isAssigned | Worker is NOT assigned to project | Worker is NOT part of project |  |
-| worker | hasProject | Project is in project set | project is in project set |  |
-| worker | hasProject | Project is NOT in project set | project is NOT in project set |  |
-| project | nullity | not null | not null |  |
-| project | nullity | null | null |  |
-| project | Worker assigned | Worker is Assigned to project | worker assigned to project |  |
-| project | Worker assigned | Worker is NOT Assigned to project | worker NOT assigned to project |  |
-| project | Qualifications | Missing Qualifcations | remove worker resulting in missing qualifications |  |
-| project | Qualifications | Proper Qualifcations | remove worker resulting in NO missing qualifications |  |
+| worker | nullity | not null | not null | unassignBaseWorker() (BASE CHOICE)|
+| worker | nullity | null | null | testUnassignNullWorker() |
+| worker | Workload | Workload less than 12 | 6 | unassignBaseWorker() (BASE CHOICE)|
+| worker | Workload | Workload 12 | 12 | testUnssignNonAvailableWorker() |
+| worker | isAvailable | is in available set upon project removal | Worker is in available set | unassignBaseWorker() (BASE CHOICE)|
+| worker | isAvailable | is not in available set upon project removal | Worker is NOT in available set | testUnssignNonAvailableWorker() |
+| worker | isAssigned | Worker is assigned to project | Worker is part of project | unassignBaseWorker() (BASE CHOICE)|
+| worker | isAssigned | Worker is NOT assigned to project | Worker is NOT part of project | testUnassignWorkerNotAssigned() |
+| worker | hasProject | Project is in project set | project is in project set | unassignBaseWorker() (BASE CHOICE)|
+| worker | hasProject | Project is NOT in project set | project is NOT in project set | testUnassignProjectNotInWorkerSet() |
+| project | nullity | not null | not null | unassignBaseWorker() (BASE CHOICE)|
+| project | nullity | null | null | testUnassignNullProject() |
+| project | Worker assigned | Worker is Assigned to project | worker assigned to project | unassignBaseWorker() (BASE CHOICE)|
+| project | Worker assigned | Worker is NOT Assigned to project | worker NOT assigned to project | testUnassignWorkerNotAssigned() |
+| project | Qualifications | Missing Qualifcations | remove worker resulting in missing qualifications | testUnassignMissingQuals() |
+| project | Qualifications | Proper Qualifcations | remove worker resulting in NO missing qualifications | unassignBaseWorker() (BASE CHOICE)|
