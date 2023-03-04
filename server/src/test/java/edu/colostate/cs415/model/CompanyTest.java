@@ -466,7 +466,7 @@ public class CompanyTest {
 	} 
 
 	@Test
-	public void testGetAvilibleWorkersEmpty() {
+	public void testGetAvailableWorkersEmpty() {
 		Company testCompany = new Company("Test Company");
 
 		Set<Worker> actualSet = testCompany.getAvailableWorkers();
