@@ -957,4 +957,144 @@ public class CompanyTest {
 		assertEquals(expectedUnassignedWorkers, company.getUnassignedWorkers());
 	}
 
+	@Test(expected = IllegalArgumentException.class)
+	public void testUnassignNullWorker(){
+		Company company = new Company("Company");
+
+		Qualification qual = company.createQualification("Qual");
+		Set<Qualification> quals = new HashSet<>();
+		quals.add(qual);
+
+		Worker workerOne = company.createWorker("Worker One", quals, 100.0);
+		Worker workerTwo = company.createWorker("Worker Two", quals, 100.0);
+
+		Set<Worker> testWorkers = new HashSet<>();
+		testWorkers.add(workerTwo);
+		Project project = company.createProject("Project", quals, ProjectSize.BIG);
+
+		company.unassign(null, project);
+	}
+
+	@Test
+	public void unassignBaseWorker() {
+		Company company = new Company("Company");
+
+		Qualification qual = company.createQualification("Qual");
+		Set<Qualification> quals = new HashSet<>();
+		quals.add(qual);
+
+		Worker worker = company.createWorker("Worker", quals, 100.0);
+		Worker workerTwo = company.createWorker("Worker Two", quals, 100.0);
+		Project project = company.createProject("Project", quals, ProjectSize.BIG);
+		Project projectTwo = company.createProject("Project Two", quals, ProjectSize.BIG);
+
+		company.assign(worker, project);
+		company.assign(workerTwo, project);
+		company.assign(worker, projectTwo);
+		company.assign(workerTwo, projectTwo);
+		assertEquals(project.getWorkers(), projectTwo.getWorkers());
+		company.unassign(workerTwo, project);
+		company.unassign(workerTwo, projectTwo);
+		assertEquals(project.getWorkers(), projectTwo.getWorkers());
+	}
+
+	@Test
+	public void testUnssignNonAvailableWorker() {
+		Company company = new Company("Company");
+
+		Qualification qual = company.createQualification("Qual");
+		Set<Qualification> quals = new HashSet<>();
+		quals.add(qual);
+
+		Worker worker = company.createWorker("Worker", quals, 100.0);
+		Worker workerTwo = company.createWorker("Worker Two", quals, 100.0);
+		Project project = company.createProject("Project", quals, ProjectSize.BIG);
+		Project projectTwo = company.createProject("Project Two", quals, ProjectSize.BIG);
+		Project projectThree = company.createProject("Project Three", quals, ProjectSize.BIG);
+		Project projectFour = company.createProject("Project Four", quals, ProjectSize.BIG);
+
+		company.assign(worker, project);
+		company.assign(workerTwo, project);
+		company.assign(workerTwo, projectTwo);
+		company.assign(workerTwo, projectThree);
+		company.assign(workerTwo, projectFour);
+		assertFalse(company.getAvailableWorkers().contains(workerTwo));
+		company.unassign(workerTwo, project);
+		assertTrue(company.getAvailableWorkers().contains(workerTwo));
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testUnassignWorkerNotAssigned() {
+		Company company = new Company("Company");
+
+		Qualification qual = company.createQualification("Qual");
+		Set<Qualification> quals = new HashSet<>();
+		quals.add(qual);
+
+		Worker worker = company.createWorker("Worker", quals, 100.0);
+		Worker workerTwo = company.createWorker("Worker Two", quals, 100.0);
+		Project project = company.createProject("Project", quals, ProjectSize.BIG);
+
+		company.assign(workerTwo, project);
+
+		company.unassign(worker, project);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testUnassignProjectNotInWorkerSet() {
+		Company company = new Company("Company");
+
+		Qualification qual = company.createQualification("Qual");
+		Set<Qualification> quals = new HashSet<>();
+		quals.add(qual);
+
+		Worker worker = company.createWorker("Worker", quals, 100.0);
+		Project project = company.createProject("Project", quals, ProjectSize.BIG);
+		Project projectTwo = company.createProject("Project Two", quals, ProjectSize.BIG);
+
+		company.assign(worker, project);
+
+		company.unassign(worker, projectTwo);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testUnassignNullProject() {
+		Company company = new Company("Company");
+
+		Qualification qual = company.createQualification("Qual");
+		Set<Qualification> quals = new HashSet<>();
+		quals.add(qual);
+
+		Worker worker = company.createWorker("Worker", quals, 100.0);
+
+		company.assign(worker, null);
+	}
+
+	@Test
+	public void testUnassignMissingQuals() {
+		Company company = new Company("Company");
+
+		Qualification qual = company.createQualification("Qual");
+		Qualification qualTwo = company.createQualification("QualTwo");
+		Set<Qualification> quals = new HashSet<>();
+		Set<Qualification> workerQuals = new HashSet<>();
+		Set<Qualification> workerTwoQuals = new HashSet<>();
+		quals.add(qual);
+		workerQuals.add(qual);
+		quals.add(qualTwo);
+		workerTwoQuals.add(qualTwo);
+
+		Worker worker = company.createWorker("Worker", workerQuals, 100.0);
+		Worker workerTwo = company.createWorker("Worker Two", workerTwoQuals, 100.0);
+		Project project = company.createProject("Project", quals, ProjectSize.BIG);
+
+		company.assign(worker, project);
+		company.assign(workerTwo, project);
+		company.start(project);
+		assertTrue(project.getStatus() == ProjectStatus.ACTIVE);
+
+		company.unassign(workerTwo, project);
+		assertTrue(project.getStatus() == ProjectStatus.SUSPENDED);
+	}
+
 }
