@@ -393,7 +393,11 @@
 ### finish Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|  Project | ProjectStatus  | set to FINISHED  |  Project with ACTIVE status | testFinish() (base choice)  |
-|   |   |  not set to FINISHED |  project without ACTIVE status |  testFinish() |
-| Workers  |  Workers assigned to the project |  All workers removed from project marked FINISHED | Project with ACTIVE status  | testFinish() (base choice)   |
-|   |   | Workers are not removed if project is not marked FINISHED  | project without ACTIVE status  | testFinish()   |
+|  Project | nullity | null | null | testFinish()|
+|  |  |  not null | valid project| testFinish (base choice) |
+| | ProjectStatus  | Set to FINISHED  |  project with ACTIVE status | testFinish() (base choice)  |
+|   |   |  Not set to FINISHED |  project without ACTIVE status |  testFinish() |
+|  Available | Set of available workers | Workers removed from FINISHED project are appropriatly modified in available set | project with ACTIVE status  | testFinish() (base choice)  |
+|   |  | Project that is not set to FINISHED does not modify available set | project without ACTIVE status  | testFinish() |
+|  Assigned | Set of assigned workers | FINISHED project removes assigned workers | project with ACTIVE status  | testFinish() (base choice)  |
+|   | | Project that cannot be set to FINISHED keeps workers assigned | project without ACTIVE status  | testFinish() (base choice)  |

@@ -177,6 +177,10 @@ public class Company {
     }
 
 	public void finish(Project project) {
+		if(project == null) {
+			throw new IllegalArgumentException("Project may not be null");
+		}
+
 		if (!(project.getStatus() == ProjectStatus.ACTIVE)){
 			return;
 		}
