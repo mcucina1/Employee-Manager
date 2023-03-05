@@ -389,3 +389,11 @@
 |testUnassignNullProject() - Non-null Worker / Valid Workload / Available after unassign / Member of Project / Null Project | Fail |
 |testUnassignWorkerNotAssigned() - Non-null Worker / Valid Workload / Available after unassign / Not member of Project / Valid Project | Fail |
 |testUnassignMissingQuals() - Non-null Worker / Valid Workload / Available after unassign / Member of Project / Project missing Qualifications | Pass | 
+
+### finish Method
+| Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
+|---|---|---|---|---|
+|  Project | ProjectStatus  | set to FINISHED  |  Project with ACTIVE status | testFinish() (base choice)  |
+|   |   |  not set to FINISHED |  project without ACTIVE status |  testFinish() |
+| Workers  |  Workers assigned to the project |  All workers removed from project marked FINISHED | Project with ACTIVE status  | testFinish() (base choice)   |
+|   |   | Workers are not removed if project is not marked FINISHED  | project without ACTIVE status  | testFinish()   |
