@@ -84,14 +84,30 @@
 |   |   | Single qualification | Qualification set w/ one element | testGetQualSingle() (Base choice) |
 |   |   | Many qualifications | Qualification set w/ two elements | testGetQualMany() |
 
+#### getQualifications Base Choice
+| Test | Oracle |
+|------|--------|
+|testGetQualSingle()(Base Test) - Single Qualification in Set | Pass |
+|testGetQualEmpty() - No Qualification in Set | Pass |
+|testGetQualMany() - Multiple Qualifications in Set | Pass |
+
+
 #### CreateQualification Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
 | Qual String | null | null | null | testNullCreateQualification() |
 |  |  | not null | "Qual One" | testCreateQualification() |
-|  | Initalized | full string | "Qual One" | testCreateQualification() (BASE CASE)|
+|  | Initalized | full string | "Qual One" | testCreateQualification() (BASE CHOICE)|
 |  |  | empty | "" | testEmptyStringCreateQualification() |
 |  |  | white-space only string  | " " | testWhiteSpaceStringCreateQualification() |
+
+#### CreateQualification Base Choice
+ | Test | Oracle |
+ |------|--------|
+ |testCreateQualification()(Base Choice) - Non-null Qualification Description / Full String Description | Pass |
+ |testNullCreateQualification() - Null Description / Null Description | Fail |
+ |testEmptyStringCreateQualification() - Non-null Qualification Description / Empty String Description | Fail |
+ |testWhiteSpaceStringCreateQualification() - Non-null Qualification Description / Whitespace String Description | Fail |
 
 #### CreateProject Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
@@ -137,17 +153,20 @@
 #### getProjects Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| Set of Projects |  Emptiness | Null |  Project set assigned null | Initialized in constructor |
-|  |  Emptiness | Not Null | Returns empty set  | testGetProjectEmpty()|
-|  |  Emptiness | No Projects | Returns empty set  | testGetProjectEmpty()|
-|  |  Emptiness | One Project |  Returns set w/ project | testGetProjectNotEmpty() (base choice) |
-|  |  Emptiness | Two Projects |  Returns set w/ projects | testGetProjectTwoProjects() |
+| Set of Projects |  Nullity | Null |  Project set assigned null | Initialized in constructor |
+|  |  | Not Null | Returns empty set  | testGetProjectEmpty()|
+|  | Emptiness | No Projects | Returns empty set  | testGetProjectEmpty()|
+|  |   | One Project |  Returns set w/ project | testGetProjectNotEmpty() (base choice) |
+|  |   | Two Projects |  Returns set w/ projects | testGetProjectTwoProjects() |
 
  #### getProjects Base Choice
-| Test | Block   | Oracle |
-|------|---------|--------|
-| testGetProjectEmpty() |  No Projects |  Returns Empty Set |
-| testGetProjectNotEmpty() |  One Project |  Returns Set w/ a project |
+| Test | Oracle |
+|------|--------|
+| testGetProjectNotEmpty()(Base Test) - Non-null Project Set / One Project in set | Pass |
+| Impossible State - Null Project Set / One Project in set | Initialized in Constructor |
+| testGetProjectEmpty() -  Non-null Project Set / No Projects in set | Pass |
+| testGetProjectTwoProjects() - Non-null Project Set / Multiple Projects in set | Pass |
+
  
 #### CreateWorker Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
@@ -163,6 +182,17 @@
 |  |  | Not In Company Set | {Qual Two} | testNonCompanyQualCreateWorker() |
 | Salary | null | null | null | Impossible State |
 |  |  | not null | 10.0 | testCreateWorker() |
+
+#### CreateWorker Base Choice
+| Test | Oracle |
+|------|--------|
+|testCreateWorker()(Base Test) - Valid Name / Valid Qualifications / Valid Salary | Pass |
+|testNullNameCreateWorker() - Null Name / Valid Qualifications / Valid Salary | Fail |
+|testCreateWorkerEmptyName() - Empty String Name / Valid Qualifications / Valid Salary | Fail |
+|testCreateWorkerBlankName() - Whitespace Char for Name / Valid Qualifications / Valid Salary | Fail |
+|testNullQualsCreateWorker() - Valid Name / Null Qualifications / Valid Salary | Pass |
+|testEmptyQualsCreateWorker() - Valid Name / Empty Qualification set / Valid Salary | Pass |
+|Impossible State - Valid Name / Valid Qualifications / Null Salary | Pass | 
 
 
 #### getEmployedWorkers Method
@@ -188,6 +218,14 @@
 |   |   | DON"T make ProjectStatus = Active | ProjectStatus.PLANNED  |  testPlannedAndSuspendedStart()  |
 | Company's Set of Qualifications  | Required Qualifications  | Has Required Qualifications  | Company Qualifications is a subset of Project Qualifications  | testMissingQualsStart() (Base Choice) |
 |   |   |   | Company Qualifications is NOT a subset of Project Qualifications  | testMissingQualsStart()  |
+
+#### Start Base Choice
+| Test | Oracle |
+|------|--------|
+|testPlannedAndSuspendedStart()(Base Test) - Project Status is ACTIVE / Has Required Qualifications | Pass |
+|testPlannedAndSuspendedStart() - Project Status is PLANNED / Has Required Qualifications | Pass |
+|testMissingQualsStart() - Project Status is ACTIVE / Has Required Qualifications | Pass |
+|testMissingQualsStart() - Project Status is ACTIVE / Does not have required qualifications | Fail |
 
 #### getUnassignedWorkers Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
@@ -226,30 +264,64 @@
 #### assign Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-| worker | nullity | not null | not null | assignBaseWorker() (base choice) |
-| worker | nullity | null | null | assignNullWorker() |
-| worker | Workload | Workload less than 12 | 3 | assignBaseWorker() (base choice)|
-| worker | Workload | Workload 12 | 12 | assignTestWorkerAvailibilty() |
-| worker | Workload | Will Overload | 16 (attempted) | assignWillOverloadWorker() |
-| worker | Helpfulness | Qualification not in Project | "Bad Qual" | assignWorkerNotHelpful() |
-| worker | Helpfulness | Qualification in Project | "Good Qual" | assignBaseWorker() (base choice)|
-| project | nullity | not null | not null | assignBaseWorker() (base choice)|
-| project | nullity | null | null | assignNullProject() |
-| project | Worker In Project | Worker Already in Project | worker in project | assignWorkerAlreadyInProject() |
-| project | Worker In Project | Worker not in Project | worker not in project | assignBaseWorker() (base choice)|
-| project | ProjectStatus | Not allowed ProjectStatus | ProjectStatus.ACTIVE | assignProjectStatusActive() |
-| project | ProjectStatus | Not allowed ProjectStatus | ProjectStatus.FINISHED | assignProjectStatusFinished() |
-| project | ProjectStatus | Allowed ProjectStatus | ProjectStatus.PLANNED |  assignProjectStatusPlanned() (base choice)|
-| Project| Helpfulness | Qualification not in Project | "Bad Qual" | assignWorkerNotHelpful() |
-| Project | Helpfulness | Qualification in Project | "Good Qual" | assignBaseWorker() (base choice)|
-| assigned | nullity | not null | not null | assignBaseWorker() (base choice)|
-| assigned | nullity | null | null | Not allowed by constructor. |
-| assigned | Worker in Pool | Worker In Pool | Worker already in assigned | assignWorkerAlreadyInAssigned() |
-| assigned | Worker in Pool | Worker not In Pool | Worker not assinged | assignBaseWorker() (base choice)|
-| available | nullity | not null | not null | assignBaseWorker() (base choice)|
-| available | nullity | null | null | Not allowed by constructor. |
-| available | still available | not null | not null | assignBaseWorker() (base choice)|
-| available | not in available | not null | not null | assignWorkerNotInAvailable() |
+| worker | nullity | not null | not null | testAssignBaseWorker() (base choice) |
+|  |  | null | null | testAssignNullWorker() |
+|  | Workload | Workload less than 12 | 3 | testAssignBaseWorker() (base choice)|
+|  |  | Workload 12 | 12 | testAssignTestWorkerAvailibilty() |
+|  |  | Will Overload | 16 (attempted) | testAssignWillOverloadWorker() |
+|  | Helpfulness | Qualification not in Project | "Bad Qual" | testAssignWorkerNotHelpful() |
+|  |  | Qualification in Project | "Good Qual" | testAssignBaseWorker() (base choice)|
+| project | nullity | not null | not null | testAssignBaseWorker() (base choice)|
+|  |  | null | null | testAssignNullProject() |
+|  | Worker In Project | Worker Already in Project | worker in project | testAssignWorkerAlreadyInProject() |
+|  |  | Worker not in Project | worker not in project | testAssignBaseWorker() (base choice)|
+|  | ProjectStatus | Not allowed ProjectStatus | ProjectStatus.ACTIVE | testAssignProjectStatusActive() |
+|  |  | Not allowed ProjectStatus | ProjectStatus.FINISHED | testAssignProjectStatusFinished() |
+|  |  | Allowed ProjectStatus | ProjectStatus.PLANNED |  testAssignProjectStatusPlanned() (base choice)|
+| | Helpfulness | Qualification not in Project | "Bad Qual" | testAssignWorkerNotHelpful() |
+|  |  | Qualification in Project | "Good Qual" | testAssignBaseWorker() (base choice)|
+| assigned | nullity | not null | not null | testAssignBaseWorker() (base choice)|
+|  |  | null | null | Not allowed by constructor. |
+|  | Worker in Pool | Worker In Pool | Worker already in assigned | testAssignWorkerAlreadyInAssigned() |
+|  |  | Worker not In Pool | Worker not assinged | testAssignBaseWorker() (base choice)|
+| available | nullity | not null | not null | testAssignBaseWorker() (base choice)|
+|  |  | null | null | Not allowed by constructor. |
+|  | still available | not null | not null | testAssignBaseWorker() (base choice)|
+|  | not in available | not null | not null | testAssignWorkerNotInAvailable() |
+
+#### Assign Worker Base Choice
+| Test | Oracle |
+|------|--------|
+|testAssignBaseWorker()(Base Test) - Non-null Worker / Valid Workload / Valid Qualification  | Pass |
+|testAssignNullWorker() - Null Worker / Valid Workload / Valid Qualification | Fail |
+|testAssignTestWorkerAvailability() - Non-null Worker / Full Workload / Valid Qualification | Pass |
+|testAssignWillOverloadWorker() - Non-null Worker / Over Full Workload / Valid Qualification | Fail |
+|testAssignWorkerNotHelpful() - Non-null Worker / Valid Workload / Invalid Qualification | Fail |
+
+#### Assign Project Base Choice
+| Test | Oracle |
+|------|--------|
+|testAssignBaseWorker()(Base Test) - Non-null Project / Worker not in project / Status is PLANNED / Valid Qualification | Pass |
+|testAssignNullProject() - Null Project / Worker not in project / Status is PLANNED / Valid Qualification | Fail |
+|testAssignWorkerAlreadyInProject() - Non-null Project / Worker already in project / Status is PLANNED / Valid Qualification | Fail |
+|testAssignProjectStatusActive() - Non-null Project / Worker not in project / Status is ACTIVE / Valid Qualification | Fail |
+|testAssignProjectStatusFinished() - Non-null Project / Worker not in project / Status is FINISHED / Valid Qualification | Fail |
+|testAssignWorkerNotHelpful() - Non-null Project / Worker not in project / Status is PLANNED / Invalid Qualification | Fail |
+
+#### Assign assigned Base Choice
+| Test | Oracle |
+|------|--------|
+|testAssignBaseWorker()(Base Test) - Non-null Project / Worker not in project / Status is PLANNED / Valid Qualification | Pass |
+|Not allowed by constructor - Non-null Project / Null worker in project / Status is PLANNED / Valid Qualification | Impossible State |
+|testAssignWorkerAlreadyInAssigned() - Non-null Project / Worker in assigned / Status is PLANNED / Valid Qualification | Pass |
+
+#### Assign Available Base Choice
+| Test | Oracle |
+|------|--------|
+|testAssignBaseWorker()(Base Test) - Non-null Project / Non-null Worker / Status is PLANNED / Valid Qualification | Pass |
+|Not allowed by constructor - Non-null Project / Null Worker / Status is PLANNED / Valid Qualification | Impossible State |
+|testAssignWorkerNotInAvailable() - Non-null Project / Worker not available / Valid Qualification | Fail |
+
 
 
 #### getAvailableWorkers

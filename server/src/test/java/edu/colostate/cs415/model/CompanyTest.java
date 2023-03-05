@@ -534,7 +534,7 @@ public class CompanyTest {
 	}
 
 	@Test
-	public void assignBaseWorker() {
+	public void testAssignBaseWorker() {
 		Company company = new Company("Company");
 
 		Qualification qual = company.createQualification("Qual");
@@ -554,7 +554,7 @@ public class CompanyTest {
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void assignNullWorker() {
+	public void testAssignNullWorker() {
 		Company company = new Company("Company");
 
 		Qualification qual = company.createQualification("Qual");
@@ -566,7 +566,7 @@ public class CompanyTest {
 	}
 
 	@Test
-	public void assignTestWorkerAvailibility() {
+	public void testAssignTestWorkerAvailibility() {
 		Company company = new Company("Company");
 
 		Qualification qual = company.createQualification("Qual");
@@ -589,7 +589,7 @@ public class CompanyTest {
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void assignWillOverloadWorker() {
+	public void testAssignWillOverloadWorker() {
 		Company company = new Company("Company");
 
 		Qualification qual = company.createQualification("Qual");
@@ -615,7 +615,7 @@ public class CompanyTest {
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void assignWorkerNotHelpful() {
+	public void testAssignWorkerNotHelpful() {
 		Company company = new Company("Company");
 
 		Qualification qual = company.createQualification("Qual");
@@ -633,7 +633,7 @@ public class CompanyTest {
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void assignNullProject() {
+	public void testAssignNullProject() {
 		Company company = new Company("Company");
 
 		Qualification qual = company.createQualification("Qual");
@@ -646,7 +646,7 @@ public class CompanyTest {
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void assignWorkerAlreadyInProject() {
+	public void testAssignWorkerAlreadyInProject() {
 		Company company = new Company("Company");
 
 		Qualification qual = company.createQualification("Qual");
@@ -665,7 +665,7 @@ public class CompanyTest {
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void assignProjectStatusActive() {
+	public void testAssignProjectStatusActive() {
 		Company company = new Company("Company");
 
 		Qualification qual = company.createQualification("Qual");
@@ -684,7 +684,7 @@ public class CompanyTest {
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void assignProjectStatusFinished() {
+	public void testAssignProjectStatusFinished() {
 		Company company = new Company("Company");
 
 		Qualification qual = company.createQualification("Qual");
@@ -703,7 +703,7 @@ public class CompanyTest {
 	}
 
 	@Test
-	public void assignProjectStatusPlanned() {
+	public void testAssignProjectStatusPlanned() {
 		Company company = new Company("Company");
 
 		Qualification qual = company.createQualification("Qual");
@@ -725,7 +725,7 @@ public class CompanyTest {
 	}
 
 	@Test
-	public void assignWorkerAlreadyInAssigned() {
+	public void testAssignWorkerAlreadyInAssigned() {
 		Company company = new Company("Company");
 
 		Qualification qual = company.createQualification("Qual");
@@ -744,7 +744,7 @@ public class CompanyTest {
 		assertTrue(worker.getWorkload() == 1);
 	}
 	@Test(expected = IllegalArgumentException.class)
-	public void assignWorkerNotInAvailable() {
+	public void testAssignWorkerNotInAvailable() {
 		Company company = new Company("Company");
 
 		Qualification qual = company.createQualification("Qual");
