@@ -401,3 +401,9 @@
 |   |  | Project that is not set to FINISHED does not modify available set | project without ACTIVE status  | testFinish() |
 |  Assigned | Set of assigned workers | FINISHED project removes assigned workers | project with ACTIVE status  | testFinish() (base choice)  |
 |   | | Project that cannot be set to FINISHED keeps workers assigned | project without ACTIVE status  | testFinish() (base choice)  |
+
+#### unassignAll
+| Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
+|---|---|---|---|---|
+| Worker | nullity | null | null | testUnassignAllNull() |
+| Worker | nullity | not null | Worker with Two Projects assigned | testUnassignAll() (BASE CHOICE) |
