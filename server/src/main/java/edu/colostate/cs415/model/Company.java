@@ -177,6 +177,21 @@ public class Company {
     }
 
 	public void finish(Project project) {
+		if(project == null) {
+			throw new IllegalArgumentException("Project may not be null");
+		}
+
+		if (!(project.getStatus() == ProjectStatus.ACTIVE)){
+			return;
+		}
+
+		Set<Worker> projectWorkers = new HashSet<Worker>(project.getWorkers());
+
+		for (Worker w : projectWorkers){
+			unassign(w, project);
+		}
+
+		project.setStatus(ProjectStatus.FINISHED);
 	}
 
 	public void assign(Worker worker, Project project) {
