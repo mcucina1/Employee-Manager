@@ -976,7 +976,7 @@ public class CompanyTest {
 	}
 
 	@Test
-	public void unassignBaseWorker() {
+	public void testUnassignBaseWorker() {
 		Company company = new Company("Company");
 
 		Qualification qual = company.createQualification("Qual");
@@ -999,7 +999,7 @@ public class CompanyTest {
 	}
 
 	@Test
-	public void testUnssignNonAvailableWorker() {
+	public void testUnasignNonAvailableWorker() {
 		Company company = new Company("Company");
 
 		Qualification qual = company.createQualification("Qual");
