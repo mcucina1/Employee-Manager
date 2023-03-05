@@ -266,5 +266,14 @@ public class Company {
 	}
 
 	public void unassignAll(Worker worker) {
+		if (worker == null) {
+			throw new IllegalArgumentException("Worker and Project Arguments may not be null");
+		}
+		
+		Set<Project> projects = new HashSet<>(worker.getProjects());
+
+		for (Project p : projects) {
+			unassign(worker, p);
+		}
 	}
 }
