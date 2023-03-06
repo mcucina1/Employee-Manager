@@ -1156,6 +1156,12 @@ public class CompanyTest {
 
 	}
 
+	@Test(expected = IllegalArgumentException.class)
+	public void testFinishNullProject() {
+		Company company = new Company("Company");
+		company.finish(null);
+	}
+
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testUnassignAllNull() {
