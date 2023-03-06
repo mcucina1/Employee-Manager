@@ -1097,4 +1097,101 @@ public class CompanyTest {
 		assertTrue(project.getStatus() == ProjectStatus.SUSPENDED);
 	}
 
+	@Test
+	public void testFinish() {
+		// create company's project
+		Company testCompany = new Company("Test Company");
+		Set<Qualification> testQualifications = new HashSet<Qualification>();
+        Qualification qualOne = testCompany.createQualification("Qual One");
+        Qualification qualTwo = testCompany.createQualification("Qual Two");
+		Qualification qualThree = testCompany.createQualification("Qual Three");
+        Qualification otherQualOne = new Qualification("Qual One");
+        Qualification otherQualTwo = new Qualification("Qual Two");
+		Qualification otherQualThree = new Qualification("Qual Three");
+        testQualifications.add(otherQualOne);
+        testQualifications.add(otherQualTwo);
+		testQualifications.add(otherQualThree);
+        Project testProject = testCompany.createProject("Test Project", testQualifications, ProjectSize.SMALL);
+
+		// add workers
+		Set<Qualification> worker1Quals = new HashSet<Qualification>();
+		worker1Quals.add(otherQualOne);
+		Worker worker1 = testCompany.createWorker("Worker1", worker1Quals, 100.0);
+
+		Set<Qualification> worker2Quals = new HashSet<Qualification>();
+		worker2Quals.add(otherQualTwo);
+		Worker worker2 = testCompany.createWorker("Worker2", worker2Quals, 100.0);
+
+		Set<Qualification> worker3Quals = new HashSet<Qualification>();
+		worker3Quals.add(otherQualThree);
+		Worker worker3 = testCompany.createWorker("Worker3", worker3Quals, 100.0);
+
+		Set<Worker> projectWorkers = new HashSet<Worker>();
+		projectWorkers.add(worker1);
+		projectWorkers.add(worker2);
+		projectWorkers.add(worker3);
+
+		// assign workers
+		testCompany.assign(worker1, testProject);
+		testCompany.assign(worker2, testProject);
+		testCompany.assign(worker3, testProject);
+
+		// start project
+		testCompany.start(testProject);
+		
+		// test can't finish suspended project
+		testProject.setStatus(ProjectStatus.SUSPENDED);
+		testCompany.finish(testProject);
+		assertEquals(ProjectStatus.SUSPENDED, testProject.getStatus());
+
+		// test project is set to finished
+		testProject.setStatus(ProjectStatus.ACTIVE);
+		testCompany.start(testProject);
+		testCompany.finish(testProject);
+		assertEquals(ProjectStatus.FINISHED, testProject.getStatus());
+
+		// test all workers removed from project
+		Set<Worker> emptyWorkers = new HashSet<Worker>();
+		assertEquals(emptyWorkers, testProject.getWorkers());
+
+	}
+
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testUnassignAllNull() {
+		Company company = new Company("Company");
+
+		Qualification qual = company.createQualification("Qual");
+		Set<Qualification> quals = new HashSet<>();
+		quals.add(qual);
+
+		Worker worker = company.createWorker("Worker", quals, 100.0);
+		Project project = company.createProject("Project", quals, ProjectSize.BIG);
+		Project projectTwo = company.createProject("Project Two", quals, ProjectSize.BIG);
+
+		company.assign(worker, project);
+		company.assign(worker, projectTwo);
+
+		company.unassignAll(null);
+	}
+
+	@Test
+	public void testUnassignAll() {
+		Company company = new Company("Company");
+
+		Qualification qual = company.createQualification("Qual");
+		Set<Qualification> quals = new HashSet<>();
+		quals.add(qual);
+
+		Worker worker = company.createWorker("Worker", quals, 100.0);
+		Project project = company.createProject("Project", quals, ProjectSize.BIG);
+		Project projectTwo = company.createProject("Project Two", quals, ProjectSize.BIG);
+		Project projectThree = company.createProject("Project Three", quals, ProjectSize.BIG);
+
+		company.assign(worker, project);
+		company.assign(worker, projectTwo);
+		company.assign(worker, projectThree);
+
+		company.unassignAll(worker);
+	}
 }
