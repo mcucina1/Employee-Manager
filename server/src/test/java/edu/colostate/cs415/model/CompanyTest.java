@@ -1067,7 +1067,7 @@ public class CompanyTest {
 
 		Worker worker = company.createWorker("Worker", quals, 100.0);
 
-		company.assign(worker, null);
+		company.unassign(worker, null);
 	}
 
 	@Test
