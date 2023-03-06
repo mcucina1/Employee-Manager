@@ -1067,7 +1067,7 @@ public class CompanyTest {
 
 		Worker worker = company.createWorker("Worker", quals, 100.0);
 
-		company.assign(worker, null);
+		company.unassign(worker, null);
 	}
 
 	@Test
@@ -1154,6 +1154,12 @@ public class CompanyTest {
 		Set<Worker> emptyWorkers = new HashSet<Worker>();
 		assertEquals(emptyWorkers, testProject.getWorkers());
 
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testFinishNullProject() {
+		Company company = new Company("Company");
+		company.finish(null);
 	}
 
 	

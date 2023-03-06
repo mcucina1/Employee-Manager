@@ -393,7 +393,7 @@
 ### finish Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
-|  Project | nullity | null | null | testFinish()|
+|  Project | nullity | null | null | testFinishNullProject()|
 |  |  |  not null | valid project| testFinish (base choice) |
 | | ProjectStatus  | Set to FINISHED  |  project with ACTIVE status | testFinish() (base choice)  |
 |   |   |  Not set to FINISHED |  project without ACTIVE status |  testFinish() |
