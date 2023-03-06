@@ -416,3 +416,9 @@
 |---|---|---|---|---|
 | Worker | nullity | null | null | testUnassignAllNull() |
 | Worker | nullity | not null | Worker with Two Projects assigned | testUnassignAll() (BASE CHOICE) |
+
+#### unassignAll Base Choice
+| Test | Oracle |
+|------|--------|
+| testUnassignAllNull() - null Worker / null assigned set | Fail|
+| testUnassignAll() - employed and assigned three projects worker / non-null assigned set | Pass |
