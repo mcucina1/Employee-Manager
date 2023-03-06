@@ -4,4 +4,7 @@ This file should contain a coverage report showing in a tabular format, the muta
 ## Mutation Score
 ![image](CoverageTablesAndMutationP2/P2MutationScore.png)
 
+## Class Breakdown
+![image](CoverageTablesAndMutationP2/MutationClassBreakdown.png)
+
 ## Reflection
