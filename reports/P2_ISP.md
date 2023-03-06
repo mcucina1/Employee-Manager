@@ -390,7 +390,7 @@
 |testUnassignWorkerNotAssigned() - Non-null Worker / Valid Workload / Available after unassign / Not member of Project / Valid Project | Fail |
 |testUnassignMissingQuals() - Non-null Worker / Valid Workload / Available after unassign / Member of Project / Project missing Qualifications | Pass | 
 
-### finish Method
+#### finish Method
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
 |---|---|---|---|---|
 |  Project | nullity | null | null | testFinishNullProject()|
@@ -401,6 +401,15 @@
 |   |  | Project that is not set to FINISHED does not modify available set | project without ACTIVE status  | testFinish() |
 |  Assigned | Set of assigned workers | FINISHED project removes assigned workers | project with ACTIVE status  | testFinish() (base choice)  |
 |   | | Project that cannot be set to FINISHED keeps workers assigned | project without ACTIVE status  | testFinish() (base choice)  |
+
+#### finish Base Choice
+| Test | Oracle |
+|------|--------|
+| testFinish()(Base Test) - Non-null Project / Workers status available after finish / Worker assignment removed | Pass |
+| testFinishNullProject() - Null Project / Workers status available after finish / Worker assignment removed  | Fail |
+| testFinish() - Project not set to FINISHED / Workers status available after finish / Worker assignment removed | Fail |
+| testFinish() - Non-null Project / Worker status not set to available / Worker assignment removed | Fail |
+| testFinish() - Non-null Project / Worker status available after finish / Worker assignment not removed | Fail |
 
 #### unassignAll
 | Variable  | Characteristic  | Blocks  | Values | JUnit Test Name |
