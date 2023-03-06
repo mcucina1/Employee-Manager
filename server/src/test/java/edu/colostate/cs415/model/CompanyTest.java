@@ -1156,4 +1156,42 @@ public class CompanyTest {
 
 	}
 
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testUnassignAllNull() {
+		Company company = new Company("Company");
+
+		Qualification qual = company.createQualification("Qual");
+		Set<Qualification> quals = new HashSet<>();
+		quals.add(qual);
+
+		Worker worker = company.createWorker("Worker", quals, 100.0);
+		Project project = company.createProject("Project", quals, ProjectSize.BIG);
+		Project projectTwo = company.createProject("Project Two", quals, ProjectSize.BIG);
+
+		company.assign(worker, project);
+		company.assign(worker, projectTwo);
+
+		company.unassignAll(null);
+	}
+
+	@Test
+	public void testUnassignAll() {
+		Company company = new Company("Company");
+
+		Qualification qual = company.createQualification("Qual");
+		Set<Qualification> quals = new HashSet<>();
+		quals.add(qual);
+
+		Worker worker = company.createWorker("Worker", quals, 100.0);
+		Project project = company.createProject("Project", quals, ProjectSize.BIG);
+		Project projectTwo = company.createProject("Project Two", quals, ProjectSize.BIG);
+		Project projectThree = company.createProject("Project Three", quals, ProjectSize.BIG);
+
+		company.assign(worker, project);
+		company.assign(worker, projectTwo);
+		company.assign(worker, projectThree);
+
+		company.unassignAll(worker);
+	}
 }
