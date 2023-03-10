@@ -95,6 +95,10 @@ public class Project {
 	}
 
 	public void addQualification(Qualification qualification) {
+		if (qualification == null)  {
+			throw new IllegalArgumentException("Status cannot be set to null.");
+		}
+
 		this.qualifications.add(qualification);
 	}
 

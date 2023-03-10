@@ -572,4 +572,10 @@ public class ProjectTest {
 		assertEquals(emptySet, project.getWorkers());
 	}
 
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddNullQualification() {
+		Project project = new Project(testProjectName, qualifications, ProjectSize.SMALL);
+		project.addQualification(null);
+	}
+
 }
