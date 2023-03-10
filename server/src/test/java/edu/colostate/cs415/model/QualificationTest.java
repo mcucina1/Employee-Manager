@@ -136,6 +136,9 @@ public class QualificationTest {
 		Set<Worker> expectedWorkers = createExpectedWorkers();
 
 		Set<Qualification> workerQualifications = new HashSet<>();
+		Qualification qual = new Qualification("Description");
+		workerQualifications.add(qual);
+
 		Worker firstExpectedWorker = new Worker ("Jokim Broden", workerQualifications, 100.0);
 		Worker secondExpectedWorker = new Worker ("Par Sundstrom", workerQualifications, 51.0);
 		Worker thirdExpectedWorker = new Worker ("Chris Rorland", workerQualifications, 50.0);
@@ -152,6 +155,9 @@ public class QualificationTest {
 		Set<Worker> expectedWorkers = createExpectedWorkers();
 
 		Set<Qualification> workerQualifications = new HashSet<>();
+		Qualification qual = new Qualification("Description");
+		workerQualifications.add(qual);
+
 		Worker firstExpectedWorker = new Worker("Jokim Broden", workerQualifications, 100.0);
 		Worker secondExpectedWorker = new Worker("Par Sundstrom", workerQualifications, 51.0);
 		Worker thirdExpectedWorker = new Worker("Chris Rorland", workerQualifications, 50.0);
@@ -171,6 +177,9 @@ public class QualificationTest {
 	@Test
 	public void testToDTO() {
 		Set<Qualification> workerQualifications = new HashSet<>();
+		Qualification qual = new Qualification("Description");
+		workerQualifications.add(qual);
+
 		Worker firstExpectedWorker = new Worker("Jokim Broden", workerQualifications, 100.0);
 		Worker secondExpectedWorker = new Worker("Par Sundstrom", workerQualifications, 51.0);
 		Worker thirdExpectedWorker = new Worker("Chris Rorland", workerQualifications, 50.0);
@@ -206,6 +215,8 @@ public class QualificationTest {
 	public Set<Worker> createExpectedWorkers() {
 		Set<Worker> expectedWorkers = new HashSet<>();
 		Set<Qualification> workerQualifications = new HashSet<>();
+		Qualification qual = new Qualification("Description");
+		workerQualifications.add(qual);
 		
 		Worker firstExpectedWorker = new Worker ("Jokim Broden", workerQualifications, 100.0);
 		Worker secondExpectedWorker = new Worker ("Par Sundstrom", workerQualifications, 51.0);
@@ -223,6 +234,9 @@ public class QualificationTest {
 		Set<Worker> expectedWorkers = createExpectedWorkers();
 
 		Set<Qualification> workerQualifications = new HashSet<>();
+		Qualification qual = new Qualification("Description");
+		workerQualifications.add(qual);
+
 		Worker firstExpectedWorker = new Worker ("Jokim Broden", workerQualifications, 100.0);
 		Worker secondExpectedWorker = new Worker ("Par Sundstrom", workerQualifications, 51.0);
 		Worker thirdExpectedWorker = new Worker ("Chris Rorland", workerQualifications, 50.0);
@@ -254,7 +268,11 @@ public class QualificationTest {
 	public void testRemoveWorkerWhenGivenNull() {
 		Worker nullWorker = null;
 		Set<Qualification> workerQualifications = new HashSet<>();
+		Qualification qual = new Qualification("Description");
+		workerQualifications.add(qual);
+
 		Worker worker = new Worker ("Jokim Broden", workerQualifications, 100.0);		
+
 		qualification.addWorker(worker);
 
 		Set<Worker> expectededWorkers = new HashSet<>();
@@ -269,6 +287,9 @@ public class QualificationTest {
 		Set<Worker> expectedWorkers = createExpectedWorkers();
 
 		Set<Qualification> workerQualifications = new HashSet<>();
+		Qualification qual = new Qualification("Description");
+		workerQualifications.add(qual);
+
 		Worker firstWorker = new Worker ("Jokim Broden", workerQualifications, 100.0);
 		Worker secondWorker = new Worker ("Par Sundstrom", workerQualifications, 51.0);
 		Worker thirdWorker = new Worker ("Chris Rorland", workerQualifications, 50.0);
@@ -287,6 +308,9 @@ public class QualificationTest {
 	@Test
 	public void testRemoveWorkerWhenTheSetIsNull() {
 		Set<Qualification> workerQualifications = new HashSet<>();
+		Qualification qual = new Qualification("desc");
+		workerQualifications.add(qual);
+
 		Worker workerToRemove = new Worker ("Jokim Broden", workerQualifications, 100.0);
 
 		qualification.removeWorker(workerToRemove);
