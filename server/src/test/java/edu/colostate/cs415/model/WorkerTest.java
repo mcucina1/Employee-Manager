@@ -570,4 +570,11 @@ public class WorkerTest {
 
 		return expected;
 	}
+
+	@Test (expected = IllegalArgumentException.class)
+	public void testConstructorEmptyQualifications() {
+		Set<Qualification> emptyQual = new HashSet<>();
+
+		Worker testWorker = new Worker(sampleName, emptyQual, sampleSalary);
+	}
 }

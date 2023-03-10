@@ -19,8 +19,8 @@ public class Worker {
 			throw new IllegalArgumentException("Name must not be empty or null.");
 		}
 
-		if(qualifications == null){
-			throw new IllegalArgumentException("Qualifications must not be null.");
+		if(qualifications == null || qualifications.isEmpty()){
+			throw new IllegalArgumentException("Qualifications must not be null or empty.");
 		}
 
 		if(salary < 0){
