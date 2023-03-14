@@ -84,12 +84,10 @@ public class WorkerTest {
 		assertTrue(zeroSalWorker.getSalary() == 0);
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void testEmptyQualificationsConstructor() {
 		Set<Qualification> emptyQualification = new HashSet<Qualification>();
 		Worker testWorker = new Worker("Bob", emptyQualification, 90000.00);
-		assertEquals(emptyQualification, testWorker.getQualifications());
-
 	}
 
 	@Test
@@ -145,29 +143,11 @@ public class WorkerTest {
 	}
 
 	@Test
-	public void testGetEmptyQualifications() {
-		Set<Qualification> emptyQualifications = new HashSet<Qualification>();
-		Worker unqualifiedWorker = new Worker("Jerry", emptyQualifications, 30000);
-		assertEquals(emptyQualifications, unqualifiedWorker.getQualifications());
-	}
-
-	@Test
 	public void testAddQualification() {
 		Worker testWorker = buildExpectedWorker();
 		testWorker.addQualification(new Qualification("That Guy"));
 		worker.addQualification(new Qualification("That Guy"));
 		assertEquals(testWorker, worker);
-	}
-
-	@Test
-	public void testAddQualToAnEmptySet() {
-		Set<Qualification> testQualSet = new HashSet<>();
-		Worker notQualifiedWorker = new Worker(sampleName, testQualSet, sampleSalary);
-
-		Qualification newQualification = new Qualification("Sample Qualification");
-		notQualifiedWorker.addQualification(newQualification);
-
-		assertEquals(worker.getQualifications(), notQualifiedWorker.getQualifications());
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -282,6 +262,8 @@ public class WorkerTest {
  	public void testGetProjectEmpty(){
  		Qualification emptyWorkerQual = new Qualification("No Projects");
  		Set<Qualification> qualSet = new HashSet<Qualification>();
+		qualSet.add(emptyWorkerQual);
+
  		Worker workerEmptyProj = new Worker("John", qualSet, 30000.0);
  		assertTrue(workerEmptyProj.getProjects().isEmpty());
  	}
@@ -290,6 +272,8 @@ public class WorkerTest {
  	public void testGetProjectNotEmpty(){
  		Qualification nonEmptyWorkerQual = new Qualification("Some Projects");
  		Set<Qualification> qualSet = new HashSet<Qualification>();
+		qualSet.add(nonEmptyWorkerQual);
+		
  		Worker workerNonEmptyProj = new Worker("John", qualSet, 30000.0);
  		Project sampleProject = new Project("Test Project", qualSet, ProjectSize.SMALL);
  		workerNonEmptyProj.addProject(sampleProject);
