@@ -169,7 +169,11 @@ public class Company {
 	}
 
 	public void start(Project project) {
-        if (getQualifications().containsAll(project.getRequiredQualifications())
+        if(!(projects.contains(project))) {
+			throw new IllegalArgumentException("{Company.java} Cannot start a project that isn't in the company.");
+		}
+		
+		if (getQualifications().containsAll(project.getRequiredQualifications())
         && (project.getStatus() == ProjectStatus.PLANNED || project.getStatus() == ProjectStatus.SUSPENDED))
             project.setStatus(ProjectStatus.ACTIVE);
         else
