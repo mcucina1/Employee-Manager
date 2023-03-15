@@ -414,7 +414,7 @@ public class CompanyTest {
         Qualification otherQualTwo = new Qualification("Qual Two");
         testQualifications.add(otherQualOne);
         testQualifications.add(otherQualTwo);
-        Project testProject = new Project ("Test", testQualifications, ProjectSize.SMALL);
+        Project testProject = testCompany.createProject("Test", testQualifications, ProjectSize.SMALL);
         testCompany.start(testProject);
         assertEquals(testProject.getStatus(), ProjectStatus.ACTIVE);
 
@@ -436,7 +436,7 @@ public class CompanyTest {
         Qualification otherQualTwo = new Qualification("Qual Two");
         testQualifications.add(otherQualOne);
         testQualifications.add(otherQualTwo);
-        Project testProject = new Project ("Test", testQualifications, ProjectSize.SMALL);
+        Project testProject = testCompany.createProject("Test", testQualifications, ProjectSize.SMALL);
         testCompany.start(testProject);
 
         assertNotEquals(testProject.getStatus(), ProjectStatus.ACTIVE);
@@ -1199,5 +1199,18 @@ public class CompanyTest {
 		company.assign(worker, projectThree);
 
 		company.unassignAll(worker);
+	}
+
+	@Test (expected = IllegalArgumentException.class)
+	public void testStartProjectNotInCompany() {
+		Company company = new Company("Company");
+
+		Qualification qual = new Qualification("Qualification");
+		Set<Qualification> qualifications = new HashSet<>();
+		qualifications.add(qual);
+
+		Project porjectNotInCompany = new Project("Project", qualifications, ProjectSize.BIG);
+
+		company.start(porjectNotInCompany);
 	}
 }
