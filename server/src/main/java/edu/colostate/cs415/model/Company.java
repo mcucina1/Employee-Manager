@@ -203,6 +203,10 @@ public class Company {
 			throw new IllegalArgumentException("Worker and Project Arguments may not be null");
 		}
 
+		if(!(employees.contains(worker)) || !(projects.contains(project))){
+			throw new IllegalArgumentException("Worker must be employed and project must be in company");
+		}
+
 		if(!available.contains(worker) || project.getWorkers().contains(worker)) {
 			throw new IllegalArgumentException("Worker must be available and not already assigned to Project");
 		}

@@ -763,6 +763,19 @@ public class CompanyTest {
 		assertTrue(worker.getWorkload() == 1);
 	} 
 	
+	@Test(expected = IllegalArgumentException.class)
+	public void testAssignProjectNotInCompany(){
+		Company company = new Company("Company");
+		Qualification qual = company.createQualification("Qual");
+		Set<Qualification> quals = new HashSet<>();
+		quals.add(qual);
+
+		Worker worker = company.createWorker("Worker", quals, 10.0);
+		// not in company
+		Project project = new Project("Project", quals, ProjectSize.SMALL);
+		company.assign(worker, project);
+	}
+
 	@Test
 	public void testGetAssignedWorkers() {
 		Company company = new Company("Company");
