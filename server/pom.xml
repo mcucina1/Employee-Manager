@@ -37,7 +37,7 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<mvnManagement>
+		<pluginManagement>
 			<plugins>
 				<plugin>
 					<artifactId>maven-clean-plugin</artifactId>
@@ -114,7 +114,7 @@
     				<version>3.13.0</version>
 			</plugin>
 			</plugins>
-		</mvnManagement>
+		</pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.jacoco</groupId>
