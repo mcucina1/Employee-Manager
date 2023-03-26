@@ -1,4 +1,11 @@
-## Generating Tests
+## Randoop Tests Added and Passes Tests
+### Generated Tests
+![image](P3_atg/RandoopGeneratedTests.png)
+
+### Passed Tests
+![image](P3_atg/RandoopPassedTests.png)
+
+## Evosuite Generated Tests
 
 boise:~/cs415/t18/server$ java -jar tools/evosuite-1.0.6.jar -prefix edu.colostate.cs415.model -projectCP target/classes
 * EvoSuite 1.0.6
