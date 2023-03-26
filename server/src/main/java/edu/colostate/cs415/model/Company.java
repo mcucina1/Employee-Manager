@@ -211,7 +211,7 @@ public class Company {
 			throw new IllegalArgumentException("Worker must be available and not already assigned to Project");
 		}
 		
-		if((project.getStatus() == ProjectStatus.ACTIVE) || (project.getStatus() == ProjectStatus.FINISHED)) {
+		if(project.getStatus() == ProjectStatus.ACTIVE || project.getStatus() == ProjectStatus.FINISHED) {
 			throw new IllegalArgumentException("Project Status must not be ACTIVE or FINISHED");
 		}
 
