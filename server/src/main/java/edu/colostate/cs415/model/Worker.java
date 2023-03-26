@@ -140,7 +140,7 @@ public class Worker {
 			}
 		}
 
-		return (3 * bigProjects + 2 * mediumProjects + smallProjects);
+		return 3 * bigProjects + 2 * mediumProjects + smallProjects;
 	}
 
 	public boolean willOverload(Project project) {
