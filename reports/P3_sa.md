@@ -8,3 +8,8 @@
 ![image](P3_sa/company_spotbugs_before.png)
 ![image](P3_sa/project_spotbugs_before.png)
 ![image](P3_sa/qual_and_worker_spotbugs_before.png)
+
+## Spotbugs After Screenshots
+![image](P3_sa/company_spotbugs_before.png)
+![image](P3_sa/project_spotbugs_before.png)
+![image](P3_sa/qual_and_worker_spotbugs_before.png)
