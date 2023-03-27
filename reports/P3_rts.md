@@ -6,5 +6,5 @@
 ## Clover Before Screenshot
 ![image](P3_rts/clover_before.png)
 
-##Clover After Screenshot (No tests run on second pass)
+## Clover After Screenshot (No tests run on second pass)
 ![image](P3_rts/clover_after.png)
