@@ -38,4 +38,15 @@ public class RestControllerTest {
         assertEquals("Hello World!", helloString);
 
     }
+
+    @Test
+    public void testGetQualifications() throws IOException {
+        company = new Company("Company 2");
+        company.createQualification("Qualification 1");
+        company.createQualification("Qualification 2");
+        restController.start();
+        String  helloString = Request.get("http://localhost:4567/api/qualifications").execute().returnContent().asString();
+        assertEquals(gson.toJson(company.getQualifications()), helloString);
+    }
+    
 }

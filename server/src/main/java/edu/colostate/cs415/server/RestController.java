@@ -18,6 +18,7 @@ import com.google.gson.Gson;
 import edu.colostate.cs415.db.DBConnector;
 import edu.colostate.cs415.dto.QualificationDTO;
 import edu.colostate.cs415.model.Company;
+import edu.colostate.cs415.model.Qualification;
 import spark.Request;
 import spark.Response;
 import spark.Spark;
@@ -77,11 +78,15 @@ public class RestController {
 	}
 
 	private QualificationDTO[] getQualifications() {
-		// TODO: write actual implementation
-		return new QualificationDTO[] { new QualificationDTO("JavaScript", new String[] { "John Walker" }) };
+		QualificationDTO[] dtos = new QualificationDTO[company.getQualifications().size()];
+		int i = 0;
+		for(Qualification qualification : company.getQualifications())
+			dtos[i++] = qualification.toDTO();
+		return dtos;
 	}
 
 	private QualificationDTO getQualification(String description) {
+
 		// TODO: write actual implementation
 		return new QualificationDTO("JavaScript", new String[] { "John Walker" });
 	}
