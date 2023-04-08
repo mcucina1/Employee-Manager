@@ -17,6 +17,7 @@ import com.google.gson.Gson;
 
 import edu.colostate.cs415.db.DBConnector;
 import edu.colostate.cs415.dto.QualificationDTO;
+import edu.colostate.cs415.dto.ProjectDTO;
 import edu.colostate.cs415.model.Company;
 import spark.Request;
 import spark.Response;
@@ -65,6 +66,11 @@ public class RestController {
 						gson::toJson);
 				post("/:description", (req, res) -> createQualification(req));
 			});
+
+			path("/projects", () -> {
+
+				post("/:name", (req, res) -> createProject(req));
+			});
 		});
 	}
 
@@ -93,6 +99,15 @@ public class RestController {
 		} else
 			throw new RuntimeException("Qualification descriptions do not match.");
 		return OK;
+	}
+
+	private String createProject(Request request) {
+		ProjectDTO projectDTO = gson.fromJson(request.body(), ProjectDTO.class);
+		if (request.params("name").equals(projectDTO.getName())) {
+			//Error here, getQualifications() is of type String not Set<Qualification>
+			company.createProject(projectDTO.getName(), projectDTO.getQualifications(), projectDTO.getSize());
+		} else
+			throw new RuntimeException("Project names do not match.");
 	}
 
 	// Logs every request received
