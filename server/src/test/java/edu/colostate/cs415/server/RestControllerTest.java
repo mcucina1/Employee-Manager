@@ -41,7 +41,7 @@ public class RestControllerTest {
 
     @Test
     public void testGetQualifications() throws IOException {
-        company = new Company("Company 1");
+        company = new Company("Company 2");
         company.createQualification("Qualification 1");
         company.createQualification("Qualification 2");
         restController.start();
