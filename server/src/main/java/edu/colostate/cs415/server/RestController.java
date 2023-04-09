@@ -66,6 +66,11 @@ public class RestController {
 						gson::toJson);
 				post("/:description", (req, res) -> createQualification(req));
 			});
+
+			// Project
+			path("/projects", () -> {
+				get("", (req, res) -> getProjects(), gson::toJson);
+			});
 		});
 	}
 
