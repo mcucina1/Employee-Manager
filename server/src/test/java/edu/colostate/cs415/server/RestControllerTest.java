@@ -16,8 +16,11 @@ import org.junit.Test;
 import com.google.gson.Gson;
 
 import edu.colostate.cs415.db.DBConnector;
+import edu.colostate.cs415.dto.ProjectDTO;
 import edu.colostate.cs415.dto.WorkerDTO;
 import edu.colostate.cs415.model.Company;
+import edu.colostate.cs415.model.Project;
+import edu.colostate.cs415.model.ProjectSize;
 import edu.colostate.cs415.model.Qualification;
 import edu.colostate.cs415.model.Worker;
 
@@ -38,7 +41,6 @@ public class RestControllerTest {
         restController.start();
         String  helloString = Request.get("http://localhost:4567/").execute().returnContent().asString();
         assertEquals("Hello World!", helloString);
-
     }
 
     @Test
@@ -92,5 +94,24 @@ public class RestControllerTest {
         restController.start();
         String  responseString = Request.get("http://localhost:4567/api/workers").execute().returnContent().asString();
         assertEquals(gson.toJson(expectedDTOArray), responseString);
+    }
+
+    @Test
+    public void testGetProjects() throws IOException {
+        company = new Company("Company 5");
+        company.createQualification("Qualification 1");
+        company.createQualification("Qualification 2");
+        company.createProject("Project 1", company.getQualifications(), ProjectSize.SMALL);
+        restController.start();
+        String  responseString = Request.get("http://localhost:4567/api/projects")
+                                        .execute()
+                                        .returnContent()
+                                        .asString();
+        ProjectDTO[] projectDTOS = new ProjectDTO[company.getProjects().size()];
+        int i = 0;
+        for(Project project: company.getProjects()){
+            projectDTOS[i++] = project.toDTO();
+        }
+        assertEquals(gson.toJson(projectDTOS), responseString);
     }
 }

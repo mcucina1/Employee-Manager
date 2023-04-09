@@ -16,9 +16,11 @@ import java.util.logging.Logger;
 import com.google.gson.Gson;
 
 import edu.colostate.cs415.db.DBConnector;
+import edu.colostate.cs415.dto.ProjectDTO;
 import edu.colostate.cs415.dto.QualificationDTO;
 import edu.colostate.cs415.dto.WorkerDTO;
 import edu.colostate.cs415.model.Company;
+import edu.colostate.cs415.model.Project;
 import edu.colostate.cs415.model.Qualification;
 import edu.colostate.cs415.model.Worker;
 import spark.Request;
@@ -73,6 +75,11 @@ public class RestController {
 			path("/workers", () -> {
 				get("", (req, res) -> getWorkers(), gson::toJson);
 			});
+
+			// Project
+			path("/projects", () -> {
+				get("", (req, res) -> getProjects(), gson::toJson);
+			});
 		});
 	}
 
@@ -97,6 +104,14 @@ public class RestController {
 			if(qualification.toString().equalsIgnoreCase(description))
 				return qualification.toDTO();	
 		throw new RuntimeException("Qualification not found.");
+	}
+
+	private ProjectDTO[] getProjects() {
+		ProjectDTO[] dtos = new ProjectDTO[company.getProjects().size()];
+		int i = 0;
+		for(Project project : company.getProjects())
+			dtos[i++] = project.toDTO();
+		return dtos;
 	}
 
 	private String createQualification(Request request) {
