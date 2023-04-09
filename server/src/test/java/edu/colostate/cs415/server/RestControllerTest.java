@@ -7,16 +7,20 @@ import static org.mockito.Mockito.when;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Set;
 
 import org.apache.hc.client5.http.fluent.Request;
+import org.apache.hc.core5.http.ContentType;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.google.gson.Gson;
 
 import edu.colostate.cs415.db.DBConnector;
+import edu.colostate.cs415.dto.ProjectDTO;
 import edu.colostate.cs415.dto.WorkerDTO;
 import edu.colostate.cs415.model.Company;
+import edu.colostate.cs415.model.ProjectSize;
 import edu.colostate.cs415.model.Qualification;
 
 public class RestControllerTest {
@@ -36,6 +40,19 @@ public class RestControllerTest {
         restController.start();
         String  helloString = Request.get("http://localhost:4567/").execute().returnContent().asString();
         assertEquals("Hello World!", helloString);
+
+    }
+
+    @Test
+    public void testProjectPost() throws IOException {
+        company = new Company("Company 1");
+        String projectName = "Project 1";
+        String[] qualifications = {"Qualification 1", "Qualification 2"};
+        ProjectDTO payload = new ProjectDTO(projectName, ProjectSize.SMALL, null, null, qualifications, null);
+        String payloadString = gson.toJson(payload);
+        restController.start();
+        String  response = Request.post("http://localhost:4567/api/projects/").bodyString(payloadString, ContentType.APPLICATION_JSON).execute().returnContent().asString();
+        assertEquals(payloadString, response);
 
     }
 }

@@ -11,6 +11,8 @@ import static spark.Spark.redirect;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.logging.Logger;
 
 import com.google.gson.Gson;
@@ -19,6 +21,7 @@ import edu.colostate.cs415.db.DBConnector;
 import edu.colostate.cs415.dto.QualificationDTO;
 import edu.colostate.cs415.dto.ProjectDTO;
 import edu.colostate.cs415.model.Company;
+import edu.colostate.cs415.model.Qualification;
 import spark.Request;
 import spark.Response;
 import spark.Spark;
@@ -67,7 +70,9 @@ public class RestController {
 				post("/:description", (req, res) -> createQualification(req));
 			});
 
+			// Projects
 			path("/projects", () -> {
+				// Gets go here
 
 				post("/:name", (req, res) -> createProject(req));
 			});
@@ -103,11 +108,19 @@ public class RestController {
 
 	private String createProject(Request request) {
 		ProjectDTO projectDTO = gson.fromJson(request.body(), ProjectDTO.class);
+		// Had to import Set, HashSet, and Qualification above
+		Set<Qualification> qualifications = new HashSet<>();
 		if (request.params("name").equals(projectDTO.getName())) {
-			//Error here, getQualifications() is of type String not Set<Qualification>
-			company.createProject(projectDTO.getName(), projectDTO.getQualifications(), projectDTO.getSize());
+			// Looping through the string[] of qualifications and adding them to the set
+			for(String qual : projectDTO.getQualifications()){
+				Qualification temp = new Qualification(qual);
+				qualifications.add(temp);
+			}
+			// Using this set to call the createProject method
+			company.createProject(projectDTO.getName(), qualifications, projectDTO.getSize());
 		} else
 			throw new RuntimeException("Project names do not match.");
+		return OK;
 	}
 
 	// Logs every request received
