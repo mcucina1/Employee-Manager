@@ -86,9 +86,10 @@ public class RestController {
 	}
 
 	private QualificationDTO getQualification(String description) {
-
-		// TODO: write actual implementation
-		return new QualificationDTO("JavaScript", new String[] { "John Walker" });
+		for(Qualification qualification : company.getQualifications())
+			if(qualification.toString().equalsIgnoreCase(description))
+				return qualification.toDTO();	
+		throw new RuntimeException("Qualification not found.");
 	}
 
 	private String createQualification(Request request) {

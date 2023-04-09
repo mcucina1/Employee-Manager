@@ -45,8 +45,29 @@ public class RestControllerTest {
         company.createQualification("Qualification 1");
         company.createQualification("Qualification 2");
         restController.start();
-        String  helloString = Request.get("http://localhost:4567/api/qualifications").execute().returnContent().asString();
-        assertEquals(gson.toJson(company.getQualifications()), helloString);
+        String  responseString = Request.get("http://localhost:4567/api/qualifications").execute().returnContent().asString();
+        assertEquals(gson.toJson(company.getQualifications()), responseString);
     }
     
+    @Test
+    public void testGetQualification() throws IOException {
+        company = new Company("Company 3");
+        company.createQualification("First");
+        company.createQualification("Second");
+        restController.start();
+        for(Qualification qual : company.getQualifications()){
+            String responseString = Request.get("http://localhost:4567/api/qualifications/" + qual.toString()).execute().returnContent().asString();
+            assertEquals(gson.toJson(qual), responseString);
+        }
+    }
+
+    @Test(expected = IOException.class)
+    public void testGetQualificationNotFound() throws IOException {
+        company = new Company("Company 4");
+        company.createQualification("First");
+        company.createQualification("Second");
+        restController.start();
+        String responseString = Request.get("http://localhost:4567/api/qualifications/Third").execute().returnContent().asString();
+        assertEquals(gson.toJson("Qualification not found"), responseString);
+    }
 }
