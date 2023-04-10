@@ -114,4 +114,7 @@ public class RestControllerTest {
         }
         assertEquals(gson.toJson(projectDTOS), responseString);
     }
+
+    // @Test(expected = RuntimeException.class)
+    // public void 
 }
