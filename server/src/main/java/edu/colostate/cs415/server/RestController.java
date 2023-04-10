@@ -11,6 +11,7 @@ import static spark.Spark.redirect;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.HashSet;
 import java.util.logging.Logger;
 
 import com.google.gson.Gson;
@@ -74,6 +75,7 @@ public class RestController {
 			// Workers
 			path("/workers", () -> {
 				get("", (req, res) -> getWorkers(), gson::toJson);
+				get("/:name", (req, res) -> getWorkerName(req.params("name")), gson::toJson);
 			});
 
 			// Project
@@ -130,6 +132,22 @@ public class RestController {
 			dtos[i++] = worker.toDTO();
 		}
 		return dtos;
+	}
+
+	private WorkerDTO getWorkerName(String name) {
+		WorkerDTO workerDTO = null;
+
+		for(Worker worker: company.getEmployedWorkers()){
+			if(worker.getName().equals(name)){
+				workerDTO = worker.toDTO();
+			}
+		}
+
+		if(workerDTO == null) {
+			throw new RuntimeException("Unable to get worker with this name");
+		}
+		
+		return workerDTO;
 	}
 
 	// Logs every request received
