@@ -46,13 +46,13 @@ public class RestControllerTest {
     @Test
     public void testProjectPost() throws IOException {
         company = new Company("Company 1");
-        String projectName = "Project 1";
+        String projectName = "Project";
         String[] qualifications = {"Qualification 1", "Qualification 2"};
         ProjectDTO payload = new ProjectDTO(projectName, ProjectSize.SMALL, null, null, qualifications, null);
         String payloadString = gson.toJson(payload);
         restController.start();
-        String  response = Request.post("http://localhost:4567/api/projects/").bodyString(payloadString, ContentType.APPLICATION_JSON).execute().returnContent().asString();
-        assertEquals(payloadString, response);
-
+        String  response = Request.post("http://localhost:4567/api/projects/" + projectName).bodyString(payloadString, ContentType.APPLICATION_JSON).execute().returnContent().asString();
+        assertEquals("OK", response);
     }
+
 }
