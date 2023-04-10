@@ -115,6 +115,43 @@ public class RestControllerTest {
         assertEquals(gson.toJson(projectDTOS), responseString);
     }
 
-    // @Test(expected = RuntimeException.class)
-    // public void 
+    @Test(expected = IOException.class)
+    public void testGetNameWorkerNotInCompany() throws IOException {
+        company = new Company("Company 6");
+        company.createQualification("Qualification 1");
+        company.createQualification("Qualification 2");
+        company.createProject("Project 1", company.getQualifications(), ProjectSize.SMALL);
+        company.createWorker("Wonder Woman", company.getQualifications(), 186000.0);
+
+        restController.start();
+        String responseString = Request.get("http://localhost:4567/api/workers/Batman")
+                                        .execute()
+                                        .returnContent()
+                                        .asString();
+    }
+
+    // @Test
+    public void testGetNameWorker() throws IOException {
+        company = new Company("Company 6");
+        company.createQualification("Qualification 1");
+        company.createQualification("Qualification 2");
+        company.createProject("Project 1", company.getQualifications(), ProjectSize.SMALL);
+        company.createWorker("Wonder Woman", company.getQualifications(), 186000.0);
+
+        WorkerDTO workerDTO = null;
+
+        for(Worker worker: company.getEmployedWorkers()){
+            if(worker.getName().equals("Wonder Woman")){
+                workerDTO = worker.toDTO();
+            }
+        }
+
+        restController.start();
+        String responseString = Request.get("http://localhost:4567/api/workers/Wonder Woman")
+                                        .execute()
+                                        .returnContent()
+                                        .asString();
+
+        assertEquals(gson.toJson(workerDTO), responseString);
+    }
 }
