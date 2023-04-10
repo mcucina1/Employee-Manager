@@ -7,6 +7,7 @@ import static org.mockito.Mockito.when;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Set;
 
 import org.apache.hc.client5.http.fluent.Request;
 import org.junit.BeforeClass;
@@ -21,6 +22,7 @@ import edu.colostate.cs415.model.Company;
 import edu.colostate.cs415.model.Project;
 import edu.colostate.cs415.model.ProjectSize;
 import edu.colostate.cs415.model.Qualification;
+import edu.colostate.cs415.model.Worker;
 
 public class RestControllerTest {
         private Gson gson = new Gson();
@@ -71,6 +73,27 @@ public class RestControllerTest {
         restController.start();
         String responseString = Request.get("http://localhost:4567/api/qualifications/Third").execute().returnContent().asString();
         assertEquals(gson.toJson("Qualification not found"), responseString);
+    }
+
+    @Test
+    public void test() throws IOException {
+        company = new Company("Company 1");
+        Qualification qualification = new Qualification("Qualificaiton");
+        Set<Qualification> qualificationSet = new HashSet<>();
+        qualificationSet.add(qualification);
+        company.createWorker("Name", qualificationSet, 1.0);
+        company.createWorker("Name2", qualificationSet, 10.0);
+
+        WorkerDTO[] expectedDTOArray = new WorkerDTO[company.getEmployedWorkers().size()];
+
+        int i = 0;
+        for(Worker worker : company.getEmployedWorkers()) {
+            expectedDTOArray[i++] = worker.toDTO();
+        }
+
+        restController.start();
+        String  responseString = Request.get("http://localhost:4567/api/workers").execute().returnContent().asString();
+        assertEquals(gson.toJson(expectedDTOArray), responseString);
     }
 
     @Test

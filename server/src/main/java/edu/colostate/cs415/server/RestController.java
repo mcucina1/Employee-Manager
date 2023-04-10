@@ -18,9 +18,11 @@ import com.google.gson.Gson;
 import edu.colostate.cs415.db.DBConnector;
 import edu.colostate.cs415.dto.ProjectDTO;
 import edu.colostate.cs415.dto.QualificationDTO;
+import edu.colostate.cs415.dto.WorkerDTO;
 import edu.colostate.cs415.model.Company;
 import edu.colostate.cs415.model.Project;
 import edu.colostate.cs415.model.Qualification;
+import edu.colostate.cs415.model.Worker;
 import spark.Request;
 import spark.Response;
 import spark.Spark;
@@ -67,6 +69,11 @@ public class RestController {
 				get("/:description", (req, res) -> getQualification(req.params("description")),
 						gson::toJson);
 				post("/:description", (req, res) -> createQualification(req));
+			});	
+
+			// Workers
+			path("/workers", () -> {
+				get("", (req, res) -> getWorkers(), gson::toJson);
 			});
 
 			// Project
@@ -114,6 +121,15 @@ public class RestController {
 		} else
 			throw new RuntimeException("Qualification descriptions do not match.");
 		return OK;
+	}
+
+	private WorkerDTO[] getWorkers() {
+		WorkerDTO[] dtos = new WorkerDTO[company.getEmployedWorkers().size()];
+		int i = 0;
+		for(Worker worker : company.getEmployedWorkers()) {
+			dtos[i++] = worker.toDTO();
+		}
+		return dtos;
 	}
 
 	// Logs every request received
