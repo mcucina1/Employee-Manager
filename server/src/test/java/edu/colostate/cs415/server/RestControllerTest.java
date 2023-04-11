@@ -10,6 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.apache.hc.client5.http.fluent.Request;
+import org.apache.hc.core5.http.ContentType;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -130,28 +131,63 @@ public class RestControllerTest {
                                         .asString();
     }
 
-    // @Test
+    @Test
     public void testGetNameWorker() throws IOException {
         company = new Company("Company 6");
         company.createQualification("Qualification 1");
         company.createQualification("Qualification 2");
         company.createProject("Project 1", company.getQualifications(), ProjectSize.SMALL);
-        company.createWorker("Wonder Woman", company.getQualifications(), 186000.0);
+        company.createWorker("WonderWoman", company.getQualifications(), 186000.0);
 
         WorkerDTO workerDTO = null;
 
         for(Worker worker: company.getEmployedWorkers()){
-            if(worker.getName().equals("Wonder Woman")){
+            if(worker.getName().equals("WonderWoman")){
                 workerDTO = worker.toDTO();
             }
         }
 
         restController.start();
-        String responseString = Request.get("http://localhost:4567/api/workers/Wonder Woman")
+        String responseString = Request.get("http://localhost:4567/api/workers/WonderWoman")
                                         .execute()
                                         .returnContent()
                                         .asString();
 
         assertEquals(gson.toJson(workerDTO), responseString);
+    }
+    
+    @Test
+    public void testAPIStart() throws IOException {
+        company = new Company("Company 7");
+        company.createQualification("Qualification 1");
+        company.createQualification("Qualification 2");
+        company.createProject("Project 1", company.getQualifications(), ProjectSize.SMALL);
+        company.createWorker("Wonder Woman", company.getQualifications(), 186000.0);
+        String json = "{name:\"Project 1\"}";
+
+        restController.start();
+        String responseString = Request.put("http://localhost:4567/api/start")
+                                        .bodyString(json, ContentType.APPLICATION_JSON)
+                                        .execute()
+                                        .returnContent()
+                                        .asString();
+        assertEquals("\"OK\"", responseString);
+    }
+    @Test(expected = IOException.class)
+    public void testAPIStartException() throws IOException {
+        company = new Company("Company 7");
+        company.createQualification("Qualification 1");
+        company.createQualification("Qualification 2");
+        company.createProject("Project 1", company.getQualifications(), ProjectSize.SMALL);
+        company.createWorker("Wonder Woman", company.getQualifications(), 186000.0);
+        String json = "{name:\"Project 17\"}";
+
+        restController.start();
+        String responseString = Request.put("http://localhost:4567/api/start")
+                                        .bodyString(json, ContentType.APPLICATION_JSON)
+                                        .execute()
+                                        .returnContent()
+                                        .asString();
+        assertEquals("\"OK\"", responseString);
     }
 }
