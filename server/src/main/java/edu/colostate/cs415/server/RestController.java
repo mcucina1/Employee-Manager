@@ -3,6 +3,7 @@ package edu.colostate.cs415.server;
 import static spark.Spark.after;
 import static spark.Spark.exception;
 import static spark.Spark.get;
+import static spark.Spark.put;
 import static spark.Spark.options;
 import static spark.Spark.path;
 import static spark.Spark.port;
@@ -76,12 +77,18 @@ public class RestController {
 			// Workers
 			path("/workers", () -> {
 				get("", (req, res) -> getWorkers(), gson::toJson);
+        get("/:name", (req, res) -> getWorkerName(req.params("name")), gson::toJson);
 				post("/:name", (req, res) -> createWorker(req));
 			});
 
 			// Project
 			path("/projects", () -> {
 				get("", (req, res) -> getProjects(), gson::toJson);
+			});
+			
+			// start
+			path("/start", () -> {
+				put("", (req, res) -> startProject(req), gson::toJson);
 			});
 		});
 	}
@@ -162,6 +169,41 @@ public class RestController {
 		return qualifications;	
 	}
 
+	private WorkerDTO getWorkerName(String name) {
+		WorkerDTO workerDTO = null;
+
+		for(Worker worker: company.getEmployedWorkers()){
+			if(worker.getName().equals(name)){
+				workerDTO = worker.toDTO();
+			}
+		}
+
+		if(workerDTO == null) {
+			throw new RuntimeException("Unable to get worker with this name");
+		}
+		
+		return workerDTO;
+	}
+	
+	private String startProject(Request request) {
+		ProjectDTO projectdto = gson.fromJson(request.body(), ProjectDTO.class);
+		boolean wasStarted = false;
+
+
+		for(Project project: company.getProjects()){
+			if(project.getName().equals(projectdto.getName())){
+				company.start(project);
+				wasStarted = true;
+			}
+		}	
+
+		if(!wasStarted){
+			throw new RuntimeException(String.format("No Project With name: %s", projectdto.getName()));
+		}
+
+		return OK;
+	} 
+
 	// Logs every request received
 	private void logRequest(Request request, Response response) {
 		log.info(request.requestMethod() + " " + request.pathInfo() + "\nREQUEST:\n" + request.body() + "\nRESPONSE:\n"
@@ -195,4 +237,5 @@ public class RestController {
 			response.header("Access-Control-Allow-Methods", accessControlRequestMethod);
 		return OK;
 	}
+
 }
