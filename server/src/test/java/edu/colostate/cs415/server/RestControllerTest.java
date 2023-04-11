@@ -1,6 +1,7 @@
 package edu.colostate.cs415.server;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -9,7 +10,10 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.hc.client5.http.fluent.Content;
 import org.apache.hc.client5.http.fluent.Request;
+import org.apache.hc.client5.http.fluent.Response;
+import org.apache.hc.core5.http.ContentType;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -76,7 +80,7 @@ public class RestControllerTest {
     }
 
     @Test
-    public void test() throws IOException {
+    public void testGetWorkers() throws IOException {
         company = new Company("Company 1");
         Qualification qualification = new Qualification("Qualificaiton");
         Set<Qualification> qualificationSet = new HashSet<>();
@@ -94,6 +98,53 @@ public class RestControllerTest {
         restController.start();
         String  responseString = Request.get("http://localhost:4567/api/workers").execute().returnContent().asString();
         assertEquals(gson.toJson(expectedDTOArray), responseString);
+    }
+
+    @Test
+    public void testPostWorker() throws IOException {
+        company = new Company("Company 1");
+        String expectedName = "Worker";
+        Qualification qual = new Qualification("qualification");
+        Set<Qualification> exepectedQuals = new HashSet<>();
+        exepectedQuals.add(qual);
+        double expectedSalary = 10.0; 
+
+        Worker expectedWorker = new Worker(expectedName, exepectedQuals, expectedSalary);
+
+        WorkerDTO workerDTO = expectedWorker.toDTO();
+        String requestFormattedWorker = gson.toJson(workerDTO);        
+
+        restController.start();
+        String response = Request.post("http://localhost:4567/api/workers/" + expectedName)
+                                        .bodyString(requestFormattedWorker, ContentType.APPLICATION_JSON)
+                                        .execute()
+                                        .returnContent()
+                                        .asString();    
+        assertEquals("OK", response);
+    }
+
+    @Test (expected = IOException.class)
+    public void testPostWorkerThrowsException() throws IOException {
+        company = new Company("Company 1");
+        String expectedName = "Worker";
+        Qualification qual = new Qualification("qualification");
+        Set<Qualification> exepectedQuals = new HashSet<>();
+        exepectedQuals.add(qual);
+        double expectedSalary = 10.0; 
+
+        Worker expectedWorker = new Worker(expectedName, exepectedQuals, expectedSalary);
+
+        WorkerDTO workerDTO = expectedWorker.toDTO();
+        String requestFormattedWorker = gson.toJson(workerDTO);
+
+        String dummyName = "NotTheRightName";
+
+        restController.start();
+        String response = Request.post("http://localhost:4567/api/workers/" + dummyName)
+                                        .bodyString(requestFormattedWorker, ContentType.APPLICATION_JSON)
+                                        .execute()
+                                        .returnContent()
+                                        .asString(); 
     }
 
     @Test

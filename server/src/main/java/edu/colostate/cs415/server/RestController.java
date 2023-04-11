@@ -1,5 +1,6 @@
 package edu.colostate.cs415.server;
 
+import static org.junit.Assert.assertEquals;
 import static spark.Spark.after;
 import static spark.Spark.exception;
 import static spark.Spark.get;
@@ -11,6 +12,8 @@ import static spark.Spark.redirect;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.logging.Logger;
 
 import com.google.gson.Gson;
@@ -74,6 +77,7 @@ public class RestController {
 			// Workers
 			path("/workers", () -> {
 				get("", (req, res) -> getWorkers(), gson::toJson);
+				post("/:name", (req, res) -> createWorker(req));
 			});
 
 			// Project
@@ -130,6 +134,33 @@ public class RestController {
 			dtos[i++] = worker.toDTO();
 		}
 		return dtos;
+	}
+
+	private String createWorker(Request request) {
+		WorkerDTO workerDTO = gson.fromJson(request.body(), WorkerDTO.class); 
+
+		if(DTOAndRequestNamesMatch(workerDTO, request)){
+			company.createWorker(workerDTO.getName(), makeQualificationSet(workerDTO.getQualifications()), workerDTO.getSalary());
+		} else
+			throw new RuntimeException("Worker Names do not match.");
+		return OK;
+	}
+
+	private Boolean DTOAndRequestNamesMatch(WorkerDTO workerDTO, Request request) {
+		if(request.params("Name").equals(workerDTO.getName()))
+			return true;
+		return false;
+	}
+
+	private Set<Qualification> makeQualificationSet(String[] descriptionArray) {
+		Set<Qualification> qualifications = new HashSet<>();
+
+		for(String description : descriptionArray) {
+			Qualification qual = new Qualification(description);
+			qualifications.add(qual);
+		}
+
+		return qualifications;	
 	}
 
 	// Logs every request received
