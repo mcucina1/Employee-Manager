@@ -3,6 +3,7 @@ package edu.colostate.cs415.server;
 import static spark.Spark.after;
 import static spark.Spark.exception;
 import static spark.Spark.get;
+import static spark.Spark.put;
 import static spark.Spark.options;
 import static spark.Spark.path;
 import static spark.Spark.port;
@@ -82,6 +83,11 @@ public class RestController {
 			path("/projects", () -> {
 				get("", (req, res) -> getProjects(), gson::toJson);
 			});
+
+			// finish
+			path("/finish", () -> {
+				put("", (req, res) -> finishProject(req), gson::toJson);
+			});
 		});
 	}
 
@@ -148,6 +154,24 @@ public class RestController {
 		}
 		
 		return workerDTO;
+	}
+	
+	private String finishProject(Request request) {
+		ProjectDTO projectdto = gson.fromJson(request.body(), ProjectDTO.class);
+		boolean wasFinished = false;
+
+		for(Project project: company.getProjects()){
+			if(project.getName().equals(projectdto.getName())){
+				company.finish(project);
+				wasFinished = true;
+			}
+		}	
+		
+		if(!wasFinished){
+			throw new RuntimeException(String.format("No project named %s", projectdto.getName()));
+		}
+
+		return OK;
 	}
 
 	// Logs every request received
