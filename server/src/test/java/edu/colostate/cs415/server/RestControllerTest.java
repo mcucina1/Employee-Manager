@@ -10,6 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.apache.hc.client5.http.fluent.Request;
+import org.apache.hc.core5.http.ContentType;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -154,4 +155,44 @@ public class RestControllerTest {
 
         assertEquals(gson.toJson(workerDTO), responseString);
     }
+
+    @Test
+    public void testFinishProject() throws IOException {
+        company = new Company("Company 6");
+        company.createQualification("Qualification 1");
+        company.createQualification("Qualification 2");
+        company.createProject("Project 1", company.getQualifications(), ProjectSize.SMALL);
+        company.createWorker("WonderWoman", company.getQualifications(), 186000.0);
+
+        restController.start();
+        
+        String json = "{name: \"Project 1\"}";
+        String responseString = Request.put("http://localhost:4567/api/finish")
+                                        .bodyString(json, ContentType.APPLICATION_JSON)
+                                        .execute()
+                                        .returnContent()
+                                        .asString();
+
+        assertEquals("\"OK\"", responseString);
+    }
+    
+    @Test(expected = IOException.class)
+    public void testFinishProjectException() throws IOException {
+        company = new Company("Company 6");
+        company.createQualification("Qualification 1");
+        company.createQualification("Qualification 2");
+        company.createProject("Project 1", company.getQualifications(), ProjectSize.SMALL);
+        company.createWorker("WonderWoman", company.getQualifications(), 186000.0);
+
+        restController.start();
+        
+        String json = "{name: \"Project 17\"}";
+        String responseString = Request.put("http://localhost:4567/api/finish")
+                                        .bodyString(json, ContentType.APPLICATION_JSON)
+                                        .execute()
+                                        .returnContent()
+                                        .asString();
+
+    }
+
 }
