@@ -86,7 +86,7 @@ public class RestController {
 			
 			// start
 			path("/start", () -> {
-				put("", (req, res) -> startProject(req.body()), gson::toJson);
+				put("", (req, res) -> startProject(req), gson::toJson);
 			});
 		});
 	}
@@ -156,19 +156,20 @@ public class RestController {
 		return workerDTO;
 	}
 	
-	private String startProject(String name) {
+	private String startProject(Request request) {
+		ProjectDTO projectdto = gson.fromJson(request.body(), ProjectDTO.class);
 		boolean wasStarted = false;
-		System.out.println(name);
+
 
 		for(Project project: company.getProjects()){
-			if(project.getName().equals(name)){
+			if(project.getName().equals(projectdto.getName())){
 				company.start(project);
 				wasStarted = true;
 			}
 		}	
 
 		if(!wasStarted){
-			throw new RuntimeException(String.format("No Project With name: %s", name));
+			throw new RuntimeException(String.format("No Project With name: %s", projectdto.getName()));
 		}
 
 		return OK;
