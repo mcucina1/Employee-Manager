@@ -77,7 +77,7 @@ public class RestController {
 			// Workers
 			path("/workers", () -> {
 				get("", (req, res) -> getWorkers(), gson::toJson);
-        get("/:name", (req, res) -> getWorkerName(req.params("name")), gson::toJson);
+                                get("/:name", (req, res) -> getWorkerName(req.params("name")), gson::toJson);
 				post("/:name", (req, res) -> createWorker(req));
 			});
 
