@@ -3,6 +3,7 @@ package edu.colostate.cs415.server;
 import static spark.Spark.after;
 import static spark.Spark.exception;
 import static spark.Spark.get;
+import static spark.Spark.put;
 import static spark.Spark.options;
 import static spark.Spark.path;
 import static spark.Spark.port;
@@ -82,6 +83,11 @@ public class RestController {
 			path("/projects", () -> {
 				get("", (req, res) -> getProjects(), gson::toJson);
 			});
+			
+			// start
+			path("/start", () -> {
+				put("", (req, res) -> startProject(req.body()), gson::toJson);
+			});
 		});
 	}
 
@@ -149,6 +155,24 @@ public class RestController {
 		
 		return workerDTO;
 	}
+	
+	private String startProject(String name) {
+		boolean wasStarted = false;
+		System.out.println(name);
+
+		for(Project project: company.getProjects()){
+			if(project.getName().equals(name)){
+				company.start(project);
+				wasStarted = true;
+			}
+		}	
+
+		if(!wasStarted){
+			throw new RuntimeException(String.format("No Project With name: %s", name));
+		}
+
+		return OK;
+	} 
 
 	// Logs every request received
 	private void logRequest(Request request, Response response) {
@@ -183,4 +207,5 @@ public class RestController {
 			response.header("Access-Control-Allow-Methods", accessControlRequestMethod);
 		return OK;
 	}
+
 }
