@@ -1,18 +1,14 @@
 package edu.colostate.cs415.server;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.apache.hc.client5.http.fluent.Content;
 import org.apache.hc.client5.http.fluent.Request;
-import org.apache.hc.client5.http.fluent.Response;
 import org.apache.hc.core5.http.ContentType;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -140,11 +136,11 @@ public class RestControllerTest {
         String dummyName = "NotTheRightName";
 
         restController.start();
-        String response = Request.post("http://localhost:4567/api/workers/" + dummyName)
-                                        .bodyString(requestFormattedWorker, ContentType.APPLICATION_JSON)
-                                        .execute()
-                                        .returnContent()
-                                        .asString(); 
+        Request.post("http://localhost:4567/api/workers/" + dummyName)
+               .bodyString(requestFormattedWorker, ContentType.APPLICATION_JSON)
+               .execute()
+               .returnContent()
+               .asString(); 
     }
 
     @Test
