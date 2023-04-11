@@ -88,6 +88,11 @@ public class RestController {
 			path("/finish", () -> {
 				put("", (req, res) -> finishProject(req), gson::toJson);
 			});
+
+			// start
+			path("/start", () -> {
+				put("", (req, res) -> startProject(req), gson::toJson);
+			});
 		});
 	}
 
@@ -174,6 +179,25 @@ public class RestController {
 		return OK;
 	}
 
+	private String startProject(Request request) {
+		ProjectDTO projectdto = gson.fromJson(request.body(), ProjectDTO.class);
+		boolean wasStarted = false;
+
+
+		for(Project project: company.getProjects()){
+			if(project.getName().equals(projectdto.getName())){
+				company.start(project);
+				wasStarted = true;
+			}
+		}	
+
+		if(!wasStarted){
+			throw new RuntimeException(String.format("No Project With name: %s", projectdto.getName()));
+		}
+
+		return OK;
+	} 
+
 	// Logs every request received
 	private void logRequest(Request request, Response response) {
 		log.info(request.requestMethod() + " " + request.pathInfo() + "\nREQUEST:\n" + request.body() + "\nRESPONSE:\n"
@@ -207,4 +231,5 @@ public class RestController {
 			response.header("Access-Control-Allow-Methods", accessControlRequestMethod);
 		return OK;
 	}
+
 }
