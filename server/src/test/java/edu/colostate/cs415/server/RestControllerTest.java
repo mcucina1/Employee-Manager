@@ -158,7 +158,7 @@ public class RestControllerTest {
 
     @Test
     public void testFinishProject() throws IOException {
-        company = new Company("Company 6");
+        company = new Company("Company 8");
         company.createQualification("Qualification 1");
         company.createQualification("Qualification 2");
         company.createProject("Project 1", company.getQualifications(), ProjectSize.SMALL);
@@ -178,7 +178,7 @@ public class RestControllerTest {
     
     @Test(expected = IOException.class)
     public void testFinishProjectException() throws IOException {
-        company = new Company("Company 6");
+        company = new Company("Company 9");
         company.createQualification("Qualification 1");
         company.createQualification("Qualification 2");
         company.createProject("Project 1", company.getQualifications(), ProjectSize.SMALL);
