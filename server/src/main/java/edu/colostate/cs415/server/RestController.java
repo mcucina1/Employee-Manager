@@ -98,7 +98,7 @@ public class RestController {
 
 			// Projects
 			path("/projects", () -> {
-				// Gets go here
+				get("/:name", (req, res) -> getProjects());
 
 				post("/:name", (req, res) -> createProject(req));
 			});
@@ -151,7 +151,7 @@ public class RestController {
 		Set<Qualification> qualifications = new HashSet<>();
 		if (request.params("name").equals(projectDTO.getName())) {
 			// Looping through the string[] of qualifications and adding them to the set
-			for(String qual : projectDTO.getQualifications()){
+			for (String qual : projectDTO.getQualifications()) {
 				Qualification temp = new Qualification(qual);
 				qualifications.add(temp);
 			}
