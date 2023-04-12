@@ -95,6 +95,13 @@ public class RestController {
 			path("/start", () -> {
 				put("", (req, res) -> startProject(req), gson::toJson);
 			});
+
+			// Projects
+			path("/projects", () -> {
+				// Gets go here
+
+				post("/:name", (req, res) -> createProject(req));
+			});
 		});
 	}
 
@@ -135,6 +142,23 @@ public class RestController {
 			company.createQualification(assignmentDTO.getDescription());
 		} else
 			throw new RuntimeException("Qualification descriptions do not match.");
+		return OK;
+	}
+
+	private String createProject(Request request) {
+		ProjectDTO projectDTO = gson.fromJson(request.body(), ProjectDTO.class);
+		// Had to import Set, HashSet, and Qualification above
+		Set<Qualification> qualifications = new HashSet<>();
+		if (request.params("name").equals(projectDTO.getName())) {
+			// Looping through the string[] of qualifications and adding them to the set
+			for(String qual : projectDTO.getQualifications()){
+				Qualification temp = new Qualification(qual);
+				qualifications.add(temp);
+			}
+			// Using this set to call the createProject method
+			company.createProject(projectDTO.getName(), qualifications, projectDTO.getSize());
+		} else
+			throw new RuntimeException("Project names do not match.");
 		return OK;
 	}
 
@@ -226,7 +250,6 @@ public class RestController {
 
 		return OK;
 	} 
-
 	// Logs every request received
 	private void logRequest(Request request, Response response) {
 		log.info(request.requestMethod() + " " + request.pathInfo() + "\nREQUEST:\n" + request.body() + "\nRESPONSE:\n"
