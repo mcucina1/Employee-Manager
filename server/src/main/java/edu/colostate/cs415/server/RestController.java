@@ -1,5 +1,6 @@
 package edu.colostate.cs415.server;
 
+import static org.junit.Assert.assertTrue;
 import static spark.Spark.after;
 import static spark.Spark.exception;
 import static spark.Spark.get;
