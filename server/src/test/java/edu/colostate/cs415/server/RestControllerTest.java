@@ -1,6 +1,7 @@
 package edu.colostate.cs415.server;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -23,6 +24,7 @@ import edu.colostate.cs415.dto.AssignmentDTO;
 import edu.colostate.cs415.model.Company;
 import edu.colostate.cs415.model.Project;
 import edu.colostate.cs415.model.ProjectSize;
+import edu.colostate.cs415.model.ProjectStatus;
 import edu.colostate.cs415.model.Qualification;
 import edu.colostate.cs415.model.Worker;
 
@@ -250,11 +252,17 @@ public class RestControllerTest {
     @Test
     public void testFinishProject() throws IOException {
         company = new Company("Company 8");
+        assertTrue(company.getProjects().isEmpty());
+        assertTrue(company.getQualifications().isEmpty());
+        assertTrue(company.getEmployedWorkers().isEmpty());
         company.createQualification("Qualification 1");
         company.createQualification("Qualification 2");
-        company.createProject("Project 1", company.getQualifications(), ProjectSize.SMALL);
+        Project temp = company.createProject("Project 1", company.getQualifications(), ProjectSize.SMALL);
+        temp.setStatus(ProjectStatus.ACTIVE);
         company.createWorker("WonderWoman", company.getQualifications(), 186000.0);
-
+        assertFalse(company.getProjects().isEmpty());
+        assertFalse(company.getQualifications().isEmpty());
+        assertFalse(company.getEmployedWorkers().isEmpty());
         restController.start();
 
         String json = "{name: \"Project 1\"}";
@@ -265,6 +273,7 @@ public class RestControllerTest {
                 .asString();
 
         assertEquals("\"OK\"", responseString);
+        assertTrue(temp.getStatus().equals(ProjectStatus.FINISHED));
     }
 
     @Test(expected = IOException.class)
