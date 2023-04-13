@@ -1,6 +1,7 @@
 package edu.colostate.cs415.server;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -250,11 +251,16 @@ public class RestControllerTest {
     @Test
     public void testFinishProject() throws IOException {
         company = new Company("Company 8");
+        assertTrue(company.getProjects().isEmpty());
+        assertTrue(company.getQualifications().isEmpty());
+        assertTrue(company.getEmployedWorkers().isEmpty());
         company.createQualification("Qualification 1");
         company.createQualification("Qualification 2");
         company.createProject("Project 1", company.getQualifications(), ProjectSize.SMALL);
         company.createWorker("WonderWoman", company.getQualifications(), 186000.0);
-
+        assertFalse(company.getProjects().isEmpty());
+        assertFalse(company.getQualifications().isEmpty());
+        assertFalse(company.getEmployedWorkers().isEmpty());
         restController.start();
 
         String json = "{name: \"Project 1\"}";
