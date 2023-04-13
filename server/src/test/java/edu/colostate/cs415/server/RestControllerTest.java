@@ -133,6 +133,8 @@ public class RestControllerTest {
     @Test (expected = IOException.class)
     public void testPostWorkerThrowsException() throws IOException {
         company = new Company("Company 1");
+        assertTrue(company.getEmployedWorkers().isEmpty());
+        assertTrue(company.getQualifications().isEmpty());
         String expectedName = "Worker";
         Qualification qual = new Qualification("qualification");
         Set<Qualification> exepectedQuals = new HashSet<>();
