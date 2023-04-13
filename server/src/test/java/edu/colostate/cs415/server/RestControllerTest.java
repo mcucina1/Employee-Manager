@@ -398,12 +398,21 @@ public class RestControllerTest {
         company = new Company("Company 1");
         company.createQualification("Qualification 1");
         company.createQualification("Qualification 2");
-        company.createProject("Project 1", company.getQualifications(), ProjectSize.SMALL);
+        Project project = company.createProject("Project 1", company.getQualifications(), ProjectSize.SMALL);
         company.createWorker("Bob", company.getQualifications(), 100000.0);
+
+        assertTrue(project.getWorkers().size() == 0);
         AssignmentDTO payload = new AssignmentDTO("Bob", "Project 100");
         String payloadString = gson.toJson(payload);
         restController.start();
-        String response = Request.put("http://localhost:4567/api/assign").bodyString(payloadString, ContentType.APPLICATION_JSON).execute().returnContent().asString();
+
+        String response = Request.put("http://localhost:4567/api/assign")
+                                .bodyString(payloadString, ContentType.APPLICATION_JSON)
+                                .execute()
+                                .returnContent()
+                                .asString();
+
+        assertTrue(project.getWorkers().size() == 0);
     }
     
     @Test
