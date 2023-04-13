@@ -165,6 +165,46 @@ public class RestControllerTest {
         assertEquals(gson.toJson(projectDTOS), responseString);
     }
 
+    public void testGetProjectsName() throws IOException {
+        company = new Company("Company 6");
+        company.createQualification("Qualification 1");
+        company.createQualification("Qualification 2");
+        company.createProject("Project 1", company.getQualifications(), ProjectSize.SMALL);
+        company.createWorker("Wonder Woman", company.getQualifications(), 186000.0);
+
+        ProjectDTO projDTO = null;
+
+        for (Project project : company.getProjects()) {
+            if (project.getName().equals("Project 1")) {
+                projDTO = project.toDTO();
+            }
+        }
+
+
+        restController.start();
+        String responseString = Request.get("http://localhost:4567/api/projects/Project 1")
+                .execute()
+                .returnContent()
+                .asString();
+
+        assertEquals(gson.toJson(projDTO), responseString);
+    }
+
+    @Test(expected = IOException.class)
+    public void testGetProjectsNameNotInCompany() throws IOException {
+        company = new Company("Company 6");
+        company.createQualification("Qualification 1");
+        company.createQualification("Qualification 2");
+        company.createProject("Project 1", company.getQualifications(), ProjectSize.SMALL);
+        company.createWorker("Wonder Woman", company.getQualifications(), 186000.0);
+
+        restController.start();
+        String responseString = Request.get("http://localhost:4567/api/workers/Project 2")
+                .execute()
+                .returnContent()
+                .asString();
+    }
+
     @Test(expected = IOException.class)
     public void testGetNameWorkerNotInCompany() throws IOException {
         company = new Company("Company 6");
