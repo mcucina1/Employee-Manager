@@ -324,6 +324,7 @@ public class RestControllerTest {
     @Test
     public void testProjectPost() throws IOException {
         company = new Company("Company 1");
+        assertTrue(company.getProjects().isEmpty());
         String projectName = "Project";
         String[] qualifications = {"Qualification 1", "Qualification 2"};
         ProjectDTO payload = new ProjectDTO(projectName, ProjectSize.SMALL, null, null, qualifications, null);
@@ -331,11 +332,28 @@ public class RestControllerTest {
         restController.start();
         String  response = Request.post("http://localhost:4567/api/projects/" + projectName).bodyString(payloadString, ContentType.APPLICATION_JSON).execute().returnContent().asString();
         assertEquals("OK", response);
+        assertTrue(!company.getProjects().isEmpty());
+    }
+
+    @Test
+    public void testProjectPostSpace() throws IOException {
+        company = new Company("Company 1");
+        assertTrue(company.getProjects().isEmpty());
+        String projectName = "Project Test";
+        String projectURL = "Project%20Test";
+        String[] qualifications = {"Qualification 1", "Qualification 2"};
+        ProjectDTO payload = new ProjectDTO(projectName, ProjectSize.SMALL, null, null, qualifications, null);
+        String payloadString = gson.toJson(payload);
+        restController.start();
+        String  response = Request.post("http://localhost:4567/api/projects/" + projectURL).bodyString(payloadString, ContentType.APPLICATION_JSON).execute().returnContent().asString();
+        assertEquals("OK", response);
+        assertTrue(!company.getProjects().isEmpty());
     }
 
     @Test(expected = IOException.class)
     public void testProjectPostNull() throws IOException {
         company = new Company("Company 1");
+        assertTrue(company.getProjects().isEmpty());
         String projectName = null;
         String[] qualifications = {"Qualification 1", "Qualification 2"};
         ProjectDTO payload = new ProjectDTO(projectName, ProjectSize.SMALL, null, null, qualifications, null);
@@ -343,6 +361,7 @@ public class RestControllerTest {
         restController.start();
         String  response = Request.post("http://localhost:4567/api/projects/" + projectName).bodyString(payloadString, ContentType.APPLICATION_JSON).execute().returnContent().asString();
         assertEquals("OK", response);
+        assertTrue(!company.getProjects().isEmpty());
     }
 
     @Test
