@@ -152,16 +152,8 @@ public class RestController {
 
 	private String createProject(Request request) {
 		ProjectDTO projectDTO = gson.fromJson(request.body(), ProjectDTO.class);
-		// Had to import Set, HashSet, and Qualification above
-		Set<Qualification> qualifications = new HashSet<>();
 		if (request.params("name").equals(projectDTO.getName())) {
-			// Looping through the string[] of qualifications and adding them to the set
-			for (String qual : projectDTO.getQualifications()) {
-				Qualification temp = new Qualification(qual);
-				qualifications.add(temp);
-			}
-			// Using this set to call the createProject method
-			company.createProject(projectDTO.getName(), qualifications, projectDTO.getSize());
+			company.createProject(projectDTO.getName(), makeQualificationSet(projectDTO.getQualifications()), projectDTO.getSize());
 		} else
 			throw new RuntimeException("Project names do not match.");
 		return OK;
