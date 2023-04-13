@@ -61,8 +61,10 @@ public class RestControllerTest {
     @Test
     public void testGetQualification() throws IOException {
         company = new Company("Company 3");
+        assertTrue(company.getQualifications().isEmpty());
         company.createQualification("First");
         company.createQualification("Second");
+        assertFalse(company.getQualifications().isEmpty());
         restController.start();
         for (Qualification qual : company.getQualifications()) {
             String responseString = Request.get("http://localhost:4567/api/qualifications/" + qual.toString()).execute()
