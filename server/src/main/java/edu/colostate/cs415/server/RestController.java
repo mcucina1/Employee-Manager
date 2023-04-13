@@ -22,6 +22,7 @@ import edu.colostate.cs415.db.DBConnector;
 import edu.colostate.cs415.dto.ProjectDTO;
 import edu.colostate.cs415.dto.QualificationDTO;
 import edu.colostate.cs415.dto.WorkerDTO;
+import edu.colostate.cs415.dto.AssignmentDTO;
 import edu.colostate.cs415.model.Company;
 import edu.colostate.cs415.model.Project;
 import edu.colostate.cs415.model.Qualification;
@@ -84,6 +85,10 @@ public class RestController {
 			// Project
 			path("/projects", () -> {
 				get("", (req, res) -> getProjects(), gson::toJson);
+			});
+
+			path("/assign", () -> {
+				put("", (req, res) -> assignWorker(req), gson::toJson);
 			});
 
 			// finish
@@ -250,6 +255,38 @@ public class RestController {
 
 		return OK;
 	} 
+
+	private String assignWorker(Request request){
+		AssignmentDTO assignmentDTO = gson.fromJson(request.body(), AssignmentDTO.class);
+		Worker requestWorker = null;
+		Project requestProject = null;
+		boolean isMatch = false;
+
+		for(Worker worker: company.getAvailableWorkers()){
+			if(worker.getName().equals(assignmentDTO.getWorker())){
+				requestWorker = worker;
+				isMatch = true;
+			}
+		}
+		if (!isMatch){
+			throw new RuntimeException("Worker does not exist in company.");
+		}
+
+		isMatch = false;
+		for(Project project: company.getProjects()){
+			if(project.getName().equals(assignmentDTO.getProject())){
+				requestProject = project;
+				isMatch = true;
+			}
+		}
+		if (!isMatch){
+			throw new RuntimeException("Project does not exist in company.");
+		}
+
+		company.assign(requestWorker, requestProject);
+		return OK;
+	}
+	
 	// Logs every request received
 	private void logRequest(Request request, Response response) {
 		log.info(request.requestMethod() + " " + request.pathInfo() + "\nREQUEST:\n" + request.body() + "\nRESPONSE:\n"

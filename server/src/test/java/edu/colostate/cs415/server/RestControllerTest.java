@@ -18,6 +18,7 @@ import com.google.gson.Gson;
 import edu.colostate.cs415.db.DBConnector;
 import edu.colostate.cs415.dto.ProjectDTO;
 import edu.colostate.cs415.dto.WorkerDTO;
+import edu.colostate.cs415.dto.AssignmentDTO;
 import edu.colostate.cs415.model.Company;
 import edu.colostate.cs415.model.Project;
 import edu.colostate.cs415.model.ProjectSize;
@@ -303,4 +304,30 @@ public class RestControllerTest {
         assertEquals("OK", response);
     }
 
+    @Test
+    public void testAssignWorker() throws IOException {
+        company = new Company("Company 1");
+        company.createQualification("Qualification 1");
+        company.createQualification("Qualification 2");
+        company.createProject("Project 1", company.getQualifications(), ProjectSize.SMALL);
+        company.createWorker("Bob", company.getQualifications(), 100000.0);
+        AssignmentDTO payload = new AssignmentDTO("Bob", "Project 1");
+        String payloadString = gson.toJson(payload);
+        restController.start();
+        String response = Request.put("http://localhost:4567/api/assign").bodyString(payloadString, ContentType.APPLICATION_JSON).execute().returnContent().asString();
+        assertEquals("\"OK\"", response);
+    }
+
+    @Test(expected = IOException.class)
+    public void testAssignWorkerException() throws IOException {
+        company = new Company("Company 1");
+        company.createQualification("Qualification 1");
+        company.createQualification("Qualification 2");
+        company.createProject("Project 1", company.getQualifications(), ProjectSize.SMALL);
+        company.createWorker("Bob", company.getQualifications(), 100000.0);
+        AssignmentDTO payload = new AssignmentDTO("Bob", "Project 100");
+        String payloadString = gson.toJson(payload);
+        restController.start();
+        String response = Request.put("http://localhost:4567/api/assign").bodyString(payloadString, ContentType.APPLICATION_JSON).execute().returnContent().asString();
+    }
 }
