@@ -50,8 +50,10 @@ public class RestControllerTest {
     @Test
     public void testGetQualifications() throws IOException {
         company = new Company("Company 2");
+        assertTrue(company.getQualifications().isEmpty());
         company.createQualification("Qualification 1");
         company.createQualification("Qualification 2");
+        assertFalse(company.getQualifications().isEmpty());
         restController.start();
         String responseString = Request.get("http://localhost:4567/api/qualifications").execute().returnContent()
                 .asString();
