@@ -1,6 +1,7 @@
 package edu.colostate.cs415.server;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -307,6 +308,7 @@ public class RestControllerTest {
     @Test(expected = IOException.class)
     public void testProjectPostNull() throws IOException {
         company = new Company("Company 1");
+        assertTrue(company.getProjects().isEmpty());
         String projectName = null;
         String[] qualifications = {"Qualification 1", "Qualification 2"};
         ProjectDTO payload = new ProjectDTO(projectName, ProjectSize.SMALL, null, null, qualifications, null);
@@ -314,6 +316,7 @@ public class RestControllerTest {
         restController.start();
         String  response = Request.post("http://localhost:4567/api/projects/" + projectName).bodyString(payloadString, ContentType.APPLICATION_JSON).execute().returnContent().asString();
         assertEquals("OK", response);
+        assertTrue(!company.getProjects().isEmpty());
     }
 
 }
