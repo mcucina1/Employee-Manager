@@ -401,4 +401,50 @@ public class RestControllerTest {
         restController.start();
         String response = Request.put("http://localhost:4567/api/assign").bodyString(payloadString, ContentType.APPLICATION_JSON).execute().returnContent().asString();
     }
+    
+    @Test
+    public void testUnassignWorker() throws IOException {
+        company = new Company("Company 1");
+        company.createQualification("Qualification 1");
+        company.createQualification("Qualification 2");
+        Project project = company.createProject("Project 1", company.getQualifications(), ProjectSize.SMALL);
+        Worker worker = company.createWorker("Bob", company.getQualifications(), 100000.0);
+        company.assign(worker, project);
+
+        assertTrue(project.getWorkers().contains(worker));
+
+        AssignmentDTO payload = new AssignmentDTO("Bob", "Project 1");
+        String payloadString = gson.toJson(payload);
+        restController.start();
+
+        String response = Request.put("http://localhost:4567/api/unassign")
+                                .bodyString(payloadString, ContentType.APPLICATION_JSON)
+                                .execute()
+                                .returnContent()
+                                .asString();
+        assertEquals("\"OK\"", response);
+        assertTrue(project.getWorkers().size() == 0);
+    }
+
+    @Test(expected = IOException.class)
+    public void testUnassingWorkerException() throws IOException {
+        company = new Company("Company 1");
+        company.createQualification("Qualification 1");
+        company.createQualification("Qualification 2");
+        Project project = company.createProject("Project 1", company.getQualifications(), ProjectSize.SMALL);
+        Worker worker = company.createWorker("Bob", company.getQualifications(), 100000.0);
+        company.assign(worker, project);
+
+        assertTrue(project.getWorkers().contains(worker));
+
+        AssignmentDTO payload = new AssignmentDTO("Jeff", "Project 1");
+        String payloadString = gson.toJson(payload);
+        restController.start();
+
+        String response = Request.put("http://localhost:4567/api/unassign")
+                                .bodyString(payloadString, ContentType.APPLICATION_JSON)
+                                .execute()
+                                .returnContent()
+                                .asString();
+    }
 }
