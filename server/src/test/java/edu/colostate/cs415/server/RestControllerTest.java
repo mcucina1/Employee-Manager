@@ -48,6 +48,15 @@ public class RestControllerTest {
     }
 
     @Test
+    public void testHelloWorld() throws IOException {
+        company = new Company("Company 1");
+        restController.start();
+        String helloString = Request.get("http://localhost:4567/helloworld").execute().returnContent().asString();
+        assertEquals("Hello World!", helloString);
+
+    }
+
+    @Test
     public void testGetQualifications() throws IOException {
         company = new Company("Company 2");
         assertTrue(company.getQualifications().isEmpty());
