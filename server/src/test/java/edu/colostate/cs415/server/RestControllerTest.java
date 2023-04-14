@@ -51,7 +51,7 @@ public class RestControllerTest {
     public void testHelloWorld() throws IOException {
         company = new Company("Company 1");
         restController.start();
-        String helloString = Request.get("http://localhost:4567/name").execute().returnContent().asString();
+        String helloString = Request.get("http://localhost:4567/helloworld").execute().returnContent().asString();
         assertEquals("Hello World!", helloString);
 
     }
