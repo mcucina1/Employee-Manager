@@ -112,11 +112,15 @@ public class RestControllerTest {
         company = new Company("Company 1");
         String expectedName = "Worker";
         Qualification qual = new Qualification("qualification");
+        company.createQualification("qualification");
         Set<Qualification> exepectedQuals = new HashSet<>();
         exepectedQuals.add(qual);
         double expectedSalary = 10.0; 
 
         Worker expectedWorker = new Worker(expectedName, exepectedQuals, expectedSalary);
+
+        assertEquals(0, company.getAvailableWorkers().size());
+        assertFalse(company.getAvailableWorkers().contains(expectedWorker));
 
         WorkerDTO workerDTO = expectedWorker.toDTO();
         String requestFormattedWorker = gson.toJson(workerDTO);        
@@ -128,6 +132,8 @@ public class RestControllerTest {
                                         .returnContent()
                                         .asString();    
         assertEquals("OK", response);
+        assertEquals(1, company.getAvailableWorkers().size());
+        assertTrue(company.getAvailableWorkers().contains(expectedWorker));
     }
 
     @Test (expected = IOException.class)
