@@ -24,7 +24,9 @@ const ProjectBody = (project) => {
             Status: {project.status}
             <br></br>
             Assigned Employees: <ClickList list={project.workers} styles={darkGrayContainerStyle} path="/projects" />
+            <br></br>
             Required Qualifications: Assigned Employees: <ClickList list={project.qualifications} styles={darkGrayContainerStyle} path="/projects" />
+            <br></br>
             Missing Qualifications: Assigned Employees: <ClickList list={project.missingQualifications} styles={darkGrayContainerStyle} path="/projects" />
 
         </div>
