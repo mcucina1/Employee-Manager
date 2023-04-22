@@ -70,15 +70,14 @@ public class RestController {
 			// Qualifications
 			path("/qualifications", () -> {
 				get("", (req, res) -> getQualifications(), gson::toJson);
-				get("/:description", (req, res) -> getQualification(req.params("description")),
-						gson::toJson);
+				get("/:description", (req, res) -> getQualification(req.params("description")),gson::toJson);
 				post("/:description", (req, res) -> createQualification(req));
 			});	
 
 			// Workers
 			path("/workers", () -> {
 				get("", (req, res) -> getWorkers(), gson::toJson);
-                                get("/:name", (req, res) -> getWorkerName(req.params("name")), gson::toJson);
+                get("/:name", (req, res) -> getWorkerName(req.params("name")), gson::toJson);
 				post("/:name", (req, res) -> createWorker(req));
 			});
 
