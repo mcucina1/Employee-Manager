@@ -17,9 +17,14 @@ const Worker = (worker, active) => {
 const WorkerBody = (worker) => {
     return (
         <div style={grayContainerStyle}>
+            Name: {worker.name}
+            <br></br>
+            Salary: {worker.salary}
+            <br></br>
+            Current Workload: {worker.workload}
+            <br></br>
+            Projects: <ClickList list={worker.projects} styles={darkGrayContainerStyle} path="/projects" />
             Qualifications: <ClickList list={worker.qualifications} styles={darkGrayContainerStyle} path="/qualifications" /> {"\n"}
-            Salary: {worker.salary}{"\n"}
-            Projects: <ClickList list={worker.projects} styles={darkGrayContainerStyle} path="/projects" /> {"\n"}
         </div>
     )
 }
@@ -34,7 +39,7 @@ const Workers = () => {
                 <h1>
                     This page displays a table containing all the qualifications.
                 </h1>
-                <ClickList active={active} list={workers} item={Worker} path='/qualifications' id='description' />
+                <ClickList active={active} list={workers} item={Worker} path='/workers' id='name' />
             </div>
         </Container>
     )
