@@ -30,13 +30,13 @@ const Qualifications = () => {
             <h1>
                 This page displays a table containing all the qualifications.
             </h1>
-            <CreateQualification setQualifications={setQualifications}/>
+            <PostQualification setQualifications={setQualifications}/>
             <ClickList active={active} list={qualifications} item={Qualification} path='/qualifications' id='description' />
         </div>
     )
 }
 
-const CreateQualification = (props) => {
+const PostQualification = (props) => {
     const [qualification, setQualification] = useState("")
     return (
         <form onSubmit={() => {
