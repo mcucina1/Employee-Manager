@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import ClickList from '../components/ClickList'
-import { getQualifications } from '../services/dataService'
+import { getQualifications, createQualification } from '../services/dataService'
 import LocationID from '../utils/location'
 import { darkGrayContainerStyle, grayContainerStyle, pageStyle } from '../utils/styles'
 
@@ -30,9 +30,28 @@ const Qualifications = () => {
             <h1>
                 This page displays a table containing all the qualifications.
             </h1>
+            <CreateQualification setQualifications={setQualifications}/>
             <ClickList active={active} list={qualifications} item={Qualification} path='/qualifications' id='description' />
         </div>
     )
 }
 
+const CreateQualification = (props) => {
+    const [qualification, setQualification] = useState("")
+    return (
+        <form onSubmit={() => {
+            createQualification(qualification);
+            props.setQualifications([qualification])}}>
+        <label>Add Qualification
+            <input 
+            type="text" 
+            value={qualification}
+            onChange={(e) => setQualification(e.target.value)}
+            />
+        </label>
+        <input type="submit" />
+        </form>
+    )
+  }
+  
 export default Qualifications

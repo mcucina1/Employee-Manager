@@ -48,7 +48,7 @@ https://www.cs.colostate.edu/~cs415/2023sp/project/p5/p5.php
 ### - Use Case Description
 | User Action | System Response |
 |--|--|
-|  |  |
+| Enter new qualification and submit | Posts new qualification to server and re-renders component |
 ### - Use Case Tests
 
 ## Create new worker. 
