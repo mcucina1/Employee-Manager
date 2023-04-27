@@ -23,19 +23,22 @@ https://www.cs.colostate.edu/~cs415/2023sp/project/p5/p5.php
 ### - Use Case Description
 | User Action | System Response |
 |--|--|
-|  |  |
+| Click on Qualifications tab | Loads Qualifications Page |
+| Click on qualification | Clicklist displays qualification details|
 
 ## View worker details.
 ### - Use Case Description
 | User Action | System Response |
 |--|--|
-|  |  |
+| Click on qualifications tab | Loads qualifications page |
+| Click on worker | Clicklist displays qualification details |
 
 ## View project details. 
 ### - Use Case Description
 | User Action | System Response |
 |--|--|
-|  |  |
+| Click on projects tab | Loads projects page|
+| Click on Project | Clicklist displays project details |
 
 ## Create new qualification. 
 ### - Use Case Description
