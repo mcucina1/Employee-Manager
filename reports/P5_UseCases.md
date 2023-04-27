@@ -69,7 +69,11 @@ https://www.cs.colostate.edu/~cs415/2023sp/project/p5/p5.php
 ### - Use Case Description
 | User Action | System Response |
 |--|--|
-|  |  |
+| Click on Projects Page | Client loads Projects page |
+| Find project that you would like to add worker to |  |
+| Click + button next to project name | Window appears with available workers |
+| Click worker name | Worker name is highlighted |
+| Click submit | Worker is added to project |
 ### - Use Case Tests
 
 ## Unassign worker
