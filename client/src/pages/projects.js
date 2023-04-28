@@ -61,7 +61,6 @@ const Projects = () => {
     const selectsContainer = {
         display: 'flex',
         justifyContent: 'center',
-        marginBottom: '1rem',
     }
     
      return (
