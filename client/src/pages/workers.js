@@ -51,21 +51,29 @@ const Workers = () => {
 const PostWorker = (props) => {
     const [name, setName] = useState("")
     const [qualifications, setQualifications] = useState([]);
+    const [select, setSelect] = useState([]);
     const [salary, setSalary] = useState(0);
     const inputQualifications = useRef("");
 
     useEffect(() => { getQualifications().then(setQualifications) }, [])
     const selectStyle = {
-        margin-bottom: '10px',
-        margin-top: '10px',
-        font-family: 'cursive, sans-serif',
-        outline: '0',
-        background: '#2ecc71',
-        color: '#fff',
-        border: '1px solid crimson',
-        padding: '4px',
-        border-radius: '9px',
+        'margin-bottom': '10px',
+        'margin-top': '10px',
+        'font-family': 'cursive, sans-serif',
+        'outline': '0',
+        'background': '#2ecc71',
+        'color': '#fff',
+        'border': '1px solid crimson',
+        'padding': '4px',
+        'border-radius': '9px',
     }
+
+    const handleClick = (e) => {
+        let value = Array.from(e.target.selectedOptions, option => option.value);
+        setSelect(value);
+        console.log(value)
+    }
+
     return (
         <form onSubmit={async () => {
             const worker = await createWorker({ name: name, qualifications: qualifications, salary: salary });
@@ -79,7 +87,7 @@ const PostWorker = (props) => {
                 />
             </label>
             <label> Qualifications
-            <select size="1" multiple>
+            <select size="4" onChange={(e) => handleClick(e)} multiple>
                 {qualifications.map((qualification) => {
                     return <option value={qualification.description}>{qualification.description}</option>;
                 })}
