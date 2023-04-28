@@ -29,3 +29,7 @@ export function createWorker(name) {
 export function getProjects() {
     return axios.get(SERVER_ADDRESS + 'projects').then((res) => JSON.parse(res.request.response).sort((a, b) => a.name.localeCompare(b.name)))
 } 
+
+export function assignWorker(request){
+    return axios.put(SERVER_ADDRESS + 'assign/' + request)
+}
