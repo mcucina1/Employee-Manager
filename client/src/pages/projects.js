@@ -42,10 +42,6 @@ const Projects = () => {
     useEffect(() => { getProjects().then(setProjects) }, [])
     useEffect(() => { getWorkers().then(setWorkers) }, [])
     const active = LocationID('projects', projects, 'name')
-    const pageStyle = {
-        display: 'flex',
-        justifyContent: 'space-between',
-    }
 
     const onButtonClick = () => {
         const worker = inputWorker.current.value
@@ -56,17 +52,26 @@ const Projects = () => {
         }
         assignWorker(request)
     }
+
+    const pageStyle = {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+    }
+    const selectsContainer = {
+        display: 'flex',
+        justifyContent: 'center',
+        marginBottom: '1rem',
+    }
     
-    return (
+     return (
         <Container>
             <div style={pageStyle}>
                 <div>
                     <h1>
                         This page displays a table containing all the projects.
                     </h1>
-                    <ClickList active={active} list={projects} item={Project} path='/projects' id='name' />
-                </div>
-                <div>
+                    <div style={selectsContainer}>
                     <select ref={inputProject}>
                         {projects.map((project) => {
                             return <option>{project.name}</option>;
@@ -78,8 +83,10 @@ const Projects = () => {
                         })}
                     </select>
                     <button onClick={onButtonClick}>Assign a Worker</button>
-                    
                 </div>
+                    <ClickList active={active} list={projects} item={Project} path='/projects' id='name' />
+                </div>
+                
             </div>
         </Container>
     )
