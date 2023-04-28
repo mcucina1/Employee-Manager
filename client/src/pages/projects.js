@@ -43,15 +43,22 @@ const Projects = () => {
     useEffect(() => { getWorkers().then(setWorkers) }, [])
     const active = LocationID('projects', projects, 'name')
 
-    const onButtonClick = () => {
-        const worker = inputWorker.current.value
-        const project = inputProject.current.value
+    const onButtonClick = async () => {
+        const worker = inputWorker.current.value;
+        const project = inputProject.current.value;
         const request = {
             worker: worker,
             project: project
+        };
+        try {
+            await assignWorker(request);
+            const updatedProjects = await getProjects();
+            setProjects(updatedProjects);
+            alert(worker + " has been assigned to " + project + "!")
+        } catch (error) {
+            alert("Failed to assign worker. The worker might not meet the required qualifications, or the Project Status is already ACTIVE or FINISHED.");
         }
-        assignWorker(request)
-    }
+    };
 
     const pageStyle = {
         display: 'flex',

@@ -31,6 +31,6 @@ export function getProjects() {
 } 
 
 export function assignWorker(request){
-    return axios.put(SERVER_ADDRESS + 'assign/', request)
+    return axios.put(SERVER_ADDRESS + 'assign', request)
     
 }
