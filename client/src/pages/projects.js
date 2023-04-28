@@ -50,7 +50,10 @@ const Projects = () => {
     const onButtonClick = () => {
         const worker = inputWorker.current.value
         const project = inputProject.current.value
-        const request = worker + '/' + project
+        const request = {
+            worker: worker,
+            project: project
+        }
         assignWorker(request)
     }
     
