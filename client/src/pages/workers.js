@@ -37,7 +37,7 @@ const Workers = () => {
         <Container>
             <div style={pageStyle}>
                 <h1>
-                    This page displays a table containing all the qualifications.
+                    This page displays a table containing all the workers.
                 </h1>
                 <ClickList active={active} list={workers} item={Worker} path='/workers' id='name' />
             </div>
