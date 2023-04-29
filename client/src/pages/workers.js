@@ -56,24 +56,26 @@ const PostWorker = (props) => {
     const inputQualifications = useRef("");
 
     useEffect(() => { getQualifications().then(setQualifications) }, [])
-    const selectStyle = {
-        'margin-bottom': '10px',
-        'margin-top': '10px',
-        'font-family': 'cursive, sans-serif',
-        'outline': '0',
-        'background': '#2ecc71',
-        'color': '#fff',
-        'border': '1px solid crimson',
-        'padding': '4px',
-        'border-radius': '9px',
-    }
 
-    const handleClick = (e) => {
+    const handleChange = async (e) => {
         let value = Array.from(e.target.selectedOptions, option => option.value);
         setSelect(value);
-        console.log(value)
     }
-
+    const handleClick = async () => {
+        const request = {
+            name: name,
+            qualifications: select,
+            salary: salary 
+        };
+        try {
+            await createWorker(request);
+            const updatedWorkers = await getWorkers();
+            props.setWorkers(updatedWorkers);
+            alert(name + " has been employed")
+        } catch (error) {
+            alert("Failed to employ worker. One of the requirements does not work.");
+        }
+    }
     return (
         <form onSubmit={async () => {
             const worker = await createWorker({ name: name, qualifications: qualifications, salary: salary });
@@ -87,7 +89,7 @@ const PostWorker = (props) => {
                 />
             </label>
             <label> Qualifications
-            <select size="4" onChange={(e) => handleClick(e)} multiple>
+            <select size="4" onChange={(e) => handleChange(e)} multiple>
                 {qualifications.map((qualification) => {
                     return <option value={qualification.description}>{qualification.description}</option>;
                 })}
@@ -100,7 +102,7 @@ const PostWorker = (props) => {
                     onChange={(e) => setSalary(e.target.value)}
                 />
             </label>
-            <input type="submit" />
+            <button onClick={handleClick}>Employ Worker</button>
         </form>
     )
 }
