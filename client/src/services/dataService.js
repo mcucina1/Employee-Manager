@@ -22,8 +22,8 @@ export function getWorkers() {
     return axios.get(SERVER_ADDRESS + 'workers').then((res) => JSON.parse(res.request.response).sort((a, b) => a.name.localeCompare(b.name)))
 }
 
-export function createWorker(name) {
-    return axios.post(SERVER_ADDRESS + 'workers/' + name, { name: name })
+export function createWorker(request) {
+    return axios.post(SERVER_ADDRESS + 'workers/' + request.name, request)
 }
 
 export function getProjects() {
