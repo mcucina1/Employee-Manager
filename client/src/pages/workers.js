@@ -65,7 +65,7 @@ const PostWorker = (props) => {
         const request = {
             name: name,
             qualifications: select,
-            salary: salary 
+            salary: salary
         };
         try {
             await createWorker(request);
@@ -77,10 +77,7 @@ const PostWorker = (props) => {
         }
     }
     return (
-        <form onSubmit={async () => {
-            const worker = await createWorker({ name: name, qualifications: qualifications, salary: salary });
-            props.setWorkers([worker])
-        }}>
+        <>
             <label> Name
                 <input
                     type="text"
@@ -89,11 +86,11 @@ const PostWorker = (props) => {
                 />
             </label>
             <label> Qualifications
-            <select size="4" onChange={(e) => handleChange(e)} multiple>
-                {qualifications.map((qualification) => {
-                    return <option value={qualification.description}>{qualification.description}</option>;
-                })}
-            </select>
+                <select size="4" onChange={(e) => handleChange(e)} multiple>
+                    {qualifications.map((qualification) => {
+                        return <option value={qualification.description}>{qualification.description}</option>;
+                    })}
+                </select>
             </label>
             <label> Salary
                 <input
@@ -103,7 +100,7 @@ const PostWorker = (props) => {
                 />
             </label>
             <button onClick={handleClick}>Employ Worker</button>
-        </form>
+        </>
     )
 }
 
