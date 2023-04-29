@@ -118,24 +118,24 @@ const Projects = () => {
                         </select>
                         <button onClick={startProjClick}>Start Project</button>
                     </div>
-                    <select ref={inputProject}>
-                        {projects.map((project) => {
-                            return <option>{project.name}</option>;
-                        })}
-                    </select>
-                    <select ref={inputWorker}>
-                        {workers.map((worker) => {
-                            return <option>{worker.name}</option>;
-                        })}
-                    </select>
-                    <button onClick={onButtonClickAssign}>Assign a Worker</button>
-                    <button onClick={onButtonClickUnassign}>Unassign a Worker</button>
+                    <div style={selectsContainer}>
+                        <select ref={inputProject}>
+                            {projects.map((project) => {
+                                return <option>{project.name}</option>;
+                            })}
+                        </select>
+                        <select ref={inputWorker}>
+                            {workers.map((worker) => {
+                                return <option>{worker.name}</option>;
+                            })}
+                        </select>
+                        <button onClick={onButtonClickAssign}>Assign a Worker</button>
+                        <button onClick={onButtonClickUnassign}>Unassign a Worker</button>
+                    </div>
                 </div>
-                    <ClickList active={active} list={projects} item={Project} path='/projects' id='name' />
-                </div>
-
+                <ClickList active={active} list={projects} item={Project} path='/projects' id='name' />
             </div>
-        </Container>
+        </Container >
     )
 }
 
