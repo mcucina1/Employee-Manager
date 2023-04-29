@@ -34,3 +34,7 @@ export function assignWorker(request){
     return axios.put(SERVER_ADDRESS + 'assign', request)
     
 }
+
+export function startProject(request){
+    return axios.put(SERVER_ADDRESS + 'start', request)
+}

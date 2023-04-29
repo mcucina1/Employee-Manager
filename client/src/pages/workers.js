@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from 'react'
 import ClickList from '../components/ClickList'
 import LocationID from '../utils/location'
 import { darkGrayContainerStyle, grayContainerStyle, pageStyle } from '../utils/styles'
-import Select from 'react-select'
+// import Select from 'react-select'
 
 const Worker = (worker, active) => {
     return (
