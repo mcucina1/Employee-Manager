@@ -1,4 +1,4 @@
-import { assignWorker, getProjects, startProject } from '../services/dataService'
+import { assignWorker, unassignWorker, getProjects, startProject } from '../services/dataService'
 import { getWorkers } from '../services/dataService';
 import { Container } from 'reactstrap';
 import { useEffect, useRef, useState } from 'react'
@@ -44,7 +44,7 @@ const Projects = () => {
     useEffect(() => { getWorkers().then(setWorkers) }, [])
     const active = LocationID('projects', projects, 'name')
 
-    const onButtonClick = async () => {
+    const onButtonClickAssign = async () => {
         const worker = inputWorker.current.value;
         const project = inputProject.current.value;
         const request = {
@@ -76,6 +76,23 @@ const Projects = () => {
         }
     }
 
+    const onButtonClickUnassign = async () => {
+        const worker = inputWorker.current.value;
+        const project = inputProject.current.value;
+        const request = {
+            worker: worker,
+            project: project
+        };
+        try {
+            await unassignWorker(request);
+            const updatedProjects = await getProjects();
+            setProjects(updatedProjects);
+            alert(worker + " has been unassigned from " + project + "!")
+        } catch (error) {
+            alert("Failed to unassign worker. The worker might not be assigned to the project.");
+        }
+    };
+
     const pageStyle = {
         display: 'flex',
         flexDirection: 'column',
@@ -101,19 +118,19 @@ const Projects = () => {
                         </select>
                         <button onClick={startProjClick}>Start Project</button>
                     </div>
-                    <div style={selectsContainer}>
-                        <select ref={inputProject}>
-                            {projects.map((project) => {
-                                return <option>{project.name}</option>;
-                            })}
-                        </select>
-                        <select ref={inputWorker}>
-                            {workers.map((worker) => {
-                                return <option>{worker.name}</option>;
-                            })}
-                        </select>
-                        <button onClick={onButtonClick}>Assign a Worker</button>
-                    </div>
+                    <select ref={inputProject}>
+                        {projects.map((project) => {
+                            return <option>{project.name}</option>;
+                        })}
+                    </select>
+                    <select ref={inputWorker}>
+                        {workers.map((worker) => {
+                            return <option>{worker.name}</option>;
+                        })}
+                    </select>
+                    <button onClick={onButtonClickAssign}>Assign a Worker</button>
+                    <button onClick={onButtonClickUnassign}>Unassign a Worker</button>
+                </div>
                     <ClickList active={active} list={projects} item={Project} path='/projects' id='name' />
                 </div>
 

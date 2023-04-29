@@ -68,14 +68,19 @@ https://www.cs.colostate.edu/~cs415/2023sp/project/p5/p5.php
 | Click project to assign worker to | Project is selected |
 | Dropdown Worker list at top of page | List of workers appears |
 | Click worker to assign | Worker is selected |
-| Click Submit | Worker is added to project and success message appears |
+| Click "Assign a Worker" | Worker is added to project and success message appears |
 ### - Use Case Tests
 
 ## Unassign worker
 ### - Use Case Description
 | User Action | System Response |
 |--|--|
-|  |  |
+| Click on Projects Page | Client loads Projects page |
+| Dropdown Project list at top of page | List of projects appears |
+| Click project to unassign worker from | Project is selected |
+| Dropdown Worker list at top of page | List of workers appears |
+| Click worker to unassign | Worker is selected |
+| Click "Unassign a Worker" | Worker is removed from project and success message appears |
 
 ## Start project
 ### - Use Case Description
