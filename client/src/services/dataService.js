@@ -23,7 +23,7 @@ export function getWorkers() {
 }
 
 export function createWorker(request) {
-    return axios.post(SERVER_ADDRESS + 'workers', request)
+    return axios.post(SERVER_ADDRESS + 'workers/' + request.name, request)
 }
 
 export function getProjects() {
