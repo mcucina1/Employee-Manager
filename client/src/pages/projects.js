@@ -1,6 +1,6 @@
-import { assignWorker, unassignWorker, getProjects } from '../services/dataService'
+import { assignWorker, unassignWorker, getProjects, startProject } from '../services/dataService'
 import { getWorkers } from '../services/dataService';
-import { Container} from 'reactstrap';
+import { Container } from 'reactstrap';
 import { useEffect, useRef, useState } from 'react'
 import ClickList from '../components/ClickList'
 import LocationID from '../utils/location'
@@ -39,6 +39,7 @@ const Projects = () => {
     const [workers, setWorkers] = useState([])
     const inputWorker = useRef("")
     const inputProject = useRef("")
+    const inputStartProject = useRef("")
     useEffect(() => { getProjects().then(setProjects) }, [])
     useEffect(() => { getWorkers().then(setWorkers) }, [])
     const active = LocationID('projects', projects, 'name')
@@ -59,6 +60,21 @@ const Projects = () => {
             alert("Failed to assign worker. The worker might not meet the required qualifications, or the Project Status is already ACTIVE or FINISHED.");
         }
     };
+
+    const startProjClick = async () => {
+        const name = inputStartProject.current.value;
+        const request = {
+            name: name,
+        };
+        try {
+            await startProject(request);
+            const updatedProjects = await getProjects();
+            setProjects(updatedProjects);
+            alert(name + " has been started!")
+        } catch (error) {
+            alert("Failed to start project. One of the requirements does not work.");
+        }
+    }
 
     const onButtonClickUnassign = async () => {
         const worker = inputWorker.current.value;
@@ -86,8 +102,8 @@ const Projects = () => {
         display: 'flex',
         justifyContent: 'center',
     }
-    
-     return (
+
+    return (
         <Container>
             <div style={pageStyle}>
                 <div>
@@ -95,24 +111,31 @@ const Projects = () => {
                         This page displays a table containing all the projects.
                     </h1>
                     <div style={selectsContainer}>
-                    <select ref={inputProject}>
-                        {projects.map((project) => {
-                            return <option>{project.name}</option>;
-                        })}
-                    </select>
-                    <select ref={inputWorker}>
-                        {workers.map((worker) => {
-                            return <option>{worker.name}</option>;
-                        })}
-                    </select>
-                    <button onClick={onButtonClickAssign}>Assign a Worker</button>
-                    <button onClick={onButtonClickUnassign}>Unassign a Worker</button>
+                        <select ref={inputStartProject}>
+                            {projects.map((project) => {
+                                return <option>{project.name}</option>;
+                            })}
+                        </select>
+                        <button onClick={startProjClick}>Start Project</button>
+                    </div>
+                    <div style={selectsContainer}>
+                        <select ref={inputProject}>
+                            {projects.map((project) => {
+                                return <option>{project.name}</option>;
+                            })}
+                        </select>
+                        <select ref={inputWorker}>
+                            {workers.map((worker) => {
+                                return <option>{worker.name}</option>;
+                            })}
+                        </select>
+                        <button onClick={onButtonClickAssign}>Assign a Worker</button>
+                        <button onClick={onButtonClickUnassign}>Unassign a Worker</button>
+                    </div>
                 </div>
-                    <ClickList active={active} list={projects} item={Project} path='/projects' id='name' />
-                </div>
-                
+                <ClickList active={active} list={projects} item={Project} path='/projects' id='name' />
             </div>
-        </Container>
+        </Container >
     )
 }
 
