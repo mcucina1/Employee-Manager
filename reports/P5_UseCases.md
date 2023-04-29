@@ -81,7 +81,10 @@ https://www.cs.colostate.edu/~cs415/2023sp/project/p5/p5.php
 ### - Use Case Description
 | User Action | System Response |
 |--|--|
-|  |  |
+| Click on Projects Page | Client loads Projects page |
+| Dropdown Project list at top of page | List of projects appears |
+| Select project to start | Project is selected |
+| Click "Start Project" | Project is started and success message appears |
 
 ## Finish project
 ### - Use Case Description
