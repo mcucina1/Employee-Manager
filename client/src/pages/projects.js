@@ -1,4 +1,4 @@
-import { assignWorker, getProjects } from '../services/dataService'
+import { assignWorker, unassignWorker, getProjects } from '../services/dataService'
 import { getWorkers } from '../services/dataService';
 import { Container} from 'reactstrap';
 import { useEffect, useRef, useState } from 'react'
@@ -43,7 +43,7 @@ const Projects = () => {
     useEffect(() => { getWorkers().then(setWorkers) }, [])
     const active = LocationID('projects', projects, 'name')
 
-    const onButtonClick = async () => {
+    const onButtonClickAssign = async () => {
         const worker = inputWorker.current.value;
         const project = inputProject.current.value;
         const request = {
@@ -57,6 +57,23 @@ const Projects = () => {
             alert(worker + " has been assigned to " + project + "!")
         } catch (error) {
             alert("Failed to assign worker. The worker might not meet the required qualifications, or the Project Status is already ACTIVE or FINISHED.");
+        }
+    };
+
+    const onButtonClickUnassign = async () => {
+        const worker = inputWorker.current.value;
+        const project = inputProject.current.value;
+        const request = {
+            worker: worker,
+            project: project
+        };
+        try {
+            await unassignWorker(request);
+            const updatedProjects = await getProjects();
+            setProjects(updatedProjects);
+            alert(worker + " has been unassigned from " + project + "!")
+        } catch (error) {
+            alert("Failed to unassign worker. The worker might not be assigned to the project.");
         }
     };
 
@@ -88,7 +105,8 @@ const Projects = () => {
                             return <option>{worker.name}</option>;
                         })}
                     </select>
-                    <button onClick={onButtonClick}>Assign a Worker</button>
+                    <button onClick={onButtonClickAssign}>Assign a Worker</button>
+                    <button onClick={onButtonClickUnassign}>Unassign a Worker</button>
                 </div>
                     <ClickList active={active} list={projects} item={Project} path='/projects' id='name' />
                 </div>

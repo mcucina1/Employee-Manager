@@ -34,3 +34,7 @@ export function assignWorker(request){
     return axios.put(SERVER_ADDRESS + 'assign', request)
     
 }
+
+export function unassignWorker(request){
+    return axios.put(SERVER_ADDRESS + 'unassign', request)
+}
