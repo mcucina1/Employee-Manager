@@ -95,7 +95,10 @@ https://www.cs.colostate.edu/~cs415/2023sp/project/p5/p5.php
 ### - Use Case Description
 | User Action | System Response |
 |--|--|
-|  |  |
+| Click on Projects Page | Client loads Projects page |
+| Dropdown Project list at top of page | List of projects appears |
+| Select project to finish | Project is selected |
+| Click "Finish Project" | Project is finished and success message appears |
 
 # Workflows
 ### - Use Case Description
