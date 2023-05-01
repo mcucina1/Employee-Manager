@@ -1,4 +1,4 @@
-import { assignWorker, unassignWorker, getProjects, startProject } from '../services/dataService'
+import { assignWorker, unassignWorker, getProjects, startProject, finishProject } from '../services/dataService'
 import { getWorkers } from '../services/dataService';
 import { Container } from 'reactstrap';
 import { useEffect, useRef, useState } from 'react'
@@ -39,7 +39,8 @@ const Projects = () => {
     const [workers, setWorkers] = useState([])
     const inputWorker = useRef("")
     const inputProject = useRef("")
-    const inputStartProject = useRef("")
+    const inputStartFinishProject = useRef("")
+
     useEffect(() => { getProjects().then(setProjects) }, [])
     useEffect(() => { getWorkers().then(setWorkers) }, [])
     const active = LocationID('projects', projects, 'name')
@@ -62,7 +63,7 @@ const Projects = () => {
     };
 
     const startProjClick = async () => {
-        const name = inputStartProject.current.value;
+        const name = inputStartFinishProject.current.value;
         const request = {
             name: name,
         };
@@ -72,9 +73,25 @@ const Projects = () => {
             setProjects(updatedProjects);
             alert(name + " has been started!")
         } catch (error) {
-            alert("Failed to start project. One of the requirements does not work.");
+            alert("Failed to start project.");
         }
     }
+
+    const finishProjClick = async () => {
+        const name = inputStartFinishProject.current.value;
+        const request = {
+            name: name,
+        };
+        try {
+            await finishProject(request);
+            const updatedProjects = await getProjects();
+            setProjects(updatedProjects);
+            alert(name + " has been finished!")
+        } catch (error) {
+            alert("Failed to finish project.");
+        }
+    }
+
 
     const onButtonClickUnassign = async () => {
         const worker = inputWorker.current.value;
@@ -111,12 +128,13 @@ const Projects = () => {
                         This page displays a table containing all the projects.
                     </h1>
                     <div style={selectsContainer}>
-                        <select ref={inputStartProject}>
+                        <select ref={inputStartFinishProject}>
                             {projects.map((project) => {
                                 return <option>{project.name}</option>;
                             })}
                         </select>
                         <button onClick={startProjClick}>Start Project</button>
+                        <button onClick={finishProjClick}>Finish Project</button>
                     </div>
                     <div style={selectsContainer}>
                         <select ref={inputProject}>
