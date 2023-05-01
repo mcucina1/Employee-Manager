@@ -38,10 +38,26 @@ const Qualifications = () => {
 
 const PostQualification = (props) => {
     const [qualification, setQualification] = useState("")
+
+     const handleButtonClick = async () => {
+        const worker = inputWorker.current.value;
+        const project = inputProject.current.value;
+        const request = {
+            qualification: qualification 
+        };
+        try {
+            await createQualification(request);
+            const updatedQualifications = await getQualifications();
+            props.setQualifications(updatedQualifications)
+            alert(qualification + " has been added")
+        } catch (error) {
+            alert("Failed to create Qualification");
+        }
+    };
+   
+
     return (
-        <form onSubmit={() => {
-            createQualification(qualification);
-            props.setQualifications([qualification])}}>
+        <>
         <label>Add Qualification
             <input 
             type="text" 
@@ -50,7 +66,8 @@ const PostQualification = (props) => {
             />
         </label>
         <input type="submit" />
-        </form>
+        <button onClick={handleButtonClick} />
+        </>
     )
   }
   
