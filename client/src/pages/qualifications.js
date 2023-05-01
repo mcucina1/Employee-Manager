@@ -37,20 +37,31 @@ const Qualifications = () => {
 }
 
 const PostQualification = (props) => {
-    const [qualification, setQualification] = useState("")
+    const [description, setDescription] = useState("")
+
+     const handleButtonClick = async () => {
+        try {
+            await createQualification(description);
+            const updatedQualifications = await getQualifications();
+            props.setQualifications(updatedQualifications)
+            alert(description + " has been added")
+        } catch (error) {
+            alert("Failed to create Qualification");
+        }
+    };
+   
+
     return (
-        <form onSubmit={() => {
-            createQualification(qualification);
-            props.setQualifications([qualification])}}>
+        <>
         <label>Add Qualification
             <input 
             type="text" 
-            value={qualification}
-            onChange={(e) => setQualification(e.target.value)}
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
             />
         </label>
-        <input type="submit" />
-        </form>
+        <button onClick={handleButtonClick}>Create Qualification</button>
+        </>
     )
   }
   
