@@ -42,11 +42,19 @@ N/A
 N/A
 
 ## **View qualification details.**
+**Primary Actor:** Application User \
+**Stakeholders and Interests:** \
+**Pre-Conditions:**  \
+**Post-Conditions:** 
+
 ### **Main Success Scenario**
 | User Action | System Response |
 |--|--|
 | Click on Qualifications tab | Loads Qualifications Page |
 | Click on qualification | Clicklist displays qualification details|
+
+### **Alternative Success Scenario**
+N/A
 
 ## **View worker details.**
 **Primary Actor:** Application User \
