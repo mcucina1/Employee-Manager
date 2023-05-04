@@ -148,7 +148,7 @@ N/A
 
 ## **Unassign worker**
 **Primary Actor:** Application User \
-**Stakeholders and Interests:** \
+**Stakeholders and Interests:**  \
 **Pre-Conditions:**  \
 **Post-Conditions:** 
 
@@ -167,9 +167,9 @@ N/A
 
 ## **Start project**
 **Primary Actor:** Application User \
-**Stakeholders and Interests:** \
-**Pre-Conditions:**  \
-**Post-Conditions:** 
+**Stakeholders and Interests:** Application User - Be able to take a planned project and start it.\
+**Pre-Conditions:** Project is planned or suspended. \
+**Post-Conditions:** Project is now in a active state.
 
 ### **Main Success Scenario**
 | User Action | System Response |
@@ -184,9 +184,9 @@ N/A
 
 ## **Finish project**
 **Primary Actor:** Application User \
-**Stakeholders and Interests:** \
-**Pre-Conditions:**  \
-**Post-Conditions:** 
+**Stakeholders and Interests:** Application User - Be able to take and active project and finish said project.\
+**Pre-Conditions:**  Project must be active. \
+**Post-Conditions:** If project is active, and qualifications are met then the project is finished. Otherwise visual feedback for era is shown. 
 
 ### **Main Success Scenario**
 | User Action | System Response |
