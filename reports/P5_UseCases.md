@@ -3,9 +3,18 @@ https://www.cs.colostate.edu/~cs415/2023sp/project/p5/p5.php
 
 ## View Company Qualifications
 ### - Use Case Description
+Primary Actor: Application User
+Stakeholders and Interests: Application User - Wants to succesfully view the qualifications workers at the company hold.
+Pre-Conditions: Application connected to company database. Company has workers with qualifications.
+Post-Conditions: Clicklist with qualifications displayed for Application User.
+
+### Main Success Scenario
 | User Action | System Response |
 |--|--|
 | Click on Qualifications Tab | Loads Qualifications Page |
+
+### Alternative Success Scenario
+N/A
 
 ## View company employed worker
 ### - Use Case Description
