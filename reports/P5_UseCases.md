@@ -42,7 +42,7 @@ N/A
 N/A
 
 ## **View qualification details.**
-### - Use Case Description
+### **Main Success Scenario**
 | User Action | System Response |
 |--|--|
 | Click on Qualifications tab | Loads Qualifications Page |
@@ -54,11 +54,14 @@ N/A
 **Pre-Conditions:**  \
 **Post-Conditions:** 
 
-### - Use Case Description
+### **Main Success Scenario**
 | User Action | System Response |
 |--|--|
 | Click on qualifications tab | Loads qualifications page |
 | Click on worker | Clicklist displays qualification details |
+
+### **Alternative Success Scenario**
+N/A
 
 ## **View project details.** 
 **Primary Actor:** Application User \
@@ -66,11 +69,14 @@ N/A
 **Pre-Conditions:**  \
 **Post-Conditions:** 
 
-### - Use Case Description
+### **Main Success Scenario** 
 | User Action | System Response |
 |--|--|
 | Click on projects tab | Loads projects page|
 | Click on Project | Clicklist displays project details |
+
+### **Alternative Success Scenario**
+N/A
 
 ## **Create new qualification.**
 **Primary Actor:** Application User \
@@ -78,10 +84,12 @@ N/A
 **Pre-Conditions:**  \
 **Post-Conditions:** 
 
-### - Use Case Description
+### **Main Success Scenario**
 | User Action | System Response |
 |--|--|
 | Enter new qualification and submit | Posts new qualification to server and re-renders component |
+### **Alternative Success Scenario**
+N/A
 
 ## **Create new worker.** 
 **Primary Actor:** Application User \
@@ -89,11 +97,14 @@ N/A
 **Pre-Conditions:**  \
 **Post-Conditions:** 
 
-### - Use Case Description
+### **Main Success Scenario**
 | User Action | System Response |
 |--|--|
 | Click on Workers Tab | Navigates user to the Workers Page |
 | Enter Worker Name, select a qualification for the worker, and input worker salary in the appropriate boxes above the list of workers on the workers page. | Posts a new worker to the server, creates a pop up stating said worker has been created, and re-renders the component |
+
+### **Alternative Success Scenario**
+N/A
 
 ## **Create new project.** 
 **Primary Actor:** Application User \
@@ -101,10 +112,12 @@ N/A
 **Pre-Conditions:**  \
 **Post-Conditions:** 
 
-### - Use Case Description
+### **Main Success Scenario** 
 | User Action | System Response |
 |--|--|
 |  |  |
+### **Alternative Success Scenario**
+N/A
 
 ## **Assign worker**
 **Primary Actor:** Application User \
@@ -112,7 +125,7 @@ N/A
 **Pre-Conditions:**  \
 **Post-Conditions:** 
 
-### - Use Case Description
+### **Main Success Scenario**
 | User Action | System Response |
 |--|--|
 | Click on Projects Page | Client loads Projects page |
@@ -122,13 +135,16 @@ N/A
 | Click worker to assign | Worker is selected |
 | Click "Assign a Worker" | Worker is added to project and success message appears |
 
+### **Alternative Success Scenario**
+N/A
+
 ## **Unassign worker**
 **Primary Actor:** Application User \
 **Stakeholders and Interests:** \
 **Pre-Conditions:**  \
 **Post-Conditions:** 
 
-### - Use Case Description
+### **Main Success Scenario**
 | User Action | System Response |
 |--|--|
 | Click on Projects Page | Client loads Projects page |
@@ -138,13 +154,16 @@ N/A
 | Click worker to unassign | Worker is selected |
 | Click "Unassign a Worker" | Worker is removed from project and success message appears |
 
+### **Alternative Success Scenario**
+N/A
+
 ## **Start project**
 **Primary Actor:** Application User \
 **Stakeholders and Interests:** \
 **Pre-Conditions:**  \
 **Post-Conditions:** 
 
-### - Use Case Description
+### **Main Success Scenario**
 | User Action | System Response |
 |--|--|
 | Click on Projects Page | Client loads Projects page |
@@ -152,16 +171,22 @@ N/A
 | Select project to start | Project is selected |
 | Click "Start Project" | Project is started and success message appears |
 
+### **Alternative Success Scenario**
+N/A
+
 ## **Finish project**
 **Primary Actor:** Application User \
 **Stakeholders and Interests:** \
 **Pre-Conditions:**  \
 **Post-Conditions:** 
 
-### - Use Case Description
+### **Main Success Scenario**
 | User Action | System Response |
 |--|--|
 | Click on Projects Page | Client loads Projects page |
 | Dropdown Project list at top of page | List of projects appears |
 | Select project to finish | Project is selected |
 | Click "Finish Project" | Project is finished and success message appears |
+
+### **Alternative Success Scenario**
+N/A
