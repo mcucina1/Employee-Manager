@@ -129,9 +129,9 @@ N/A
 
 ## **Assign worker**
 **Primary Actor:** Application User \
-**Stakeholders and Interests:** \
-**Pre-Conditions:**  \
-**Post-Conditions:** 
+**Stakeholders and Interests:** Application User - assign worker to project in the company. \
+**Pre-Conditions:** Only workers from the pool of available workers can be assigned as long as they are not already assiged to the same project. The project must not be in the ACTIVE or FINISHED state. The worker should not get overloaded by adding to this project. The worker can be added only if the worker is helpful to the project (i.e., meets at least one missing qualifications). If the conditions are satisfied, (1) the assigned worker is added to the pool of assiged workers of the company unless they were already present in that pool, and (2) the worker is also added to the project. Check if the worker should be moved out of the available pool.  \
+**Post-Conditions:** Worker is assigned to the project. 
 
 ### **Main Success Scenario**
 | User Action | System Response |
@@ -149,8 +149,8 @@ N/A
 ## **Unassign worker**
 **Primary Actor:** Application User \
 **Stakeholders and Interests:**  \
-**Pre-Conditions:**  \
-**Post-Conditions:** 
+**Pre-Conditions:** The worker must have been assiged to the project to be unassigned. If this was the only project for the worker, then delete this worker from the pool of assigned workers of the company. Also think about other situations for the available and assigned pools. If the qualification requirements of an ACTIVE project are no longer met, that project is marked SUSPENDED. A PLANNED OR SUSPENDED project remains in that state.\
+**Post-Conditions:** Worker is unassigned form project and the project possibly changes into suspended.
 
 ### **Main Success Scenario**
 | User Action | System Response |
