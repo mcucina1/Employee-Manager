@@ -123,7 +123,7 @@ N/A
 ### **Main Success Scenario** 
 | User Action | System Response |
 |--|--|
-| Click on the project tab | Porject page is displayed |
+| Click on the project tab | Project page is displayed |
 | TODO | |
 ### **Alternative Success Scenario**
 N/A
