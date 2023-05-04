@@ -101,9 +101,9 @@ N/A
 
 ## **Create new worker.** 
 **Primary Actor:** Application User \
-**Stakeholders and Interests:** \
-**Pre-Conditions:**  \
-**Post-Conditions:** 
+**Stakeholders and Interests:** Application Users, wants to add a worker to the company\
+**Pre-Conditions:**  Appliction is connected to the database and the database is populated with qualifications.\
+**Post-Conditions:** Worker is added to the company.
 
 ### **Main Success Scenario**
 | User Action | System Response |
@@ -116,14 +116,15 @@ N/A
 
 ## **Create new project.** 
 **Primary Actor:** Application User \
-**Stakeholders and Interests:** \
-**Pre-Conditions:**  \
-**Post-Conditions:** 
+**Stakeholders and Interests:** Application User - wants to create a new project\
+**Pre-Conditions:**  Applicaiton is connected to the database and database is populated with workers and qualifications. \
+**Post-Conditions:** A new project is created.
 
 ### **Main Success Scenario** 
 | User Action | System Response |
 |--|--|
-|  |  |
+| Click on the project tab | Porject page is displayed |
+| TODO | |
 ### **Alternative Success Scenario**
 N/A
 
