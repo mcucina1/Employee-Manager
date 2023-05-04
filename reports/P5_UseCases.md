@@ -73,9 +73,9 @@ N/A
 
 ## **View project details.** 
 **Primary Actor:** Application User \
-**Stakeholders and Interests:** \
-**Pre-Conditions:**  \
-**Post-Conditions:** 
+**Stakeholders and Interests:** Application User - Wants to view specific project details\
+**Pre-Conditions:**  Application connected to DB, Projects page loaded, specific project clicked on\
+**Post-Conditions:** Clicklist expands to show additional details about project
 
 ### **Main Success Scenario** 
 | User Action | System Response |
@@ -88,9 +88,9 @@ N/A
 
 ## **Create new qualification.**
 **Primary Actor:** Application User \
-**Stakeholders and Interests:** \
-**Pre-Conditions:**  \
-**Post-Conditions:** 
+**Stakeholders and Interests:** Application User - Needs to add a qualification to the Company\
+**Pre-Conditions:** Application connected to DB, Qualifications page is loaded, user enters new qualification into textbox, clicks enter \
+**Post-Conditions:** Qualification request sent to server and added to Company
 
 ### **Main Success Scenario**
 | User Action | System Response |
