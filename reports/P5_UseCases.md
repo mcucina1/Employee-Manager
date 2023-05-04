@@ -15,11 +15,19 @@ https://www.cs.colostate.edu/~cs415/2023sp/project/p5/p5.php
 ### **Alternative Success Scenario**
 N/A
 
-## View company employed worker
-### - Use Case Description
+## **View company employed worker**
+**Primary Actor:** Application User \
+**Stakeholders and Interests:** Application User - Wants to succesfully view the workers empoyed by the company.\
+**Pre-Conditions:** Application connected to company database. Company has workers with qualifications.\
+**Post-Conditions:** Clicklist with qualifications displayed for Application User.
+
+### **Main Success Scenario** 
 | User Action | System Response |
 |--|--|
 | Click on Workers Tab | Loads Workers Page |
+
+### **Alternative Success Scenario**
+N/A
 
 ## View company projects
 ### - Use Case Description
