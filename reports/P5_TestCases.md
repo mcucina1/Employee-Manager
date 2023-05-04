@@ -1,6 +1,14 @@
 # Test Cases
 
 ## View company qualifications
+| Test Case: Create Qualification and view it | Use Case Used |
+|--|--|
+| Navigate to Qualification tab | View Company Qualifications |
+| Check that Qualification to be added is not currently in list | View Company Qualifications | 
+| Type new Qualification into text box | Create New Qualification |
+| Click "Create Qualification" | Create New Qualification |
+| Alert appears, Click "OK" | |
+| Observe that new Qualification has been added | View Company Qualifications |
 
 ## View company employed worker
 
