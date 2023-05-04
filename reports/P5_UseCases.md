@@ -51,7 +51,8 @@ https://www.cs.colostate.edu/~cs415/2023sp/project/p5/p5.php
 ### - Use Case Description
 | User Action | System Response |
 |--|--|
-|  |  |
+| Click on Workers Tab | Navigates user to the Workers Page |
+| Enter Worker Name, select a qualification for the worker, and input worker salary in the appropriate boxes above the list of workers on the workers page. | Posts a new worker to the server, creates a pop up stating said worker has been created, and re-renders the component |
 
 ## Create new project. 
 ### - Use Case Description
