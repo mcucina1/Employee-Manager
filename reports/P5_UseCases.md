@@ -43,9 +43,9 @@ N/A
 
 ## **View qualification details.**
 **Primary Actor:** Application User \
-**Stakeholders and Interests:** \
-**Pre-Conditions:**  \
-**Post-Conditions:** 
+**Stakeholders and Interests:** Application User - Wants to successfully view all qualifications in company.\
+**Pre-Conditions:**  Application connected to company database and populated with qualifications. \
+**Post-Conditions:** Clicklist with qualifications displayed for application user. 
 
 ### **Main Success Scenario**
 | User Action | System Response |
@@ -58,9 +58,9 @@ N/A
 
 ## **View worker details.**
 **Primary Actor:** Application User \
-**Stakeholders and Interests:** \
-**Pre-Conditions:**  \
-**Post-Conditions:** 
+**Stakeholders and Interests:** Application User - Wants to successfully view all worker details\
+**Pre-Conditions:**  Application connected to company database and populated with workers. \
+**Post-Conditions:** Clicklist with workers displayed for application user
 
 ### **Main Success Scenario**
 | User Action | System Response |
