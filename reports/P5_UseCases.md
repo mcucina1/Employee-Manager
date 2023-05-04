@@ -1,5 +1,4 @@
 # Use Cases
-https://www.cs.colostate.edu/~cs415/2023sp/project/p5/p5.php
 
 ## **View Company Qualifications**
 **Primary Actor:** Application User \
@@ -15,61 +14,126 @@ https://www.cs.colostate.edu/~cs415/2023sp/project/p5/p5.php
 ### **Alternative Success Scenario**
 N/A
 
-## View company employed worker
-### - Use Case Description
+## **View company employed worker**
+**Primary Actor:** Application User \
+**Stakeholders and Interests:** Application User - Wants to succesfully view the workers empoyed by the company.\
+**Pre-Conditions:** Application connected to company database. Company has workers.\
+**Post-Conditions:** Clicklist with qualifications displayed for Application User.
+
+### **Main Success Scenario** 
 | User Action | System Response |
 |--|--|
 | Click on Workers Tab | Loads Workers Page |
 
-## View company projects
-### - Use Case Description
+### **Alternative Success Scenario**
+N/A
+
+## **View company projects**
+**Primary Actor:** Application User \
+**Stakeholders and Interests:** Application User - Wants to successfully view all projects in company, regardless of status.\
+**Pre-Conditions:** Application connected to company database and populated with projects. \
+**Post-Conditions:** Clicklist with projects displayed for application user. 
+
+### **Main Success Scenario** 
 | User Action | System Response |
 |--|--|
 | Click on Projects Tab | Loads Projects Page |
+### **Alternative Success Scenario**
+N/A
 
-## View qualification details. 
-### - Use Case Description
+## **View qualification details.**
+**Primary Actor:** Application User \
+**Stakeholders and Interests:** \
+**Pre-Conditions:**  \
+**Post-Conditions:** 
+
+### **Main Success Scenario**
 | User Action | System Response |
 |--|--|
 | Click on Qualifications tab | Loads Qualifications Page |
 | Click on qualification | Clicklist displays qualification details|
 
-## View worker details.
-### - Use Case Description
+### **Alternative Success Scenario**
+N/A
+
+## **View worker details.**
+**Primary Actor:** Application User \
+**Stakeholders and Interests:** \
+**Pre-Conditions:**  \
+**Post-Conditions:** 
+
+### **Main Success Scenario**
 | User Action | System Response |
 |--|--|
 | Click on qualifications tab | Loads qualifications page |
 | Click on worker | Clicklist displays qualification details |
 
-## View project details. 
-### - Use Case Description
+### **Alternative Success Scenario**
+N/A
+
+## **View project details.** 
+**Primary Actor:** Application User \
+**Stakeholders and Interests:** \
+**Pre-Conditions:**  \
+**Post-Conditions:** 
+
+### **Main Success Scenario** 
 | User Action | System Response |
 |--|--|
 | Click on projects tab | Loads projects page|
 | Click on Project | Clicklist displays project details |
 
-## Create new qualification. 
-### - Use Case Description
+### **Alternative Success Scenario**
+N/A
+
+## **Create new qualification.**
+**Primary Actor:** Application User \
+**Stakeholders and Interests:** \
+**Pre-Conditions:**  \
+**Post-Conditions:** 
+
+### **Main Success Scenario**
 | User Action | System Response |
 |--|--|
 | Enter new qualification and submit | Posts new qualification to server and re-renders component |
+### **Alternative Success Scenario**
+N/A
 
+## **Create new worker.** 
+**Primary Actor:** Application User \
+**Stakeholders and Interests:** \
+**Pre-Conditions:**  \
+**Post-Conditions:** 
 
-## Create new worker. 
-### - Use Case Description
+### **Main Success Scenario**
 | User Action | System Response |
 |--|--|
 | Click on Workers Tab | Navigates user to the Workers Page |
 | Enter Worker Name, select a qualification for the worker, and input worker salary in the appropriate boxes above the list of workers on the workers page. | Posts a new worker to the server, creates a pop up stating said worker has been created, and re-renders the component |
 
-## Create new project. 
-### - Use Case Description
+### **Alternative Success Scenario**
+N/A
+
+## **Create new project.** 
+**Primary Actor:** Application User \
+**Stakeholders and Interests:** \
+**Pre-Conditions:**  \
+**Post-Conditions:** 
+
+### **Main Success Scenario** 
 | User Action | System Response |
 |--|--|
 |  |  |
+### **Alternative Success Scenario**
+N/A
 
-## Assign worker
-### - Use Case Description
+## **Assign worker**
+**Primary Actor:** Application User \
+**Stakeholders and Interests:** \
+**Pre-Conditions:**  \
+**Post-Conditions:** 
+
+### **Main Success Scenario**
 | User Action | System Response |
 |--|--|
 | Click on Projects Page | Client loads Projects page |
@@ -78,10 +142,17 @@ N/A
 | Dropdown Worker list at top of page | List of workers appears |
 | Click worker to assign | Worker is selected |
 | Click "Assign a Worker" | Worker is added to project and success message appears |
-### - Use Case Tests
 
-## Unassign worker
-### - Use Case Description
+### **Alternative Success Scenario**
+N/A
+
+## **Unassign worker**
+**Primary Actor:** Application User \
+**Stakeholders and Interests:** \
+**Pre-Conditions:**  \
+**Post-Conditions:** 
+
+### **Main Success Scenario**
 | User Action | System Response |
 |--|--|
 | Click on Projects Page | Client loads Projects page |
@@ -91,8 +162,16 @@ N/A
 | Click worker to unassign | Worker is selected |
 | Click "Unassign a Worker" | Worker is removed from project and success message appears |
 
-## Start project
-### - Use Case Description
+### **Alternative Success Scenario**
+N/A
+
+## **Start project**
+**Primary Actor:** Application User \
+**Stakeholders and Interests:** \
+**Pre-Conditions:**  \
+**Post-Conditions:** 
+
+### **Main Success Scenario**
 | User Action | System Response |
 |--|--|
 | Click on Projects Page | Client loads Projects page |
@@ -100,8 +179,16 @@ N/A
 | Select project to start | Project is selected |
 | Click "Start Project" | Project is started and success message appears |
 
-## Finish project
-### - Use Case Description
+### **Alternative Success Scenario**
+N/A
+
+## **Finish project**
+**Primary Actor:** Application User \
+**Stakeholders and Interests:** \
+**Pre-Conditions:**  \
+**Post-Conditions:** 
+
+### **Main Success Scenario**
 | User Action | System Response |
 |--|--|
 | Click on Projects Page | Client loads Projects page |
@@ -109,8 +196,5 @@ N/A
 | Select project to finish | Project is selected |
 | Click "Finish Project" | Project is finished and success message appears |
 
-# Workflows
-### - Use Case Description
-| User Action | System Response |
-|--|--|
-|  |  |
+### **Alternative Success Scenario**
+N/A
