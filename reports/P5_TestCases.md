@@ -11,6 +11,15 @@
 | Observe that new Qualification has been added | View Company Qualifications |
 
 ## View company employed worker
+| Test Case: Create Worker and view it | Use Cases Used |
+|--------------|---------------------|
+| Clicks on on the workers tab | view employed workers |
+| Checks to see that worker is not alrady employed| view employed workers |
+| Inputs "Steven Thomson" into the name field| -- |
+| Selects the Angular and Cyber Security qualifications| -- |
+| Inputs "18000" in the salary field | -- |
+| Clicks Employe worker | create new worker |
+| Clicks on the worker in the click list| view worker details |
 
 ## View company projects
 
