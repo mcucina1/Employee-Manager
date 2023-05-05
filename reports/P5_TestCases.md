@@ -89,6 +89,7 @@
 
 ## Finish project 
 | Test Case: Finish Project and view it | Use Cases Used |
+|--|--|
 | User clicks on Projects tab | View Project Details |
 | User clicks on project in clicklist to verify that it is not currently finished | View Project Details |
 | User selects project from dropdown menu that they would like to finish | Finish Project |
