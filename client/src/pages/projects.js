@@ -1,4 +1,4 @@
-import { assignWorker, unassignWorker, getProjects, startProject, finishProject } from '../services/dataService'
+import { assignWorker, unassignWorker, getProjects, startProject, finishProject, getQualifications, createProject } from '../services/dataService'
 import { getWorkers } from '../services/dataService';
 import { Container } from 'reactstrap';
 import { useEffect, useRef, useState } from 'react'
@@ -127,6 +127,7 @@ const Projects = () => {
                     <h1>
                         This page displays a table containing all the projects.
                     </h1>
+                    <PostProject projets={projects} setProjects={setProjects} />
                     <div style={selectsContainer}>
                         <select ref={inputStartFinishProject}>
                             {projects.map((project) => {
@@ -157,5 +158,65 @@ const Projects = () => {
     )
 }
 
+const PostProject = (props) => {
+    const [name, setName] = useState("")
+    const [qualifications, setQualifications] = useState([]);
+    const [select, setSelect] = useState([]);
+    const [size, setSize] = useState("SMALL");
+    const selectSize = useRef("")
+
+    useEffect(() => { getQualifications().then(setQualifications) }, [])
+
+    const handleChange = async (e) => {
+        let value = Array.from(e.target.selectedOptions, option => option.value);
+        setSelect(value);
+    }
+    const handleClick = async () => {
+        const request = {
+            name: name,
+            size: size,   
+            qualifications: select
+        };
+        try {
+            await createProject(request);
+            const updatedProjects = await getProjects();
+            props.setProjects(updatedProjects);
+            alert(name + " has been employed")
+        } catch (error) {
+            alert("Failed to create project. One of the requirements does not work.");
+        }
+    }
+
+    const handleSize = async () => {
+        setSize(selectSize.current.value)
+    }
+
+    return (
+        <>
+            <label> Name
+                <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                />
+            </label>
+            <label> Qualifications
+                <select size="4" onChange={(e) => handleChange(e)} multiple>
+                    {qualifications.map((qualification) => {
+                        return <option value={qualification.description}>{qualification.description}</option>;
+                    })}
+                </select>
+            </label>
+            <label> Size
+                <select ref={selectSize} onChange={handleSize}>
+                    <option>SMALL</option>
+                    <option>MEDIUM</option>
+                    <option>BIG</option>
+                </select>
+            </label>
+            <button onClick={handleClick}>Create Project</button>
+        </>
+    )
+}
 
 export default Projects
