@@ -62,7 +62,12 @@
 |Missing Qualifications:|  |
 
 ## Create new qualification
-
+| Test Case: Create and view a new Qualification | Use Cases Used |
+|--------------|---------------------|
+| User clicks on Qualifications Tab | view qualification details |
+| User enters 'c++' in the text box next to the text "Add Qualification" | create new qualification |
+| User clicks the Create Qualification Button | create new qualification |
+| User clicks on new Qualification in the Click List of Qualifications and verifies the Workers: list is empty | -- |
 ## Create new worker
 
 ## Create new project
