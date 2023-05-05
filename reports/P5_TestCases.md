@@ -41,7 +41,7 @@
 ## View worker details
 | Test Case: Create Worker and view it | Use Cases Used |
 |--------------|---------------------|
-| Clicks on on the workers tab | view employed workers |
+| Clicks on the workers tab | view employed workers |
 | Inputs "Alexander Volkanovski" into the name field| -- |
 | Selects the Java and TypeScript qualifications| -- |
 | Inputs "11000" in the salary field | -- |
@@ -49,6 +49,17 @@
 | Clicks on the worker in the click list| view worker details |
 
 ## View project details
+| Test Case: View an existing projects details | Use Cases Used |
+|--------------|---------------------|
+| Clicks on the Projects tab| View project details|
+| User clicks on the 'Android Task Monitoring' in the clicklist | View project details |
+| User verifies the project details meet the following:| -- |
+|Name: Android Task Monitoring|  |
+|Size: SMALL|  |
+|Status: PLANNED|  |
+|Assigned Employees: Erika Johnston, Terry Hampton, Benjamin Guzman|  |
+|Required Qualifications: Java, MongoDB, Spring, Sql|  |
+|Missing Qualifications:|  |
 
 ## Create new qualification
 
