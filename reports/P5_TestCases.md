@@ -15,6 +15,11 @@
 ## View company projects
 
 ## View qualification details
+|Test Case: Create and view a qualificaiton| Use Case Used|
+|--|--|
+| User clicks on qualification tab | view company qualifications |
+| User imputs "R" into the "Add Qualification" field | -- |
+| User clicks on added qualification | View qualificaiton details|
 
 ## View worker details
 
