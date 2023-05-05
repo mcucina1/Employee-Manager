@@ -31,6 +31,14 @@
 | User clicks on added qualification | View qualificaiton details|
 
 ## View worker details
+| Test Case: Create Worker and view it | Use Cases Used |
+|--------------|---------------------|
+| Clicks on on the workers tab | view employed workers |
+| Inputs "Alexander Volkanovski" into the name field| -- |
+| Selects the Java and TypeScript qualifications| -- |
+| Inputs "11000" in the salary field | -- |
+| Clicks "Employ worker" | create new worker |
+| Clicks on the worker in the click list| view worker details |
 
 ## View project details
 
