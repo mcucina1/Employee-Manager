@@ -22,6 +22,14 @@
 | Clicks on the worker in the click list| view worker details |
 
 ## View company projects
+| Test Case: Create Project and view it | Use Case Used |
+|--|--|
+| Navigate to Projects tab | View Company Projects |
+| Check that Project to be added is not currently in list | View Company Project | 
+| Type new Project into text box | Create New Project |
+| Click "Create Project" | Create New Project |
+| Alert appears, Click "OK" | |
+| Observe that new Project has been added | View Company Projects |
 
 ## View qualification details
 |Test Case: Create and view a qualificaiton| Use Case Used|
