@@ -96,3 +96,15 @@
 | User clicks "Finish Project" option | Finish Project |
 | Project alert appears verifying success | Finish Project |
 | User clicks on Project in Clicklist to verify that it has finished | View Project Details |
+| Test Case: Finish Project and view it | Use Cases Used |
+
+| Test Case: Whole Project Lifecycle | Use Cases Used |
+|--|--|
+| User creates new Project | New Project appears in Clicklist |
+| User clicks on new Project | ProjectStatus is Planned |
+| User assigns relevant workers | Qualifications Met |
+| User starts project | Project is Active |
+| User selects project from dropdown menu that they would like to finish | Finish Project |
+| User clicks "Finish Project" option | Finish Project |
+| Project alert appears verifying success | Finish Project |
+| User clicks on Project in Clicklist to verify that it has finished | View Project Details |
