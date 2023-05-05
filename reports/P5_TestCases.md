@@ -53,5 +53,29 @@
 ## Unassign worker
 
 ## Start project
+| Test Case: Start Project and view it. Valid Start | Use Cases Used |
+|--|--|
+| User clicks on Projects tab | View Project Details |
+| User clicks on project in clicklist to verify that it is not currently started | View Project Details |
+| User selects project from dropdown that they would like to start | Start Project |
+| User clicks "Start Project" option | Start Project |
+| Project alert appears verifying success | Start Project |
+| User clicks on Project in Clicklist to verify that it has started | View Project Details |
+
+| Test Case: Start Project and view it. Invalid Start | Use Cases Used |
+|--|--|
+| User clicks on Projects tab |View Project Details |
+| User click on project in clicklist to verify that it is currently finished | View Project Details |
+| User selects project from drowndown that they would like to start | Start Project |
+| User clicks "Start Project" option | Start Project |
+| Project alert appears indicating an error | Start Project |
+| User clicks on Project in clicklist to verify that status has not changed | View Project Details |
 
 ## Finish project 
+| Test Case: Finish Project and view it | Use Cases Used |
+| User clicks on Projects tab | View Project Details |
+| User clicks on project in clicklist to verify that it is not currently finished | View Project Details |
+| User selects project from dropdown menu that they would like to finish | Finish Project |
+| User clicks "Finish Project" option | Finish Project |
+| Project alert appears verifying success | Finish Project |
+| User clicks on Project in Clicklist to verify that it has finished | View Project Details |
