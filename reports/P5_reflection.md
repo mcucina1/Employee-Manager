@@ -1,1 +1,3 @@
 # P5 Reflection
+
+For this final sprint our team focused on implementing a client that could interact with the server using the API that was developed in the previous sprint. Our team was able to see the completion of a semester long full-stack development process that followed test driven development practices by finalizing the code added to the client. As a whole we learned much more about the development involved with a client that communicates to a server through a rest controller. We were able to also use this sprint as an opportunity to practice our JavaScript, and more specifically our React. Seeing how relient this sprint was on the work we had completed previously was also impressive and something that we were all very proud of.
