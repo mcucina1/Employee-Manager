@@ -48,5 +48,5 @@ export function finishProject(request){
 }
 
 export function createProject(request){
-    return axios.post(SERVER_ADDRESS + 'project/' +  request.name, request)
+    return axios.post(SERVER_ADDRESS + 'projects/' +  request.name, request)
 }
