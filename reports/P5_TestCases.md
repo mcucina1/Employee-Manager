@@ -49,8 +49,24 @@
 ## Create new project
 
 ## Assign worker
+| Test Case: Assign worker and view it | Use Cases Used |
+|--------------|---------------------|
+| Clicks on Projects tab | view company projects |
+| Selects "Android Task Monitoring" from bottom-most dropdown menu| -- |
+| Selects "Terry Hampton" from dropdown to the right of above dropdown| -- |
+| Clicks "Assign a Worker" button | assign worker |
+| Clicks "Android Task Monitoring" tab from click list | view project details |
+| Confirms worker has been added to project| assign worker |
 
 ## Unassign worker
+| Test Case: Unassign worker and view it | Use Cases Used |
+|--------------|---------------------|
+| Clicks on Projects tab | view company projects |
+| Selects "Credit Card Fraud Detection" from bottom-most dropdown menu| -- |
+| Selects "Jamie Burgess" from dropdown to the right of above dropdown| -- |
+| Clicks "Unassign a Worker" button | unassign worker |
+| Clicks "Credit Card Fraud Detection" tab from click list | view project details |
+| Confirms worker has been removed from project| unassign worker |
 
 ## Start project
 | Test Case: Start Project and view it. Valid Start | Use Cases Used |
