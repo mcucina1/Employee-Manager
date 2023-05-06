@@ -62,10 +62,32 @@
 |Missing Qualifications:|  |
 
 ## Create new qualification
+| Test Case: Create and view a new Qualification | Use Cases Used |
+|--------------|---------------------|
+| User clicks on Qualifications Tab | view qualification details |
+| User enters 'c++' in the text box next to the text "Add Qualification" | create new qualification |
+| User clicks the Create Qualification Button | create new qualification |
+| User clicks on new Qualification in the Click List of Qualifications and verifies the Workers: list is empty | -- |
 
 ## Create new worker
+| Test Case: Create and view a new Worker | Use Cases Used |
+|--------------|---------------------|
+| User clicks on the Workers Tab | create new worker |
+| User types 'John Stamos' into the name box | create new worker |
+| (Hold down CTRL(COMMAND on Mac) while clicking on qualifications in the list to select multiple) User selects Java & Javascript from the list of Qualifications | create new worker |
+| User types in a salary of '100000' into the Salary box | create new worker |
+| User clicks the employ worker button | create new worker |
+| User now finds 'John Stamos' in the list of workers, clicks on him, and verifies that all the information about him is as previously mentioned. | -- |
 
 ## Create new project
+| Test Case: Create and view a new Project | Use Cases Used |
+|--------------|---------------------|
+| User clicks on the Projects Tab | create new project |
+| User inputs 'A Fun Goofy Project' in the the text box next to the text "Name" | create new project |
+| (Hold down CTRL(COMMAND on Mac) while clicking on qualifications in the list to select multiple) User selects Java & Javascript from the list of Qualifications | create new project |
+| User selects 'MEDIUM' from the dropdown next to the text "Size" | create new project |
+| User clicks the 'Create Project' button | create new project |
+| User clicks on 'A Fun Goody Project' in the clicklst of projects and verifies that it exists and is populated with the correct information | -- |
 
 ## Assign worker
 | Test Case: Assign worker and view it | Use Cases Used |
